@@ -1,1 +1,1 @@
-# sample
+# Firebase Configure
