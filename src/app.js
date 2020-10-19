@@ -15,18 +15,17 @@ document.onkeydown = function(e) {
   
 
 var favoritemovie = sessionStorage.getItem("favoriteMovie");
-
 let prnnn = favoritemovie;
 
 
 let a=document.getElementById("B");
-
 let c=document.getElementById("B2");
 let d=document.getElementById("B3");
 
 
 let demo;
-    firebase.auth().onAuthStateChanged(function(user) {
+    
+firebase.auth().onAuthStateChanged(function(user) {
       if (user!==null) {
         demo = user.uid;
        
@@ -74,7 +73,6 @@ let a=document.getElementById("B1");
 alert("You are in B1 Division");
   xyz="B1";
   
-  
   var updates1 = {};
   updates1["/Source/" + xyz + "/" + demo] = demo; 
   firebase.database().ref().update(updates1);
@@ -84,6 +82,7 @@ alert("You are in B1 Division");
 function CS_B2(){
   xyz="B2";
   alert("You are in B2 Division");
+
   var updates1 = {};
       updates1["/Source/" + xyz + "/" + demo] = demo; 
       firebase.database().ref().update(updates1);
@@ -93,12 +92,29 @@ function CS_B2(){
 function CS_B3(){
   xyz="B3";
   alert("You are in B3 Division");
-  var updates1 = {};
-      updates1["/Source/" + xyz + "/" + demo] = demo; 
 
+    var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = demo; 
       firebase.database().ref().update(updates1);
       create_unfinished_task();
 }
+
+function IT(){
+  //xyz="IT";
+  alert("You are in IT Divison");
+
+
+}
+
+function Class(){
+  if(Number(prnnn) >= 073 && Number(prnnn) <= 145){
+    CS_B();
+  }
+  else if(Number(prnnn) >= 19070124001 && Number(prnnn) <= 19070124075){
+    IT();
+  }
+}
+
 
 
 function Division(){
