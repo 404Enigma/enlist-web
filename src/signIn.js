@@ -24,8 +24,8 @@ function signInWithGoogle() {
   if (prnn.value === "") {
     alert("Please enter the PRN");
   } else {
-    if (prnn.value.length !== 3) {
-      alert("Please enter a 3 digit PRN");
+    if (prnn.value.length !== 11) {
+      alert("Please enter a 11 digit PRN");
     } else {
       signIn();
     }
