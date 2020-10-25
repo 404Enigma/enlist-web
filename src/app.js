@@ -25,9 +25,54 @@ let demo;
 firebase.auth().onAuthStateChanged(function (user) {
   if (user !== null) {
     demo = user.uid;
+    console.log(user.uid);
+
+    if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
+      xyz = "B1";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+      create_unfinished_task();
+    } else if (Number(prnnn) >= 19070122096 && Number(prnnn) <= 19070122119) {
+      xyz = "B2";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+      create_unfinished_task();
+    } else if (Number(prnnn) >= 19070122120 && Number(prnnn) <= 19070122145) {
+      xyz = "B3";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+      create_unfinished_task();
+    } else if (Number(prnnn) >= 19070124001 && Number(prnnn) <= 19070124028) {
+      xyz = "T1";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+      create_unfinished_task();
+    } else if (Number(prnnn) >= 19070124029 && Number(prnnn) <= 19070124055) {
+      xyz = "T2";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+      create_unfinished_task();
+    } else if (Number(prnnn) >= 19070124056 && Number(prnnn) <= 19070124076) {
+      xyz = "T3";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+      create_unfinished_task();
+    }
   } else {
     alert("Please login");
-    window.location.assign("./index.html");
+    window.location.assign("./main.html");
   }
 });
 
@@ -50,7 +95,7 @@ function CS_B() {
   xyz = "B";
 
   var updates1 = {};
-  updates1["/Source/" + xyz + "/" + demo] = demo;
+  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
   firebase.database().ref().update(updates1);
   create_unfinished_task();
 }
@@ -60,7 +105,7 @@ function CS_B1() {
   xyz = "B1";
 
   var updates1 = {};
-  updates1["/Source/" + xyz + "/" + demo] = demo;
+  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
   firebase.database().ref().update(updates1);
   create_unfinished_task();
 }
@@ -70,7 +115,7 @@ function CS_B2() {
   alert("You are in B2 Division");
 
   var updates1 = {};
-  updates1["/Source/" + xyz + "/" + demo] = demo;
+  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
   firebase.database().ref().update(updates1);
   create_unfinished_task();
 }
@@ -80,7 +125,7 @@ function CS_B3() {
   alert("You are in B3 Division");
 
   var updates1 = {};
-  updates1["/Source/" + xyz + "/" + demo] = demo;
+  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
   firebase.database().ref().update(updates1);
   create_unfinished_task();
 }
@@ -91,7 +136,7 @@ function IT() {
   xyz = "IT";
 
   var updates1 = {};
-  updates1["/Source/" + xyz + "/" + demo] = demo;
+  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
   firebase.database().ref().update(updates1);
   create_unfinished_task();
 }
@@ -101,7 +146,7 @@ function IT_T1() {
   xyz = "T1";
 
   var updates1 = {};
-  updates1["/Source/" + xyz + "/" + demo] = demo;
+  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
   firebase.database().ref().update(updates1);
   create_unfinished_task();
 }
@@ -111,7 +156,7 @@ function IT_T2() {
   xyz = "T2";
 
   var updates1 = {};
-  updates1["/Source/" + xyz + "/" + demo] = demo;
+  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
   firebase.database().ref().update(updates1);
   create_unfinished_task();
 }
@@ -121,7 +166,7 @@ function IT_T3() {
   xyz = "T3";
 
   var updates1 = {};
-  updates1["/Source/" + xyz + "/" + demo] = demo;
+  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
   firebase.database().ref().update(updates1);
   create_unfinished_task();
 }
@@ -135,12 +180,7 @@ function Class() {
 }
 
 function Division() {
-  if (
-    Number(prnnn) == 19070122120 ||
-    Number(prnnn) == 19070122126 ||
-    Number(prnnn) == 19070122129 ||
-    Number(prnnn) == 19070122134
-  ) {
+  if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129 || Number(prnnn) == 19070122134) {
     CS_B1();
     CS_B2();
     CS_B3();
@@ -157,6 +197,20 @@ function Division() {
   } else if (Number(prnnn) >= 19070124056 && Number(prnnn) <= 19070124076) {
     IT_T3();
   }
+}
+
+var encrypted;
+let encryptKey;
+
+function makeid(length) {
+  var result = "";
+  var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  console.log(result);
+  return result;
 }
 
 function add_task() {
@@ -180,20 +234,7 @@ function add_task() {
   let month = date[0];
   let year = date[2];
 
-  var montharray = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
+  var montharray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
   for (let i = 0; i < montharray.length; i++) {
     if (i === Number(month)) {
@@ -235,54 +276,27 @@ function add_task() {
     };
 
     var today = new Date();
-    var time =
-      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var Currentdate =
-      today.getDate() + " " + today.getMonth() + " " + today.getFullYear();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var Currentdate = today.getDate() + " " + today.getMonth() + " " + today.getFullYear();
 
     let ZeroDate = today.getDate();
-    if (
-      ZeroDate === 1 ||
-      ZeroDate === 2 ||
-      ZeroDate === 3 ||
-      ZeroDate === 4 ||
-      ZeroDate === 5 ||
-      ZeroDate === 6 ||
-      ZeroDate === 7 ||
-      ZeroDate === 8 ||
-      ZeroDate === 9
-    ) {
+    if (ZeroDate === 1 || ZeroDate === 2 || ZeroDate === 3 || ZeroDate === 4 || ZeroDate === 5 || ZeroDate === 6 || ZeroDate === 7 || ZeroDate === 8 || ZeroDate === 9) {
       ZeroDate = "0" + ZeroDate;
-      Currentdate =
-        ZeroDate + " " + today.getMonth() + " " + today.getFullYear();
+      Currentdate = ZeroDate + " " + today.getMonth() + " " + today.getFullYear();
     } else {
-      Currentdate =
-        ZeroDate + " " + today.getMonth() + " " + today.getFullYear();
+      Currentdate = ZeroDate + " " + today.getMonth() + " " + today.getFullYear();
     }
-
+    console.log(Currentdate);
     let dateC = Currentdate.split(" ");
     let dayC = dateC[0];
     let monthC = dateC[1];
     let yearC = dateC[2];
 
-    var montharrayC = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
+    var montharrayC = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     for (let i = 0; i < montharray.length; i++) {
       if (i === Number(monthC)) {
-        monthC = montharrayC[i - 1];
+        monthC = montharrayC[i];
       }
     }
     Currentdate = dayC + " " + monthC + " " + yearC;
@@ -301,45 +315,65 @@ function add_task() {
 
     let personal = document.getElementById("personalList");
     let shared = document.getElementById("sharedList");
-
+    console.log(task.title.value);
     if (personal.checked) {
+      encryptKey = makeid(10);
+
+      encrypted = CryptoJS.AES.encrypt(input_box.value, encryptKey);
+      console.log(encryptKey);
+
+      console.log(encrypted);
+      console.log(encrypted.toString());
+
+      task.title = encrypted.toString();
+
+      console.log(task);
+
       var updates = {};
-      updates[
-        "/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey
-      ] = task;
+      updates["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task;
       firebase.database().ref().update(updates);
     } else {
+      encryptKey = makeid(10);
+      encrypted = CryptoJS.AES.encrypt(input_box.value, encryptKey);
+
+      console.log(encrypted.toString());
+      console.log(encryptKey);
+
+      task.title = encrypted.toString();
+
+      console.log(task);
+
       ref = firebase.database().ref();
 
       var urlRef = ref.child("Source/" + xyz);
 
       urlRef.once("value", function (snapshot) {
         snapshot.forEach(function (child) {
-          let allchild = child.val();
-
+          let allchild = child.key;
+          console.log(allchild);
           keySplittedArray = allchild.split(" ");
 
           for (let i = 0; i < keySplittedArray.length; i++) {
             var updates = {};
-            updates[
-              "/To-Do-List/" +
-                keySplittedArray[i] +
-                "/" +
-                xyz +
-                "/" +
-                "Task" +
-                uniqkey
-            ] = task;
+            updates["/To-Do-List/" + keySplittedArray[i] + "/" + xyz + "/" + "Task" + uniqkey] = task;
 
             firebase.database().ref().update(updates);
           }
         });
       });
+
+      // firebase ref
+      var All_Tasks = {};
+      All_Tasks["All-Tasks" + "/" + xyz + "/" + "Task" + uniqkey] = task;
+      firebase.database().ref().update(All_Tasks);
     }
 
     input_box.value = "";
     input_date.value = "";
     input_description.value = "";
+
+    // desc.ref1 = new Firebase(desc.userRef + "/" + desc.oldGender + "/" + uid);
+    // desc.ref2 = new Firebase(desc.userRef + "/" + desc.gender + "/" + uid);
 
     create_unfinished_task();
   }
@@ -361,10 +395,14 @@ function create_unfinished_task() {
       });
       for (var i, i = 0; i < task_array.length; i++) {
         task_date = task_array[i][0];
-
         task_title = task_array[i][3];
         task_key = task_array[i][2];
         task_description = task_array[i][1];
+
+        console.log(task_title);
+        var decrypted = CryptoJS.AES.decrypt(task_title, encryptKey);
+        console.log(decrypted.toString(CryptoJS.enc.Utf8));
+        console.log(decrypted);
 
         task_container = document.createElement("div");
         task_container.setAttribute("class", "task_container");
@@ -375,9 +413,9 @@ function create_unfinished_task() {
         task_data.setAttribute("id", "task_data");
 
         title = document.createElement("p");
-        title.setAttribute("id", "task_title");
+        title.setAttribute("id", "decrypted");
         title.setAttribute("contenteditable", false);
-        title.innerHTML = task_title;
+        title.innerHTML = decrypted.toString(CryptoJS.enc.Utf8);
 
         deadline = document.createElement("p");
         deadline.setAttribute("id", "task_date");
@@ -395,28 +433,19 @@ function create_unfinished_task() {
 
         task_done_button = document.createElement("button");
         task_done_button.setAttribute("id", "task_done_button");
-        task_done_button.setAttribute(
-          "onclick",
-          "task_done(this.parentElement.parentElement, this.parentElement)"
-        );
+        task_done_button.setAttribute("onclick", "task_done(this.parentElement.parentElement, this.parentElement)");
         fa_done = document.createElement("i");
         fa_done.setAttribute("class", "fa fa-check fa-2x");
 
         task_edit_button = document.createElement("button");
         task_edit_button.setAttribute("id", "task_edit_button");
-        task_edit_button.setAttribute(
-          "onclick",
-          "task_edit(this.parentElement.parentElement, this)"
-        );
+        task_edit_button.setAttribute("onclick", "task_edit(this.parentElement.parentElement, this)");
         fa_edit = document.createElement("i");
         fa_edit.setAttribute("class", "fa fa-pencil fa-2x");
 
         task_delete_button = document.createElement("button");
         task_delete_button.setAttribute("id", "task_delete_button");
-        task_delete_button.setAttribute(
-          "onclick",
-          "task_delete(this.parentElement.parentElement)"
-        );
+        task_delete_button.setAttribute("onclick", "task_delete(this.parentElement.parentElement)");
         fa_delete = document.createElement("i");
         fa_delete.setAttribute("class", "fa fa-trash fa-2x");
 
@@ -433,6 +462,21 @@ function create_unfinished_task() {
         task_edit_button.append(fa_edit);
         task_tool.append(task_delete_button);
         task_delete_button.append(fa_delete);
+
+        let time = new Date();
+        time.setDate(time.getDate() - 8);
+        console.log(time.toUTCString());
+        let time1 = time.split(",");
+        let d = time1[1];
+        let m = time1[2];
+        console.log(d);
+        console.log(m);
+        let time2 = d + " " + m;
+        console.log(task_date);
+
+        if (time2 == task_date) {
+          task_delete();
+        }
       }
     });
 }
@@ -452,10 +496,7 @@ function task_done(task, task_tool) {
 
 function task_edit(task, edit_button) {
   edit_button.setAttribute("id", "task_edit_button_editing");
-  edit_button.setAttribute(
-    "onclick",
-    "finish_edit(this.parentElement.parentElement, this)"
-  );
+  edit_button.setAttribute("onclick", "finish_edit(this.parentElement.parentElement, this)");
 
   title = task.childNodes[0].childNodes[0];
   title.setAttribute("contenteditable", true);
@@ -473,10 +514,7 @@ function task_edit(task, edit_button) {
 }
 function finish_edit(task, edit_button) {
   edit_button.setAttribute("id", "task_edit_button");
-  edit_button.setAttribute(
-    "onclick",
-    "task_edit(this.parentElement.parentElement, this)"
-  );
+  edit_button.setAttribute("onclick", "task_edit(this.parentElement.parentElement, this)");
 
   title = task.childNodes[0].childNodes[0];
   title.setAttribute("contenteditable", false);
@@ -499,19 +537,40 @@ function finish_edit(task, edit_button) {
   };
 
   var updates = {};
-  updates[
-    "/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey
-  ] = task_obj;
+  updates["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task_obj;
   firebase.database().ref().update(updates);
 }
 
 function task_delete(task) {
   key = task.getAttribute("data-key");
-  task_to_remove = firebase
-    .database()
-    .ref("To-Do-List/" + demo + "/" + xyz + "/" + "Task" + key);
+  task_to_remove = firebase.database().ref("To-Do-List/" + demo + "/" + xyz + "/" + "Task" + key);
   task_to_remove.remove();
 
   // remove from html view or whatevesss
   task.remove();
+}
+
+function updateAll() {
+  console.log("aaaaa");
+  firebase
+    .database()
+    .ref("All-Tasks" + "/" + xyz)
+    .once(
+      "value",
+      function (snapshot) {
+        console.log(snapshot.val());
+
+        firebase
+          .database()
+          .ref("/To-Do-List/" + demo + "/" + xyz)
+          .set(snapshot.val());
+      },
+      function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+      }
+    );
+
+  // var updates = {};
+  // updates["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task_obj;
+  // firebase.database().ref().update(updates);
 }
