@@ -13,6 +13,32 @@
 //   }
 //   }
 
+var today = new Date();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+var Currentdate = today.getDate() + " " + today.getMonth() + " " + today.getFullYear();
+
+let ZeroDate = today.getDate();
+if (ZeroDate === 1 || ZeroDate === 2 || ZeroDate === 3 || ZeroDate === 4 || ZeroDate === 5 || ZeroDate === 6 || ZeroDate === 7 || ZeroDate === 8 || ZeroDate === 9) {
+  ZeroDate = "0" + ZeroDate;
+  Currentdate = ZeroDate + " " + today.getMonth() + " " + today.getFullYear();
+} else {
+  Currentdate = ZeroDate + " " + today.getMonth() + " " + today.getFullYear();
+}
+console.log(Currentdate);
+let dateC = Currentdate.split(" ");
+let dayC = dateC[0];
+let monthC = dateC[1];
+let yearC = dateC[2];
+
+var montharrayC = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+for (let i = 0; i < montharrayC.length; i++) {
+  if (i === Number(monthC)) {
+    monthC = montharrayC[i];
+  }
+}
+Currentdate = dayC + " " + monthC + " " + yearC;
+
 var favoritemovie = sessionStorage.getItem("favoriteMovie");
 let prnnn = favoritemovie;
 
@@ -275,32 +301,6 @@ function add_task() {
       description: input_description.value,
     };
 
-    var today = new Date();
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var Currentdate = today.getDate() + " " + today.getMonth() + " " + today.getFullYear();
-
-    let ZeroDate = today.getDate();
-    if (ZeroDate === 1 || ZeroDate === 2 || ZeroDate === 3 || ZeroDate === 4 || ZeroDate === 5 || ZeroDate === 6 || ZeroDate === 7 || ZeroDate === 8 || ZeroDate === 9) {
-      ZeroDate = "0" + ZeroDate;
-      Currentdate = ZeroDate + " " + today.getMonth() + " " + today.getFullYear();
-    } else {
-      Currentdate = ZeroDate + " " + today.getMonth() + " " + today.getFullYear();
-    }
-    console.log(Currentdate);
-    let dateC = Currentdate.split(" ");
-    let dayC = dateC[0];
-    let monthC = dateC[1];
-    let yearC = dateC[2];
-
-    var montharrayC = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-    for (let i = 0; i < montharray.length; i++) {
-      if (i === Number(monthC)) {
-        monthC = montharrayC[i];
-      }
-    }
-    Currentdate = dayC + " " + monthC + " " + yearC;
-
     const docRef = db.doc("Analysis/" + time);
     docRef
       .set({
@@ -401,7 +401,7 @@ function create_unfinished_task() {
 
         console.log(task_title);
         var decrypted = CryptoJS.AES.decrypt(task_title, encryptKey);
-        console.log(decrypted.toString(CryptoJS.enc.Utf8));
+        //console.log(decrypted.toString(CryptoJS.enc.Utf8));
         console.log(decrypted);
 
         task_container = document.createElement("div");
@@ -464,18 +464,25 @@ function create_unfinished_task() {
         task_delete_button.append(fa_delete);
 
         let time = new Date();
-        time.setDate(time.getDate() - 8);
+        time.setDate(time.getDate() - 16);
         console.log(time.toUTCString());
-        let time1 = time.split(",");
+
+        let timestring = time.toUTCString();
+        let time1 = timestring.split(" ");
         let d = time1[1];
         let m = time1[2];
         console.log(d);
         console.log(m);
         let time2 = d + " " + m;
+        console.log(time2);
         console.log(task_date);
 
         if (time2 == task_date) {
-          task_delete();
+          console.log("daaaaaaaaaaaaaaaaaaaaaaaaaaaam");
+          //task_done();
+          let userRef1 = firebase.database().ref("/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey);
+          console.log(userRef1);
+          userRef1.remove();
         }
       }
     });
@@ -484,7 +491,7 @@ function create_unfinished_task() {
 function task_done(task, task_tool) {
   finished_task_container = document.getElementsByClassName("container")[1];
 
-  var key = task.getAttribute("data-key");
+  //var key = task.getAttribute("data-key");
   uniqkey = "-" + Math.floor(1000000000 + Math.random() * 9000000000);
 
   title = task.childNodes[0].childNodes[0];
