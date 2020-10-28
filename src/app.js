@@ -74,27 +74,6 @@ firebase.auth().onAuthStateChanged(function (user) {
       updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
       firebase.database().ref().update(updates1);
       create_unfinished_task();
-    } else if (Number(prnnn) >= 19070124001 && Number(prnnn) <= 19070124028) {
-      xyz = "T1";
-
-      var updates1 = {};
-      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-      firebase.database().ref().update(updates1);
-      create_unfinished_task();
-    } else if (Number(prnnn) >= 19070124029 && Number(prnnn) <= 19070124055) {
-      xyz = "T2";
-
-      var updates1 = {};
-      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-      firebase.database().ref().update(updates1);
-      create_unfinished_task();
-    } else if (Number(prnnn) >= 19070124056 && Number(prnnn) <= 19070124076) {
-      xyz = "T3";
-
-      var updates1 = {};
-      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-      firebase.database().ref().update(updates1);
-      create_unfinished_task();
     }
   } else {
     alert("Please login");
@@ -156,52 +135,9 @@ function CS_B3() {
   create_unfinished_task();
 }
 
-function IT() {
-  //xyz="IT";
-  alert("You are in IT Divison");
-  xyz = "IT";
-
-  var updates1 = {};
-  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-  firebase.database().ref().update(updates1);
-  create_unfinished_task();
-}
-
-function IT_T1() {
-  alert("You are in T1 Division");
-  xyz = "T1";
-
-  var updates1 = {};
-  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-  firebase.database().ref().update(updates1);
-  create_unfinished_task();
-}
-
-function IT_T2() {
-  alert("You are in T2 Division");
-  xyz = "T2";
-
-  var updates1 = {};
-  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-  firebase.database().ref().update(updates1);
-  create_unfinished_task();
-}
-
-function IT_T3() {
-  alert("You are in T3 Division");
-  xyz = "T3";
-
-  var updates1 = {};
-  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-  firebase.database().ref().update(updates1);
-  create_unfinished_task();
-}
-
 function Class() {
   if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122145) {
     CS_B();
-  } else if (Number(prnnn) >= 19070124001 && Number(prnnn) <= 19070124075) {
-    IT();
   }
 }
 
@@ -216,12 +152,6 @@ function Division() {
     CS_B2();
   } else if (Number(prnnn) >= 19070122120 && Number(prnnn) <= 19070122145) {
     CS_B3();
-  } else if (Number(prnnn) >= 19070124001 && Number(prnnn) <= 19070124028) {
-    IT_T1();
-  } else if (Number(prnnn) >= 19070124029 && Number(prnnn) <= 19070124055) {
-    IT_T2();
-  } else if (Number(prnnn) >= 19070124056 && Number(prnnn) <= 19070124076) {
-    IT_T3();
   }
 }
 
