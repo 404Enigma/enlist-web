@@ -13,6 +13,9 @@
 //   }
 //   }
 
+var parsedBase64Key;
+var encryptedData;
+
 var today = new Date();
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 var Currentdate = today.getDate() + " " + today.getMonth() + " " + today.getFullYear();
@@ -87,7 +90,7 @@ function signOut() {
 
 let xyz;
 xyz = "B";
-
+var task;
 let uniqkey;
 var finalDate;
 alert("Choose Your Class or Division");
@@ -203,30 +206,7 @@ function add_task() {
   finalDate = day + " " + month;
 
   if (input_box.value.length != 0 && finalDate.length != 0) {
-    // our boxes have data and we take database
-
-    // var key = firebase.database().ref();
-
-    // if (xyz === "B") {
-    //     key = key.child("To-Do-List/"+ demo + "/B/").push().key;
-
-    // }
-    // else if(xyz === "B1"){
-    //   key = key.child("To-Do-List/"+ demo + "/B1/").push().key;
-
-    // }
-    // else if(xyz === "B2"){
-
-    //   key = key.child("To-Do-List/"+ demo + "/B2/").push().key;
-
-    // }
-    // else if(xyz === "B3"){
-
-    //   key = key.child("To-Do-List/"+ demo + "/B3/").push().key;
-
-    // }
-
-    var task = {
+    task = {
       title: input_box.value,
       deadline: finalDate,
       key: uniqkey,
@@ -254,35 +234,46 @@ function add_task() {
 
     let personal = document.getElementById("personalList");
     let shared = document.getElementById("sharedList");
-    console.log(task.title.value);
+    //console.log(task.title.value);
     if (personal.checked) {
-      encryptKey = makeid(10);
+      parsedBase64Key = makeid(10);
+      console.log(parsedBase64Key);
       // let secretKeySpec = new SecretKeySpec(encryptKey, AES);
       // console.log(secretKeySpec);
 
-      encrypted = CryptoJS.AES.encrypt(input_box.value, encryptKey);
-      console.log(encryptKey);
+      // encrypted = CryptoJS.AES.encrypt(input_box.value, encryptKey);
+      // console.log(encryptKey);
 
-      console.log(encrypted);
-      console.log(encrypted.toString());
+      // console.log(encrypted);
+      // console.log(encrypted.toString());
 
-      task.title = encrypted.toString();
+      // task.title = encrypted.toString();
 
-      console.log(task);
+      // console.log(task);
+      // Encryption process
+      //var plaintText = "rahul";
+      // console.log( “plaintText = “ + plaintText );
+      // this is Base64-encoded encrypted data
+      encryptedData = CryptoJS.AES.encrypt(input_box.value, parsedBase64Key, {
+        mode: CryptoJS.mode.ECB,
+        padding: CryptoJS.pad.Pkcs7,
+      });
+      console.log("encryptedData = " + encryptedData);
+      task.title = encryptedData.toString();
 
       var updates = {};
       updates["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task;
       firebase.database().ref().update(updates);
     } else {
-      encryptKey = makeid(10);
+      parsedBase64Key = makeid(10);
       // let secretKeySpec = new SecretKeySpec(encryptKey, AES);
-      // console.log(secretKeySpec);
-      encrypted = CryptoJS.AES.encrypt(input_box.value, encryptKey);
-
-      console.log(encrypted.toString());
-      console.log(encryptKey);
-
-      task.title = encrypted.toString();
+      console.log(parsedBase64Key);
+      encryptedData = CryptoJS.AES.encrypt(input_box.value, parsedBase64Key, {
+        mode: CryptoJS.mode.ECB,
+        padding: CryptoJS.pad.Pkcs7,
+      });
+      console.log("encryptedData = " + encryptedData);
+      task.title = encryptedData.toString();
 
       console.log(task);
 
@@ -342,11 +333,21 @@ function create_unfinished_task() {
         task_key = task_array[i][2];
         task_description = task_array[i][1];
 
-        console.log(task_title);
-        var decrypted = CryptoJS.AES.decrypt(task_title, encryptKey);
-        //console.log(decrypted.toString(CryptoJS.enc.Utf8));
-        console.log(decrypted);
-        console.log(decrypted.toString(CryptoJS.enc.Utf8));
+        //console.log(task_title);
+        // var decrypted = CryptoJS.AES.decrypt(task_title, encryptKey);
+        // //console.log(decrypted.toString(CryptoJS.enc.Utf8));
+        // console.log(decrypted);
+        // console.log(decrypted.toString(CryptoJS.enc.Utf8));
+        // Decryption process
+        var encryptedCipherText = encryptedData;
+        var decryptedData = CryptoJS.AES.decrypt(encryptedCipherText, parsedBase64Key, {
+          mode: CryptoJS.mode.ECB,
+          padding: CryptoJS.pad.Pkcs7,
+        });
+        // console.log( “DecryptedData = “ + decryptedData );
+        // this is the decrypted data as a string
+        var decryptedText = decryptedData.toString(CryptoJS.enc.Utf8);
+        console.log("DecryptedText = " + decryptedText);
 
         task_container = document.createElement("div");
         task_container.setAttribute("class", "task_container");
@@ -360,7 +361,7 @@ function create_unfinished_task() {
         title.setAttribute("id", "task_title");
         title.setAttribute("contenteditable", false);
         //title.innerHTML = decrypted.toString(CryptoJS.enc.Utf8);
-        title.innerHTML = task_title;
+        title.innerHTML = decryptedText;
 
         deadline = document.createElement("p");
         deadline.setAttribute("id", "task_date");
@@ -453,6 +454,7 @@ function task_edit(task, edit_button) {
   title = task.childNodes[0].childNodes[0];
   title.setAttribute("contenteditable", true);
   title.setAttribute("id", "title_editing");
+  title.setAttribute("maxlength", 21);
   title.focus();
 
   deadline = task.childNodes[0].childNodes[1];
@@ -462,6 +464,7 @@ function task_edit(task, edit_button) {
   description = task.childNodes[0].childNodes[2];
   description.setAttribute("contenteditable", true);
   description.setAttribute("id", "description_editing");
+  description.setAttribute("maxlength", 21);
   description.focus();
 }
 function finish_edit(task, edit_button) {
@@ -525,4 +528,21 @@ function updateAll() {
   // var updates = {};
   // updates["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task_obj;
   // firebase.database().ref().update(updates);
+}
+
+function Pvt() {
+  parsedBase64Key = makeid(10);
+  console.log(parsedBase64Key);
+
+  encryptedData = CryptoJS.AES.encrypt(input_box.value, parsedBase64Key, {
+    mode: CryptoJS.mode.ECB,
+    padding: CryptoJS.pad.Pkcs7,
+  });
+  console.log("encryptedData = " + encryptedData);
+  task.title = encryptedData.toString();
+
+  var updates = {};
+  updates["/To-Do-List/" + demo + "/" + "Pvt" + "/" + "Task" + uniqkey] = task;
+  firebase.database().ref().update(updates);
+  create_unfinished_task();
 }

@@ -51,32 +51,39 @@ function signIn() {
       let flag = 0;
       console.log(user.email);
 
-      var docRef = db.collection("Member Access/").doc(user.email);
+      var docRef = db.collection("Member Access/");
       console.log(docRef);
 
       docRef
         .get()
-        .then(function (doc) {
-          if (doc.exists) {
-            flag = 1;
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+
             console.log("Document data:", doc.data());
             let pry = doc.get("PRN");
             console.log(pry);
-          } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-          }
+            if (prnnn.value == pry) {
+              flag = 1;
+              console.log("aaaaaaaaaaa");
+            } else {
+              alert("Please enter you PRN");
+            }
+          });
         })
         .catch(function (error) {
-          console.log("Error getting document:", error);
+          console.log("Error getting documents: ", error);
         });
 
-      if (flag === 1) {
-        window.location.assign("./home.html");
-        console.log("Woahhhhhhhh!");
-      } else {
-        alert("Please enter you PRN");
-      }
+      setTimeout(function () {
+        if (flag === 1) {
+          window.location.assign("./home.html");
+          console.log("Woahhhhhhhh!");
+        } else {
+          alert("Please enter you PRN");
+        }
+      }, 5000);
     })
     .catch(function (error) {
       // Handle Errors here.
