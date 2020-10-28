@@ -443,8 +443,8 @@ body::-webkit-scrollbar-thumb
 
 .task_container{
     background-color: #fff;
-    width: 90%;
-    height: 150px;
+    width: 95%;
+    height: 100px;
     margin: 0 auto;
     margin-bottom: 10px;
     margin-top: 20px;
@@ -459,21 +459,22 @@ body::-webkit-scrollbar-thumb
 
 #task_data{
     display: inline-block;
-    float: none;
-    width: 100%;
-    height: 50%;
+    float: left;
+    width: 70%;
+    height: 100%;
     margin-left: 20px;
-    padding-top: 20px;
+    /* padding-top: 5px; */
 }
 
 #task_tool{
     display: inline-block;
-    float: none;
-    height: 50%;
+    float: right;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: white;
+    width: 25%;
 }
 
 #task_done_button{
@@ -544,8 +545,8 @@ body::-webkit-scrollbar-thumb
     background-color: #fff;
     margin-top: 15px;
     font-family: monospace;
-    font-weight: bolder;
-    font-size: 15px;
+    font-weight: bold;
+    font-size: 20px;
     float: left;
     width: 80%;
 }
@@ -792,7 +793,7 @@ body::-webkit-scrollbar-thumb
     display:inline-block;
     margin-top: 30px;
     margin-bottom: 50px;
-    padding-top: 50px;
+    padding-top: 0px;
     padding-bottom: 50px;
     position: absolute;
     left: 50%;
@@ -807,6 +808,7 @@ body::-webkit-scrollbar-thumb
     height: 100px;
     padding-top: 15px;
     font-size: 60px;
+    font-weight: bold;
     font-family: monospace;
     text-align: center;
     border-top-right-radius: 10px;
@@ -977,16 +979,18 @@ body::-webkit-scrollbar-thumb
     margin-left: 5%;
     margin-bottom: 20px;
     background-color: white;
-    color: #f80022;
+    color: #d1243b;
     text-align: center;
+    text-decoration: underline;
     font-family: monospace;
     font-weight: bold;
-    font-size: 35px;
+    font-size: 30px;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 20px;
     padding-right: 20px;
-    box-shadow: 0px 5px #4d4646;
+    /* box-shadow: 0px 5px #4d4646; */
+
 }
 
 
@@ -995,7 +999,7 @@ body::-webkit-scrollbar-thumb
     float: left;
     margin-left: 5%;
     margin-bottom: 40px;
-    background-color: #f5eaea;
+    background-color: white;
     width: 90%;
     height: 50vh;
     overflow-y: scroll;
@@ -1005,14 +1009,14 @@ body::-webkit-scrollbar-thumb
 
 .container::-webkit-scrollbar-track
 {
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    background-color: #F5F5F5;
+    box-shadow: inset 0 0 6px white;
+    background-color: white;
 }
 
 .container::-webkit-scrollbar
 {
     width: 8px;
-    background-color: #F5F5F5;
+    background-color: white;
 }
 
 .container::-webkit-scrollbar-thumb
@@ -1025,11 +1029,12 @@ body::-webkit-scrollbar-thumb
 
 .task_container{
     background-color: #fff;
-    width: 90%;
-    height: 150px;
+    width: 95%;
+    height: 100px;
     margin: 0 auto;
     margin-bottom: 10px;
     margin-top: 20px;
+    border: 2px solid black;
 }
 
 .task_container:hover{
@@ -1039,16 +1044,17 @@ body::-webkit-scrollbar-thumb
 
 #task_data{
     display: inline-block;
-    float: none;
-    width: 100px;
-    height: 50%;
+    float: left;
+    width: 70%;
+    height: 100%;
     margin-left: 20px;
 }
 
 #task_tool{
     display: inline-block;
-    float: none;
-    height: 50%;
+    float: right;
+    height: 100%;
+    width: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1124,7 +1130,7 @@ body::-webkit-scrollbar-thumb
     margin-top: 15px;
     font-family: monospace;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 20px;
     float: left;
     width: 200px;
 }
@@ -1145,9 +1151,9 @@ body::-webkit-scrollbar-thumb
   background-color: #fff;
   font-family: monospace;
   font-weight: normal;
-  font-size: 20px;
+  font-size: 15px;
   float: left;
-  width: 300px;
+  width: 80%;
 }
 
 
