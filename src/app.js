@@ -160,11 +160,13 @@ let encryptKey;
 
 function makeid(length) {
   var result = "";
-  var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  //var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let characters = [9, 115, 51, 86, 105, 4, -31, -23, -68, 88, 17, 20, 3, -105, 119, -53];
   var charactersLength = characters.length;
   for (var i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    result += Math.floor(Math.random(characters) * charactersLength);
   }
+
   console.log(result);
   return result;
 }
@@ -255,14 +257,16 @@ function add_task() {
     console.log(task.title.value);
     if (personal.checked) {
       encryptKey = makeid(10);
+      // let secretKeySpec = new SecretKeySpec(encryptKey, AES);
+      // console.log(secretKeySpec);
 
-      // encrypted = CryptoJS.AES.encrypt(input_box.value, encryptKey);
-      // console.log(encryptKey);
+      encrypted = CryptoJS.AES.encrypt(input_box.value, encryptKey);
+      console.log(encryptKey);
 
-      // console.log(encrypted);
-      // console.log(encrypted.toString());
+      console.log(encrypted);
+      console.log(encrypted.toString());
 
-      // task.title = encrypted.toString();
+      task.title = encrypted.toString();
 
       console.log(task);
 
@@ -271,12 +275,14 @@ function add_task() {
       firebase.database().ref().update(updates);
     } else {
       encryptKey = makeid(10);
-      // encrypted = CryptoJS.AES.encrypt(input_box.value, encryptKey);
+      // let secretKeySpec = new SecretKeySpec(encryptKey, AES);
+      // console.log(secretKeySpec);
+      encrypted = CryptoJS.AES.encrypt(input_box.value, encryptKey);
 
-      // console.log(encrypted.toString());
-      // console.log(encryptKey);
+      console.log(encrypted.toString());
+      console.log(encryptKey);
 
-      // task.title = encrypted.toString();
+      task.title = encrypted.toString();
 
       console.log(task);
 
@@ -336,11 +342,11 @@ function create_unfinished_task() {
         task_key = task_array[i][2];
         task_description = task_array[i][1];
 
-        // console.log(task_title);
-        // var decrypted = CryptoJS.AES.decrypt(task_title, encryptKey);
-        // //console.log(decrypted.toString(CryptoJS.enc.Utf8));
-        // console.log(decrypted);
-        // console.log(decrypted.toString(CryptoJS.enc.Utf8));
+        console.log(task_title);
+        var decrypted = CryptoJS.AES.decrypt(task_title, encryptKey);
+        //console.log(decrypted.toString(CryptoJS.enc.Utf8));
+        console.log(decrypted);
+        console.log(decrypted.toString(CryptoJS.enc.Utf8));
 
         task_container = document.createElement("div");
         task_container.setAttribute("class", "task_container");
