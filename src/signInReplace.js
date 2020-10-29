@@ -31,7 +31,7 @@ function signInWithGoogle() {
   sessionStorage.setItem("favoriteMovie", favoritemovie);
 
   if (prnn.value === "") {
-    alert("Please enter the PRN");
+    alert("Please enter the PRN1");
   } else {
     if (prnn.value.length !== 11) {
       alert("Please enter a 11 digit PRN");
@@ -50,9 +50,9 @@ function signIn() {
       var user = result.user;
       let flag = 0;
       console.log(user.email);
-
+      console.log(prnn.value);
       var docRef = db.collection("Member Access/");
-      console.log(docRef);
+      //console.log(docRef);
 
       docRef
         .get()
@@ -61,14 +61,19 @@ function signIn() {
             // doc.data() is never undefined for query doc snapshots
             console.log(doc.id, " => ", doc.data());
 
-            console.log("Document data:", doc.data());
-            let pry = doc.get("PRN");
-            console.log(pry);
-            if (prnnn.value == pry) {
-              flag = 1;
-              console.log("aaaaaaaaaaa");
+            if (doc.id == user.email) {
+              console.log("Document data:", doc.data());
+              let pry = doc.get("PRN");
+              console.log(pry);
+              console.log(prnn);
+              if (prnn.value == pry) {
+                flag = 1;
+                console.log("aaaaaaaaaaa");
+              } else {
+                alert("Please enter you PRN");
+              }
             } else {
-              alert("Please enter you PRN");
+              alert("Please enter your btech mail");
             }
           });
         })
@@ -81,7 +86,7 @@ function signIn() {
           window.location.assign("./home.html");
           console.log("Woahhhhhhhh!");
         } else {
-          alert("Please enter you PRN");
+          alert("Please enter you credentials");
         }
       }, 5000);
     })

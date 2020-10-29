@@ -27,7 +27,7 @@ if (ZeroDate === 1 || ZeroDate === 2 || ZeroDate === 3 || ZeroDate === 4 || Zero
 } else {
   Currentdate = ZeroDate + " " + today.getMonth() + " " + today.getFullYear();
 }
-console.log(Currentdate);
+//console.log(Currentdate);
 let dateC = Currentdate.split(" ");
 let dayC = dateC[0];
 let monthC = dateC[1];
@@ -54,7 +54,13 @@ let demo;
 firebase.auth().onAuthStateChanged(function (user) {
   if (user !== null) {
     demo = user.uid;
-    console.log(user.uid);
+    //console.log(user.uid);
+    xyz = "B";
+
+    var updates1 = {};
+    updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+    firebase.database().ref().update(updates1);
+    create_unfinished_task();
 
     if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
       xyz = "B1";
@@ -170,7 +176,7 @@ function makeid(length) {
     result += Math.floor(Math.random(characters) * charactersLength);
   }
 
-  console.log(result);
+  //console.log(result);
   return result;
 }
 
@@ -237,7 +243,7 @@ function add_task() {
     //console.log(task.title.value);
     if (personal.checked) {
       parsedBase64Key = makeid(10);
-      console.log(parsedBase64Key);
+      //console.log(parsedBase64Key);
       // let secretKeySpec = new SecretKeySpec(encryptKey, AES);
       // console.log(secretKeySpec);
 
@@ -254,12 +260,9 @@ function add_task() {
       //var plaintText = "rahul";
       // console.log( “plaintText = “ + plaintText );
       // this is Base64-encoded encrypted data
-      encryptedData = CryptoJS.AES.encrypt(input_box.value, parsedBase64Key, {
-        mode: CryptoJS.mode.ECB,
-        padding: CryptoJS.pad.Pkcs7,
-      });
-      console.log("encryptedData = " + encryptedData);
-      task.title = encryptedData.toString();
+      // encryptedData = CryptoJS.AES.encrypt(input_box.value, parsedBase64Key);
+      // console.log("encryptedData = " + encryptedData);
+      // task.title = encryptedData.toString();
 
       var updates = {};
       updates["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task;
@@ -267,15 +270,14 @@ function add_task() {
     } else {
       parsedBase64Key = makeid(10);
       // let secretKeySpec = new SecretKeySpec(encryptKey, AES);
-      console.log(parsedBase64Key);
-      encryptedData = CryptoJS.AES.encrypt(input_box.value, parsedBase64Key, {
-        mode: CryptoJS.mode.ECB,
-        padding: CryptoJS.pad.Pkcs7,
-      });
-      console.log("encryptedData = " + encryptedData);
-      task.title = encryptedData.toString();
+      //console.log(parsedBase64Key);
 
-      console.log(task);
+      // encryptedData = CryptoJS.AES.encrypt(input_box.value, parsedBase64Key);
+      // console.log("encryptedData = " + encryptedData);
+      // task.title = encryptedData.toString();
+
+      console.log(task.title);
+      //console.log(encryptedData);
 
       ref = firebase.database().ref();
 
@@ -333,21 +335,21 @@ function create_unfinished_task() {
         task_key = task_array[i][2];
         task_description = task_array[i][1];
 
-        //console.log(task_title);
-        // var decrypted = CryptoJS.AES.decrypt(task_title, encryptKey);
-        // //console.log(decrypted.toString(CryptoJS.enc.Utf8));
-        // console.log(decrypted);
-        // console.log(decrypted.toString(CryptoJS.enc.Utf8));
-        // Decryption process
-        var encryptedCipherText = encryptedData;
-        var decryptedData = CryptoJS.AES.decrypt(encryptedCipherText, parsedBase64Key, {
-          mode: CryptoJS.mode.ECB,
-          padding: CryptoJS.pad.Pkcs7,
-        });
-        // console.log( “DecryptedData = “ + decryptedData );
-        // this is the decrypted data as a string
-        var decryptedText = decryptedData.toString(CryptoJS.enc.Utf8);
-        console.log("DecryptedText = " + decryptedText);
+        console.log(task_title);
+        // // console.log(decrypted);
+        // // console.log(decrypted.toString(CryptoJS.enc.Utf8));
+        // // Decryption process
+        // var encryptedCipherText = task_title;
+        // console.log(encryptedCipherText);
+        // // var parsedBase64Key = CryptoJS.enc.Base64.parse("mustbeabbyteskey");
+        // // console.log(parsedBase64Key.toString());
+        // var decryptedData = CryptoJS.AES.decrypt(encryptedCipherText, parsedBase64Key);
+
+        // console.log(decryptedData);
+        // // console.log( “DecryptedData = “ + decryptedData );
+        // // this is the decrypted data as a string
+        // var decryptedText = decryptedData.toString(CryptoJS.enc.Utf8);
+        // console.log("DecryptedText = " + decryptedText);
 
         task_container = document.createElement("div");
         task_container.setAttribute("class", "task_container");
@@ -361,7 +363,9 @@ function create_unfinished_task() {
         title.setAttribute("id", "task_title");
         title.setAttribute("contenteditable", false);
         //title.innerHTML = decrypted.toString(CryptoJS.enc.Utf8);
-        title.innerHTML = decryptedText;
+        //title.innerHTML = decryptedText;
+        title.innerHTML = task_title;
+        console.log(title);
 
         deadline = document.createElement("p");
         deadline.setAttribute("id", "task_date");
@@ -409,24 +413,39 @@ function create_unfinished_task() {
         task_tool.append(task_delete_button);
         task_delete_button.append(fa_delete);
 
-        let time = new Date();
-        time.setDate(time.getDate() - 16);
-        console.log(time.toUTCString());
+        let todaytime16 = new Date();
+        let todaytime1 = new Date();
+        todaytime16.setDate(todaytime16.getDate() - 16);
+        todaytime1.setDate(todaytime1.getDate() - 1);
+        console.log(todaytime16.toUTCString());
 
-        let timestring = time.toUTCString();
-        let time1 = timestring.split(" ");
-        let d = time1[1];
-        let m = time1[2];
-        console.log(d);
-        console.log(m);
-        let time2 = d + " " + m;
-        console.log(time2);
+        let timestring16 = todaytime16.toUTCString();
+        let timestring1 = todaytime1.toUTCString();
+        let time16 = timestring16.split(" ");
+        let time1 = timestring1.split(" ");
+        let day16 = time16[1];
+        let month16 = time16[2];
+        let day1 = time1[1];
+        let month1 = time1[2];
+        console.log(day16);
+        console.log(month16);
+        let timeon16 = day16 + " " + month16;
+        let timeon1 = day1 + " " + month1;
+        console.log(timeon16);
+        console.log(timeon1);
         console.log(task_date);
 
-        if (time2 == task_date) {
+        if (timeon16 == task_date) {
           console.log("daaaaaaaaaaaaaaaaaaaaaaaaaaaam");
           //task_done();
-          let userRef1 = firebase.database().ref("/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey);
+          let userRef16 = firebase.database().ref("/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey);
+          console.log(userRef16);
+          userRef16.remove();
+        }
+        if (timeon1 == task_date) {
+          console.log("daaaaaaaaaaaaaaaaaaaaaaaaaaaam");
+          //task_done();
+          let userRef1 = firebase.database().ref("All-Tasks" + "/" + xyz + "/" + "Task" + uniqkey);
           console.log(userRef1);
           userRef1.remove();
         }
