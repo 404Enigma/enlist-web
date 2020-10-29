@@ -59,9 +59,10 @@ function signIn() {
         .then(function (querySnapshot) {
           querySnapshot.forEach(function (doc) {
             // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-
-            if (doc.id == user.email) {
+            //console.log(doc.id, " => ", doc.data());
+            console.log(doc.id);
+            console.log(user.email);
+            if (doc.id === user.email) {
               console.log("Document data:", doc.data());
               let pry = doc.get("PRN");
               console.log(pry);
@@ -69,26 +70,24 @@ function signIn() {
               if (prnn.value == pry) {
                 flag = 1;
                 console.log("aaaaaaaaaaa");
+                setTimeout(function () {
+                  if (flag === 1) {
+                    window.location.assign("./home.html");
+                    console.log("Woahhhhhhhh!");
+                  } else {
+                    alert("Please enter you credentials");
+                  }
+                }, 1000);
               } else {
                 alert("Please enter you PRN");
               }
-            } else {
-              alert("Please enter your btech mail");
             }
+            console.log("done");
           });
         })
         .catch(function (error) {
           console.log("Error getting documents: ", error);
         });
-
-      setTimeout(function () {
-        if (flag === 1) {
-          window.location.assign("./home.html");
-          console.log("Woahhhhhhhh!");
-        } else {
-          alert("Please enter you credentials");
-        }
-      }, 5000);
     })
     .catch(function (error) {
       // Handle Errors here.
