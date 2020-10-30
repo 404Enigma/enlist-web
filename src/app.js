@@ -260,9 +260,9 @@ function add_task() {
       //var plaintText = "rahul";
       // console.log( “plaintText = “ + plaintText );
       // this is Base64-encoded encrypted data
-      encryptedData = CryptoJS.AES.encrypt(input_box.value, "bXVzdGJlYWJieXRlc2tleQ==");
-      console.log("encryptedData = " + encryptedData);
-      task.title = encryptedData.toString();
+      // encryptedData = CryptoJS.AES.encrypt(input_box.value, "bXVzdGJlYWJieXRlc2tleQ==");
+      // console.log("encryptedData = " + encryptedData);
+      // task.title = encryptedData.toString();
 
       var updates = {};
       updates["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task;
@@ -272,9 +272,9 @@ function add_task() {
       // let secretKeySpec = new SecretKeySpec(encryptKey, AES);
       //console.log(parsedBase64Key);
 
-      encryptedData = CryptoJS.AES.encrypt(input_box.value, "bXVzdGJlYWJieXRlc2tleQ==");
-      console.log("encryptedData = " + encryptedData);
-      task.title = encryptedData.toString();
+      // encryptedData = CryptoJS.AES.encrypt(input_box.value, "bXVzdGJlYWJieXRlc2tleQ==");
+      // console.log("encryptedData = " + encryptedData);
+      // task.title = encryptedData.toString();
 
       console.log(task.title);
       //console.log(encryptedData);
@@ -356,17 +356,17 @@ function create_unfinished_task() {
         // // console.log(decrypted);
         // // console.log(decrypted.toString(CryptoJS.enc.Utf8));
         // // Decryption process
-        var encryptedCipherText = task_title;
-        console.log(encryptedCipherText);
-        // var parsedBase64Key = CryptoJS.enc.Base64.parse("mustbeabbyteskey");
-        // console.log(parsedBase64Key.toString());
-        var decryptedData = CryptoJS.AES.decrypt(encryptedCipherText, "bXVzdGJlYWJieXRlc2tleQ==");
+        // var encryptedCipherText = task_title;
+        // console.log(encryptedCipherText);
+        // // var parsedBase64Key = CryptoJS.enc.Base64.parse("mustbeabbyteskey");
+        // // console.log(parsedBase64Key.toString());
+        // var decryptedData = CryptoJS.AES.decrypt(encryptedCipherText, "bXVzdGJlYWJieXRlc2tleQ==");
 
-        console.log("decryptedData = ", decryptedData);
-        // // console.log( “DecryptedData = “ + decryptedData );
-        // // this is the decrypted data as a string
-        var decryptedText = decryptedData.toString(CryptoJS.enc.Utf8);
-        console.log("decryptedText = ", decryptedText);
+        // console.log("decryptedData = ", decryptedData);
+        // // // console.log( “DecryptedData = “ + decryptedData );
+        // // // this is the decrypted data as a string
+        // var decryptedText = decryptedData.toString(CryptoJS.enc.Utf8);
+        // console.log("decryptedText = ", decryptedText);
 
         task_container = document.createElement("div");
         task_container.setAttribute("class", "task_container");
@@ -380,8 +380,8 @@ function create_unfinished_task() {
         title.setAttribute("id", "task_title");
         title.setAttribute("contenteditable", false);
         //title.innerHTML = decrypted.toString(CryptoJS.enc.Utf8);
-        title.innerHTML = decryptedText;
-        //title.innerHTML = task_title;
+        //title.innerHTML = decryptedText;
+        title.innerHTML = task_title;
         console.log("title = ", title);
 
         deadline = document.createElement("p");
