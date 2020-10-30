@@ -152,15 +152,20 @@ function Division() {
     CS_B2();
     CS_B3();
     document.getElementById("finish_task_header").innerHTML = "Admin";
+    document.getElementById("division").innerHTML = "Admin";
+    
   } else if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
     CS_B1();
+    document.getElementById("division").innerHTML = "CS-B1";
     document.getElementById("finish_task_header").innerHTML = "CS-B1";
   } else if (Number(prnnn) >= 19070122096 && Number(prnnn) <= 19070122119) {
     CS_B2();
     document.getElementById("finish_task_header").innerHTML = "CS-B2";
+    document.getElementById("division").innerHTML = "CS-B2";
   } else if (Number(prnnn) >= 19070122120 && Number(prnnn) <= 19070122145) {
     CS_B3();
     document.getElementById("finish_task_header").innerHTML = "CS-B3";
+    document.getElementById("division").innerHTML = "CS-B3";
   }
 }
 
