@@ -484,13 +484,14 @@ function task_done(task, task_tool) {
 }
 
 function task_edit(task, edit_button) {
+  console.log("aaaaaaaaaaaaaaaaaa");
   edit_button.setAttribute("id", "task_edit_button_editing");
   edit_button.setAttribute("onclick", "finish_edit(this.parentElement.parentElement, this)");
 
   title = task.childNodes[0].childNodes[0];
   title.setAttribute("contenteditable", true);
   title.setAttribute("id", "title_editing");
-  title.setAttribute("maxlength", 21);
+  title.maxLength = "21";
   title.focus();
 
   deadline = task.childNodes[0].childNodes[1];
@@ -510,6 +511,8 @@ function finish_edit(task, edit_button) {
   title = task.childNodes[0].childNodes[0];
   title.setAttribute("contenteditable", false);
   title.setAttribute("id", "task_title");
+  //title.setAttribute("maxlength", 21);
+  title.maxLength = "21";
 
   deadline = task.childNodes[0].childNodes[1];
   deadline.setAttribute("contenteditable", false);
