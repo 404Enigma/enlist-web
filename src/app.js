@@ -243,12 +243,12 @@ function add_task() {
     //console.log(task.title.value);
     if (personal.checked) {
       parsedBase64Key = makeid(10);
-      //console.log(parsedBase64Key);
+      console.log(parsedBase64Key);
       // let secretKeySpec = new SecretKeySpec(encryptKey, AES);
       // console.log(secretKeySpec);
 
       // encrypted = CryptoJS.AES.encrypt(input_box.value, encryptKey);
-      // console.log(encryptKey);
+      // //console.log(encryptKey);
 
       // console.log(encrypted);
       // console.log(encrypted.toString());
@@ -260,9 +260,9 @@ function add_task() {
       //var plaintText = "rahul";
       // console.log( “plaintText = “ + plaintText );
       // this is Base64-encoded encrypted data
-      // encryptedData = CryptoJS.AES.encrypt(input_box.value, parsedBase64Key);
-      // console.log("encryptedData = " + encryptedData);
-      // task.title = encryptedData.toString();
+      encryptedData = CryptoJS.AES.encrypt(input_box.value, "bXVzdGJlYWJieXRlc2tleQ==");
+      console.log("encryptedData = " + encryptedData);
+      task.title = encryptedData.toString();
 
       var updates = {};
       updates["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task;
@@ -272,9 +272,9 @@ function add_task() {
       // let secretKeySpec = new SecretKeySpec(encryptKey, AES);
       //console.log(parsedBase64Key);
 
-      // encryptedData = CryptoJS.AES.encrypt(input_box.value, parsedBase64Key);
-      // console.log("encryptedData = " + encryptedData);
-      // task.title = encryptedData.toString();
+      encryptedData = CryptoJS.AES.encrypt(input_box.value, "bXVzdGJlYWJieXRlc2tleQ==");
+      console.log("encryptedData = " + encryptedData);
+      task.title = encryptedData.toString();
 
       console.log(task.title);
       //console.log(encryptedData);
@@ -308,6 +308,23 @@ function add_task() {
     input_date.value = "";
     input_description.value = "";
 
+    function Pvt() {
+      parsedBase64Key = makeid(10);
+      console.log(parsedBase64Key);
+
+      encryptedData = CryptoJS.AES.encrypt(input_box.value, "bXVzdGJlYWJieXRlc2tleQ==", {
+        mode: CryptoJS.mode.ECB,
+        padding: CryptoJS.pad.Pkcs7,
+      });
+      console.log("encryptedData = " + encryptedData);
+      task.title = encryptedData.toString();
+
+      var updates = {};
+      updates["/To-Do-List/" + demo + "/" + "Pvt" + "/" + "Task" + uniqkey] = task;
+      firebase.database().ref().update(updates);
+      create_unfinished_task();
+    }
+
     // desc.ref1 = new Firebase(desc.userRef + "/" + desc.oldGender + "/" + uid);
     // desc.ref2 = new Firebase(desc.userRef + "/" + desc.gender + "/" + uid);
 
@@ -339,17 +356,17 @@ function create_unfinished_task() {
         // // console.log(decrypted);
         // // console.log(decrypted.toString(CryptoJS.enc.Utf8));
         // // Decryption process
-        // var encryptedCipherText = task_title;
-        // console.log(encryptedCipherText);
-        // // var parsedBase64Key = CryptoJS.enc.Base64.parse("mustbeabbyteskey");
-        // // console.log(parsedBase64Key.toString());
-        // var decryptedData = CryptoJS.AES.decrypt(encryptedCipherText, parsedBase64Key);
+        var encryptedCipherText = task_title;
+        console.log(encryptedCipherText);
+        // var parsedBase64Key = CryptoJS.enc.Base64.parse("mustbeabbyteskey");
+        // console.log(parsedBase64Key.toString());
+        var decryptedData = CryptoJS.AES.decrypt(encryptedCipherText, "bXVzdGJlYWJieXRlc2tleQ==");
 
-        // console.log(decryptedData);
+        console.log("decryptedData = ", decryptedData);
         // // console.log( “DecryptedData = “ + decryptedData );
         // // this is the decrypted data as a string
-        // var decryptedText = decryptedData.toString(CryptoJS.enc.Utf8);
-        // console.log("DecryptedText = " + decryptedText);
+        var decryptedText = decryptedData.toString(CryptoJS.enc.Utf8);
+        console.log("decryptedText = ", decryptedText);
 
         task_container = document.createElement("div");
         task_container.setAttribute("class", "task_container");
@@ -363,9 +380,9 @@ function create_unfinished_task() {
         title.setAttribute("id", "task_title");
         title.setAttribute("contenteditable", false);
         //title.innerHTML = decrypted.toString(CryptoJS.enc.Utf8);
-        //title.innerHTML = decryptedText;
-        title.innerHTML = task_title;
-        console.log(title);
+        title.innerHTML = decryptedText;
+        //title.innerHTML = task_title;
+        console.log("title = ", title);
 
         deadline = document.createElement("p");
         deadline.setAttribute("id", "task_date");
@@ -547,21 +564,4 @@ function updateAll() {
   // var updates = {};
   // updates["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task_obj;
   // firebase.database().ref().update(updates);
-}
-
-function Pvt() {
-  parsedBase64Key = makeid(10);
-  console.log(parsedBase64Key);
-
-  encryptedData = CryptoJS.AES.encrypt(input_box.value, parsedBase64Key, {
-    mode: CryptoJS.mode.ECB,
-    padding: CryptoJS.pad.Pkcs7,
-  });
-  console.log("encryptedData = " + encryptedData);
-  task.title = encryptedData.toString();
-
-  var updates = {};
-  updates["/To-Do-List/" + demo + "/" + "Pvt" + "/" + "Task" + uniqkey] = task;
-  firebase.database().ref().update(updates);
-  create_unfinished_task();
 }
