@@ -104,8 +104,6 @@ alert("Choose Your Class or Division");
 var db = firebase.firestore();
 
 function CS_B() {
-  alert("You are in CS-B");
-
   xyz = "B";
 
   var updates1 = {};
@@ -115,7 +113,6 @@ function CS_B() {
 }
 
 function CS_B1() {
-  alert("You are in B1 Division");
   xyz = "B1";
 
   var updates1 = {};
@@ -126,7 +123,6 @@ function CS_B1() {
 
 function CS_B2() {
   xyz = "B2";
-  alert("You are in B2 Division");
 
   var updates1 = {};
   updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
@@ -136,7 +132,6 @@ function CS_B2() {
 
 function CS_B3() {
   xyz = "B3";
-  alert("You are in B3 Division");
 
   var updates1 = {};
   updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
@@ -147,7 +142,7 @@ function CS_B3() {
 function Class() {
   if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122145) {
     CS_B();
-    document.getElementById('finish_task_header').innerHTML='CS-B';
+    document.getElementById("finish_task_header").innerHTML = "CS-B";
   }
 }
 
@@ -156,16 +151,16 @@ function Division() {
     CS_B1();
     CS_B2();
     CS_B3();
-    document.getElementById('finish_task_header').innerHTML='Admin';
+    document.getElementById("finish_task_header").innerHTML = "Admin";
   } else if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
     CS_B1();
-    document.getElementById('finish_task_header').innerHTML='CS-B1';
+    document.getElementById("finish_task_header").innerHTML = "CS-B1";
   } else if (Number(prnnn) >= 19070122096 && Number(prnnn) <= 19070122119) {
     CS_B2();
-    document.getElementById('finish_task_header').innerHTML='CS-B2';
+    document.getElementById("finish_task_header").innerHTML = "CS-B2";
   } else if (Number(prnnn) >= 19070122120 && Number(prnnn) <= 19070122145) {
     CS_B3();
-    document.getElementById('finish_task_header').innerHTML='CS-B3';
+    document.getElementById("finish_task_header").innerHTML = "CS-B3";
   }
 }
 
