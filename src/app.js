@@ -408,7 +408,7 @@ function create_unfinished_task() {
         task_edit_button.setAttribute("id", "task_edit_button");
         task_edit_button.setAttribute("onclick", "task_edit(this.parentElement.parentElement, this)");
         fa_edit = document.createElement("i");
-        fa_edit.setAttribute("class", "fa fa-pencil fa-2x");
+        fa_edit.setAttribute("class", "fas fa-edit fa-2x");
 
         task_delete_button = document.createElement("button");
         task_delete_button.setAttribute("id", "task_delete_button");
