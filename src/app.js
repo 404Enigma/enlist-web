@@ -597,7 +597,7 @@ function updateAll() {
 
 function Pvt(task) {
   xyz = "Pvt";
-
+  document.getElementById("finish_task_header").innerHTML = "Personal";
   var updates = {};
   updates["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task;
   firebase.database().ref().update(updates);
