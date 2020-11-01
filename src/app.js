@@ -15,7 +15,7 @@
 let xyz;
 // xyz = "B";
 console.log(xyz);
-
+let demo;
 var parsedBase64Key;
 var encryptedData;
 
@@ -60,12 +60,11 @@ let a = document.getElementById("B");
 let c = document.getElementById("B2");
 let d = document.getElementById("B3");
 
-let demo;
-
 firebase.auth().onAuthStateChanged(function (user) {
+  console.log("12345");
   if (user !== null) {
     demo = user.uid;
-    //console.log(user.uid);
+    console.log(user.uid);
 
     //create_unfinished_task();
 
@@ -106,6 +105,13 @@ function signOut() {
   xyz = "";
   task_array = [];
   firebase.auth().signOut();
+}
+
+function onloadEverytime() {
+  console.log("holaaaaaaaaaaaaaaaaaa");
+  let message = document.getElementById("task_input_container");
+  message.innerHTML = "Hola Amigos";
+  return;
 }
 
 function CS_B() {
@@ -449,31 +455,47 @@ function updateAll() {
   // firebase.database().ref().update(updates);
 }
 
-function Pvt(task, uniqkey) {
-  let personal = document.getElementById("personalList");
-  let shared = document.getElementById("sharedList");
-  let hello = document.getElementById("hello");
+let UIDDDD;
 
-  personal.style.visibility = "hidden";
-  shared.style.visibility = "hidden";
-  // document.getElementById("per").innerHTML = "";
-  // //shared.innerHTML = "";
-  hello.style.visibility = "hidden";
+function Pvt() {
+  // var user = firebase.auth().currentUser;
 
-  xyz = "Pvt";
-  document.getElementById("finish_task_header").innerHTML = "Personal";
+  // if (user != null) {
+  //   name = user.displayName;
+  //   demo = user.uid;
+  //   console.log(demo);
+  // }
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      // User is signed in.
+      UIDDDD = user.uid;
+      console.log(UIDDDD);
 
-  // console.log(demo);
-  // console.log(xyz);
-  // console.log(uniqkey);
-  // console.log(task);
-  create_unfinished_task();
+      let personal = document.getElementById("personalList");
+      let shared = document.getElementById("sharedList");
+      let hello = document.getElementById("hello");
+
+      personal.style.visibility = "hidden";
+      shared.style.visibility = "hidden";
+      hello.style.visibility = "hidden";
+
+      xyz = "Pvt";
+      document.getElementById("finish_task_header").innerHTML = "Personal";
+      console.log(demo);
+      create_unfinished_task();
+      console.log("yupieee");
+    } else {
+      // No user is signed in.
+    }
+  });
 }
 
 function create_unfinished_task() {
   console.log(xyz);
   unfinished_task_container = document.getElementsByClassName("container")[0];
   unfinished_task_container.innerHTML = "";
+  console.log(xyz);
+  console.log(demo);
 
   task_array = [];
   firebase
@@ -485,15 +507,17 @@ function create_unfinished_task() {
         var childData = childSnapshot.val();
         task_array.push(Object.values(childData));
       });
+      console.log("aaaaa");
+      console.log(task_array);
       for (var i, i = 0; i < task_array.length; i++) {
         task_date = task_array[i][0];
         task_title = task_array[i][3];
         task_key = task_array[i][2];
         task_description = task_array[i][1];
-
+        console.log(xyz);
         console.log(task_title);
         console.log(task_array);
-
+        console.log(xyz);
         let task_decrypted_title = Decript(Math.abs(task_key), task_title);
 
         let task_decrypted_description = Decript(Math.abs(task_key), task_description);
