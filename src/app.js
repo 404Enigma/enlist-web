@@ -100,6 +100,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 
 function signOut() {
+  xyz = null;
   firebase.auth().signOut();
 }
 
@@ -147,7 +148,7 @@ function Class() {
 }
 
 function Division() {
-  if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129 || Number(prnnn) == 19070122134) {
+  if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129) {
     CS_B1();
     CS_B2();
     CS_B3();
@@ -165,7 +166,7 @@ function Division() {
 }
 
 function heading() {
-  if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129 || Number(prnnn) == 19070122134) {
+  if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129) {
     document.getElementById("finish_task_header").innerHTML = "Admin";
     document.getElementById("division").innerHTML = "Admin";
   } else if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
@@ -193,8 +194,8 @@ function Swap(v, chooseArray) {
 
   let r = v % (d2.length - 1);
   let temp, val, inp;
-  console.log(d22);
-  console.log(d22.length);
+  // console.log(d22);
+  // console.log(d22.length);
 
   //for i in range(0,len(d),1):
   for (let i = 0; i < d22.length; i++) {
@@ -202,14 +203,15 @@ function Swap(v, chooseArray) {
     temp = d22[val];
     inp = (i + r) % (d2.length - 1);
 
-    console.log(d2.length);
+    //console.log(d2.length);
     // console.log(val);
     // console.log(inp);
     d22[val] = d22[inp];
     d22[inp] = temp;
   }
+
   console.log(d22);
-  console.log(typeof d22);
+  //console.log(typeof d22);
   return d22;
 }
 
@@ -223,13 +225,14 @@ function fetchlonglist() {
   return d;
 }
 
-function Encript(character, Dotarray) {
+function Encript(character, Dotarray, KEY) {
   //key = uniquekey
-  let key = Math.abs(uniqkey);
+  KEY = Math.abs(KEY);
+  //let key = Math.abs(uniqkey);
   //#random.randint(10000,1000000)
   //let d = [".@#1%%42", ".&2^36@", ".$%aASH2343", ".sahd%$%^$", ".%$*%GF%", ".^&&^Hjj5", ".!^%&", ".!@!@!", ".!#$!", ".#%GFY$^", ".&^%&^GFUYRUYF%$&^", ".$^%^%#^GGFHDKJ", ".#@*&gfuF", ".jgj564$#@", ".frdk4667$#", ".53fh#$", ".HJ57554&%", ".JKfy6754F", ".DS5DHF$%ds", ".ds23478h#!$", ".HGWIU", ".12387192", ".479128", ".[$$^$^]][]", ".{}{}{}{**", ".**&&*", ".%%{{{767", ".^^JASKNA768", ".^^##^^)", ".{gvh^%", ".872%$^^", ".*&^*hvj", ".++__kjHK", ".~@@!@#$@", ".||***guy", ".y1741938cjb", ".239182h^&d", ".jscnak3@#s", ".^&&^Hbq45jj5", ".!atw4^%&", ".qr!@!@!", ".!#rgee$!", ".#%GdfheraFY$^", ".&^%25&^UYF%$&^", ".$^%^%D423ef#^GGFHDKJ", ".#@waeawgr*&gfuF", ".jgjqb5564$#@", ".frdk2q54667$#", ".53f245vh#$", ".HJ57356554&%", ".JK35fy6754F", ".DS5aegDHF$%ds", ".ds23478hsd#!$", ".HG436WIU", ".12387sgd192", ".47sg9128", ".[$$^$^]]sg[]", ".{}dg{}{}{**", ".*sgd*&&*", ".%%532{{{767", ".^^JASK253NA768", ".^^##234^^)", ".!@#!GJFYD<UT}{|", ".hbjHGU6567@$"];
 
-  console.log(key);
+  console.log(KEY);
   //let d = setlonglist();
   //console.log(d);
   //console.log(typeof d);
@@ -237,12 +240,14 @@ function Encript(character, Dotarray) {
 
   d2 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", " ", "\t"];
 
-  let swappedlist = Swap(key, Dotarray);
+  let swappedlist = Swap(KEY, Dotarray);
+
   console.log(swappedlist);
+
   let val = "";
   let e;
   //for e in sent:
-  console.log(character.length);
+  //console.log(character.length);
   for (let i = 0; i < character.length; i++) {
     //console.log(i);
     e = character[i];
@@ -250,10 +255,9 @@ function Encript(character, Dotarray) {
     val = val + swappedlist[d2.indexOf(e)];
     // console.log(val);
   }
-  //console.log(val);
-  return val;
 
-  //console.log(val);
+  console.log(val);
+  return val;
 }
 //i = input("Enter Your Sentance : ");
 
@@ -262,22 +266,25 @@ function Encript(character, Dotarray) {
 //Decript(634234281900, abcd);
 
 function Decript(key, to_encript) {
-  console.log(to_encript);
+  //console.log(to_encript);
   let to_encript11111 = to_encript.split(".");
   //let d = fetchlonglist;
   //to_encript=to_encript[1:]
   to_encript11111 = to_encript11111.slice(1, to_encript11111.length);
   console.log(to_encript11111);
+
   d2 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", " ", "\t"];
   let WithoutDotArray = ["@#1%%42", "&2^36@", "$%aASH2343", "sahd%$%^$", "%$*%GF%", "^&&^Hjj5", "!^%&", "!@!@!", "!#$!", "#%GFY$^", "&^%&^GFUYRUYF%$&^", "$^%^%#^GGFHDKJ", "#@*&gfuF", "jgj564$#@", "frdk4667$#", "53fh#$", "HJ57554&%", "JKfy6754F", "DS5DHF$%ds", "ds23478h#!$", "HGWIU", "12387192", "479128", "[$$^$^]][]", "{}{}{}{**", "**&&*", "%%{{{767", "^^JASKNA768", "^^##^^)", "{gvh^%", "872%$^^", "*&^*hvj", "++__kjHK", "~@@!@#$@", "||***guy", "y1741938cjb", "239182h^&d", "jscnak3@#s", "^&&^Hbq45jj5", "!atw4^%&", "qr!@!@!", "!#rgee$!", "#%GdfheraFY$^", "&^%25&^UYF%$&^", "$^%^%D423ef#^GGFHDKJ", "#@waeawgr*&gfuF", "jgjqb5564$#@", "frdk2q54667$#", "53f245vh#$", "HJ57356554&%", "JK35fy6754F", "DS5aegDHF$%ds", "ds23478hsd#!$", "HG436WIU", "12387sgd192", "47sg9128", "[$$^$^]]sg[]", "{}dg{}{}{**", "*sgd*&&*", "%%532{{{767", "^^JASK253NA768", "^^##234^^)", "!@#!GJFYD<UT}{|", "hbjHGU6567@$"];
 
   let dd = Swap(key, WithoutDotArray);
+
+  console.log(WithoutDotArray);
   console.log(dd);
-  console.log(typeof dd);
+  //console.log(typeof dd);
   let s = "";
   //for e in to_encript:
-  console.log(to_encript11111);
-  console.log(to_encript11111.length);
+  //console.log(to_encript11111);
+  //console.log(to_encript11111.length);
   for (let i = 0; i < to_encript11111.length; i++) {
     e = to_encript11111[i];
     // console.log(e);
@@ -285,7 +292,7 @@ function Decript(key, to_encript) {
     // console.log(d2[dd.indexOf(e)]);
     s = s + d2[dd.indexOf(e)];
   }
-  console.log(s);
+  //console.log(s);
   return s;
 }
 
@@ -303,7 +310,7 @@ function task_done(task, task_tool) {
 }
 
 function task_edit(task, edit_button) {
-  console.log("aaaaaaaaaaaaaaaaaa");
+  //console.log("aaaaaaaaaaaaaaaaaa");
 
   edit_button.setAttribute("id", "task_edit_button_editing");
   edit_button.setAttribute("onclick", "finish_edit(this.parentElement.parentElement, this)");
@@ -313,7 +320,7 @@ function task_edit(task, edit_button) {
   title.setAttribute("id", "title_editing");
   title.maxLength = "21";
   title.focus();
-  console.log(title);
+  //console.log(title);
 
   // let encrypttttttttttt = Encript();
   // title = encrypttttttttttt;
@@ -339,6 +346,7 @@ function finish_edit(task, edit_button) {
   title.setAttribute("id", "task_title");
   //title.setAttribute("maxlength", 21);
   title.maxLength = "21";
+
   console.log(title);
 
   deadline = task.childNodes[0].childNodes[1];
@@ -350,7 +358,7 @@ function finish_edit(task, edit_button) {
   description.setAttribute("id", "task_description");
 
   var key = task.getAttribute("data-key");
-  console.log(key);
+  //console.log(key);
   var task_obj = {
     title: task.childNodes[0].childNodes[0].innerHTML,
     deadline: task.childNodes[0].childNodes[1].innerHTML,
@@ -359,10 +367,13 @@ function finish_edit(task, edit_button) {
   };
 
   let DotArray = [".@#1%%42", ".&2^36@", ".$%aASH2343", ".sahd%$%^$", ".%$*%GF%", ".^&&^Hjj5", ".!^%&", ".!@!@!", ".!#$!", ".#%GFY$^", ".&^%&^GFUYRUYF%$&^", ".$^%^%#^GGFHDKJ", ".#@*&gfuF", ".jgj564$#@", ".frdk4667$#", ".53fh#$", ".HJ57554&%", ".JKfy6754F", ".DS5DHF$%ds", ".ds23478h#!$", ".HGWIU", ".12387192", ".479128", ".[$$^$^]][]", ".{}{}{}{**", ".**&&*", ".%%{{{767", ".^^JASKNA768", ".^^##^^)", ".{gvh^%", ".872%$^^", ".*&^*hvj", ".++__kjHK", ".~@@!@#$@", ".||***guy", ".y1741938cjb", ".239182h^&d", ".jscnak3@#s", ".^&&^Hbq45jj5", ".!atw4^%&", ".qr!@!@!", ".!#rgee$!", ".#%GdfheraFY$^", ".&^%25&^UYF%$&^", ".$^%^%D423ef#^GGFHDKJ", ".#@waeawgr*&gfuF", ".jgjqb5564$#@", ".frdk2q54667$#", ".53f245vh#$", ".HJ57356554&%", ".JK35fy6754F", ".DS5aegDHF$%ds", ".ds23478hsd#!$", ".HG436WIU", ".12387sgd192", ".47sg9128", ".[$$^$^]]sg[]", ".{}dg{}{}{**", ".*sgd*&&*", ".%%532{{{767", ".^^JASK253NA768", ".^^##234^^)", ".!@#!GJFYD<UT}{|", ".hbjHGU6567@$"];
-  let encrypttttttttttt = Encript(task_obj.title, DotArray);
-  task_obj.title = encrypttttttttttt;
   console.log(task_obj.title);
-  console.log(uniqkey);
+  let encrypttttttttttt = Encript(task_obj.title, DotArray, task_obj.key);
+
+  task_obj.title = encrypttttttttttt;
+
+  console.log(task_obj.title);
+  //console.log(uniqkey);
   uniqkey = key;
 
   var updates = {};
@@ -380,14 +391,14 @@ function task_delete(task) {
 }
 
 function updateAll() {
-  console.log("aaaaa");
+  //console.log("aaaaa");
   firebase
     .database()
     .ref("All-Tasks" + "/" + xyz)
     .once(
       "value",
       function (snapshot) {
-        console.log(snapshot.val());
+        //console.log(snapshot.val());
 
         firebase
           .database()
@@ -395,7 +406,7 @@ function updateAll() {
           .set(snapshot.val());
       },
       function (errorObject) {
-        console.log("The read failed: " + errorObject.code);
+        //console.log("The read failed: " + errorObject.code);
       }
     );
 
@@ -434,12 +445,13 @@ function create_unfinished_task() {
         task_description = task_array[i][1];
 
         console.log(task_title);
+        console.log(task_array);
 
         let task_decrypted_title = Decript(Math.abs(task_key), task_title);
 
-        console.log(Math.abs(task_key));
+        //console.log(Math.abs(task_key));
 
-        console.log(task_decrypted_title);
+        //console.log(task_decrypted_title);
 
         task_container = document.createElement("div");
         task_container.setAttribute("class", "task_container");
@@ -454,9 +466,9 @@ function create_unfinished_task() {
         title.setAttribute("contenteditable", false);
         //title.innerHTML = decrypted.toString(CryptoJS.enc.Utf8);
         //title.innerHTML = decryptedText;
-        console.log(task_decrypted_title);
+        //console.log(task_decrypted_title);
         title.innerHTML = task_decrypted_title;
-        console.log("title = ", title);
+        //console.log("title = ", title);
 
         deadline = document.createElement("p");
         deadline.setAttribute("id", "task_date");
@@ -509,7 +521,7 @@ function create_unfinished_task() {
         let todaytime1 = new Date();
         todaytime16.setDate(todaytime16.getDate() - 16);
         todaytime1.setDate(todaytime1.getDate() - 1);
-        console.log(todaytime16.toUTCString());
+        //console.log(todaytime16.toUTCString());
 
         let timestring16 = todaytime16.toUTCString();
         let timestring1 = todaytime1.toUTCString();
@@ -519,26 +531,26 @@ function create_unfinished_task() {
         let month16 = time16[2];
         let day1 = time1[1];
         let month1 = time1[2];
-        console.log(day16);
-        console.log(month16);
+        //console.log(day16);
+        //console.log(month16);
         let timeon16 = day16 + " " + month16;
         let timeon1 = day1 + " " + month1;
-        console.log(timeon16);
-        console.log(timeon1);
-        console.log(task_date);
+        // console.log(timeon16);
+        // console.log(timeon1);
+        // console.log(task_date);
 
         if (timeon16 == task_date) {
-          console.log("daaaaaaaaaaaaaaaaaaaaaaaaaaaam");
+          //console.log("daaaaaaaaaaaaaaaaaaaaaaaaaaaam");
           //task_done();
           let userRef16 = firebase.database().ref("/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey);
-          console.log(userRef16);
+          //console.log(userRef16);
           userRef16.remove();
         }
         if (timeon1 == task_date) {
-          console.log("daaaaaaaaaaaaaaaaaaaaaaaaaaaam");
+          //console.log("daaaaaaaaaaaaaaaaaaaaaaaaaaaam");
           //task_done();
           let userRef1 = firebase.database().ref("All-Tasks" + "/" + xyz + "/" + "Task" + uniqkey);
-          console.log(userRef1);
+          //console.log(userRef1);
           userRef1.remove();
         }
       }
@@ -551,7 +563,7 @@ function add_task() {
   input_description = document.getElementById("input_description");
 
   uniqkey = "-" + Math.floor(1000000000 + Math.random() * 9000000000);
-  console.log(uniqkey);
+  //console.log(uniqkey);
   var cdate = new Date();
   cdate.setDate(cdate.getDate());
 
@@ -606,10 +618,12 @@ function add_task() {
     let personal = document.getElementById("personalList");
     let shared = document.getElementById("sharedList");
     //console.log(task.title.value);
+    console.log(uniqkey);
+
     if (personal.checked) {
       let DotArrayPersonal = [".@#1%%42", ".&2^36@", ".$%aASH2343", ".sahd%$%^$", ".%$*%GF%", ".^&&^Hjj5", ".!^%&", ".!@!@!", ".!#$!", ".#%GFY$^", ".&^%&^GFUYRUYF%$&^", ".$^%^%#^GGFHDKJ", ".#@*&gfuF", ".jgj564$#@", ".frdk4667$#", ".53fh#$", ".HJ57554&%", ".JKfy6754F", ".DS5DHF$%ds", ".ds23478h#!$", ".HGWIU", ".12387192", ".479128", ".[$$^$^]][]", ".{}{}{}{**", ".**&&*", ".%%{{{767", ".^^JASKNA768", ".^^##^^)", ".{gvh^%", ".872%$^^", ".*&^*hvj", ".++__kjHK", ".~@@!@#$@", ".||***guy", ".y1741938cjb", ".239182h^&d", ".jscnak3@#s", ".^&&^Hbq45jj5", ".!atw4^%&", ".qr!@!@!", ".!#rgee$!", ".#%GdfheraFY$^", ".&^%25&^UYF%$&^", ".$^%^%D423ef#^GGFHDKJ", ".#@waeawgr*&gfuF", ".jgjqb5564$#@", ".frdk2q54667$#", ".53f245vh#$", ".HJ57356554&%", ".JK35fy6754F", ".DS5aegDHF$%ds", ".ds23478hsd#!$", ".HG436WIU", ".12387sgd192", ".47sg9128", ".[$$^$^]]sg[]", ".{}dg{}{}{**", ".*sgd*&&*", ".%%532{{{767", ".^^JASK253NA768", ".^^##234^^)", ".!@#!GJFYD<UT}{|", ".hbjHGU6567@$"];
 
-      let encrypttttttttttt = Encript(input_box.value, DotArrayPersonal);
+      let encrypttttttttttt = Encript(input_box.value, DotArrayPersonal, uniqkey);
       task.title = encrypttttttttttt;
 
       var updates = {};
@@ -620,7 +634,7 @@ function add_task() {
       //console.log(encryptedData);
       let DotArrayShared = [".@#1%%42", ".&2^36@", ".$%aASH2343", ".sahd%$%^$", ".%$*%GF%", ".^&&^Hjj5", ".!^%&", ".!@!@!", ".!#$!", ".#%GFY$^", ".&^%&^GFUYRUYF%$&^", ".$^%^%#^GGFHDKJ", ".#@*&gfuF", ".jgj564$#@", ".frdk4667$#", ".53fh#$", ".HJ57554&%", ".JKfy6754F", ".DS5DHF$%ds", ".ds23478h#!$", ".HGWIU", ".12387192", ".479128", ".[$$^$^]][]", ".{}{}{}{**", ".**&&*", ".%%{{{767", ".^^JASKNA768", ".^^##^^)", ".{gvh^%", ".872%$^^", ".*&^*hvj", ".++__kjHK", ".~@@!@#$@", ".||***guy", ".y1741938cjb", ".239182h^&d", ".jscnak3@#s", ".^&&^Hbq45jj5", ".!atw4^%&", ".qr!@!@!", ".!#rgee$!", ".#%GdfheraFY$^", ".&^%25&^UYF%$&^", ".$^%^%D423ef#^GGFHDKJ", ".#@waeawgr*&gfuF", ".jgjqb5564$#@", ".frdk2q54667$#", ".53f245vh#$", ".HJ57356554&%", ".JK35fy6754F", ".DS5aegDHF$%ds", ".ds23478hsd#!$", ".HG436WIU", ".12387sgd192", ".47sg9128", ".[$$^$^]]sg[]", ".{}dg{}{}{**", ".*sgd*&&*", ".%%532{{{767", ".^^JASK253NA768", ".^^##234^^)", ".!@#!GJFYD<UT}{|", ".hbjHGU6567@$"];
 
-      let encrypttttttttttt = Encript(input_box.value, DotArrayShared);
+      let encrypttttttttttt = Encript(input_box.value, DotArrayShared, uniqkey);
       task.title = encrypttttttttttt;
 
       ref = firebase.database().ref();
@@ -630,7 +644,7 @@ function add_task() {
       urlRef.once("value", function (snapshot) {
         snapshot.forEach(function (child) {
           let allchild = child.key;
-          console.log(allchild);
+          //console.log(allchild);
           keySplittedArray = allchild.split(" ");
 
           for (let i = 0; i < keySplittedArray.length; i++) {
