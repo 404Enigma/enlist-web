@@ -1,12 +1,15 @@
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyByUml3oGNflzcD7GYgidzqsoPrFstTgNw",
-    authDomain: "rock-you-f12d5.firebaseapp.com",
-    databaseURL: "https://rock-you-f12d5.firebaseio.com",
-    projectId: "rock-you-f12d5",
-    storageBucket: "rock-you-f12d5.appspot.com",
-    messagingSenderId: "766738254879",
-    appId: "1:766738254879:web:e3f2d32162e9ec94ca992a"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+var firebaseConfig = {
+  apiKey: "AIzaSyAmjOTl5S0kOMhH2LT_H_QAE2INZkfSP1Q",
+  authDomain: "enlist-todolist.firebaseapp.com",
+  databaseURL: "https://enlist-todolist.firebaseio.com",
+  projectId: "enlist-todolist",
+  storageBucket: "enlist-todolist.appspot.com",
+  messagingSenderId: "381597770849",
+  appId: "1:381597770849:web:4ad1f835d19d5fbbf7b620",
+  measurementId: "G-Q9R46CNQF1",
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+// firebase.analytics();

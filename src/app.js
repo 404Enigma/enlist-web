@@ -18,6 +18,7 @@ console.log(xyz);
 let demo;
 var parsedBase64Key;
 var encryptedData;
+console.log(demo);
 
 var task;
 let uniqkey;
