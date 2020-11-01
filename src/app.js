@@ -12,11 +12,13 @@
 //   return false;
 //   }
 //   }
+let xyz;
+// xyz = "B";
+console.log(xyz);
 
 var parsedBase64Key;
 var encryptedData;
-let xyz;
-xyz = "B";
+
 var task;
 let uniqkey;
 var finalDate;
@@ -64,12 +66,8 @@ firebase.auth().onAuthStateChanged(function (user) {
   if (user !== null) {
     demo = user.uid;
     //console.log(user.uid);
-    xyz = "B";
 
-    var updates1 = {};
-    updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-    firebase.database().ref().update(updates1);
-    create_unfinished_task();
+    //create_unfinished_task();
 
     if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
       xyz = "B1";
@@ -77,22 +75,27 @@ firebase.auth().onAuthStateChanged(function (user) {
       var updates1 = {};
       updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
       firebase.database().ref().update(updates1);
-      create_unfinished_task();
+      //create_unfinished_task();
     } else if (Number(prnnn) >= 19070122096 && Number(prnnn) <= 19070122119) {
       xyz = "B2";
 
       var updates1 = {};
       updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
       firebase.database().ref().update(updates1);
-      create_unfinished_task();
+      //create_unfinished_task();
     } else if (Number(prnnn) >= 19070122120 && Number(prnnn) <= 19070122145) {
       xyz = "B3";
 
       var updates1 = {};
       updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
       firebase.database().ref().update(updates1);
-      create_unfinished_task();
+      //create_unfinished_task();
     }
+
+    xyz = "B";
+    var updates1 = {};
+    updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+    firebase.database().ref().update(updates1);
   } else {
     alert("Please login");
     window.location.assign("./main.html");
@@ -100,12 +103,20 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 
 function signOut() {
-  xyz = null;
+  xyz = "";
+  task_array = [];
   firebase.auth().signOut();
 }
 
 function CS_B() {
   xyz = "B";
+  let personal = document.getElementById("personalList");
+  let shared = document.getElementById("sharedList");
+  let hello = document.getElementById("hello");
+
+  personal.style.visibility = "visible";
+  shared.style.visibility = "visible";
+  hello.style.visibility = "visible";
 
   var updates1 = {};
   updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
@@ -116,6 +127,14 @@ function CS_B() {
 function CS_B1() {
   xyz = "B1";
 
+  let personal = document.getElementById("personalList");
+  let shared = document.getElementById("sharedList");
+  let hello = document.getElementById("hello");
+
+  personal.style.visibility = "visible";
+  shared.style.visibility = "visible";
+  hello.style.visibility = "visible";
+
   var updates1 = {};
   updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
   firebase.database().ref().update(updates1);
@@ -125,6 +144,14 @@ function CS_B1() {
 function CS_B2() {
   xyz = "B2";
 
+  let personal = document.getElementById("personalList");
+  let shared = document.getElementById("sharedList");
+  let hello = document.getElementById("hello");
+
+  personal.style.visibility = "visible";
+  shared.style.visibility = "visible";
+  hello.style.visibility = "visible";
+
   var updates1 = {};
   updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
   firebase.database().ref().update(updates1);
@@ -133,6 +160,14 @@ function CS_B2() {
 
 function CS_B3() {
   xyz = "B3";
+
+  let personal = document.getElementById("personalList");
+  let shared = document.getElementById("sharedList");
+  let hello = document.getElementById("hello");
+
+  personal.style.visibility = "visible";
+  shared.style.visibility = "visible";
+  hello.style.visibility = "visible";
 
   var updates1 = {};
   updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
@@ -414,16 +449,29 @@ function updateAll() {
   // firebase.database().ref().update(updates);
 }
 
-function Pvt(task) {
+function Pvt(task, uniqkey) {
+  let personal = document.getElementById("personalList");
+  let shared = document.getElementById("sharedList");
+  let hello = document.getElementById("hello");
+
+  personal.style.visibility = "hidden";
+  shared.style.visibility = "hidden";
+  // document.getElementById("per").innerHTML = "";
+  // //shared.innerHTML = "";
+  hello.style.visibility = "hidden";
+
   xyz = "Pvt";
   document.getElementById("finish_task_header").innerHTML = "Personal";
-  var updates = {};
-  updates["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task;
-  firebase.database().ref().update(updates);
+
+  // console.log(demo);
+  // console.log(xyz);
+  // console.log(uniqkey);
+  // console.log(task);
   create_unfinished_task();
 }
 
 function create_unfinished_task() {
+  console.log(xyz);
   unfinished_task_container = document.getElementsByClassName("container")[0];
   unfinished_task_container.innerHTML = "";
 
@@ -634,7 +682,8 @@ function add_task() {
       var updates = {};
       updates["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task;
       firebase.database().ref().update(updates);
-    } else {
+      create_unfinished_task();
+    } else if (shared.checked) {
       console.log(task.title);
       //console.log(encryptedData);
       let DotArrayShared = [".@#1%%42", ".&2^36@", ".$%aASH2343", ".sahd%$%^$", ".%$*%GF%", ".^&&^Hjj5", ".!^%&", ".!@!@!", ".!#$!", ".#%GFY$^", ".&^%&^GFUYRUYF%$&^", ".$^%^%#^GGFHDKJ", ".#@*&gfuF", ".jgj564$#@", ".frdk4667$#", ".53fh#$", ".HJ57554&%", ".JKfy6754F", ".DS5DHF$%ds", ".ds23478h#!$", ".HGWIU", ".12387192", ".479128", ".[$$^$^]][]", ".{}{}{}{**", ".**&&*", ".%%{{{767", ".^^JASKNA768", ".^^##^^)", ".{gvh^%", ".872%$^^", ".*&^*hvj", ".++__kjHK", ".~@@!@#$@", ".||***guy", ".y1741938cjb", ".239182h^&d", ".jscnak3@#s", ".^&&^Hbq45jj5", ".!atw4^%&", ".qr!@!@!", ".!#rgee$!", ".#%GdfheraFY$^", ".&^%25&^UYF%$&^", ".$^%^%D423ef#^GGFHDKJ", ".#@waeawgr*&gfuF", ".jgjqb5564$#@", ".frdk2q54667$#", ".53f245vh#$", ".HJ57356554&%", ".JK35fy6754F", ".DS5aegDHF$%ds", ".ds23478hsd#!$", ".HG436WIU", ".12387sgd192", ".47sg9128", ".[$$^$^]]sg[]", ".{}dg{}{}{**", ".*sgd*&&*", ".%%532{{{767", ".^^JASK253NA768", ".^^##234^^)", ".!@#!GJFYD<UT}{|", ".hbjHGU6567@$"];
@@ -672,6 +721,12 @@ function add_task() {
       var All_Tasks = {};
       All_Tasks["All-Tasks" + "/" + xyz + "/" + "Task" + uniqkey] = task;
       firebase.database().ref().update(All_Tasks);
+      create_unfinished_task();
+    } else {
+      var personal_Tasks = {};
+      personal_Tasks["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task;
+      firebase.database().ref().update(personal_Tasks);
+      create_unfinished_task();
     }
 
     input_box.value = "";
@@ -680,7 +735,5 @@ function add_task() {
 
     // desc.ref1 = new Firebase(desc.userRef + "/" + desc.oldGender + "/" + uid);
     // desc.ref2 = new Firebase(desc.userRef + "/" + desc.gender + "/" + uid);
-
-    create_unfinished_task();
   }
 }
