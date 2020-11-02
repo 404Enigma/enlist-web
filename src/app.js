@@ -378,7 +378,7 @@ function task_edit(task, edit_button) {
   title.setAttribute("contenteditable", true);
   title.setAttribute("id", "title_editing");
   title.setAttribute("type", "text");
-  title.maxLength = 21;
+
   //title.setAttribute("maxLength ", "21");
 
   //console.log(title);
@@ -574,6 +574,7 @@ function create_unfinished_task() {
         title = document.createElement("p");
         title.setAttribute("id", "task_title");
         title.setAttribute("contenteditable", false);
+        title.maxLength = 21;
         //title.innerHTML = decrypted.toString(CryptoJS.enc.Utf8);
         //title.innerHTML = decryptedText;
         //console.log(task_decrypted_title);
