@@ -15,13 +15,6 @@
 console.log("HEREEEEEEEEEEEEEEEEEEEEEEEEEEEE!");
 var db = firebase.firestore();
 
-// var user = firebase.auth().currentUser;
-
-// if (user != null) {
-//   email = user.email;
-//   uid = user.uid;
-// }
-
 var prnn = document.getElementById("prn");
 let PRNlength = prnn.value.length;
 var favoritemovie;
@@ -31,10 +24,10 @@ function signInWithGoogle() {
   sessionStorage.setItem("favoriteMovie", favoritemovie);
 
   if (prnn.value === "") {
-    alert("Please enter the PRN1");
+    popup("Please enter the PRN !",4000, "alert alert-info");
   } else {
     if (prnn.value.length !== 11) {
-      alert("Please enter a 11 digit PRN");
+    popup("Please enter a 11 digit PRN !", 4000, "alert alert-info");
     } else {
       signIn();
     }
@@ -52,14 +45,11 @@ function signIn() {
       console.log(user.email);
       console.log(prnn.value);
       var docRef = db.collection("Member Access/");
-      //console.log(docRef);
-
+      
       docRef
         .get()
         .then(function (querySnapshot) {
           querySnapshot.forEach(function (doc) {
-            // doc.data() is never undefined for query doc snapshots
-            //console.log(doc.id, " => ", doc.data());
             console.log(doc.id);
             console.log(user.email);
             if (doc.id === user.email) {
@@ -72,14 +62,15 @@ function signIn() {
                 console.log("aaaaaaaaaaa");
                 setTimeout(function () {
                   if (flag === 1) {
+                    popup("Sign-in successful !", 2000, "alert alert-success");
                     window.location.assign("./home.html");
                     console.log("Woahhhhhhhh!");
                   } else {
-                    alert("Please enter you credentials");
+                    popup("Please enter your credentials !",4000, "alert alert-info");
                   }
                 }, 1000);
               } else {
-                alert("Please enter you PRN");
+                popup("Please enter your PRN !", 4000, "alert alert-danger");
               }
             }
             console.log("done");
@@ -99,4 +90,24 @@ function signIn() {
       var credential = error.credential;
       // ...
     });
+}
+
+function popup(sent,time,color){
+  console.log("Popup finction");
+  let pass= document.getElementById("container");
+  let A = document.createElement("div");
+  console.log(color);
+  A.setAttribute("class",color);
+  A.setAttribute("role","alert");
+  A.setAttribute("id","popup");
+  A.innerHTML=sent;
+  pass.append(A);
+  console.log("Execute");
+  setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+  
+        $(this).remove(); 
+    });
+}, time);
+
 }
