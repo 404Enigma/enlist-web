@@ -684,7 +684,7 @@ function add_task() {
     // setStartDate: "-2m",
     // endDate: "+2d",
     // autoclose: true,
-    minDate: new Date(2020, 10, 10),
+    min: new Date(2020, 10, 10),
   });
 
   var dateControl = document.querySelector("#input_date");
@@ -718,7 +718,7 @@ function add_task() {
       uid = user.uid;
     }
 
-    const docRef = db.doc("Analysis/" + time);
+    const docRef = db.doc("AnalysisB/" + time);
     docRef
       .set({
         date: Currentdate,
