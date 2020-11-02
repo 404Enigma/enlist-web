@@ -24,10 +24,10 @@ function signInWithGoogle() {
   localStorage.setItem("PRN", PRN);
 
   if (prnn.value === "") {
-    popup("Please enter the PRN !",4000, "alert alert-info");
+    popup("Please enter the PRN !", 4000, "alert alert-info");
   } else {
     if (prnn.value.length !== 11) {
-    popup("Please enter a 11 digit PRN !", 4000, "alert alert-info");
+      popup("Please enter a 11 digit PRN !", 4000, "alert alert-info");
     } else {
       signIn();
     }
@@ -45,34 +45,40 @@ function signIn() {
       console.log(user.email);
       console.log(prnn.value);
       var docRef = db.collection("Member Access/");
-      
+
       docRef
         .get()
         .then(function (querySnapshot) {
           querySnapshot.forEach(function (doc) {
             console.log(doc.id);
             console.log(user.email);
-            if (doc.id === user.email) {
-              console.log("Document data:", doc.data());
-              let pry = doc.get("PRN");
-              console.log(pry);
-              console.log(prnn);
-              if (prnn.value == pry) {
-                flag = 1;
-                console.log("aaaaaaaaaaa");
-                setTimeout(function () {
-                  if (flag === 1) {
-                    popup("Sign-in successful !", 2000, "alert alert-success");
-                    window.location.assign("./home.html");
-                    console.log("Woahhhhhhhh!");
-                  } else {
-                    popup("Please enter your credentials !",4000, "alert alert-info");
-                  }
-                }, 1000);
-              } else {
-                popup("Please enter your PRN !", 4000, "alert alert-danger");
-              }
+            let pry = doc.get("PRN");
+            console.log(pry);
+            console.log(prnn);
+
+            // if (prnn.value === pry) {
+            //   console.log("Document data:", doc.data());
+
+            if (prnn.value === pry && doc.id === user.email) {
+              flag = 1;
+              console.log("aaaaaaaaaaa");
+              setTimeout(function () {
+                if (flag === 1) {
+                  popup("Sign-in successful !", 2000, "alert alert-success");
+                  window.location.assign("./home.html");
+                  console.log("Woahhhhhhhh!");
+                } else {
+                  popup("Please enter your credentials !", 1000, "alert alert-info");
+                }
+              }, 1000);
+            } else {
+              popup("Please enter your PRN !", 1000, "alert alert-danger");
             }
+            // } else {
+            //   console.log("hola");
+            //   popup("Please login with your Btech ID!", 1000, "alert alert-danger");
+            //   console.log("hola");
+            // }
             console.log("done");
           });
         })
@@ -92,24 +98,28 @@ function signIn() {
     });
 }
 
-function popup(sent,time,color){
+// if(prnn.value === pry && doc.id === user.email){
+//   flag=1;
+// }
+
+function popup(sent, time, color) {
   console.log("Popup finction");
-  let pass= document.getElementById("container");
+  let pass = document.getElementById("container");
   let A = document.createElement("div");
   console.log(color);
-  A.setAttribute("class",color);
-  A.setAttribute("role","alert");
-  A.setAttribute("id","popup");
-  A.innerHTML=sent;
+  A.setAttribute("class", color);
+  A.setAttribute("role", "alert");
+  A.setAttribute("id", "popup");
+  A.innerHTML = sent;
   pass.append(A);
   console.log(A.value);
   console.log(pass.value);
   console.log("Execute");
-  setTimeout(function() {
-    $(".alert").fadeTo(500, 0).slideUp(500, function(){
-  
-        $(this).remove(); 
-    });
-}, time);
-
+  setTimeout(function () {
+    $(".alert")
+      .fadeTo(500, 0)
+      .slideUp(500, function () {
+        $(this).remove();
+      });
+  }, time);
 }

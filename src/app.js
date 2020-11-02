@@ -15,22 +15,17 @@
 
 const q = localStorage.getItem("uniqueUid");
 console.log(q);
-let xyz;
+let xyz, demo;
 // xyz = "B";
 console.log(xyz);
-let demo;
 demo = q;
-var parsedBase64Key;
-var encryptedData;
+let parsedBase64Key, encryptedData;
 console.log(demo);
 let flag = 0;
 var task;
-let uniqkey;
-var finalDate;
-// alert("Choose Your Class or Division");
+let uniqkey, finalDate;
 
-var encrypted;
-let encryptKey;
+let encrypted, encryptKey;
 var db = firebase.firestore();
 
 var today = new Date();
@@ -50,7 +45,7 @@ let dayC = dateC[0];
 let monthC = dateC[1];
 let yearC = dateC[2];
 
-var montharrayC = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+let montharrayC = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 for (let i = 0; i < montharrayC.length; i++) {
   if (i === Number(monthC)) {
@@ -77,7 +72,6 @@ function popup_alltasks(sent, time, color) {
   A.setAttribute("id", "popup");
   A.innerHTML = sent;
   pass.append(A);
-  // document.getElementById("content_container").append(pass);
   console.log("Execute");
   setTimeout(function () {
     $(".alert")
@@ -93,8 +87,6 @@ firebase.auth().onAuthStateChanged(function (user) {
   if (user !== null) {
     demo = user.uid;
     console.log(user.uid);
-
-    //create_unfinished_task();
 
     if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
       xyz = "B1";
@@ -671,7 +663,7 @@ function create_unfinished_task() {
     });
 }
 
-function date_picker(){
+function date_picker() {
   console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
   var cdate = new Date();
   cdate.setDate(cdate.getDate());
@@ -680,12 +672,7 @@ function date_picker(){
     // format: "yyyy-mm-dd",
     // setStartDate: "-2m",
     // endDate: "+2d",
-    // autoclose: true,
-<<<<<<< HEAD
-    min: new Date(2020, 10, 10),
-=======
     minDate: cdate,
->>>>>>> ad7d4de4a08569fd000474d5c80949059bb767bc
   });
 }
 
@@ -697,8 +684,6 @@ function add_task() {
 
   uniqkey = "-" + Math.floor(1000000000 + Math.random() * 9000000000);
   //console.log(uniqkey);
-  
-
 
   var dateControl = document.querySelector("#input_date");
   date = dateControl.value.split("/");
