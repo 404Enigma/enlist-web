@@ -102,6 +102,8 @@ function popup(sent,time,color){
   A.setAttribute("id","popup");
   A.innerHTML=sent;
   pass.append(A);
+  console.log(A.value);
+  console.log(pass.value);
   console.log("Execute");
   setTimeout(function() {
     $(".alert").fadeTo(500, 0).slideUp(500, function(){
