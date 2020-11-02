@@ -23,7 +23,7 @@ demo = q;
 var parsedBase64Key;
 var encryptedData;
 console.log(demo);
-let flag=0;
+let flag = 0;
 var task;
 let uniqkey;
 var finalDate;
@@ -67,25 +67,25 @@ let a = document.getElementById("B");
 let c = document.getElementById("B2");
 let d = document.getElementById("B3");
 
-function popup_alltasks(sent,time,color){
+function popup_alltasks(sent, time, color) {
   console.log("Popup finction");
-  let pass= document.getElementById("pop-upppp");
+  let pass = document.getElementById("pop-upppp");
   let A = document.createElement("div");
   console.log(color);
-  A.setAttribute("class",color);
-  A.setAttribute("role","alert");
-  A.setAttribute("id","popup");
-  A.innerHTML=sent;
+  A.setAttribute("class", color);
+  A.setAttribute("role", "alert");
+  A.setAttribute("id", "popup");
+  A.innerHTML = sent;
   pass.append(A);
   // document.getElementById("content_container").append(pass);
   console.log("Execute");
-  setTimeout(function() {
-    $(".alert").fadeTo(500, 0).slideUp(500, function(){
-  
-        $(this).remove(); 
-    });
-}, time);
-
+  setTimeout(function () {
+    $(".alert")
+      .fadeTo(500, 0)
+      .slideUp(500, function () {
+        $(this).remove();
+      });
+  }, time);
 }
 
 firebase.auth().onAuthStateChanged(function (user) {
@@ -235,7 +235,6 @@ function Division() {
 }
 
 function heading() {
-  
   if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129) {
     document.getElementById("finish_task_header").innerHTML = "Admin";
     document.getElementById("division").innerHTML = "Admin";
@@ -369,9 +368,8 @@ function task_done(task, task_tool) {
   deadline = task.childNodes[0].childNodes[1];
 
   task.removeChild(task_tool);
-  flag=1;
+  flag = 1;
   task_delete(task);
-  
 }
 
 function task_edit(task, edit_button) {
@@ -451,7 +449,7 @@ function finish_edit(task, edit_button) {
   updates["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task_obj;
   firebase.database().ref().update(updates);
 
-  popup_alltasks("Task has been updated !",2000,"alert alert-info");
+  popup_alltasks("Task has been updated !", 2000, "alert alert-info");
 }
 
 function task_delete(task) {
@@ -461,15 +459,13 @@ function task_delete(task) {
 
   // remove from html view or whatevesss
   task.remove();
-  if(flag==1){
-    popup_alltasks("Task has been Completed !",2000,"alert alert-success");
-    flag=0;
+  if (flag == 1) {
+    popup_alltasks("Task has been Completed !", 2000, "alert alert-success");
+    flag = 0;
+  } else {
+    popup_alltasks("Task has been Deleted !", 2000, "alert alert-danger");
+    flag = 0;
   }
-  else{
-    popup_alltasks("Task has been Deleted !",2000,"alert alert-danger");
-    flag=0;
-  }
-
 }
 
 function updateAll() {
@@ -491,8 +487,8 @@ function updateAll() {
         //console.log("The read failed: " + errorObject.code);
       }
     );
-    popup_alltasks("Task has been Updated !",2000,"alert alert-info");
-    create_unfinished_task();
+  popup_alltasks("Task has been Updated !", 2000, "alert alert-info");
+  create_unfinished_task();
   // var updates = {};
   // updates["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task_obj;
   // firebase.database().ref().update(updates);
@@ -683,9 +679,12 @@ function add_task() {
   var cdate = new Date();
   cdate.setDate(cdate.getDate());
 
-  $("#input_date").datepicker({
-    // startDate: cdate,
-    minDate: cdate,
+  $(".from-date").datepicker({
+    // format: "yyyy-mm-dd",
+    // setStartDate: "-2m",
+    // endDate: "+2d",
+    // autoclose: true,
+    minDate: new Date(2020, 10, 10),
   });
 
   var dateControl = document.querySelector("#input_date");
@@ -804,5 +803,3 @@ function add_task() {
     // desc.ref2 = new Firebase(desc.userRef + "/" + desc.gender + "/" + uid);
   }
 }
-
-
