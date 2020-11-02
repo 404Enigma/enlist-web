@@ -62,6 +62,26 @@ body{
     outline: none;
 }
 
+
+#back{
+    font-family: 'Montserrat', sans-serif;
+    float: left;
+    background: white;
+    font-size: large;
+    color: rgb(107, 103, 103);
+    text-align: center;
+    padding: 10px 20px;
+    text-decoration: underline;
+}
+
+
+#back:hover{
+    outline:none;
+    cursor: pointer;
+}
+
+
+
 #container{
     margin-top: 50px;
     font-family: 'Montserrat', sans-serif;
