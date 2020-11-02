@@ -235,6 +235,8 @@ function Division() {
 }
 
 function heading() {
+  console.log("aaaaaaaaaaaaaa");
+  date_picker();
   if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129) {
     document.getElementById("finish_task_header").innerHTML = "Admin";
     document.getElementById("division").innerHTML = "Admin";
@@ -669,23 +671,34 @@ function create_unfinished_task() {
     });
 }
 
+function date_picker(){
+  console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+  var cdate = new Date();
+  cdate.setDate(cdate.getDate());
+
+  $("#input_date").datepicker({
+    // format: "yyyy-mm-dd",
+    // setStartDate: "-2m",
+    // endDate: "+2d",
+    // autoclose: true,
+<<<<<<< HEAD
+    min: new Date(2020, 10, 10),
+=======
+    minDate: cdate,
+>>>>>>> ad7d4de4a08569fd000474d5c80949059bb767bc
+  });
+}
+
 function add_task() {
+  console.log("Date entered");
   input_box = document.getElementById("input_box");
   input_date = document.getElementById("input_date");
   input_description = document.getElementById("input_description");
 
   uniqkey = "-" + Math.floor(1000000000 + Math.random() * 9000000000);
   //console.log(uniqkey);
-  var cdate = new Date();
-  cdate.setDate(cdate.getDate());
+  
 
-  $(".from-date").datepicker({
-    // format: "yyyy-mm-dd",
-    // setStartDate: "-2m",
-    // endDate: "+2d",
-    // autoclose: true,
-    min: new Date(2020, 10, 10),
-  });
 
   var dateControl = document.querySelector("#input_date");
   date = dateControl.value.split("/");
