@@ -590,6 +590,17 @@ body::-webkit-scrollbar-thumb
   float: left;
 }
 
+#pop-uppppppppp{
+  /* margin-top: 50px; */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bolder;
+  text-decoration: double;  
+  text-align: center; 
+  margin-top: 55px;
+  width: 40%;
+  float: left;
+}
+
 
 .alert {
   padding: 15px;
@@ -1278,6 +1289,17 @@ body::-webkit-scrollbar-thumb
   text-decoration: double;  
   text-align: center; 
   width: 60%;
+  float: left;
+}
+
+#pop-uppppppppp{
+  /* margin-top: 50px; */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bolder;
+  text-decoration: double;  
+  text-align: center; 
+  margin-top: 5px;
+  width: 40%;
   float: left;
 }
 
