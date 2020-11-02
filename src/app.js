@@ -12,10 +12,14 @@
 //   return false;
 //   }
 //   }
+
+const q = localStorage.getItem("uniqueUid");
+console.log(q);
 let xyz;
 // xyz = "B";
 console.log(xyz);
 let demo;
+demo = q;
 var parsedBase64Key;
 var encryptedData;
 console.log(demo);
@@ -54,8 +58,9 @@ for (let i = 0; i < montharrayC.length; i++) {
 }
 Currentdate = dayC + " " + monthC + " " + yearC;
 
-var favoritemovie = sessionStorage.getItem("favoriteMovie");
-let prnnn = favoritemovie;
+let prN = localStorage.getItem("PRN");
+let prnnn = prN;
+console.log(prnnn);
 
 let a = document.getElementById("B");
 let c = document.getElementById("B2");

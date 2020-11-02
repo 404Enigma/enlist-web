@@ -27,8 +27,8 @@ let PRNlength = prnn.value.length;
 var favoritemovie;
 
 function signInWithGoogle() {
-  favoritemovie = prnn.value;
-  sessionStorage.setItem("favoriteMovie", favoritemovie);
+  PRN = prnn.value;
+  localStorage.setItem("PRN", PRN);
 
   if (prnn.value === "") {
     alert("Please enter the PRN1");
