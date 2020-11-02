@@ -83,6 +83,25 @@ function popup_alltasks(sent, time, color) {
       });
   }, time);
 }
+function popup_alltasks2(sent, time, color) {
+  console.log("Popup finction");
+  let pass = document.getElementById("pop-uppppppppp");
+  let A = document.createElement("div");
+  console.log(color);
+  A.setAttribute("class", color);
+  A.setAttribute("role", "alert");
+  A.setAttribute("id", "popup");
+  A.innerHTML = sent;
+  pass.append(A);
+  console.log("Execute");
+  setTimeout(function () {
+    $(".alert")
+      .fadeTo(500, 0)
+      .slideUp(500, function () {
+        $(this).remove();
+      });
+  }, time);
+}
 
 firebase.auth().onAuthStateChanged(function (user) {
   console.log("12345");
@@ -118,14 +137,20 @@ firebase.auth().onAuthStateChanged(function (user) {
     updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
     firebase.database().ref().update(updates1);
   } else {
-    alert("Please login");
-    window.location.assign("./main.html");
+    // alert("Please login");
+    popup_alltasks2("Please login !",4000, "alert alert-warning");
+    setTimeout(function(){
+      window.location.assign("./main.html");
+    },1000);
+
+    
   }
 });
 
 function signOut() {
   xyz = "";
   task_array = [];
+  // popup_alltasks("Signed out successfully !", 4000, "alert alert-warning");
   firebase.auth().signOut();
 }
 
