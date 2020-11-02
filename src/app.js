@@ -491,7 +491,8 @@ function updateAll() {
         //console.log("The read failed: " + errorObject.code);
       }
     );
-
+    popup_alltasks("Task has been Updated !",2000,"alert alert-info");
+    create_unfinished_task();
   // var updates = {};
   // updates["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task_obj;
   // firebase.database().ref().update(updates);
