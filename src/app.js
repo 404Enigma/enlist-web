@@ -13,7 +13,13 @@
 //   }
 //   }
 
-const q = localStorage.getItem("uniqueUid");
+let prN = localStorage.getItem("PRN");
+let prnnn = prN;
+console.log(prnnn);
+
+//localStorage.setItem("bypassPRN", prN);
+
+let q = localStorage.getItem("uniqueUid");
 console.log(q);
 let xyz, demo;
 // xyz = "B";
@@ -53,10 +59,6 @@ for (let i = 0; i < montharrayC.length; i++) {
   }
 }
 Currentdate = dayC + " " + monthC + " " + yearC;
-
-let prN = localStorage.getItem("PRN");
-let prnnn = prN;
-console.log(prnnn);
 
 let a = document.getElementById("B");
 let c = document.getElementById("B2");
@@ -375,8 +377,10 @@ function task_edit(task, edit_button) {
   title = task.childNodes[0].childNodes[0];
   title.setAttribute("contenteditable", true);
   title.setAttribute("id", "title_editing");
-  title.maxLength = "21";
-  title.focus();
+  title.setAttribute("type", "text");
+  title.maxLength = 21;
+  //title.setAttribute("maxLength ", "21");
+
   //console.log(title);
 
   // let encrypttttttttttt = Encript();
@@ -402,7 +406,7 @@ function finish_edit(task, edit_button) {
   title.setAttribute("contenteditable", false);
   title.setAttribute("id", "task_title");
   //title.setAttribute("maxlength", 21);
-  title.maxLength = "21";
+  // title.maxLength = "21";
 
   console.log(title);
 

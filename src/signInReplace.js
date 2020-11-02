@@ -17,12 +17,9 @@ var db = firebase.firestore();
 
 var prnn = document.getElementById("prn");
 let PRNlength = prnn.value.length;
-var favoritemovie;
+var PRN;
 
 function signInWithGoogle() {
-  PRN = prnn.value;
-  localStorage.setItem("PRN", PRN);
-
   if (prnn.value === "") {
     popup("Please enter the PRN !", 4000, "alert alert-info");
   } else {
@@ -56,54 +53,29 @@ function signIn() {
             console.log(pry);
             console.log(prnn);
 
-            // if (prnn.value === pry) {
-            //   console.log("Document data:", doc.data());
+            if (doc.id === user.email) {
+              console.log("Document data:", doc.data());
 
-            // if (prnn.value === pry && doc.id === user.email) {
-            //   flag = 1;
-            //   console.log("aaaaaaaaaaa");
-            //   setTimeout(function () {
-            //     if (flag === 1) {
-            //       popup("Sign-in successful !", 2000, "alert alert-success");
-            //       window.location.assign("./home.html");
-            //       console.log("Woahhhhhhhh!");
-            //     } else {
-            //       popup("Please enter your credentials !", 1000, "alert alert-info");
-            //     }
-            //   }, 1000);
-            // } else {
-            //   popup("Please enter your PRN !", 1000, "alert alert-danger");
-            // }
-            // } else {
-            //   console.log("hola");
-            //   popup("Please login with your Btech ID!", 1000, "alert alert-danger");
-            //   console.log("hola");
-            // }
-
-            if(prnn.value !== pry || doc.id !== user.email){
-
-              if(prnn.value === pry && doc.id !== user.email){
-                popup("Please sign in with B.Tech ID !", 4000, "alert alert-info");
+              if (prnn.value === pry && doc.id === user.email) {
+                flag = 1;
+                console.log("aaaaaaaaaaa");
+              } else {
+                // popup("Please enter your PRN !", 1000, "alert alert-danger");
               }
-                
-                
-              if(prnn.value !== pry && doc.id === user.email){
-                popup("Please enter correct PRN!", 4000, "alert alert-info");
-              }
-
-              else
-                popup("Please enter correct credentials !", 4000, "alert alert-danger");
-              
-
             }
-            else{
-              popup("Sign-in successful !", 4000, "alert alert-success");
-              window.location.assign("./home.html");
-            }
-
-
-            console.log("done");
           });
+
+          setTimeout(function () {
+            if (flag === 1) {
+              PRN = prnn.value;
+              localStorage.setItem("PRN", PRN);
+              popup("Sign-in successful !", 2000, "alert alert-success");
+              window.location.assign("./home.html");
+              console.log("Woahhhhhhhh!");
+            } else {
+              popup("Please enter your credentials !", 1000, "alert alert-info");
+            }
+          }, 1000);
         })
         .catch(function (error) {
           console.log("Error getting documents: ", error);
@@ -120,9 +92,6 @@ function signIn() {
       // ...
     });
 }
-
-
-
 
 function popup(sent, time, color) {
   console.log("Popup finction");
@@ -144,4 +113,9 @@ function popup(sent, time, color) {
         $(this).remove();
       });
   }, time);
+}
+
+function sessionSignOut() {
+  console.log("I got it");
+  firebase.auth().signOut();
 }

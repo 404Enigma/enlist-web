@@ -22,7 +22,7 @@ function first() {
       console.log("aaaaaaa");
       let UIDD = user.uid;
       console.log(UIDD);
-      const prnValue = localStorage.getItem("PRN");
+      let prnValue = localStorage.getItem("bypassPRN");
       console.log(prnValue);
       localStorage.setItem("uniqueUid", UIDD);
       window.location.assign("./home.html");
