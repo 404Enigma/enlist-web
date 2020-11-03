@@ -119,7 +119,7 @@
   
         <div id="task_input_container">
           <form action="">
-          <input id="input_box" type="text" maxlength="21" pattern="[A-Za-z0-9]+" placeholder="Enter a task" required/>
+          <input id="input_box" type="text" maxlength="21" onkeyup="allowAlphaNumericSpace(this)" placeholder="Enter a task" required/>
           <input id="input_date" class="from-date" data-provide="datepicker" name="date_from" placeholder="Select Date" onclick="date_picker()" >
           <input id="input_description" type="text" maxlength="35" placeholder="Enter a description"/>
   
