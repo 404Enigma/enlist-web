@@ -83,6 +83,7 @@ function popup_alltasks(sent, time, color) {
       });
   }, time);
 }
+
 function popup_alltasks2(sent, time, color) {
   console.log("Popup finction");
   let pass = document.getElementById("pop-uppppppppp");
@@ -259,20 +260,20 @@ function Division() {
   }
 }
 
-function heading() {
-  console.log("aaaaaaaaaaaaaa");
-  date_picker();
-  if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129) {
-    document.getElementById("finish_task_header").innerHTML = "Admin";
-    document.getElementById("division").innerHTML = "Admin";
-  } else if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
-    document.getElementById("division").innerHTML = "CS-B1";
-  } else if (Number(prnnn) >= 19070122096 && Number(prnnn) <= 19070122119) {
-    document.getElementById("division").innerHTML = "CS-B2";
-  } else if (Number(prnnn) >= 19070122120 && Number(prnnn) <= 19070122145) {
-    document.getElementById("division").innerHTML = "CS-B3";
-  }
-}
+// function heading() {
+//   console.log("aaaaaaaaaaaaaa");
+//   // date_picker();
+//   if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126) {
+//     document.getElementById("finish_task_header").innerHTML = "Admin";
+//     document.getElementById("division").innerHTML = "Admin";
+//   } else if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
+//     document.getElementById("division").innerHTML = "CS-B1";
+//   } else if (Number(prnnn) >= 19070122096 && Number(prnnn) <= 19070122119) {
+//     document.getElementById("division").innerHTML = "CS-B2";
+//   } else if (Number(prnnn) >= 19070122120 && Number(prnnn) <= 19070122145) {
+//     document.getElementById("division").innerHTML = "CS-B3";
+//   }
+// }
 
 function Swap(v, chooseArray) {
   let d22 = chooseArray;
@@ -533,10 +534,8 @@ function Pvt() {
   //   demo = user.uid;
   //   console.log(demo);
   // }
-  firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-      // User is signed in.
-      UIDDDD = user.uid;
+
+  UIDDDD = user.uid;
       console.log(UIDDDD);
 
       let personal = document.getElementById("personalList");
@@ -554,10 +553,14 @@ function Pvt() {
       console.log(demo);
       create_unfinished_task();
       console.log("yupieee");
-    } else {
-      // No user is signed in.
-    }
-  });
+  // firebase.auth().onAuthStateChanged(function (user) {
+  //   if (user) {
+  //     // User is signed in.
+      
+  //   } else {
+  //     // No user is signed in.
+  //   }
+  // });
 }
 
 function create_unfinished_task() {
@@ -703,18 +706,26 @@ function create_unfinished_task() {
 
 function date_picker() {
   console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
-  var cdate = new Date();
-  cdate.setDate(cdate.getDate());
+var cdate = new Date();
+cdate.setDate(cdate.getDate());
 
-  $("#input_date").datepicker({
-    // format: "yyyy-mm-dd",
-    // setStartDate: "-2m",
-    // endDate: "+2d",
-    minDate: cdate,
-  });
+$("#input_date").datepicker({
+  // format: "yyyy-mm-dd",
+  // setStartDate: "-2m",
+  // endDate: "+2d",
+  minDate: cdate,
+});
+
 }
 
+
+
 function add_task() {
+
+  console.log(xyz);
+  if(xyz !== null){
+
+
   console.log("Date entered");
   input_box = document.getElementById("input_box");
   input_date = document.getElementById("input_date");
@@ -772,6 +783,15 @@ function add_task() {
     console.log(uniqkey);
 
     if (xyz === "Pvt") {
+      let DotArrayPersonalPrivate = [".@#1%%42", ".&2^36@", ".$%aASH2343", ".sahd%$%^$", ".%$*%GF%", ".^&&^Hjj5", ".!^%&", ".!@!@!", ".!#$!", ".#%GFY$^", ".&^%&^GFUYRUYF%$&^", ".$^%^%#^GGFHDKJ", ".#@*&gfuF", ".jgj564$#@", ".frdk4667$#", ".53fh#$", ".HJ57554&%", ".JKfy6754F", ".DS5DHF$%ds", ".ds23478h#!$", ".HGWIU", ".12387192", ".479128", ".[$$^$^]][]", ".{}{}{}{**", ".**&&*", ".%%{{{767", ".^^JASKNA768", ".^^##^^)", ".{gvh^%", ".872%$^^", ".*&^*hvj", ".++__kjHK", ".~@@!@#$@", ".||***guy", ".y1741938cjb", ".239182h^&d", ".jscnak3@#s", ".^&&^Hbq45jj5", ".!atw4^%&", ".qr!@!@!", ".!#rgee$!", ".#%GdfheraFY$^", ".&^%25&^UYF%$&^", ".$^%^%D423ef#^GGFHDKJ", ".#@waeawgr*&gfuF", ".jgjqb5564$#@", ".frdk2q54667$#", ".53f245vh#$", ".HJ57356554&%", ".JK35fy6754F", ".DS5aegDHF$%ds", ".ds23478hsd#!$", ".HG436WIU", ".12387sgd192", ".47sg9128", ".[$$^$^]]sg[]", ".{}dg{}{}{**", ".*sgd*&&*", ".%%532{{{767", ".^^JASK253NA768", ".^^##234^^)", ".!@#!GJFYD<UT}{|", ".hbjHGU6567@$"];
+
+        let encryptTitle = Encript(input_box.value, DotArrayPersonalPrivate, uniqkey);
+        task.title = encryptTitle;
+
+        console.log(input_description.value);
+        let encryptDescription = Encript(input_description.value, DotArrayPersonalPrivate, uniqkey);
+        task.description = encryptDescription;
+
       var personal_Tasks = {};
       personal_Tasks["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task;
       firebase.database().ref().update(personal_Tasks);
@@ -832,11 +852,20 @@ function add_task() {
         create_unfinished_task();
       }
     }
-    input_box.value = "";
+    // input_box.value = "";
     input_date.value = "";
     input_description.value = "";
 
     // desc.ref1 = new Firebase(desc.userRef + "/" + desc.oldGender + "/" + uid);
     // desc.ref2 = new Firebase(desc.userRef + "/" + desc.gender + "/" + uid);
+  }
+}
+
+}
+
+
+function on_load(){
+  if(xyz==="Pvt"){
+    Pvt();
   }
 }
