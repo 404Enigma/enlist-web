@@ -64,6 +64,10 @@ let a = document.getElementById("B");
 let c = document.getElementById("B2");
 let d = document.getElementById("B3");
 
+function allowAlphaNumericSpace(thisInput) {
+  thisInput.value = thisInput.value.split(/[^a-zA-Z0-9 ]/).join("");
+}
+
 function popup_alltasks(sent, time, color) {
   console.log("Popup finction");
   let pass = document.getElementById("pop-upppp");
@@ -783,14 +787,14 @@ function add_task() {
     console.log(uniqkey);
 
     if (xyz === "Pvt") {
-      let DotArrayPersonalPrivate = [".@#1%%42", ".&2^36@", ".$%aASH2343", ".sahd%$%^$", ".%$*%GF%", ".^&&^Hjj5", ".!^%&", ".!@!@!", ".!#$!", ".#%GFY$^", ".&^%&^GFUYRUYF%$&^", ".$^%^%#^GGFHDKJ", ".#@*&gfuF", ".jgj564$#@", ".frdk4667$#", ".53fh#$", ".HJ57554&%", ".JKfy6754F", ".DS5DHF$%ds", ".ds23478h#!$", ".HGWIU", ".12387192", ".479128", ".[$$^$^]][]", ".{}{}{}{**", ".**&&*", ".%%{{{767", ".^^JASKNA768", ".^^##^^)", ".{gvh^%", ".872%$^^", ".*&^*hvj", ".++__kjHK", ".~@@!@#$@", ".||***guy", ".y1741938cjb", ".239182h^&d", ".jscnak3@#s", ".^&&^Hbq45jj5", ".!atw4^%&", ".qr!@!@!", ".!#rgee$!", ".#%GdfheraFY$^", ".&^%25&^UYF%$&^", ".$^%^%D423ef#^GGFHDKJ", ".#@waeawgr*&gfuF", ".jgjqb5564$#@", ".frdk2q54667$#", ".53f245vh#$", ".HJ57356554&%", ".JK35fy6754F", ".DS5aegDHF$%ds", ".ds23478hsd#!$", ".HG436WIU", ".12387sgd192", ".47sg9128", ".[$$^$^]]sg[]", ".{}dg{}{}{**", ".*sgd*&&*", ".%%532{{{767", ".^^JASK253NA768", ".^^##234^^)", ".!@#!GJFYD<UT}{|", ".hbjHGU6567@$"];
+      let DotArrayPersonal = [".@#1%%42", ".&2^36@", ".$%aASH2343", ".sahd%$%^$", ".%$*%GF%", ".^&&^Hjj5", ".!^%&", ".!@!@!", ".!#$!", ".#%GFY$^", ".&^%&^GFUYRUYF%$&^", ".$^%^%#^GGFHDKJ", ".#@*&gfuF", ".jgj564$#@", ".frdk4667$#", ".53fh#$", ".HJ57554&%", ".JKfy6754F", ".DS5DHF$%ds", ".ds23478h#!$", ".HGWIU", ".12387192", ".479128", ".[$$^$^]][]", ".{}{}{}{**", ".**&&*", ".%%{{{767", ".^^JASKNA768", ".^^##^^)", ".{gvh^%", ".872%$^^", ".*&^*hvj", ".++__kjHK", ".~@@!@#$@", ".||***guy", ".y1741938cjb", ".239182h^&d", ".jscnak3@#s", ".^&&^Hbq45jj5", ".!atw4^%&", ".qr!@!@!", ".!#rgee$!", ".#%GdfheraFY$^", ".&^%25&^UYF%$&^", ".$^%^%D423ef#^GGFHDKJ", ".#@waeawgr*&gfuF", ".jgjqb5564$#@", ".frdk2q54667$#", ".53f245vh#$", ".HJ57356554&%", ".JK35fy6754F", ".DS5aegDHF$%ds", ".ds23478hsd#!$", ".HG436WIU", ".12387sgd192", ".47sg9128", ".[$$^$^]]sg[]", ".{}dg{}{}{**", ".*sgd*&&*", ".%%532{{{767", ".^^JASK253NA768", ".^^##234^^)", ".!@#!GJFYD<UT}{|", ".hbjHGU6567@$"];
 
-        let encryptTitle = Encript(input_box.value, DotArrayPersonalPrivate, uniqkey);
-        task.title = encryptTitle;
+      let encryptTitle = Encript(input_box.value, DotArrayPersonal, uniqkey);
+      task.title = encryptTitle;
 
-        console.log(input_description.value);
-        let encryptDescription = Encript(input_description.value, DotArrayPersonalPrivate, uniqkey);
-        task.description = encryptDescription;
+      console.log(input_description.value);
+      let encryptDescription = Encript(input_description.value, DotArrayPersonal, uniqkey);
+      task.description = encryptDescription;
 
       var personal_Tasks = {};
       personal_Tasks["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task;
