@@ -643,7 +643,7 @@ function create_unfinished_task() {
         title.innerHTML = task_decrypted_title;
         //console.log("title = ", title);
 
-        deadline = document.createElement("date_picker()");
+        deadline = document.createElement("p");
         deadline.setAttribute("id", "task_date");
         deadline.setAttribute("contenteditable", false);
         deadline.innerHTML = task_date;
