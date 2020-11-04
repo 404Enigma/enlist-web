@@ -301,8 +301,6 @@ function Swap(v, chooseArray) {
   let r = v % (d2.length - 1);
   let temp, val, inp;
 
-  console.log(d22);
-  console.log(v);
   // console.log(d22.length);
 
   //for i in range(0,len(d),1):
@@ -318,7 +316,6 @@ function Swap(v, chooseArray) {
     d22[inp] = temp;
   }
 
-  console.log(d22);
   //console.log(typeof d22);
   return d22;
 }
@@ -340,7 +337,6 @@ function Encript(character, Dotarray, KEY) {
   //#random.randint(10000,1000000)
   //let d = [".@#1%%42", ".&2^36@", ".$%aASH2343", ".sahd%$%^$", ".%$*%GF%", ".^&&^Hjj5", ".!^%&", ".!@!@!", ".!#$!", ".#%GFY$^", ".&^%&^GFUYRUYF%$&^", ".$^%^%#^GGFHDKJ", ".#@*&gfuF", ".jgj564$#@", ".frdk4667$#", ".53fh#$", ".HJ57554&%", ".JKfy6754F", ".DS5DHF$%ds", ".ds23478h#!$", ".HGWIU", ".12387192", ".479128", ".[$$^$^]][]", ".{}{}{}{**", ".**&&*", ".%%{{{767", ".^^JASKNA768", ".^^##^^)", ".{gvh^%", ".872%$^^", ".*&^*hvj", ".++__kjHK", ".~@@!@#$@", ".||***guy", ".y1741938cjb", ".239182h^&d", ".jscnak3@#s", ".^&&^Hbq45jj5", ".!atw4^%&", ".qr!@!@!", ".!#rgee$!", ".#%GdfheraFY$^", ".&^%25&^UYF%$&^", ".$^%^%D423ef#^GGFHDKJ", ".#@waeawgr*&gfuF", ".jgjqb5564$#@", ".frdk2q54667$#", ".53f245vh#$", ".HJ57356554&%", ".JK35fy6754F", ".DS5aegDHF$%ds", ".ds23478hsd#!$", ".HG436WIU", ".12387sgd192", ".47sg9128", ".[$$^$^]]sg[]", ".{}dg{}{}{**", ".*sgd*&&*", ".%%532{{{767", ".^^JASK253NA768", ".^^##234^^)", ".!@#!GJFYD<UT}{|", ".hbjHGU6567@$"];
 
-  console.log(KEY);
   //let d = setlonglist();
   //console.log(d);
   //console.log(typeof d);
@@ -351,8 +347,6 @@ function Encript(character, Dotarray, KEY) {
   d2 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", " ", "\t"];
 
   let swappedlist = Swap(KEY, Dotarray1);
-
-  console.log(swappedlist);
 
   let val = "";
   let e;
@@ -366,7 +360,6 @@ function Encript(character, Dotarray, KEY) {
     // console.log(val);
   }
 
-  console.log(val);
   return val;
 }
 //i = input("Enter Your Sentance : ");
@@ -381,15 +374,12 @@ function Decript(key, to_encript) {
   //let d = fetchlonglist;
   //to_encript=to_encript[1:]
   to_encript11111 = to_encript11111.slice(1, to_encript11111.length);
-  console.log(to_encript11111);
 
   d2 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", " ", "\t"];
   let WithoutDotArray = ["@#1%%42", "&2^36@", "$%aASH2343", "sahd%$%^$", "%$*%GF%", "^&&^Hjj5", "!^%&", "!@!@!", "!#$!", "#%GFY$^", "&^%&^GFUYRUYF%$&^", "$^%^%#^GGFHDKJ", "#@*&gfuF", "jgj564$#@", "frdk4667$#", "53fh#$", "HJ57554&%", "JKfy6754F", "DS5DHF$%ds", "ds23478h#!$", "HGWIU", "12387192", "479128", "[$$^$^]][]", "{}{}{}{**", "**&&*", "%%{{{767", "^^JASKNA768", "^^##^^)", "{gvh^%", "872%$^^", "*&^*hvj", "++__kjHK", "~@@!@#$@", "||***guy", "y1741938cjb", "239182h^&d", "jscnak3@#s", "^&&^Hbq45jj5", "!atw4^%&", "qr!@!@!", "!#rgee$!", "#%GdfheraFY$^", "&^%25&^UYF%$&^", "$^%^%D423ef#^GGFHDKJ", "#@waeawgr*&gfuF", "jgjqb5564$#@", "frdk2q54667$#", "53f245vh#$", "HJ57356554&%", "JK35fy6754F", "DS5aegDHF$%ds", "ds23478hsd#!$", "HG436WIU", "12387sgd192", "47sg9128", "[$$^$^]]sg[]", "{}dg{}{}{**", "*sgd*&&*", "%%532{{{767", "^^JASK253NA768", "^^##234^^)", "!@#!GJFYD<UT}{|", "hbjHGU6567@$"];
 
   let dd = Swap(key, WithoutDotArray);
 
-  console.log(WithoutDotArray);
-  console.log(dd);
   //console.log(typeof dd);
   let s = "";
   //for e in to_encript:
@@ -442,6 +432,7 @@ function task_edit(task, edit_button) {
   deadline = task.childNodes[0].childNodes[1];
   deadline.setAttribute("contenteditable", true);
   deadline.setAttribute("id", "date_editing");
+  deadline.disabled = false;
 
   description = task.childNodes[0].childNodes[2];
   description.setAttribute("contenteditable", true);
@@ -466,6 +457,7 @@ function finish_edit(task, edit_button) {
   deadline = task.childNodes[0].childNodes[1];
   deadline.setAttribute("contenteditable", false);
   deadline.setAttribute("id", "task_date");
+  deadline.disabled = true;
 
   description = task.childNodes[0].childNodes[2];
   description.setAttribute("contenteditable", false);
@@ -556,35 +548,34 @@ function Pvt() {
   //   console.log(demo);
   // }
 
-  UIDDDD = user.uid;
-  console.log(UIDDDD);
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      // User is signed in.
+      UIDDDD = user.uid;
+      console.log(UIDDDD);
 
-  let personal = document.getElementById("personalList");
-  let shared = document.getElementById("sharedList");
-  let hello = document.getElementById("hello");
-  let update_alert = document.getElementById("update_alert");
+      let personal = document.getElementById("personalList");
+      let shared = document.getElementById("sharedList");
+      let hello = document.getElementById("hello");
+      let update_alert = document.getElementById("update_alert");
 
-  personal.style.visibility = "hidden";
-  shared.style.visibility = "hidden";
-  personal.disabled = true;
-  shared.disabled = true;
-  hello.style.visibility = "hidden";
-  update_alert.style.visibility = "hidden";
-  update_alert.disabled = true;
+      personal.style.visibility = "hidden";
+      shared.style.visibility = "hidden";
+      personal.disabled = true;
+      shared.disabled = true;
+      hello.style.visibility = "hidden";
+      update_alert.style.visibility = "hidden";
+      update_alert.disabled = true;
 
-  xyz = "Pvt";
-  document.getElementById("finish_task_header").innerHTML = "Personal";
-  console.log(demo);
-  create_unfinished_task();
-  console.log("yupieee");
-  // firebase.auth().onAuthStateChanged(function (user) {
-  //   if (user) {
-  //     // User is signed in.
-
-  //   } else {
-  //     // No user is signed in.
-  //   }
-  // });
+      xyz = "Pvt";
+      document.getElementById("finish_task_header").innerHTML = "Personal";
+      console.log(demo);
+      create_unfinished_task();
+      console.log("yupieee");
+    } else {
+      // No user is signed in.
+    }
+  });
 }
 
 function create_unfinished_task() {
@@ -644,11 +635,12 @@ function create_unfinished_task() {
         console.log(title);
         //console.log("title = ", title);
 
-        deadline = document.createElement("p");
+        deadline = document.createElement("input");
         deadline.setAttribute("id", "task_date");
         deadline.setAttribute("contenteditable", false);
         deadline.setAttribute("type", "date");
         deadline.innerHTML = task_date;
+        deadline.disabled = true;
 
         description = document.createElement("p");
         description.setAttribute("id", "task_description");
