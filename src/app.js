@@ -64,9 +64,9 @@ let a = document.getElementById("B");
 let c = document.getElementById("B2");
 let d = document.getElementById("B3");
 
-function allowAlphaNumericSpace(thisInput) {
-  thisInput.value = thisInput.value.split(/[^a-zA-Z0-9 ]/).join("");
-}
+// function allowAlphaNumericSpace(thisInput) {
+//   thisInput.value = thisInput.value.split(/[^a-zA-Z0-9 ]/).join("");
+// }
 
 function popup_alltasks(sent, time, color) {
   console.log("Popup finction");
@@ -429,7 +429,7 @@ function task_edit(task, edit_button) {
   title = task.childNodes[0].childNodes[0];
   title.setAttribute("contenteditable", true);
   title.setAttribute("id", "title_editing");
-  title.setAttribute("onkeypress", "allowAlphaNumericSpace(event); return (this.innerText.length < 6)");
+  title.setAttribute("onkeypress", "allowAlphaNumericSpace(event); return (this.innerText.length < 21)");
 
   // title.setAttribute("onkeypress", "");
   //title.setAttribute("maxLength ", "21");
@@ -447,7 +447,7 @@ function task_edit(task, edit_button) {
   description.setAttribute("contenteditable", true);
   description.setAttribute("id", "description_editing");
   description.focus();
-  description.setAttribute("onkeypress", "allowAlphaNumericSpace(event); return (this.innerText.length < 6)");
+  description.setAttribute("onkeypress", "allowAlphaNumericSpace(event); return (this.innerText.length < 21)");
 }
 
 function finish_edit(task, edit_button) {
@@ -895,19 +895,19 @@ function add_task() {
       popup_alltasks("Enter title!!!", 2000, "alert alert-danger");
     }
   }
+}
 
-  function allowAlphaNumericSpace(e) {
-    console.log("call hua");
-    var code = "charCode" in e ? e.charCode : e.keyCode;
-    if (
-      !(code == 32) && // space
-      !(code > 47 && code < 58) && // numeric (0-9)
-      !(code > 64 && code < 91) && // upper alpha (A-Z)
-      !(code > 96 && code < 123)
-    ) {
-      // lower alpha (a-z)
-      e.preventDefault();
-    }
+function allowAlphaNumericSpace(e) {
+  console.log("call hua");
+  var code = "charCode" in e ? e.charCode : e.keyCode;
+  if (
+    !(code == 32) && // space
+    !(code > 47 && code < 58) && // numeric (0-9)
+    !(code > 64 && code < 91) && // upper alpha (A-Z)
+    !(code > 96 && code < 123)
+  ) {
+    // lower alpha (a-z)
+    e.preventDefault();
   }
 }
 
