@@ -435,10 +435,8 @@ function task_edit(task, edit_button) {
   deadline.disabled = false;
   deadline.append(dateDisplay);
 
-
   console.log(deadline.innerHTML);
   console.log(dateDisplay.innerHTML);
-
 
   description = task.childNodes[0].childNodes[2];
   description.setAttribute("contenteditable", true);
@@ -465,7 +463,6 @@ function finish_edit(task, edit_button) {
   deadline.setAttribute("id", "task_date");
   deadline.disabled = true;
 
-  
   let date_edit = dateDisplay.value.split("-");
   let day_edit = date_edit[2];
   let month_edit = date_edit[1];
@@ -486,12 +483,16 @@ function finish_edit(task, edit_button) {
   console.log(input_box.value.length);
   console.log(finalDate_edit.length);
 
+  let slice_deadline = deadline.innerHTML.slice(0, 6);
+  console.log(slice_deadline);
+
+  deadline.innerHTML = finalDate_edit;
+
   description = task.childNodes[0].childNodes[2];
   description.setAttribute("contenteditable", false);
   description.setAttribute("id", "task_description");
   console.log(deadline.innerHTML);
   console.log(dateDisplay.innerHTML);
-
 
   var key = task.getAttribute("data-key");
   //console.log(key);
@@ -501,6 +502,8 @@ function finish_edit(task, edit_button) {
     key: key,
     description: task.childNodes[0].childNodes[2].innerHTML,
   };
+
+  console.log(task_obj.deadline);
 
   let DotArray = [".@#1%%42", ".&2^36@", ".$%aASH2343", ".sahd%$%^$", ".%$*%GF%", ".^&&^Hjj5", ".!^%&", ".!@!@!", ".!#$!", ".#%GFY$^", ".&^%&^GFUYRUYF%$&^", ".$^%^%#^GGFHDKJ", ".#@*&gfuF", ".jgj564$#@", ".frdk4667$#", ".53fh#$", ".HJ57554&%", ".JKfy6754F", ".DS5DHF$%ds", ".ds23478h#!$", ".HGWIU", ".12387192", ".479128", ".[$$^$^]][]", ".{}{}{}{**", ".**&&*", ".%%{{{767", ".^^JASKNA768", ".^^##^^)", ".{gvh^%", ".872%$^^", ".*&^*hvj", ".++__kjHK", ".~@@!@#$@", ".||***guy", ".y1741938cjb", ".239182h^&d", ".jscnak3@#s", ".^&&^Hbq45jj5", ".!atw4^%&", ".qr!@!@!", ".!#rgee$!", ".#%GdfheraFY$^", ".&^%25&^UYF%$&^", ".$^%^%D423ef#^GGFHDKJ", ".#@waeawgr*&gfuF", ".jgjqb5564$#@", ".frdk2q54667$#", ".53f245vh#$", ".HJ57356554&%", ".JK35fy6754F", ".DS5aegDHF$%ds", ".ds23478hsd#!$", ".HG436WIU", ".12387sgd192", ".47sg9128", ".[$$^$^]]sg[]", ".{}dg{}{}{**", ".*sgd*&&*", ".%%532{{{767", ".^^JASK253NA768", ".^^##234^^)", ".!@#!GJFYD<UT}{|", ".hbjHGU6567@$"];
 
@@ -608,7 +611,6 @@ function Pvt() {
   });
 }
 
-
 let dateDisplay;
 
 function create_unfinished_task() {
@@ -668,12 +670,11 @@ function create_unfinished_task() {
         console.log(title);
         //console.log("title = ", title);
 
-        dateDisplay= document.createElement("input");
+        dateDisplay = document.createElement("input");
         dateDisplay.setAttribute("id", "task_displaydate");
         dateDisplay.setAttribute("contenteditable", true);
-        dateDisplay.innerHTML= task_date;
+        dateDisplay.innerHTML = task_date;
         dateDisplay.setAttribute("type", "date");
-
 
         deadline = document.createElement("p");
         deadline.setAttribute("id", "task_date");
