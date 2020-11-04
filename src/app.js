@@ -439,25 +439,6 @@ function task_edit(task, edit_button) {
   console.log(deadline.innerHTML);
   console.log(dateDisplay.innerHTML);
 
-  // let date_edit = deadline.value.split("-");
-  // let day_edit = date_edit[1];
-  // let month_edit = date_edit[0];
-  // let year_edit = date_edit[2];
-
-  // var montharray_edit = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-  // for (let i = 0; i < montharray_edit.length; i++) {
-  //   if (i === Number(month_edit)) {
-  //     month_edit = montharray_edit[i - 1];
-  //   }
-  // }
-
-  // finalDate_edit = day_edit + " " + month_edit;
-  // console.log(day_edit);
-  // console.log(month_edit);
-  // console.log(finalDate_edit);
-  // console.log(input_box.value.length);
-  // console.log(finalDate_edit.length);
 
   description = task.childNodes[0].childNodes[2];
   description.setAttribute("contenteditable", true);
@@ -485,10 +466,32 @@ function finish_edit(task, edit_button) {
   deadline.disabled = true;
 
   
+  let date_edit = dateDisplay.value.split("-");
+  let day_edit = date_edit[2];
+  let month_edit = date_edit[1];
+  let year_edit = date_edit[0];
+
+  var montharray_edit = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  for (let i = 0; i < montharray_edit.length; i++) {
+    if (i === Number(month_edit)) {
+      month_edit = montharray_edit[i - 1];
+    }
+  }
+
+  let finalDate_edit = day_edit + " " + month_edit;
+  console.log(day_edit);
+  console.log(month_edit);
+  console.log(finalDate_edit);
+  console.log(input_box.value.length);
+  console.log(finalDate_edit.length);
 
   description = task.childNodes[0].childNodes[2];
   description.setAttribute("contenteditable", false);
   description.setAttribute("id", "task_description");
+  console.log(deadline.innerHTML);
+  console.log(dateDisplay.innerHTML);
+
 
   var key = task.getAttribute("data-key");
   //console.log(key);
