@@ -25,6 +25,19 @@
     <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-database.js"></script>
 
     <script src="firebase.js"></script>
+    <script>
+      function getConfirmation() {
+               var retVal = confirm("Do you want to update the list ?\n( Your current progress will be overwritten. )");
+               if( retVal == true ) {
+                  updateAll();
+                  return true;
+               } else {
+                  
+                  return false;
+               }
+            }
+    </script>
+
     <script  src="app.js"></script>
 
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
@@ -55,10 +68,10 @@
         <div class="logo"><h3>ENLIST</h3></div>
         <span id="pop-uppppppppp"></span> 
         <ul>
-          <li class="pointer"><a title="Sync all Tasks">
-            <i class="fas fa-sync-alt fa-2x" id="user" onclick="updateAll()"></i>
+          <li class="pointer" ><a title="Sync all Tasks" id="update_alert">
+            <i class="fas fa-sync-alt fa-2x" id="user" onclick="getConfirmation()"></i>
             </a></li>
-          <li><a href="main.html" title="Log-out">
+          <li><a title="Log-out">
             <i class="fas fa-sign-out-alt fa-2x" id="user" onclick="signOut()"></i>
             </a></li>
           
@@ -118,10 +131,9 @@
         </div>
   
         <div id="task_input_container">
-          <form action="">
-          <input id="input_box" type="text" maxlength="21" pattern="[A-Za-z0-9]+" placeholder="Enter a task" required autocomplete="off"/>
-          <input id="input_date" class="from-date" data-provide="datepicker" name="date_from" placeholder="Select Date" onclick="date_picker()" autocomplete="off"/>
-          <input id="input_description" type="text" maxlength="35" placeholder="Enter a description" autocomplete="off"/>
+          <input id="input_box" type="text" onkeypress="allowAlphaNumericSpace(event)" maxlength="21" placeholder="Enter a task"/ autocomplete="off">
+          <input id="input_date" class="from-date" data-provide="datepicker" name="date_from" placeholder="Select Date" onclick="date_picker()" autocomplete="off">
+          <input id="input_description" type="text" onkeypress="allowAlphaNumericSpace(event)" maxlength="35" placeholder="Enter a description"/ autocomplete="off">
   
   
           <div id="hello">
