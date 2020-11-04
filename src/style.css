@@ -274,30 +274,30 @@
 
   ::-webkit-datetime-edit-feilds-wrapper {
     background: white;
-    opacity: 1;
+    opacity: 0;
     margin-left: 50px;
   }
 
   ::-webkit-datetime-edit-text {
     color: red;
-    opacity: 1;
+    opacity: 0;
     padding: 0 0.3rem;
   }
 
   ::-webkit-datetime-edit-month-field {
     color: black;
-    opacity: 1;
+    opacity: 0;
     font-family: monospace;
   }
 
   ::-webkit-datetime-edit-day-field {
     color: black;
-    opacity: 1;
+    opacity: 0;
     font-family: monospace;
   }
 
   ::-webkit-datetime-edit-year-field {
-    opacity: 1;
+    opacity: 0;
     color: black;
     font-family: monospace;
   }
@@ -524,7 +524,7 @@
   #task_title {
     /* background-color: #fff; */
     margin-top: 5px;
-    padding-top: 5px;
+    /* padding-top: 5px; */
     font-family: monospace;
     font-weight: bold;
     font-size: 20px;
@@ -543,8 +543,10 @@
     float: left;
     margin: 0;
     margin-top: 5px;
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
     width: 80%;
+    outline: none;
+    border: 0px solid white;
   }
 
   #task_description {
@@ -950,30 +952,30 @@
 
   ::-webkit-datetime-edit-feilds-wrapper {
     background: white;
-    opacity: 1;
+    opacity: 0;
     margin-left: 50px;
   }
 
   ::-webkit-datetime-edit-text {
     color: red;
-    opacity: 1;
+    opacity: 0;
     padding: 0 0.3rem;
   }
 
   ::-webkit-datetime-edit-month-field {
     color: black;
-    opacity: 1;
+    opacity: 0;
     font-family: monospace;
   }
 
   ::-webkit-datetime-edit-day-field {
     color: black;
-    opacity: 1;
+    opacity: 0;
     font-family: monospace;
   }
 
   ::-webkit-datetime-edit-year-field {
-    opacity: 1;
+    opacity: 0;
     color: black;
     font-family: monospace;
   }
@@ -1200,8 +1202,8 @@
 
   #task_title {
     background-color: #fff;
-    margin-top: 15px;
-    padding-top: 5px;
+    margin-top: 5px;
+    /* padding-top: 5px; */
     font-family: monospace;
     font-weight: bold;
     font-size: 20px;
@@ -1217,8 +1219,10 @@
     float: left;
     margin: 0;
     margin-top: 5px;
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
     width: 100%;
+    outline: none;
+    border: 0px solid white;
   }
 
   #task_description {

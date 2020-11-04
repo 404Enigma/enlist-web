@@ -433,26 +433,31 @@ function task_edit(task, edit_button) {
   deadline.setAttribute("contenteditable", true);
   deadline.setAttribute("id", "date_editing");
   deadline.disabled = false;
+  deadline.append(dateDisplay);
 
-  let date_edit = deadline.value.split("-");
-  let day_edit = date_edit[1];
-  let month_edit = date_edit[0];
-  let year_edit = date_edit[2];
 
-  var montharray_edit = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  console.log(deadline.innerHTML);
+  console.log(dateDisplay.innerHTML);
 
-  for (let i = 0; i < montharray_edit.length; i++) {
-    if (i === Number(month_edit)) {
-      month_edit = montharray_edit[i - 1];
-    }
-  }
+  // let date_edit = deadline.value.split("-");
+  // let day_edit = date_edit[1];
+  // let month_edit = date_edit[0];
+  // let year_edit = date_edit[2];
 
-  finalDate_edit = day_edit + " " + month_edit;
-  console.log(day_edit);
-  console.log(month_edit);
-  console.log(finalDate_edit);
-  console.log(input_box.value.length);
-  console.log(finalDate_edit.length);
+  // var montharray_edit = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  // for (let i = 0; i < montharray_edit.length; i++) {
+  //   if (i === Number(month_edit)) {
+  //     month_edit = montharray_edit[i - 1];
+  //   }
+  // }
+
+  // finalDate_edit = day_edit + " " + month_edit;
+  // console.log(day_edit);
+  // console.log(month_edit);
+  // console.log(finalDate_edit);
+  // console.log(input_box.value.length);
+  // console.log(finalDate_edit.length);
 
   description = task.childNodes[0].childNodes[2];
   description.setAttribute("contenteditable", true);
@@ -478,6 +483,8 @@ function finish_edit(task, edit_button) {
   deadline.setAttribute("contenteditable", false);
   deadline.setAttribute("id", "task_date");
   deadline.disabled = true;
+
+  
 
   description = task.childNodes[0].childNodes[2];
   description.setAttribute("contenteditable", false);
@@ -598,6 +605,9 @@ function Pvt() {
   });
 }
 
+
+let dateDisplay;
+
 function create_unfinished_task() {
   console.log(xyz);
   unfinished_task_container = document.getElementsByClassName("container")[0];
@@ -655,10 +665,16 @@ function create_unfinished_task() {
         console.log(title);
         //console.log("title = ", title);
 
-        deadline = document.createElement("input");
+        dateDisplay= document.createElement("input");
+        dateDisplay.setAttribute("id", "task_displaydate");
+        dateDisplay.setAttribute("contenteditable", true);
+        dateDisplay.innerHTML= task_date;
+        dateDisplay.setAttribute("type", "date");
+
+
+        deadline = document.createElement("p");
         deadline.setAttribute("id", "task_date");
         deadline.setAttribute("contenteditable", false);
-        deadline.setAttribute("type", "date");
         deadline.innerHTML = task_date;
         deadline.disabled = true;
 
