@@ -860,6 +860,9 @@
   .pointer {
     cursor: pointer;
   }
+  .icon {
+    margin-left: 0;
+  }
 
   .icon {
     margin-left: 10px;

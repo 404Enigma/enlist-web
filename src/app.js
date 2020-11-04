@@ -64,6 +64,10 @@ let a = document.getElementById("B");
 let c = document.getElementById("B2");
 let d = document.getElementById("B3");
 
+function allowAlphaNumericSpace(thisInput) {
+  thisInput.value = thisInput.value.split(/[^a-zA-Z0-9 ]/).join("");
+}
+
 function popup_alltasks(sent, time, color) {
   console.log("Popup finction");
   let pass = document.getElementById("pop-upppp");
@@ -83,6 +87,7 @@ function popup_alltasks(sent, time, color) {
       });
   }, time);
 }
+
 function popup_alltasks2(sent, time, color) {
   console.log("Popup finction");
   let pass = document.getElementById("pop-uppppppppp");
@@ -146,7 +151,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
     firebase.database().ref().update(updates1);
   } else {
-    alert("Please login");
+    // alert("Please login");
     popup_alltasks2("Please login !", 4000, "alert alert-warning");
     setTimeout(function () {
       window.location.assign("main.html");
@@ -275,20 +280,20 @@ function Division() {
   }
 }
 
-function heading() {
-  console.log("aaaaaaaaaaaaaa");
-  date_picker();
-  if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129) {
-    document.getElementById("finish_task_header").innerHTML = "Admin";
-    document.getElementById("division").innerHTML = "Admin";
-  } else if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
-    document.getElementById("division").innerHTML = "CS-B1";
-  } else if (Number(prnnn) >= 19070122096 && Number(prnnn) <= 19070122119) {
-    document.getElementById("division").innerHTML = "CS-B2";
-  } else if (Number(prnnn) >= 19070122120 && Number(prnnn) <= 19070122145) {
-    document.getElementById("division").innerHTML = "CS-B3";
-  }
-}
+// function heading() {
+//   console.log("aaaaaaaaaaaaaa");
+//   // date_picker();
+//   if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126) {
+//     document.getElementById("finish_task_header").innerHTML = "Admin";
+//     document.getElementById("division").innerHTML = "Admin";
+//   } else if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
+//     document.getElementById("division").innerHTML = "CS-B1";
+//   } else if (Number(prnnn) >= 19070122096 && Number(prnnn) <= 19070122119) {
+//     document.getElementById("division").innerHTML = "CS-B2";
+//   } else if (Number(prnnn) >= 19070122120 && Number(prnnn) <= 19070122145) {
+//     document.getElementById("division").innerHTML = "CS-B3";
+//   }
+// }
 
 function Swap(v, chooseArray) {
   let d22 = chooseArray;
@@ -550,10 +555,8 @@ function Pvt() {
   //   demo = user.uid;
   //   console.log(demo);
   // }
-  firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-      // User is signed in.
-      UIDDDD = user.uid;
+
+  UIDDDD = user.uid;
       console.log(UIDDDD);
 
       let personal = document.getElementById("personalList");
@@ -574,10 +577,14 @@ function Pvt() {
       console.log(demo);
       create_unfinished_task();
       console.log("yupieee");
-    } else {
-      // No user is signed in.
-    }
-  });
+  // firebase.auth().onAuthStateChanged(function (user) {
+  //   if (user) {
+  //     // User is signed in.
+      
+  //   } else {
+  //     // No user is signed in.
+  //   }
+  // });
 }
 
 function create_unfinished_task() {
@@ -727,18 +734,26 @@ function create_unfinished_task() {
 
 function date_picker() {
   console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
-  var cdate = new Date();
-  cdate.setDate(cdate.getDate());
+var cdate = new Date();
+cdate.setDate(cdate.getDate());
 
-  $("#input_date").datepicker({
-    // format: "yyyy-mm-dd",
-    // setStartDate: "-2m",
-    // endDate: "+2d",
-    minDate: cdate,
-  });
+$("#input_date").datepicker({
+  // format: "yyyy-mm-dd",
+  // setStartDate: "-2m",
+  // endDate: "+2d",
+  minDate: cdate,
+});
+
 }
 
+
+
 function add_task() {
+
+  console.log(xyz);
+  if(xyz !== null){
+
+
   console.log("Date entered");
   input_box = document.getElementById("input_box");
   input_date = document.getElementById("input_date");
@@ -898,5 +913,14 @@ function allowAlphaNumericSpace(e) {
   ) {
     // lower alpha (a-z)
     e.preventDefault();
+  }
+}
+
+}
+
+
+function on_load(){
+  if(xyz==="Pvt"){
+    Pvt();
   }
 }
