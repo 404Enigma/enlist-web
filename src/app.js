@@ -109,7 +109,16 @@ firebase.auth().onAuthStateChanged(function (user) {
     demo = user.uid;
     console.log(user.uid);
 
-    if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
+    if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129 || Number(prnnn) == 19070122134) {
+      let arr = ["B", "B1", "B2", "B3"];
+      for (let i = 0; i < arr.length; i++) {
+        xyz = arr[i];
+        console.log(xyz);
+        var updates1 = {};
+        updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+        firebase.database().ref().update(updates1);
+      }
+    } else if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
       xyz = "B1";
 
       var updates1 = {};
@@ -137,18 +146,18 @@ firebase.auth().onAuthStateChanged(function (user) {
     updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
     firebase.database().ref().update(updates1);
   } else {
-    // alert("Please login");
+    alert("Please login");
     popup_alltasks2("Please login !", 4000, "alert alert-warning");
     setTimeout(function () {
-      window.location.assign("./main.html");
-    }, 1000);
+      window.location.assign("main.html");
+    }, 3000);
   }
 });
 
 function signOut() {
   xyz = "";
   task_array = [];
-  // popup_alltasks("Signed out successfully !", 4000, "alert alert-warning");
+
   firebase.auth().signOut();
 }
 
@@ -170,7 +179,8 @@ function CS_B() {
   hello.style.visibility = "visible";
   personal.disabled = false;
   shared.disabled = false;
-
+  update_alert.style.visibility = "visible";
+  update_alert.disabled = false;
   var updates1 = {};
   updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
   firebase.database().ref().update(updates1);
@@ -189,6 +199,8 @@ function CS_B1() {
   hello.style.visibility = "visible";
   personal.disabled = false;
   shared.disabled = false;
+  update_alert.style.visibility = "visible";
+  update_alert.disabled = false;
 
   var updates1 = {};
   updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
@@ -208,6 +220,8 @@ function CS_B2() {
   hello.style.visibility = "visible";
   personal.disabled = false;
   shared.disabled = false;
+  update_alert.style.visibility = "visible";
+  update_alert.disabled = false;
 
   var updates1 = {};
   updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
@@ -227,6 +241,8 @@ function CS_B3() {
   hello.style.visibility = "visible";
   personal.disabled = false;
   shared.disabled = false;
+  update_alert.style.visibility = "visible";
+  update_alert.disabled = false;
 
   var updates1 = {};
   updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
@@ -409,6 +425,9 @@ function task_edit(task, edit_button) {
   title.setAttribute("contenteditable", true);
   title.setAttribute("id", "title_editing");
   title.setAttribute("type", "text");
+  title.setAttribute("onkeypress", "allowAlphaNumericSpace(event)");
+  title.setAttribute("type", "text");
+  title.setAttribute("maxLength", "21");
 
   //title.setAttribute("maxLength ", "21");
 
@@ -478,7 +497,7 @@ function finish_edit(task, edit_button) {
   updates["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task_obj;
   firebase.database().ref().update(updates);
 
-  popup_alltasks("Task has been updated !", 2000, "alert alert-info");
+  popup_alltasks("Task has been edited !", 2000, "alert alert-info");
 }
 
 function task_delete(task) {
@@ -542,12 +561,15 @@ function Pvt() {
       let personal = document.getElementById("personalList");
       let shared = document.getElementById("sharedList");
       let hello = document.getElementById("hello");
+      let update_alert = document.getElementById("update_alert");
 
       personal.style.visibility = "hidden";
       shared.style.visibility = "hidden";
       personal.disabled = true;
       shared.disabled = true;
       hello.style.visibility = "hidden";
+      update_alert.style.visibility = "hidden";
+      update_alert.disabled = true;
 
       xyz = "Pvt";
       document.getElementById("finish_task_header").innerHTML = "Personal";
