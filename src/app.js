@@ -424,13 +424,10 @@ function task_edit(task, edit_button) {
   title = task.childNodes[0].childNodes[0];
   title.setAttribute("contenteditable", true);
   title.setAttribute("id", "title_editing");
-  title.setAttribute("type", "text");
-  title.setAttribute("onkeypress", "allowAlphaNumericSpace(event)");
-  title.setAttribute("type", "text");
-  title.setAttribute("maxLength", "21");
+  title.setAttribute("onkeypress", "allowAlphaNumericSpace(event); return (this.innerText.length < 6)");
 
+  // title.setAttribute("onkeypress", "");
   //title.setAttribute("maxLength ", "21");
-
   //console.log(title);
 
   // let encrypttttttttttt = Encript();
@@ -444,8 +441,8 @@ function task_edit(task, edit_button) {
   description = task.childNodes[0].childNodes[2];
   description.setAttribute("contenteditable", true);
   description.setAttribute("id", "description_editing");
-  description.setAttribute("maxlength", 21);
   description.focus();
+  description.setAttribute("onkeypress", "allowAlphaNumericSpace(event); return (this.innerText.length < 6)");
 }
 
 function finish_edit(task, edit_button) {
@@ -455,6 +452,7 @@ function finish_edit(task, edit_button) {
   title = task.childNodes[0].childNodes[0];
   title.setAttribute("contenteditable", false);
   title.setAttribute("id", "task_title");
+  title.disabled = true;
   //title.setAttribute("maxlength", 21);
   // title.maxLength = "21";
 
@@ -629,16 +627,20 @@ function create_unfinished_task() {
         title = document.createElement("p");
         title.setAttribute("id", "task_title");
         title.setAttribute("contenteditable", false);
-        title.maxLength = 21;
+
+        task_data.append(title);
         //title.innerHTML = decrypted.toString(CryptoJS.enc.Utf8);
         //title.innerHTML = decryptedText;
         //console.log(task_decrypted_title);
         title.innerHTML = task_decrypted_title;
+
+        console.log(title);
         //console.log("title = ", title);
 
         deadline = document.createElement("p");
         deadline.setAttribute("id", "task_date");
         deadline.setAttribute("contenteditable", false);
+        // deadline.setAttribute("type", "date");
         deadline.innerHTML = task_date;
 
         description = document.createElement("p");
