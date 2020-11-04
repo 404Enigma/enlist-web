@@ -738,115 +738,128 @@ function add_task() {
   }
 
   finalDate = day + " " + month;
+  console.log(day);
 
-  if (input_box.value.length != 0 && finalDate.length != 0) {
-    task = {
-      title: input_box.value,
-      deadline: finalDate,
-      key: uniqkey,
-      description: input_description.value,
-    };
+  console.log(month);
 
-    var user = firebase.auth().currentUser;
+  console.log(finalDate);
+  console.log(input_box.value.length);
+  console.log(finalDate.length);
 
-    if (user != null) {
-      name = user.displayName;
-      uid = user.uid;
-    }
-
-    const docRef = db.doc("AnalysisB/" + time);
-    docRef
-      .set({
-        date: Currentdate,
+  if (input_box.value.length != 0) {
+    if (typeof day != "undefined" && typeof month != "undefined") {
+      task = {
         title: input_box.value,
-        name: name,
-      })
-      .then(function (docRef) {})
-      .catch(function (error) {
-        console.error("Error adding document: ", error);
-      });
+        deadline: finalDate,
+        key: uniqkey,
+        description: input_description.value,
+      };
 
-    let personal = document.getElementById("personalList");
-    let shared = document.getElementById("sharedList");
-    //console.log(task.title.value);
-    console.log(uniqkey);
+      var user = firebase.auth().currentUser;
 
-    if (xyz === "Pvt") {
-      let DotArrayPersonalPrivate = [".@#1%%42", ".&2^36@", ".$%aASH2343", ".sahd%$%^$", ".%$*%GF%", ".^&&^Hjj5", ".!^%&", ".!@!@!", ".!#$!", ".#%GFY$^", ".&^%&^GFUYRUYF%$&^", ".$^%^%#^GGFHDKJ", ".#@*&gfuF", ".jgj564$#@", ".frdk4667$#", ".53fh#$", ".HJ57554&%", ".JKfy6754F", ".DS5DHF$%ds", ".ds23478h#!$", ".HGWIU", ".12387192", ".479128", ".[$$^$^]][]", ".{}{}{}{**", ".**&&*", ".%%{{{767", ".^^JASKNA768", ".^^##^^)", ".{gvh^%", ".872%$^^", ".*&^*hvj", ".++__kjHK", ".~@@!@#$@", ".||***guy", ".y1741938cjb", ".239182h^&d", ".jscnak3@#s", ".^&&^Hbq45jj5", ".!atw4^%&", ".qr!@!@!", ".!#rgee$!", ".#%GdfheraFY$^", ".&^%25&^UYF%$&^", ".$^%^%D423ef#^GGFHDKJ", ".#@waeawgr*&gfuF", ".jgjqb5564$#@", ".frdk2q54667$#", ".53f245vh#$", ".HJ57356554&%", ".JK35fy6754F", ".DS5aegDHF$%ds", ".ds23478hsd#!$", ".HG436WIU", ".12387sgd192", ".47sg9128", ".[$$^$^]]sg[]", ".{}dg{}{}{**", ".*sgd*&&*", ".%%532{{{767", ".^^JASK253NA768", ".^^##234^^)", ".!@#!GJFYD<UT}{|", ".hbjHGU6567@$"];
+      if (user != null) {
+        name = user.displayName;
+        uid = user.uid;
+      }
 
-      let encryptTitle = Encript(input_box.value, DotArrayPersonalPrivate, uniqkey);
-      task.title = encryptTitle;
-
-      console.log(input_description.value);
-      let encryptDescription = Encript(input_description.value, DotArrayPersonalPrivate, uniqkey);
-      task.description = encryptDescription;
-
-      var personal_Tasks = {};
-      personal_Tasks["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task;
-      firebase.database().ref().update(personal_Tasks);
-      create_unfinished_task();
-    } else {
-      if (personal.checked) {
-        let DotArrayPersonal = [".@#1%%42", ".&2^36@", ".$%aASH2343", ".sahd%$%^$", ".%$*%GF%", ".^&&^Hjj5", ".!^%&", ".!@!@!", ".!#$!", ".#%GFY$^", ".&^%&^GFUYRUYF%$&^", ".$^%^%#^GGFHDKJ", ".#@*&gfuF", ".jgj564$#@", ".frdk4667$#", ".53fh#$", ".HJ57554&%", ".JKfy6754F", ".DS5DHF$%ds", ".ds23478h#!$", ".HGWIU", ".12387192", ".479128", ".[$$^$^]][]", ".{}{}{}{**", ".**&&*", ".%%{{{767", ".^^JASKNA768", ".^^##^^)", ".{gvh^%", ".872%$^^", ".*&^*hvj", ".++__kjHK", ".~@@!@#$@", ".||***guy", ".y1741938cjb", ".239182h^&d", ".jscnak3@#s", ".^&&^Hbq45jj5", ".!atw4^%&", ".qr!@!@!", ".!#rgee$!", ".#%GdfheraFY$^", ".&^%25&^UYF%$&^", ".$^%^%D423ef#^GGFHDKJ", ".#@waeawgr*&gfuF", ".jgjqb5564$#@", ".frdk2q54667$#", ".53f245vh#$", ".HJ57356554&%", ".JK35fy6754F", ".DS5aegDHF$%ds", ".ds23478hsd#!$", ".HG436WIU", ".12387sgd192", ".47sg9128", ".[$$^$^]]sg[]", ".{}dg{}{}{**", ".*sgd*&&*", ".%%532{{{767", ".^^JASK253NA768", ".^^##234^^)", ".!@#!GJFYD<UT}{|", ".hbjHGU6567@$"];
-
-        let encryptTitle = Encript(input_box.value, DotArrayPersonal, uniqkey);
-        task.title = encryptTitle;
-
-        console.log(input_description.value);
-        let encryptDescription = Encript(input_description.value, DotArrayPersonal, uniqkey);
-        task.description = encryptDescription;
-
-        var updates = {};
-        updates["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task;
-        firebase.database().ref().update(updates);
-        create_unfinished_task();
-      } else if (shared.checked) {
-        console.log(task.title);
-        //console.log(encryptedData);
-        let DotArrayShared = [".@#1%%42", ".&2^36@", ".$%aASH2343", ".sahd%$%^$", ".%$*%GF%", ".^&&^Hjj5", ".!^%&", ".!@!@!", ".!#$!", ".#%GFY$^", ".&^%&^GFUYRUYF%$&^", ".$^%^%#^GGFHDKJ", ".#@*&gfuF", ".jgj564$#@", ".frdk4667$#", ".53fh#$", ".HJ57554&%", ".JKfy6754F", ".DS5DHF$%ds", ".ds23478h#!$", ".HGWIU", ".12387192", ".479128", ".[$$^$^]][]", ".{}{}{}{**", ".**&&*", ".%%{{{767", ".^^JASKNA768", ".^^##^^)", ".{gvh^%", ".872%$^^", ".*&^*hvj", ".++__kjHK", ".~@@!@#$@", ".||***guy", ".y1741938cjb", ".239182h^&d", ".jscnak3@#s", ".^&&^Hbq45jj5", ".!atw4^%&", ".qr!@!@!", ".!#rgee$!", ".#%GdfheraFY$^", ".&^%25&^UYF%$&^", ".$^%^%D423ef#^GGFHDKJ", ".#@waeawgr*&gfuF", ".jgjqb5564$#@", ".frdk2q54667$#", ".53f245vh#$", ".HJ57356554&%", ".JK35fy6754F", ".DS5aegDHF$%ds", ".ds23478hsd#!$", ".HG436WIU", ".12387sgd192", ".47sg9128", ".[$$^$^]]sg[]", ".{}dg{}{}{**", ".*sgd*&&*", ".%%532{{{767", ".^^JASK253NA768", ".^^##234^^)", ".!@#!GJFYD<UT}{|", ".hbjHGU6567@$"];
-
-        let encryptTitle = Encript(input_box.value, DotArrayShared, uniqkey);
-        task.title = encryptTitle;
-
-        console.log(input_description.value);
-        let encryptDescription = Encript(input_description.value, DotArrayShared, uniqkey);
-        task.description = encryptDescription;
-
-        // let encryptDescription = Encript(input_description.value, DotArrayPersonal, uniqkey);
-        // task.title = encryptDescription;
-
-        ref = firebase.database().ref();
-
-        var urlRef = ref.child("Source/" + xyz);
-
-        urlRef.once("value", function (snapshot) {
-          snapshot.forEach(function (child) {
-            let allchild = child.key;
-            //console.log(allchild);
-            keySplittedArray = allchild.split(" ");
-
-            for (let i = 0; i < keySplittedArray.length; i++) {
-              var updates = {};
-              updates["/To-Do-List/" + keySplittedArray[i] + "/" + xyz + "/" + "Task" + uniqkey] = task;
-
-              firebase.database().ref().update(updates);
-            }
-          });
+      const docRef = db.doc("AnalysisB/" + time);
+      docRef
+        .set({
+          date: Currentdate,
+          title: input_box.value,
+          name: name,
+        })
+        .then(function (docRef) {})
+        .catch(function (error) {
+          console.error("Error adding document: ", error);
         });
 
-        // firebase ref
-        var All_Tasks = {};
-        All_Tasks["All-Tasks" + "/" + xyz + "/" + "Task" + uniqkey] = task;
-        firebase.database().ref().update(All_Tasks);
-        create_unfinished_task();
-      }
-    }
-    input_box.value = "";
-    input_date.value = "";
-    input_description.value = "";
+      let personal = document.getElementById("personalList");
+      let shared = document.getElementById("sharedList");
+      //console.log(task.title.value);
+      console.log(uniqkey);
 
-    // desc.ref1 = new Firebase(desc.userRef + "/" + desc.oldGender + "/" + uid);
-    // desc.ref2 = new Firebase(desc.userRef + "/" + desc.gender + "/" + uid);
+      if (xyz === "Pvt") {
+        let DotArrayPersonalPrivate = [".@#1%%42", ".&2^36@", ".$%aASH2343", ".sahd%$%^$", ".%$*%GF%", ".^&&^Hjj5", ".!^%&", ".!@!@!", ".!#$!", ".#%GFY$^", ".&^%&^GFUYRUYF%$&^", ".$^%^%#^GGFHDKJ", ".#@*&gfuF", ".jgj564$#@", ".frdk4667$#", ".53fh#$", ".HJ57554&%", ".JKfy6754F", ".DS5DHF$%ds", ".ds23478h#!$", ".HGWIU", ".12387192", ".479128", ".[$$^$^]][]", ".{}{}{}{**", ".**&&*", ".%%{{{767", ".^^JASKNA768", ".^^##^^)", ".{gvh^%", ".872%$^^", ".*&^*hvj", ".++__kjHK", ".~@@!@#$@", ".||***guy", ".y1741938cjb", ".239182h^&d", ".jscnak3@#s", ".^&&^Hbq45jj5", ".!atw4^%&", ".qr!@!@!", ".!#rgee$!", ".#%GdfheraFY$^", ".&^%25&^UYF%$&^", ".$^%^%D423ef#^GGFHDKJ", ".#@waeawgr*&gfuF", ".jgjqb5564$#@", ".frdk2q54667$#", ".53f245vh#$", ".HJ57356554&%", ".JK35fy6754F", ".DS5aegDHF$%ds", ".ds23478hsd#!$", ".HG436WIU", ".12387sgd192", ".47sg9128", ".[$$^$^]]sg[]", ".{}dg{}{}{**", ".*sgd*&&*", ".%%532{{{767", ".^^JASK253NA768", ".^^##234^^)", ".!@#!GJFYD<UT}{|", ".hbjHGU6567@$"];
+
+        let encryptTitle = Encript(input_box.value, DotArrayPersonalPrivate, uniqkey);
+        task.title = encryptTitle;
+
+        console.log(input_description.value);
+        let encryptDescription = Encript(input_description.value, DotArrayPersonalPrivate, uniqkey);
+        task.description = encryptDescription;
+
+        var personal_Tasks = {};
+        personal_Tasks["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task;
+        firebase.database().ref().update(personal_Tasks);
+        create_unfinished_task();
+      } else {
+        if (personal.checked) {
+          let DotArrayPersonal = [".@#1%%42", ".&2^36@", ".$%aASH2343", ".sahd%$%^$", ".%$*%GF%", ".^&&^Hjj5", ".!^%&", ".!@!@!", ".!#$!", ".#%GFY$^", ".&^%&^GFUYRUYF%$&^", ".$^%^%#^GGFHDKJ", ".#@*&gfuF", ".jgj564$#@", ".frdk4667$#", ".53fh#$", ".HJ57554&%", ".JKfy6754F", ".DS5DHF$%ds", ".ds23478h#!$", ".HGWIU", ".12387192", ".479128", ".[$$^$^]][]", ".{}{}{}{**", ".**&&*", ".%%{{{767", ".^^JASKNA768", ".^^##^^)", ".{gvh^%", ".872%$^^", ".*&^*hvj", ".++__kjHK", ".~@@!@#$@", ".||***guy", ".y1741938cjb", ".239182h^&d", ".jscnak3@#s", ".^&&^Hbq45jj5", ".!atw4^%&", ".qr!@!@!", ".!#rgee$!", ".#%GdfheraFY$^", ".&^%25&^UYF%$&^", ".$^%^%D423ef#^GGFHDKJ", ".#@waeawgr*&gfuF", ".jgjqb5564$#@", ".frdk2q54667$#", ".53f245vh#$", ".HJ57356554&%", ".JK35fy6754F", ".DS5aegDHF$%ds", ".ds23478hsd#!$", ".HG436WIU", ".12387sgd192", ".47sg9128", ".[$$^$^]]sg[]", ".{}dg{}{}{**", ".*sgd*&&*", ".%%532{{{767", ".^^JASK253NA768", ".^^##234^^)", ".!@#!GJFYD<UT}{|", ".hbjHGU6567@$"];
+
+          let encryptTitle = Encript(input_box.value, DotArrayPersonal, uniqkey);
+          task.title = encryptTitle;
+
+          console.log(input_description.value);
+          let encryptDescription = Encript(input_description.value, DotArrayPersonal, uniqkey);
+          task.description = encryptDescription;
+
+          var updates = {};
+          updates["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task;
+          firebase.database().ref().update(updates);
+          create_unfinished_task();
+        } else if (shared.checked) {
+          console.log(task.title);
+          //console.log(encryptedData);
+          let DotArrayShared = [".@#1%%42", ".&2^36@", ".$%aASH2343", ".sahd%$%^$", ".%$*%GF%", ".^&&^Hjj5", ".!^%&", ".!@!@!", ".!#$!", ".#%GFY$^", ".&^%&^GFUYRUYF%$&^", ".$^%^%#^GGFHDKJ", ".#@*&gfuF", ".jgj564$#@", ".frdk4667$#", ".53fh#$", ".HJ57554&%", ".JKfy6754F", ".DS5DHF$%ds", ".ds23478h#!$", ".HGWIU", ".12387192", ".479128", ".[$$^$^]][]", ".{}{}{}{**", ".**&&*", ".%%{{{767", ".^^JASKNA768", ".^^##^^)", ".{gvh^%", ".872%$^^", ".*&^*hvj", ".++__kjHK", ".~@@!@#$@", ".||***guy", ".y1741938cjb", ".239182h^&d", ".jscnak3@#s", ".^&&^Hbq45jj5", ".!atw4^%&", ".qr!@!@!", ".!#rgee$!", ".#%GdfheraFY$^", ".&^%25&^UYF%$&^", ".$^%^%D423ef#^GGFHDKJ", ".#@waeawgr*&gfuF", ".jgjqb5564$#@", ".frdk2q54667$#", ".53f245vh#$", ".HJ57356554&%", ".JK35fy6754F", ".DS5aegDHF$%ds", ".ds23478hsd#!$", ".HG436WIU", ".12387sgd192", ".47sg9128", ".[$$^$^]]sg[]", ".{}dg{}{}{**", ".*sgd*&&*", ".%%532{{{767", ".^^JASK253NA768", ".^^##234^^)", ".!@#!GJFYD<UT}{|", ".hbjHGU6567@$"];
+
+          let encryptTitle = Encript(input_box.value, DotArrayShared, uniqkey);
+          task.title = encryptTitle;
+
+          console.log(input_description.value);
+          let encryptDescription = Encript(input_description.value, DotArrayShared, uniqkey);
+          task.description = encryptDescription;
+
+          // let encryptDescription = Encript(input_description.value, DotArrayPersonal, uniqkey);
+          // task.title = encryptDescription;
+
+          ref = firebase.database().ref();
+
+          var urlRef = ref.child("Source/" + xyz);
+
+          urlRef.once("value", function (snapshot) {
+            snapshot.forEach(function (child) {
+              let allchild = child.key;
+              //console.log(allchild);
+              keySplittedArray = allchild.split(" ");
+
+              for (let i = 0; i < keySplittedArray.length; i++) {
+                var updates = {};
+                updates["/To-Do-List/" + keySplittedArray[i] + "/" + xyz + "/" + "Task" + uniqkey] = task;
+
+                firebase.database().ref().update(updates);
+              }
+            });
+          });
+
+          // firebase ref
+          var All_Tasks = {};
+          All_Tasks["All-Tasks" + "/" + xyz + "/" + "Task" + uniqkey] = task;
+          firebase.database().ref().update(All_Tasks);
+          create_unfinished_task();
+        }
+      }
+      input_box.value = "";
+      input_date.value = "";
+      input_description.value = "";
+
+      // desc.ref1 = new Firebase(desc.userRef + "/" + desc.oldGender + "/" + uid);
+      // desc.ref2 = new Firebase(desc.userRef + "/" + desc.gender + "/" + uid);
+    } else {
+      popup_alltasks("Enter deadline!!!", 2000, "alert alert-danger");
+    }
+  } else {
+    popup_alltasks("Enter title!!!", 2000, "alert alert-danger");
   }
 }
 
