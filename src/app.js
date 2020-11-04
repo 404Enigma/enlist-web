@@ -434,6 +434,26 @@ function task_edit(task, edit_button) {
   deadline.setAttribute("id", "date_editing");
   deadline.disabled = false;
 
+  let date_edit = deadline.value.split("-");
+  let day_edit = date_edit[1];
+  let month_edit = date_edit[0];
+  let year_edit = date_edit[2];
+
+  var montharray_edit = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  for (let i = 0; i < montharray_edit.length; i++) {
+    if (i === Number(month_edit)) {
+      month_edit = montharray_edit[i - 1];
+    }
+  }
+
+  finalDate_edit = day_edit + " " + month_edit;
+  console.log(day_edit);
+  console.log(month_edit);
+  console.log(finalDate_edit);
+  console.log(input_box.value.length);
+  console.log(finalDate_edit.length);
+
   description = task.childNodes[0].childNodes[2];
   description.setAttribute("contenteditable", true);
   description.setAttribute("id", "description_editing");
@@ -641,6 +661,8 @@ function create_unfinished_task() {
         deadline.setAttribute("type", "date");
         deadline.innerHTML = task_date;
         deadline.disabled = true;
+
+        // var dateControl = document.querySelector("#input_date");
 
         description = document.createElement("p");
         description.setAttribute("id", "task_description");
