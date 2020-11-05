@@ -159,6 +159,17 @@ border-top: 1px solid #8c8b8b;
 border-bottom: 1px solid #fff;
 }
 
+.logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image4{
+  height: 100px;
+  width: 100px;
+}
+
 .image{
   width: 250px;
   margin: 0 auto;

@@ -80,11 +80,25 @@ body{
     cursor: pointer;
 }
 
-
-
 #container{
-    margin-top: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bolder;
     text-decoration: double;   
+}
+
+
+#privacy{
+    font-family: 'Montserrat', sans-serif;
+    float: left;
+    background: white;
+    font-size: small;
+    color: rgb(107, 103, 103);
+    text-align: center;
+    padding: 10px 20px;
+}
+
+p a{
+    text-decoration: underline;
 }
