@@ -29,7 +29,7 @@ function first() {
     } else {
       // No user is signed in.
       console.log("bbbbbbbbbbbbb");
-      window.location.assign("./main.html");
+      window.location.assign("./login.html");
     }
   });
 }

@@ -152,7 +152,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     // alert("Please login");
     popup_alltasks2("Please login !", 4000, "alert alert-warning");
     setTimeout(function () {
-      window.location.assign("main.html");
+      window.location.assign("login.html");
     }, 2000);
   }
 });
