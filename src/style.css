@@ -273,18 +273,13 @@
   }
 
 
-  #input_displaydate {
-    width: 30%;
-    float: left;
-    height: 50px;
-    background-color: none;
-    border: 0px solid #f80022;
-    text-align: center;
-    font-family: monospace;
-    font-weight: bold;
-    font-size: 15px;
-    padding: 1rem;
-    transition: 0.3s;
+  #task_displaydate {
+    border: 0px solid white;
+    outline: none;
+  }
+
+  #task_displaydate:focus {
+    border: 0px solid white;
     outline: none;
   }
 
@@ -292,40 +287,40 @@
     background: white;
     opacity: 0;
     border: 0px solid white;
-    /* margin-left: 50px; */
+    margin-left: 50px;
   }
 
   ::-webkit-datetime-edit-text {
     color: red;
     opacity: 0;
     padding: 0 0.3rem;
-    border: 0px solid white;
+    /* border: 0px solid white; */
   }
 
   ::-webkit-datetime-edit-month-field {
     color: black;
     opacity: 0;
     font-family: monospace;
-    border: 0px solid white;
+    /* border: 0px solid white; */
   }
 
   ::-webkit-datetime-edit-day-field {
     color: black;
     opacity: 0;
     font-family: monospace;
-    border: 0px solid white;
+    /* border: 0px solid white; */
   }
 
   ::-webkit-datetime-edit-year-field {
     opacity: 0;
     color: black;
     font-family: monospace;
-    border: 0px solid white;
+    /* border: 0px solid white; */
   }
 
   ::-webkit-inner-spin-button {
     display: none;
-    border: 0px solid white;
+    /* border: 0px solid white; */
   }
 
   ::-webkit-calendar-picker-indicator {
@@ -972,6 +967,16 @@
     border-bottom: 2px solid #f80022;
     outline: none;
   }
+
+  #task_displaydate {
+    border: 0px solid white;
+    outline: none;
+  }
+
+  #task_displaydate:focus {
+    border: 0px solid white;
+    outline: none;
+  } 
 
   ::-webkit-datetime-edit-feilds-wrapper {
     background: white;
