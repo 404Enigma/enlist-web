@@ -153,7 +153,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     popup_alltasks2("Please login !", 4000, "alert alert-warning");
     setTimeout(function () {
       window.location.assign("main.html");
-    }, 3000);
+    }, 2000);
   }
 });
 
@@ -745,6 +745,7 @@ function task_edit(task, edit_button) {
   deadline.setAttribute("id", "date_editing");
   deadline.disabled = false;
   deadline.append(dateDisplay);
+  dateDisplay.style.visibility = "visible";
   // dateDisplay.setAttribute("onclick", "popup_alltasks(" / "Date changed !", 2000, "alert alert-info" / ")");
 
   console.log(deadline.innerHTML);
@@ -796,7 +797,17 @@ function finish_edit(task, edit_button) {
   let slice_deadline = deadline.innerHTML.slice(0, 6);
   console.log(slice_deadline);
 
-  deadline.innerHTML = finalDate_edit;
+  if (finalDate_edit === "undefined undefined") {
+    dateDisplay.style.visibility = "hidden";
+    console.log("date is not edited");
+  } else {
+    dateDisplay.style.visibility = "visible";
+    deadline.innerHTML = finalDate_edit;
+  }
+
+  console.log(finalDate);
+  console.log(deadline.innerHTML);
+  console.log(finalDate_edit);
 
   description = task.childNodes[0].childNodes[2];
   description.setAttribute("contenteditable", false);
