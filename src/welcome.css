@@ -27,7 +27,7 @@ width: 25%;
 
 
 .button:hover{
-border: 3px solid #ec5a44;
+border: 2px solid #ec5a44;
 color: white;
 background: #FF8370;
 outline:none;
@@ -35,8 +35,9 @@ cursor: pointer;
 }
 
 .button:focus{
-border: 3px solid #FF8370;
+border: 2px solid #FF8370;
 outline: none;
+width: 25%;
 }
 
 
@@ -46,6 +47,7 @@ color: white;
 font-size: 500%;
 font-weight: bold;
 margin-top: 0;
+text-align: center;
 }
 
 body {
