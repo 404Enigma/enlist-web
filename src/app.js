@@ -113,7 +113,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     console.log(user.uid);
 
     if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129 || Number(prnnn) == 19070122134) {
-      let arr = ["B", "B1", "B2", "B3"];
+      let arr = ["B", "B1", "B2", "B3", "A", "A1", "A2", "A3"];
       for (let i = 0; i < arr.length; i++) {
         xyz = arr[i];
         console.log(xyz);
@@ -137,6 +137,27 @@ firebase.auth().onAuthStateChanged(function (user) {
       //create_unfinished_task();
     } else if (Number(prnnn) >= 19070122120 && Number(prnnn) <= 19070122145) {
       xyz = "B3";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+      //create_unfinished_task();
+    } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122025) {
+      xyz = "A1";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+      //create_unfinished_task();
+    } else if (Number(prnnn) >= 19070122026 && Number(prnnn) <= 19070122048) {
+      xyz = "A2";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+      //create_unfinished_task();
+    } else if (Number(prnnn) >= 19070122049 && Number(prnnn) <= 19070122072) {
+      xyz = "A3";
 
       var updates1 = {};
       updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
@@ -171,184 +192,78 @@ function onloadEverytime() {
   return;
 }
 
-function CS_B() {
-  xyz = "B";
-  let personal = document.getElementById("personalList");
-  let shared = document.getElementById("sharedList");
-  let hello = document.getElementById("hello");
-
-  personal.style.visibility = "visible";
-  shared.style.visibility = "visible";
-  hello.style.visibility = "visible";
-  personal.disabled = false;
-  shared.disabled = false;
-  update_alert.style.visibility = "visible";
-  update_alert.disabled = false;
-  var updates1 = {};
-  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-  firebase.database().ref().update(updates1);
-  create_unfinished_task();
-}
-
-function CS_B1() {
-  xyz = "B1";
-
-  let personal = document.getElementById("personalList");
-  let shared = document.getElementById("sharedList");
-  let hello = document.getElementById("hello");
-
-  personal.style.visibility = "visible";
-  shared.style.visibility = "visible";
-  hello.style.visibility = "visible";
-  personal.disabled = false;
-  shared.disabled = false;
-  update_alert.style.visibility = "visible";
-  update_alert.disabled = false;
-
-  var updates1 = {};
-  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-  firebase.database().ref().update(updates1);
-  create_unfinished_task();
-}
-
-function CS_B2() {
-  xyz = "B2";
-
-  let personal = document.getElementById("personalList");
-  let shared = document.getElementById("sharedList");
-  let hello = document.getElementById("hello");
-
-  personal.style.visibility = "visible";
-  shared.style.visibility = "visible";
-  hello.style.visibility = "visible";
-  personal.disabled = false;
-  shared.disabled = false;
-  update_alert.style.visibility = "visible";
-  update_alert.disabled = false;
-
-  var updates1 = {};
-  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-  firebase.database().ref().update(updates1);
-  create_unfinished_task();
-}
-
-function CS_B3() {
-  xyz = "B3";
-
-  let personal = document.getElementById("personalList");
-  let shared = document.getElementById("sharedList");
-  let hello = document.getElementById("hello");
-
-  personal.style.visibility = "visible";
-  shared.style.visibility = "visible";
-  hello.style.visibility = "visible";
-  personal.disabled = false;
-  shared.disabled = false;
-  update_alert.style.visibility = "visible";
-  update_alert.disabled = false;
-
-  var updates1 = {};
-  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-  firebase.database().ref().update(updates1);
-  create_unfinished_task();
-}
-
-function CS_A1() {
-  xyz = "A1";
-
-  let personal = document.getElementById("personalList");
-  let shared = document.getElementById("sharedList");
-  let hello = document.getElementById("hello");
-
-  personal.style.visibility = "visible";
-  shared.style.visibility = "visible";
-  hello.style.visibility = "visible";
-  personal.disabled = false;
-  shared.disabled = false;
-  update_alert.style.visibility = "visible";
-  update_alert.disabled = false;
-
-  var updates1 = {};
-  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-  firebase.database().ref().update(updates1);
-  create_unfinished_task();
-}
-
-function CS_A2() {
-  xyz = "A2";
-
-  let personal = document.getElementById("personalList");
-  let shared = document.getElementById("sharedList");
-  let hello = document.getElementById("hello");
-
-  personal.style.visibility = "visible";
-  shared.style.visibility = "visible";
-  hello.style.visibility = "visible";
-  personal.disabled = false;
-  shared.disabled = false;
-  update_alert.style.visibility = "visible";
-  update_alert.disabled = false;
-
-  var updates1 = {};
-  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-  firebase.database().ref().update(updates1);
-  create_unfinished_task();
-}
-
-function CS_A3() {
-  xyz = "A3";
-
-  let personal = document.getElementById("personalList");
-  let shared = document.getElementById("sharedList");
-  let hello = document.getElementById("hello");
-
-  personal.style.visibility = "visible";
-  shared.style.visibility = "visible";
-  hello.style.visibility = "visible";
-  personal.disabled = false;
-  shared.disabled = false;
-  update_alert.style.visibility = "visible";
-  update_alert.disabled = false;
-
-  var updates1 = {};
-  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-  firebase.database().ref().update(updates1);
-  create_unfinished_task();
-}
-
 function Class() {
+  let personal = document.getElementById("personalList");
+  let shared = document.getElementById("sharedList");
+  let hello = document.getElementById("hello");
+
+  personal.style.visibility = "visible";
+  shared.style.visibility = "visible";
+  hello.style.visibility = "visible";
+  personal.disabled = false;
+  shared.disabled = false;
+  update_alert.style.visibility = "visible";
+  update_alert.disabled = false;
+
   if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122145) {
-    CS_B();
+    xyz = "B";
+
+    create_unfinished_task();
     document.getElementById("finish_task_header").innerHTML = "CS-B";
   } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
-    CS_B();
-    document.getElementById("finish_task_header").innerHTML = "CS-B";
+    xyz = "A";
+
+    create_unfinished_task();
+    document.getElementById("finish_task_header").innerHTML = "CS-A";
   }
 }
 
 function Division() {
+  let personal = document.getElementById("personalList");
+  let shared = document.getElementById("sharedList");
+  let hello = document.getElementById("hello");
+
+  personal.style.visibility = "visible";
+  shared.style.visibility = "visible";
+  hello.style.visibility = "visible";
+  personal.disabled = false;
+  shared.disabled = false;
+  update_alert.style.visibility = "visible";
+  update_alert.disabled = false;
+
   if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129) {
     CS_B1();
     CS_B2();
     CS_B3();
     document.getElementById("finish_task_header").innerHTML = "Admin";
   } else if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
-    CS_B1();
+    xyz = "B1";
+    create_unfinished_task();
     document.getElementById("finish_task_header").innerHTML = "CS-B1";
   } else if (Number(prnnn) >= 19070122096 && Number(prnnn) <= 19070122119) {
-    CS_B2();
+    xyz = "B2";
+
+    create_unfinished_task();
     document.getElementById("finish_task_header").innerHTML = "CS-B2";
   } else if (Number(prnnn) >= 19070122120 && Number(prnnn) <= 19070122145) {
-    CS_B3();
+    xyz = "B3";
+
+    create_unfinished_task();
     document.getElementById("finish_task_header").innerHTML = "CS-B3";
   } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122025) {
-    CS_A1();
+    xyz = "A1";
+
+    create_unfinished_task();
     document.getElementById("finish_task_header").innerHTML = "CS-A1";
   } else if (Number(prnnn) >= 19070122026 && Number(prnnn) <= 19070122048) {
-    CS_A2();
+    xyz = "A2";
+
+    create_unfinished_task();
     document.getElementById("finish_task_header").innerHTML = "CS-A2";
   } else if (Number(prnnn) >= 19070122049 && Number(prnnn) <= 19070122072) {
-    CS_A3();
+    xyz = "A3";
+
+    create_unfinished_task();
     document.getElementById("finish_task_header").innerHTML = "CS-A3";
   }
 }

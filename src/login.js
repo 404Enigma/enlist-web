@@ -41,7 +41,7 @@ function signIn() {
       let flag = 0;
       console.log(user.email);
       console.log(prnn.value);
-      var docRef = db.collection("Member Access/");
+      var docRef = db.collection("CS-B/");
 
       docRef
         .get()
