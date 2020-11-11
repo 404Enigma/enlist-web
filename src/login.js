@@ -31,6 +31,11 @@ function signInWithGoogle() {
   }
 }
 
+// let BBB = document.getElementById("BBB");
+// console.log(BBB.getAttribute("value"));
+let whichClass = sessionStorage.getItem("class");
+console.log(whichClass);
+
 function signIn() {
   var provider = new firebase.auth.GoogleAuthProvider();
   firebase
@@ -41,7 +46,7 @@ function signIn() {
       let flag = 0;
       console.log(user.email);
       console.log(prnn.value);
-      var docRef = db.collection("CS-B/");
+      var docRef = db.collection(whichClass + "/");
 
       docRef
         .get()

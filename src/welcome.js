@@ -33,3 +33,26 @@ function first() {
     }
   });
 }
+
+// let BBB = document.getElementById("BBB");
+// console.log(BBB.getAttribute("value"));
+
+function CS_A() {
+  sessionStorage.setItem("class", "CS-A");
+  window.location.assign("./login.html");
+}
+
+function CS_B() {
+  sessionStorage.setItem("class", "CS-B");
+  window.location.assign("./login.html");
+}
+
+function CS_C() {
+  sessionStorage.setItem("class", "CS-C");
+  window.location.assign("./login.html");
+}
+
+function IT() {
+  sessionStorage.setItem("class", "IT");
+  window.location.assign("./login.html");
+}
