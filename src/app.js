@@ -163,12 +163,69 @@ firebase.auth().onAuthStateChanged(function (user) {
       updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
       firebase.database().ref().update(updates1);
       //create_unfinished_task();
+    } else if (Number(prnnn) >= 19070122146 && Number(prnnn) <= 19070122167) {
+      xyz = "C1";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+    } else if (Number(prnnn) >= 19070122168 && Number(prnnn) <= 19070122190) {
+      xyz = "C2";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+    } else if (Number(prnnn) >= 19070122191 && Number(prnnn) <= 20070122515) {
+      xyz = "C3";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+    } else if (Number(prnnn) >= 19070124001 && Number(prnnn) <= 19070124028) {
+      xyz = "T1";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+    } else if (Number(prnnn) >= 19070124029 && Number(prnnn) <= 19070124055) {
+      xyz = "T2";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+    } else if (Number(prnnn) >= 19070124056 && Number(prnnn) <= 20070124502) {
+      xyz = "T3";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
     }
 
-    xyz = "B";
-    var updates1 = {};
-    updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-    firebase.database().ref().update(updates1);
+    if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122145) {
+      xyz = "B";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+    } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
+      xyz = "A";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+    } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
+      xyz = "C";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+    } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
+      xyz = "IT";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+    }
   } else {
     // alert("Please login");
     popup_alltasks2("Please login !", 4000, "alert alert-warning");
@@ -215,6 +272,16 @@ function Class() {
 
     create_unfinished_task();
     document.getElementById("finish_task_header").innerHTML = "CS-A";
+  } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
+    xyz = "C";
+
+    create_unfinished_task();
+    document.getElementById("finish_task_header").innerHTML = "CS-C";
+  } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
+    xyz = "IT";
+
+    create_unfinished_task();
+    document.getElementById("finish_task_header").innerHTML = "IT";
   }
 }
 
@@ -232,9 +299,9 @@ function Division() {
   update_alert.disabled = false;
 
   if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129) {
-    CS_B1();
-    CS_B2();
-    CS_B3();
+    xyz = "B3";
+
+    create_unfinished_task();
     document.getElementById("finish_task_header").innerHTML = "Admin";
   } else if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
     xyz = "B1";
@@ -265,6 +332,36 @@ function Division() {
 
     create_unfinished_task();
     document.getElementById("finish_task_header").innerHTML = "CS-A3";
+  } else if (Number(prnnn) >= 19070122146 && Number(prnnn) <= 19070122167) {
+    xyz = "C1";
+
+    create_unfinished_task();
+    document.getElementById("finish_task_header").innerHTML = "CS-C1";
+  } else if (Number(prnnn) >= 19070122168 && Number(prnnn) <= 19070122190) {
+    xyz = "C2";
+
+    create_unfinished_task();
+    document.getElementById("finish_task_header").innerHTML = "CS-C2";
+  } else if (Number(prnnn) >= 19070122191 && Number(prnnn) <= 20070122515) {
+    xyz = "C3";
+
+    create_unfinished_task();
+    document.getElementById("finish_task_header").innerHTML = "CS-C3";
+  } else if (Number(prnnn) >= 19070124001 && Number(prnnn) <= 19070124028) {
+    xyz = "T1";
+
+    create_unfinished_task();
+    document.getElementById("finish_task_header").innerHTML = "CS-T1";
+  } else if (Number(prnnn) >= 19070124029 && Number(prnnn) <= 19070124055) {
+    xyz = "T2";
+
+    create_unfinished_task();
+    document.getElementById("finish_task_header").innerHTML = "CS-T2";
+  } else if (Number(prnnn) >= 19070124056 && Number(prnnn) <= 20070124502) {
+    xyz = "T3";
+
+    create_unfinished_task();
+    document.getElementById("finish_task_header").innerHTML = "CS-T3";
   }
 }
 
