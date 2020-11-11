@@ -113,7 +113,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     console.log(user.uid);
 
     if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129 || Number(prnnn) == 19070122134) {
-      let arr = ["B", "B1", "B2", "B3", "A", "A1", "A2", "A3"];
+      let arr = ["B", "B1", "B2", "B3", "A", "A1", "A2", "A3", "C", "C1", "C2", "C3", "IT", "T1", "T2", "T3"];
       for (let i = 0; i < arr.length; i++) {
         xyz = arr[i];
         console.log(xyz);
