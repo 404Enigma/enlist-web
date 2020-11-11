@@ -253,8 +253,74 @@ function CS_B3() {
   create_unfinished_task();
 }
 
+function CS_A1() {
+  xyz = "A1";
+
+  let personal = document.getElementById("personalList");
+  let shared = document.getElementById("sharedList");
+  let hello = document.getElementById("hello");
+
+  personal.style.visibility = "visible";
+  shared.style.visibility = "visible";
+  hello.style.visibility = "visible";
+  personal.disabled = false;
+  shared.disabled = false;
+  update_alert.style.visibility = "visible";
+  update_alert.disabled = false;
+
+  var updates1 = {};
+  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+  firebase.database().ref().update(updates1);
+  create_unfinished_task();
+}
+
+function CS_A2() {
+  xyz = "A2";
+
+  let personal = document.getElementById("personalList");
+  let shared = document.getElementById("sharedList");
+  let hello = document.getElementById("hello");
+
+  personal.style.visibility = "visible";
+  shared.style.visibility = "visible";
+  hello.style.visibility = "visible";
+  personal.disabled = false;
+  shared.disabled = false;
+  update_alert.style.visibility = "visible";
+  update_alert.disabled = false;
+
+  var updates1 = {};
+  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+  firebase.database().ref().update(updates1);
+  create_unfinished_task();
+}
+
+function CS_A3() {
+  xyz = "A3";
+
+  let personal = document.getElementById("personalList");
+  let shared = document.getElementById("sharedList");
+  let hello = document.getElementById("hello");
+
+  personal.style.visibility = "visible";
+  shared.style.visibility = "visible";
+  hello.style.visibility = "visible";
+  personal.disabled = false;
+  shared.disabled = false;
+  update_alert.style.visibility = "visible";
+  update_alert.disabled = false;
+
+  var updates1 = {};
+  updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+  firebase.database().ref().update(updates1);
+  create_unfinished_task();
+}
+
 function Class() {
   if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122145) {
+    CS_B();
+    document.getElementById("finish_task_header").innerHTML = "CS-B";
+  } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
     CS_B();
     document.getElementById("finish_task_header").innerHTML = "CS-B";
   }
@@ -275,6 +341,15 @@ function Division() {
   } else if (Number(prnnn) >= 19070122120 && Number(prnnn) <= 19070122145) {
     CS_B3();
     document.getElementById("finish_task_header").innerHTML = "CS-B3";
+  } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122025) {
+    CS_A1();
+    document.getElementById("finish_task_header").innerHTML = "CS-A1";
+  } else if (Number(prnnn) >= 19070122026 && Number(prnnn) <= 19070122048) {
+    CS_A2();
+    document.getElementById("finish_task_header").innerHTML = "CS-A2";
+  } else if (Number(prnnn) >= 19070122049 && Number(prnnn) <= 19070122072) {
+    CS_A3();
+    document.getElementById("finish_task_header").innerHTML = "CS-A3";
   }
 }
 
