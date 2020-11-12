@@ -39,20 +39,20 @@ function first() {
 
 function CS_A() {
   sessionStorage.setItem("class", "CS-A");
-  window.location.assign("./login.html");
+  first();
 }
 
 function CS_B() {
   sessionStorage.setItem("class", "CS-B");
-  window.location.assign("./login.html");
+  first();
 }
 
 function CS_C() {
   sessionStorage.setItem("class", "CS-C");
-  window.location.assign("./login.html");
+  first();
 }
 
 function IT() {
   sessionStorage.setItem("class", "IT");
-  window.location.assign("./login.html");
+  first();
 }

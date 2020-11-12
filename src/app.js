@@ -243,6 +243,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         function (errorObject) {}
       );
     popup_alltasks("Task has been Updated !", 2000, "alert alert-info");
+
     create_unfinished_task();
   } else {
     // alert("Please login");
