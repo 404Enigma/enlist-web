@@ -226,6 +226,24 @@ firebase.auth().onAuthStateChanged(function (user) {
       updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
       firebase.database().ref().update(updates1);
     }
+
+    firebase
+      .database()
+      .ref("All-Tasks" + "/" + xyz)
+      .once(
+        "value",
+        function (snapshot) {
+          //console.log(snapshot.val());
+
+          firebase
+            .database()
+            .ref("/To-Do-List/" + demo + "/" + xyz)
+            .set(snapshot.val());
+        },
+        function (errorObject) {}
+      );
+    popup_alltasks("Task has been Updated !", 2000, "alert alert-info");
+    create_unfinished_task();
   } else {
     // alert("Please login");
     popup_alltasks2("Please login !", 4000, "alert alert-warning");
@@ -1043,25 +1061,7 @@ function task_delete(task) {
   }
 }
 
-function updateAll() {
-  firebase
-    .database()
-    .ref("All-Tasks" + "/" + xyz)
-    .once(
-      "value",
-      function (snapshot) {
-        //console.log(snapshot.val());
-
-        firebase
-          .database()
-          .ref("/To-Do-List/" + demo + "/" + xyz)
-          .set(snapshot.val());
-      },
-      function (errorObject) {}
-    );
-  popup_alltasks("Task has been Updated !", 2000, "alert alert-info");
-  create_unfinished_task();
-}
+function updateAll() {}
 
 let UIDDDD;
 
