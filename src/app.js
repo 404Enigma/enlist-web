@@ -1061,8 +1061,6 @@ function task_delete(task) {
   }
 }
 
-function updateAll() {}
-
 let UIDDDD;
 
 function Pvt() {
