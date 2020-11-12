@@ -1171,6 +1171,7 @@ function create_unfinished_task() {
         task_done_button.setAttribute("onclick", "task_done(this.parentElement.parentElement, this.parentElement)");
         fa_done = document.createElement("i");
         fa_done.setAttribute("class", "fa fa-check fa-2x");
+        fa_done.setAttribute("style","color: green");
 
         task_edit_button = document.createElement("button");
         task_edit_button.setAttribute("id", "task_edit_button");
@@ -1184,6 +1185,17 @@ function create_unfinished_task() {
         task_delete_button.setAttribute("onclick", "task_delete(this.parentElement.parentElement)");
         fa_delete = document.createElement("i");
         fa_delete.setAttribute("class", "fa fa-trash fa-2x");
+        fa_delete.setAttribute("style","color: red");
+
+        star_button = document.createElement("button");
+        star_button.setAttribute("id", "star_button");
+        fa_star=document.createElement("i");
+        fa_star.setAttribute("class","fas fa-star fa-2x ");
+        fa_star.setAttribute("style","color: orange");
+
+
+        
+
 
         unfinished_task_container.append(task_container);
         task_container.append(task_data);
@@ -1198,6 +1210,10 @@ function create_unfinished_task() {
         task_edit_button.append(fa_edit);
         task_tool.append(task_delete_button);
         task_delete_button.append(fa_delete);
+
+        task_tool.append(star_button);
+        star_button.append(fa_star);
+
 
         let todaytime16 = new Date();
         let todaytime1 = new Date();
@@ -1230,6 +1246,7 @@ function create_unfinished_task() {
       }
     });
 }
+
 
 function date_picker() {
   console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");

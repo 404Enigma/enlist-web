@@ -489,11 +489,32 @@
   }
 
   #task_done_button:hover {
-    background-color: green;
+    background-color: rgb(216, 205, 205);
     color: white;
   }
 
   #task_done_button:active {
+    transform: translateY(4px);
+  }
+  
+  #star_button {
+    float: right;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    margin-right: 5px;
+  }
+
+  #star_button:hover {
+    background-color: rgb(216, 205, 205);
+    color: white;
+  }
+
+  #star_button:active {
     transform: translateY(4px);
   }
 
@@ -510,8 +531,8 @@
   }
 
   #task_edit_button:hover {
-    background-color: grey;
-    color: white;
+    background-color: rgb(216, 205, 205);
+    /* color: white; */
   }
 
   #task_edit_button:active {
@@ -531,7 +552,7 @@
   }
 
   #task_delete_button:hover {
-    background-color: #fa163f;
+    background-color: rgb(216, 205, 205);
     color: white;
   }
 
@@ -1183,6 +1204,27 @@
   }
 
   #task_done_button:active {
+    transform: translateY(4px);
+  }
+
+  #star_button {
+    float: right;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    margin-right: 5px;
+  }
+
+  #star_button:hover {
+    background-color: rgb(216, 205, 205);
+    color: white;
+  }
+
+  #star_button:active {
     transform: translateY(4px);
   }
 
