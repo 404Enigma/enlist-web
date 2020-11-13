@@ -1190,8 +1190,10 @@ function create_unfinished_task() {
 
         star_button = document.createElement("button");
         star_button.setAttribute("id", "star_button");
+        star_button.setAttribute("onclick","myFunction()");
         fa_star=document.createElement("i");
-        fa_star.setAttribute("class","fas fa-star fa-2x ");
+        fa_star.setAttribute("id","toggle");
+        fa_star.setAttribute("class","far fa-star fa-2x ");
         fa_star.setAttribute("style","color: orange");
 
 
@@ -1246,6 +1248,17 @@ function create_unfinished_task() {
         }
       }
     });
+}
+
+function myFunction() {
+  var x = document.getElementById("toggle");
+  if (x.className === "far fa-star fa-2x") {
+    x.className = "fas fa-star fa-2x";
+    popup_alltasks("Task added to important !", 2000, "alert alert-warning");
+  } else {
+    x.className = "far fa-star fa-2x";
+    popup_alltasks("Task removed from important !", 2000, "alert alert-danger");
+  }
 }
 
 
