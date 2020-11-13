@@ -1257,6 +1257,11 @@ function create_unfinished_task() {
     });
 }
 
+
+
+
+
+
 function myFunction() {
   var x = document.getElementById("toggle");
   if (x.className === "far fa-star fa-2x") {
