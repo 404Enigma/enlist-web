@@ -1,3 +1,5 @@
+let checkValue;
+
 var pathEls = document.querySelectorAll("path");
 for (var i = 0; i < pathEls.length; i++) {
   var pathEl = pathEls[i];
@@ -24,7 +26,9 @@ function first() {
       console.log(UIDD);
       let prnValue = localStorage.getItem("bypassPRN");
       console.log(prnValue);
+
       localStorage.setItem("uniqueUid", UIDD);
+
       window.location.assign("./home.html");
     } else {
       // No user is signed in.

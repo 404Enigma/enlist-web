@@ -73,7 +73,9 @@ function signIn() {
           setTimeout(function () {
             if (flag === 1) {
               PRN = prnn.value;
+              checkValue = 1;
               localStorage.setItem("PRN", PRN);
+              sessionStorage.setItem("checkValue", checkValue);
               popup("Sign-in successful !", 2000, "alert alert-success");
               window.location.assign("./home.html");
               console.log("Woahhhhhhhh!");
