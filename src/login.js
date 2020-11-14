@@ -78,7 +78,9 @@ function signIn() {
               sessionStorage.setItem("checkValue", checkValue);
               prnnn = PRN;
               oneTime();
-              update_Allllll();
+              demo = user.uid;
+              //update_Allllll(demo);
+              updateTem(demo);
               popup("Sign-in successful !", 2000, "alert alert-success");
               setTimeout(function () {
                 //window.location.assign("./home.html");
@@ -116,8 +118,6 @@ function popup(sent, time, color) {
   A.setAttribute("id", "popup");
   A.innerHTML = sent;
   pass.append(A);
-  console.log(A.value);
-  console.log(pass.value);
   console.log("Execute");
   setTimeout(function () {
     $(".alert")
@@ -275,12 +275,15 @@ function oneTime() {
 
 let xyz;
 
-function update_Allllll() {
+function update_Allllll(demo) {
   let updateArr = ["B", "B1", "B2", "B3", "A", "A1", "A2", "A3", "C", "C1", "C2", "C3", "IT", "T1", "T2", "T3"];
-  let tempArr = ["B", "B3", "A1"];
+  let tempArr = ["B", "B3"];
+  //xyz = "B";
   for (let i = 0; i < tempArr.length; i++) {
     xyz = tempArr[i];
+
     console.log(xyz);
+    console.log(demo);
     firebase
       .database()
       .ref("All-Tasks" + "/" + xyz)
@@ -300,4 +303,25 @@ function update_Allllll() {
     //popup_alltasks("Task has been Updated !", 2000, "alert alert-info");
   }
   //create_unfinished_task();
+}
+
+function updateTem(demo) {
+  // firebase ref
+  xyz = "B";
+  console.log(demo);
+  let ref1 = firebase.database().ref("All-Tasks" + "/" + xyz);
+  let ref2 = firebase.database().ref("/To-Do-List/" + demo + "/" + xyz);
+
+  ref1.once(
+    "value",
+    function (snapshot) {
+      console.log(snapshot.val());
+
+      // write to user object to new location
+      ref2.set(snapshot.val());
+    },
+    function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    }
+  );
 }
