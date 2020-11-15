@@ -92,7 +92,7 @@ function signIn() {
 
               popup("Sign-in successful !", 2000, "alert alert-success");
               setTimeout(function () {
-                window.location.assign("./home.html");
+                //window.location.assign("./home.html");
               }, 3000);
 
               console.log("Woahhhhhhhh!");
@@ -154,9 +154,9 @@ function oneTime(demo) {
   console.log(TaskcheckValue);
   if (TaskcheckValue == 1) {
     console.log(TaskcheckValue);
-    if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129) {
-      let arrClass = ["B", "A", "C", "IT"];
-      let arrDivision = ["B1", "B2", "B3", "A1", "A2", "A3", "C1", "C2", "C3", "T1", "T2", "T3"];
+    if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129 || Number(prnnn) == 19070122134) {
+      let arrClass = ["A", "C", "IT", "B"];
+      let arrDivision = ["B1", "B2", "A1", "A2", "A3", "C1", "C2", "C3", "T1", "T2", "T3", "B3"];
 
       for (let i = 0; i < arrClass.length; i++) {
         xyzClass = arrClass[i];
@@ -173,6 +173,9 @@ function oneTime(demo) {
         updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
         firebase.database().ref().update(updates1);
       }
+
+      console.log(xyz);
+      console.log(xyzClass);
     } else if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
       xyz = "B1";
 
