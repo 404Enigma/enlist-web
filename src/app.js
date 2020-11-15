@@ -31,6 +31,7 @@ let uniqkey, finalDate;
 
 let encrypted, encryptKey;
 var db = firebase.firestore();
+let impTask = db.collection("starflag").doc("Class");
 
 var today = new Date();
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -1066,10 +1067,39 @@ function create_unfinished_task() {
 
         star_button = document.createElement("button");
         star_button.setAttribute("id", "star_button");
-        star_button.setAttribute("onclick", "myFunction(this.parentElement.parentElement, this.parentElement)");
+
         fa_star = document.createElement("i");
         fa_star.setAttribute("id", "toggle");
-        fa_star.setAttribute("class", "far fa-star fa-2x ");
+        var x = document.getElementById("toggle");
+        star_button.setAttribute("onclick", "myFunction(this.parentElement.parentElement, this.parentElement,fa_star)");
+
+        impTask.onSnapshot(function (doc) {
+          console.log("Current data: ", doc.data());
+        });
+
+        impTask
+          .get()
+          .then(function (querySnapshot) {
+            fa_star.setAttribute("class", "fas fa-star fa-2x "); //filled
+            fa_star.setAttribute("style", "color: orange");
+            // querySnapshot.forEach(function (doc) {
+            //   // doc.data() is never undefined for query doc snapshots
+            //   console.log(doc.id, " => ", doc.data());
+            // });
+          })
+          .catch(function (error) {
+            console.log("Error getting documents: ", error);
+          });
+
+        // if (impTask.where("starflag", "==", 0)) {
+        //   fa_star.setAttribute("class", "far fa-star fa-2x "); //unfilled
+        //   fa_star.setAttribute("style", "color: orange");
+        // } else {
+        //   fa_star.setAttribute("class", "far fa-star fa-2x "); //unfilled
+        //   fa_star.setAttribute("style", "color: orange");
+        // }
+
+        fa_star.setAttribute("class", "far fa-star fa-2x "); //unfilled
         fa_star.setAttribute("style", "color: orange");
 
         unfinished_task_container.append(task_container);
@@ -1121,13 +1151,35 @@ function create_unfinished_task() {
     });
 }
 
-function myFunction(task, task_tool) {
-  var x = document.getElementById("toggle");
+let starflag, x;
+
+function myFunction(task, task_tool, x) {
+  //x = document.getElementsByClassName("container")[4];
+  key = task.getAttribute("data-key");
+  console.log(key);
+  //console.log(x);
+  console.log(task);
+  console.log(task_tool);
+
   if (x.className === "far fa-star fa-2x") {
-    x.className = "fas fa-star fa-2x";
+    //unfilled
+    x.className = "fas fa-star fa-2x"; // filled
+    starflag = 1;
+    console.log(xyz);
+
+    impTask.set({
+      starflag: starflag,
+      class: xyz,
+    });
+
     popup_alltasks("Task added to important !", 2000, "alert alert-warning");
   } else {
     x.className = "far fa-star fa-2x";
+    starflag = 0;
+    impTask.set({
+      starflag: starflag,
+      class: xyz,
+    });
     popup_alltasks("Task removed from important !", 2000, "alert alert-danger");
   }
 }

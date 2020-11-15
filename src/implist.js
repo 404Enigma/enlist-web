@@ -3,6 +3,8 @@ let impUID = localStorage.getItem("uniqueUid");
 
 demo = impUID;
 
+function ImportantTask() {}
+
 function create_unfinished_task() {
   console.log(xyz);
   unfinished_task_container = document.getElementsByClassName("container")[0];

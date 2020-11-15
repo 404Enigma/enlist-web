@@ -80,10 +80,10 @@ function signIn() {
               oneTime();
               demo = user.uid;
               //update_Allllll(demo);
-              updateTem(demo);
+              //updateTem(demo);
               popup("Sign-in successful !", 2000, "alert alert-success");
               setTimeout(function () {
-                //window.location.assign("./home.html");
+                window.location.assign("./home.html");
               }, 3000);
 
               console.log("Woahhhhhhhh!");
