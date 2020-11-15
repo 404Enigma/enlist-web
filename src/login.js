@@ -80,7 +80,7 @@ function signIn() {
 
               demo = user.uid;
               let aaa = oneTime(demo);
-              //update_Allllll(demo);
+
               console.log("aaa");
               console.log(aaa);
               console.log(aaa[0]);
@@ -88,11 +88,11 @@ function signIn() {
 
               updateDivision = aaa[0];
               updateClass = aaa[1];
-              updateTem(demo, updateDivision);
-              updateTem11(demo, updateClass);
+              onetimeUpdate(demo, updateDivision, updateClass);
+
               popup("Sign-in successful !", 2000, "alert alert-success");
               setTimeout(function () {
-                //window.location.assign("./home.html");
+                window.location.assign("./home.html");
               }, 3000);
 
               console.log("Woahhhhhhhh!");
@@ -301,42 +301,14 @@ function oneTime(demo) {
 
 let xyz;
 
-function update_Allllll(demo) {
-  let updateArr = ["B", "B1", "B2", "B3", "A", "A1", "A2", "A3", "C", "C1", "C2", "C3", "IT", "T1", "T2", "T3"];
-  let tempArr = ["B", "B3"];
-  //xyz = "B";
-  for (let i = 0; i < tempArr.length; i++) {
-    xyz = tempArr[i];
-
-    console.log(xyz);
-    console.log(demo);
-    firebase
-      .database()
-      .ref("All-Tasks" + "/" + xyz)
-      .once(
-        "value",
-        function (snapshot) {
-          //console.log(snapshot.val());
-          console.log(demo);
-          firebase
-            .database()
-            .ref("/To-Do-List/" + demo + "/" + xyz)
-            .set(snapshot.val());
-          console.log(snapshot.val());
-        },
-        function (errorObject) {}
-      );
-    //popup_alltasks("Task has been Updated !", 2000, "alert alert-info");
-  }
-  //create_unfinished_task();
-}
-
-function updateTem(demo, updateDivision) {
-  // firebase ref
-  xyz = updateDivision;
+function onetimeUpdate(demo, updateDivision, updateClass) {
+  xyzdiv = updateDivision;
+  xyzclasssss = updateClass;
   console.log(demo);
-  let ref1 = firebase.database().ref("All-Tasks" + "/" + xyz);
-  let ref2 = firebase.database().ref("/To-Do-List/" + demo + "/" + xyz);
+  let ref1 = firebase.database().ref("All-Tasks" + "/" + xyzdiv);
+  let ref2 = firebase.database().ref("/To-Do-List/" + demo + "/" + xyzdiv);
+  let ref3 = firebase.database().ref("All-Tasks" + "/" + xyzclasssss);
+  let ref4 = firebase.database().ref("/To-Do-List/" + demo + "/" + xyzclasssss);
 
   ref1.once(
     "value",
@@ -349,14 +321,6 @@ function updateTem(demo, updateDivision) {
       console.log("The read failed: " + errorObject.code);
     }
   );
-}
-
-function updateTem11(demo, updateClass) {
-  // firebase ref
-  xyz = updateClass;
-  console.log(demo);
-  let ref3 = firebase.database().ref("All-Tasks" + "/" + xyz);
-  let ref4 = firebase.database().ref("/To-Do-List/" + demo + "/" + xyz);
 
   ref3.once(
     "value",
