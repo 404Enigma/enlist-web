@@ -161,17 +161,13 @@ function oneTime(demo) {
       for (let i = 0; i < arrClass.length; i++) {
         xyzClass = arrClass[i];
 
-        var updates1 = {};
-        updates1["/Source/" + xyzClass + "/" + demo] = Number(prnnn);
-        firebase.database().ref().update(updates1);
+        nodeCreate(xyzClass);
       }
 
       for (let i = 0; i < arrDivision.length; i++) {
         xyz = arrDivision[i];
 
-        var updates1 = {};
-        updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-        firebase.database().ref().update(updates1);
+        nodeCreate(xyz);
       }
 
       console.log(xyz);
@@ -179,110 +175,60 @@ function oneTime(demo) {
     } else if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
       xyz = "B1";
 
-      var updates1 = {};
-      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-      firebase.database().ref().update(updates1);
+      nodeCreate(xyz);
       //create_unfinished_task();
     } else if (Number(prnnn) >= 19070122096 && Number(prnnn) <= 19070122119) {
       xyz = "B2";
 
-      var updates1 = {};
-      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-      firebase.database().ref().update(updates1);
+      nodeCreate(xyz);
       //create_unfinished_task();
     } else if (Number(prnnn) >= 19070122120 && Number(prnnn) <= 19070122145) {
       xyz = "B3";
 
-      var updates1 = {};
-      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-      firebase.database().ref().update(updates1);
-      console.log(xyz);
-      //create_unfinished_task();
+      nodeCreate(xyz);
     } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122025) {
       xyz = "A1";
 
-      var updates1 = {};
-      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-      firebase.database().ref().update(updates1);
-      //create_unfinished_task();
+      nodeCreate(xyz);
     } else if (Number(prnnn) >= 19070122026 && Number(prnnn) <= 19070122048) {
       xyz = "A2";
-
-      var updates1 = {};
-      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-      firebase.database().ref().update(updates1);
-      //create_unfinished_task();
+      nodeCreate(xyz);
     } else if (Number(prnnn) >= 19070122049 && Number(prnnn) <= 19070122072) {
       xyz = "A3";
-
-      var updates1 = {};
-      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-      firebase.database().ref().update(updates1);
-      //create_unfinished_task();
+      nodeCreate(xyz);
     } else if (Number(prnnn) >= 19070122146 && Number(prnnn) <= 19070122167) {
       xyz = "C1";
-
-      var updates1 = {};
-      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-      firebase.database().ref().update(updates1);
+      nodeCreate(xyz);
     } else if (Number(prnnn) >= 19070122168 && Number(prnnn) <= 19070122190) {
       xyz = "C2";
-
-      var updates1 = {};
-      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-      firebase.database().ref().update(updates1);
+      nodeCreate(xyz);
     } else if (Number(prnnn) >= 19070122191 && Number(prnnn) <= 20070122515) {
       xyz = "C3";
-
-      var updates1 = {};
-      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-      firebase.database().ref().update(updates1);
+      nodeCreate(xyz);
     } else if (Number(prnnn) >= 19070124001 && Number(prnnn) <= 19070124028) {
       xyz = "T1";
-
-      var updates1 = {};
-      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-      firebase.database().ref().update(updates1);
+      nodeCreate(xyz);
     } else if (Number(prnnn) >= 19070124029 && Number(prnnn) <= 19070124055) {
       xyz = "T2";
-
-      var updates1 = {};
-      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-      firebase.database().ref().update(updates1);
+      nodeCreate(xyz);
     } else if (Number(prnnn) >= 19070124056 && Number(prnnn) <= 20070124502) {
       xyz = "T3";
-
-      var updates1 = {};
-      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-      firebase.database().ref().update(updates1);
+      nodeCreate(xyz);
     }
 
     if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122145) {
       xyzClass = "B";
 
-      var updates1 = {};
-      updates1["/Source/" + xyzClass + "/" + demo] = Number(prnnn);
-      firebase.database().ref().update(updates1);
-      console.log(xyzClass);
-      //return 1;
+      nodeCreate(xyzClass);
     } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
       xyzClass = "A";
-
-      var updates1 = {};
-      updates1["/Source/" + xyzClass + "/" + demo] = Number(prnnn);
-      firebase.database().ref().update(updates1);
+      nodeCreate(xyzClass);
     } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
       xyzClass = "C";
-
-      var updates1 = {};
-      updates1["/Source/" + xyzClass + "/" + demo] = Number(prnnn);
-      firebase.database().ref().update(updates1);
+      nodeCreate(xyzClass);
     } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
       xyzClass = "IT";
-
-      var updates1 = {};
-      updates1["/Source/" + xyzClass + "/" + demo] = Number(prnnn);
-      firebase.database().ref().update(updates1);
+      nodeCreate(xyzClass);
     }
 
     console.log(xyz);
@@ -336,4 +282,10 @@ function onetimeUpdate(demo, updateDivision, updateClass) {
       console.log("The read failed: " + errorObject.code);
     }
   );
+}
+
+function nodeCreate(value) {
+  var updates1 = {};
+  updates1["/Source/" + value + "/" + demo] = Number(prnnn);
+  firebase.database().ref().update(updates1);
 }
