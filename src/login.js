@@ -12,7 +12,7 @@
 //     return false;
 //     }
 //     }
-console.log("HEREEEEEEEEEEEEEEEEEEEEEEEEEEEE!");
+
 var db = firebase.firestore();
 
 var prnn = document.getElementById("prn");
@@ -52,11 +52,11 @@ function signIn() {
         .get()
         .then(function (querySnapshot) {
           querySnapshot.forEach(function (doc) {
-            console.log(doc.id);
-            console.log(user.email);
+            // console.log(doc.id);
+            // console.log(user.email);
             let pry = doc.get("PRN");
-            console.log(pry);
-            console.log(prnn);
+            // console.log(pry);
+            // console.log(prnn);
 
             if (doc.id === user.email) {
               console.log("Document data:", doc.data());
@@ -77,13 +77,22 @@ function signIn() {
               localStorage.setItem("PRN", PRN);
               sessionStorage.setItem("checkValue", checkValue);
               prnnn = PRN;
-              oneTime();
+
               demo = user.uid;
+              let aaa = oneTime(demo);
               //update_Allllll(demo);
-              //updateTem(demo);
+              console.log("aaa");
+              console.log(aaa);
+              console.log(aaa[0]);
+              console.log(aaa[1]);
+
+              updateDivision = aaa[0];
+              updateClass = aaa[1];
+              updateTem(demo, updateDivision);
+              updateTem11(demo, updateClass);
               popup("Sign-in successful !", 2000, "alert alert-success");
               setTimeout(function () {
-                window.location.assign("./home.html");
+                //window.location.assign("./home.html");
               }, 3000);
 
               console.log("Woahhhhhhhh!");
@@ -134,143 +143,160 @@ function sessionSignOut() {
 }
 
 let TaskcheckValue = sessionStorage.getItem("checkValue");
+let xyzClass;
 
-function oneTime() {
+function oneTime(demo) {
   flagTime = 1;
-  firebase.auth().onAuthStateChanged(function (user) {
-    console.log("12345");
-    if (user !== null) {
-      demo = user.uid;
-      console.log(user.uid);
-      console.log(TaskcheckValue);
-      if (TaskcheckValue == 1) {
-        console.log(TaskcheckValue);
-        if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129 || Number(prnnn) == 19070122134) {
-          let arr = ["B", "B1", "B2", "B3", "A", "A1", "A2", "A3", "C", "C1", "C2", "C3", "IT", "T1", "T2", "T3"];
-          for (let i = 0; i < arr.length; i++) {
-            xyz = arr[i];
-            //console.log(xyz);
-            var updates1 = {};
-            updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-            firebase.database().ref().update(updates1);
-          }
-        } else if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
-          xyz = "B1";
 
-          var updates1 = {};
-          updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-          firebase.database().ref().update(updates1);
-          //create_unfinished_task();
-        } else if (Number(prnnn) >= 19070122096 && Number(prnnn) <= 19070122119) {
-          xyz = "B2";
+  console.log("12345");
+  //demo = user.uid;
+  //console.log(user.uid);
+  console.log(TaskcheckValue);
+  if (TaskcheckValue == 1) {
+    console.log(TaskcheckValue);
+    if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129) {
+      let arrClass = ["B", "A", "C", "IT"];
+      let arrDivision = ["B1", "B2", "B3", "A1", "A2", "A3", "C1", "C2", "C3", "T1", "T2", "T3"];
 
-          var updates1 = {};
-          updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-          firebase.database().ref().update(updates1);
-          //create_unfinished_task();
-        } else if (Number(prnnn) >= 19070122120 && Number(prnnn) <= 19070122145) {
-          xyz = "B3";
+      for (let i = 0; i < arrClass.length; i++) {
+        xyzClass = arrClass[i];
 
-          var updates1 = {};
-          updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-          firebase.database().ref().update(updates1);
-          //create_unfinished_task();
-        } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122025) {
-          xyz = "A1";
-
-          var updates1 = {};
-          updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-          firebase.database().ref().update(updates1);
-          //create_unfinished_task();
-        } else if (Number(prnnn) >= 19070122026 && Number(prnnn) <= 19070122048) {
-          xyz = "A2";
-
-          var updates1 = {};
-          updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-          firebase.database().ref().update(updates1);
-          //create_unfinished_task();
-        } else if (Number(prnnn) >= 19070122049 && Number(prnnn) <= 19070122072) {
-          xyz = "A3";
-
-          var updates1 = {};
-          updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-          firebase.database().ref().update(updates1);
-          //create_unfinished_task();
-        } else if (Number(prnnn) >= 19070122146 && Number(prnnn) <= 19070122167) {
-          xyz = "C1";
-
-          var updates1 = {};
-          updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-          firebase.database().ref().update(updates1);
-        } else if (Number(prnnn) >= 19070122168 && Number(prnnn) <= 19070122190) {
-          xyz = "C2";
-
-          var updates1 = {};
-          updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-          firebase.database().ref().update(updates1);
-        } else if (Number(prnnn) >= 19070122191 && Number(prnnn) <= 20070122515) {
-          xyz = "C3";
-
-          var updates1 = {};
-          updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-          firebase.database().ref().update(updates1);
-        } else if (Number(prnnn) >= 19070124001 && Number(prnnn) <= 19070124028) {
-          xyz = "T1";
-
-          var updates1 = {};
-          updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-          firebase.database().ref().update(updates1);
-        } else if (Number(prnnn) >= 19070124029 && Number(prnnn) <= 19070124055) {
-          xyz = "T2";
-
-          var updates1 = {};
-          updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-          firebase.database().ref().update(updates1);
-        } else if (Number(prnnn) >= 19070124056 && Number(prnnn) <= 20070124502) {
-          xyz = "T3";
-
-          var updates1 = {};
-          updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-          firebase.database().ref().update(updates1);
-        }
-
-        if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122145) {
-          xyz = "B";
-
-          var updates1 = {};
-          updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-          firebase.database().ref().update(updates1);
-        } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
-          xyz = "A";
-
-          var updates1 = {};
-          updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-          firebase.database().ref().update(updates1);
-        } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
-          xyz = "C";
-
-          var updates1 = {};
-          updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-          firebase.database().ref().update(updates1);
-        } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
-          xyz = "IT";
-
-          var updates1 = {};
-          updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
-          firebase.database().ref().update(updates1);
-        }
-      } else {
-        console.log(TaskcheckValue);
-        console.log("I am hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee!!1");
+        var updates1 = {};
+        updates1["/Source/" + xyzClass + "/" + demo] = Number(prnnn);
+        firebase.database().ref().update(updates1);
       }
-    } else {
-      // alert("Please login");
-      popup_alltasks2("Please login !", 4000, "alert alert-warning");
-      setTimeout(function () {
-        window.location.assign("login.html");
-      }, 2000);
+
+      for (let i = 0; i < arrDivision.length; i++) {
+        xyz = arrDivision[i];
+
+        var updates1 = {};
+        updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+        firebase.database().ref().update(updates1);
+      }
+    } else if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
+      xyz = "B1";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+      //create_unfinished_task();
+    } else if (Number(prnnn) >= 19070122096 && Number(prnnn) <= 19070122119) {
+      xyz = "B2";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+      //create_unfinished_task();
+    } else if (Number(prnnn) >= 19070122120 && Number(prnnn) <= 19070122145) {
+      xyz = "B3";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+      console.log(xyz);
+      //create_unfinished_task();
+    } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122025) {
+      xyz = "A1";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+      //create_unfinished_task();
+    } else if (Number(prnnn) >= 19070122026 && Number(prnnn) <= 19070122048) {
+      xyz = "A2";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+      //create_unfinished_task();
+    } else if (Number(prnnn) >= 19070122049 && Number(prnnn) <= 19070122072) {
+      xyz = "A3";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+      //create_unfinished_task();
+    } else if (Number(prnnn) >= 19070122146 && Number(prnnn) <= 19070122167) {
+      xyz = "C1";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+    } else if (Number(prnnn) >= 19070122168 && Number(prnnn) <= 19070122190) {
+      xyz = "C2";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+    } else if (Number(prnnn) >= 19070122191 && Number(prnnn) <= 20070122515) {
+      xyz = "C3";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+    } else if (Number(prnnn) >= 19070124001 && Number(prnnn) <= 19070124028) {
+      xyz = "T1";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+    } else if (Number(prnnn) >= 19070124029 && Number(prnnn) <= 19070124055) {
+      xyz = "T2";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+    } else if (Number(prnnn) >= 19070124056 && Number(prnnn) <= 20070124502) {
+      xyz = "T3";
+
+      var updates1 = {};
+      updates1["/Source/" + xyz + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
     }
-  });
+
+    if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122145) {
+      xyzClass = "B";
+
+      var updates1 = {};
+      updates1["/Source/" + xyzClass + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+      console.log(xyzClass);
+      //return 1;
+    } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
+      xyzClass = "A";
+
+      var updates1 = {};
+      updates1["/Source/" + xyzClass + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+    } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
+      xyzClass = "C";
+
+      var updates1 = {};
+      updates1["/Source/" + xyzClass + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+    } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
+      xyzClass = "IT";
+
+      var updates1 = {};
+      updates1["/Source/" + xyzClass + "/" + demo] = Number(prnnn);
+      firebase.database().ref().update(updates1);
+    }
+
+    console.log(xyz);
+    console.log(xyzClass);
+    //return 1;
+    //return xyz;
+  } else {
+    console.log(TaskcheckValue);
+    console.log("I am hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee!!1");
+  }
+
+  console.log(xyz);
+  console.log(xyzClass);
+
+  //console.log(ccc);
+  console.log(xyz);
+  return [xyz, xyzClass];
 }
 
 let xyz;
@@ -305,9 +331,9 @@ function update_Allllll(demo) {
   //create_unfinished_task();
 }
 
-function updateTem(demo) {
+function updateTem(demo, updateDivision) {
   // firebase ref
-  xyz = "B";
+  xyz = updateDivision;
   console.log(demo);
   let ref1 = firebase.database().ref("All-Tasks" + "/" + xyz);
   let ref2 = firebase.database().ref("/To-Do-List/" + demo + "/" + xyz);
@@ -317,8 +343,27 @@ function updateTem(demo) {
     function (snapshot) {
       console.log(snapshot.val());
 
-      // write to user object to new location
-      ref2.set(snapshot.val());
+      ref2.set(snapshot.val()); //ref1 data is copied to ref2
+    },
+    function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    }
+  );
+}
+
+function updateTem11(demo, updateClass) {
+  // firebase ref
+  xyz = updateClass;
+  console.log(demo);
+  let ref3 = firebase.database().ref("All-Tasks" + "/" + xyz);
+  let ref4 = firebase.database().ref("/To-Do-List/" + demo + "/" + xyz);
+
+  ref3.once(
+    "value",
+    function (snapshot) {
+      console.log(snapshot.val());
+
+      ref4.set(snapshot.val()); //ref1 data is copied to ref2
     },
     function (errorObject) {
       console.log("The read failed: " + errorObject.code);
