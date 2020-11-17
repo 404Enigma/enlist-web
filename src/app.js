@@ -1065,42 +1065,42 @@ function create_unfinished_task() {
         fa_delete.setAttribute("class", "fa fa-trash fa-2x");
         fa_delete.setAttribute("style", "color: red");
 
-        star_button = document.createElement("button");
-        star_button.setAttribute("id", "star_button");
+        // star_button = document.createElement("button");
+        // star_button.setAttribute("id", "star_button");
 
-        fa_star = document.createElement("i");
-        fa_star.setAttribute("id", "toggle");
-        var x = document.getElementById("toggle");
-        star_button.setAttribute("onclick", "myFunction(this.parentElement.parentElement, this.parentElement,fa_star)");
+        // fa_star = document.createElement("i");
+        // fa_star.setAttribute("id", "toggle");
+        // var x = document.getElementById("toggle");
+        // star_button.setAttribute("onclick", "myFunction(this.parentElement.parentElement, this.parentElement,fa_star)");
 
-        impTask.onSnapshot(function (doc) {
-          console.log("Current data: ", doc.data());
-        });
+        // impTask.onSnapshot(function (doc) {
+        //   console.log("Current data: ", doc.data());
+        // });
 
-        impTask
-          .get()
-          .then(function (querySnapshot) {
-            fa_star.setAttribute("class", "fas fa-star fa-2x "); //filled
-            fa_star.setAttribute("style", "color: orange");
-            // querySnapshot.forEach(function (doc) {
-            //   // doc.data() is never undefined for query doc snapshots
-            //   console.log(doc.id, " => ", doc.data());
-            // });
-          })
-          .catch(function (error) {
-            console.log("Error getting documents: ", error);
-          });
+        // impTask
+        //   .get()
+        //   .then(function (querySnapshot) {
+        //     fa_star.setAttribute("class", "fas fa-star fa-2x "); //filled
+        //     fa_star.setAttribute("style", "color: orange");
+        //     // querySnapshot.forEach(function (doc) {
+        //     //   // doc.data() is never undefined for query doc snapshots
+        //     //   console.log(doc.id, " => ", doc.data());
+        //     // });
+        //   })
+        //   .catch(function (error) {
+        //     console.log("Error getting documents: ", error);
+        //   });
 
-        // if (impTask.where("starflag", "==", 0)) {
-        //   fa_star.setAttribute("class", "far fa-star fa-2x "); //unfilled
-        //   fa_star.setAttribute("style", "color: orange");
-        // } else {
-        //   fa_star.setAttribute("class", "far fa-star fa-2x "); //unfilled
-        //   fa_star.setAttribute("style", "color: orange");
-        // }
+        // // if (impTask.where("starflag", "==", 0)) {
+        // //   fa_star.setAttribute("class", "far fa-star fa-2x "); //unfilled
+        // //   fa_star.setAttribute("style", "color: orange");
+        // // } else {
+        // //   fa_star.setAttribute("class", "far fa-star fa-2x "); //unfilled
+        // //   fa_star.setAttribute("style", "color: orange");
+        // // }
 
-        fa_star.setAttribute("class", "far fa-star fa-2x "); //unfilled
-        fa_star.setAttribute("style", "color: orange");
+        // fa_star.setAttribute("class", "far fa-star fa-2x "); //unfilled
+        // fa_star.setAttribute("style", "color: orange");
 
         unfinished_task_container.append(task_container);
         task_container.append(task_data);
@@ -1116,8 +1116,8 @@ function create_unfinished_task() {
         task_tool.append(task_delete_button);
         task_delete_button.append(fa_delete);
 
-        task_tool.append(star_button);
-        star_button.append(fa_star);
+        // task_tool.append(star_button);
+        // star_button.append(fa_star);
 
         let todaytime16 = new Date();
         let todaytime1 = new Date();
@@ -1153,36 +1153,36 @@ function create_unfinished_task() {
 
 let starflag, x;
 
-function myFunction(task, task_tool, x) {
-  //x = document.getElementsByClassName("container")[4];
-  key = task.getAttribute("data-key");
-  console.log(key);
-  //console.log(x);
-  console.log(task);
-  console.log(task_tool);
+// function myFunction(task, task_tool, x) {
+//   //x = document.getElementsByClassName("container")[4];
+//   key = task.getAttribute("data-key");
+//   console.log(key);
+//   //console.log(x);
+//   console.log(task);
+//   console.log(task_tool);
 
-  if (x.className === "far fa-star fa-2x") {
-    //unfilled
-    x.className = "fas fa-star fa-2x"; // filled
-    starflag = 1;
-    console.log(xyz);
+//   if (x.className === "far fa-star fa-2x") {
+//     //unfilled
+//     x.className = "fas fa-star fa-2x"; // filled
+//     starflag = 1;
+//     console.log(xyz);
 
-    impTask.set({
-      starflag: starflag,
-      class: xyz,
-    });
+//     impTask.set({
+//       starflag: starflag,
+//       class: xyz,
+//     });
 
-    popup_alltasks("Task added to important !", 2000, "alert alert-warning");
-  } else {
-    x.className = "far fa-star fa-2x";
-    starflag = 0;
-    impTask.set({
-      starflag: starflag,
-      class: xyz,
-    });
-    popup_alltasks("Task removed from important !", 2000, "alert alert-danger");
-  }
-}
+//     popup_alltasks("Task added to important !", 2000, "alert alert-warning");
+//   } else {
+//     x.className = "far fa-star fa-2x";
+//     starflag = 0;
+//     impTask.set({
+//       starflag: starflag,
+//       class: xyz,
+//     });
+//     popup_alltasks("Task removed from important !", 2000, "alert alert-danger");
+//   }
+// }
 
 function date_picker() {
   console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
