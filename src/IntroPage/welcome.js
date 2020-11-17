@@ -29,11 +29,11 @@ function first() {
 
       localStorage.setItem("uniqueUid", UIDD);
 
-      window.location.assign("./home.html");
+      window.location.assign("../main/home.html");
     } else {
       // No user is signed in.
       console.log("bbbbbbbbbbbbb");
-      window.location.assign("./login.html");
+      window.location.assign("../Login/login.html");
     }
   });
 }

@@ -126,7 +126,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     // alert("Please login");
     popup_alltasks2("Please login !", 4000, "alert alert-warning");
     setTimeout(function () {
-      window.location.assign("login.html");
+      window.location.assign("../Login/login.html");
     }, 2000);
   }
 });
@@ -155,8 +155,6 @@ function Class() {
   hello.style.visibility = "visible";
   personal.disabled = false;
   shared.disabled = false;
-  update_alert.style.visibility = "visible";
-  update_alert.disabled = false;
 
   if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122145) {
     xyz = "B";
@@ -191,8 +189,6 @@ function Division() {
   hello.style.visibility = "visible";
   personal.disabled = false;
   shared.disabled = false;
-  update_alert.style.visibility = "visible";
-  update_alert.disabled = false;
 
   if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129) {
     xyz = "B3";
@@ -951,15 +947,12 @@ function Pvt() {
       let personal = document.getElementById("personalList");
       let shared = document.getElementById("sharedList");
       let hello = document.getElementById("hello");
-      let update_alert = document.getElementById("update_alert");
 
       personal.style.visibility = "hidden";
       shared.style.visibility = "hidden";
       personal.disabled = true;
       shared.disabled = true;
       hello.style.visibility = "hidden";
-      update_alert.style.visibility = "hidden";
-      update_alert.disabled = true;
 
       xyz = "Pvt";
       document.getElementById("finish_task_header").innerHTML = "Personal";
