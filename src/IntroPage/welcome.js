@@ -17,7 +17,7 @@ for (var i = 0; i < pathEls.length; i++) {
   });
 }
 
-function first() {
+function first(ID) {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       // User is signed in.
@@ -28,8 +28,27 @@ function first() {
       console.log(prnValue);
 
       localStorage.setItem("uniqueUid", UIDD);
+      get_PRN = firebase.database().ref("/PRN-source/" + "/" + UIDD);
+      console.log(get_PRN);
 
-      window.location.assign("../main/home.html");
+      get_PRN.on(
+        "value",
+        function (snapshot) {
+          console.log(snapshot.val());
+          console.log(ID);
+          let get_PRN_value = snapshot.val();
+
+          if (get_PRN_value === ID) {
+            console.log("qqqqqqqqqqqqqqqqqqqqqq");
+            window.location.assign("../main/home.html");
+          } else {
+            window.location.assign("../Login/login.html");
+          }
+        },
+        function (error) {
+          console.log("Error: " + error.code);
+        }
+      );
     } else {
       // No user is signed in.
       console.log("bbbbbbbbbbbbb");
@@ -41,22 +60,29 @@ function first() {
 // let BBB = document.getElementById("BBB");
 // console.log(BBB.getAttribute("value"));
 
-function CS_A() {
+function CS_A(ID) {
   sessionStorage.setItem("class", "CS-A");
-  first();
+  console.log({ ID });
+  first(ID);
 }
 
-function CS_B() {
+function CS_B(ID) {
   sessionStorage.setItem("class", "CS-B");
-  first();
+  console.log({ ID });
+
+  first(ID);
 }
 
-function CS_C() {
+function CS_C(ID) {
   sessionStorage.setItem("class", "CS-C");
-  first();
+  console.log({ ID });
+
+  first(ID);
 }
 
-function IT() {
+function IT(ID) {
   sessionStorage.setItem("class", "IT");
-  first();
+  console.log({ ID });
+
+  first(ID);
 }

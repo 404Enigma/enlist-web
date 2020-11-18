@@ -79,7 +79,7 @@ function signIn() {
               prnnn = PRN;
 
               demo = user.uid;
-              let aaa = oneTime(demo);
+              let aaa = oneTime(demo, checkValue);
 
               console.log("aaa");
               console.log(aaa);
@@ -92,7 +92,7 @@ function signIn() {
 
               popup("Sign-in successful !", 2000, "alert alert-success");
               setTimeout(function () {
-                window.location.assign("../main/home.html");
+                //window.location.assign("../main/home.html");
               }, 3000);
 
               console.log("Woahhhhhhhh!");
@@ -145,14 +145,14 @@ function sessionSignOut() {
 let TaskcheckValue = sessionStorage.getItem("checkValue");
 let xyzClass;
 
-function oneTime(demo) {
+function oneTime(demo, checkValue) {
   flagTime = 1;
 
   console.log("12345");
   //demo = user.uid;
   //console.log(user.uid);
   console.log(TaskcheckValue);
-  if (TaskcheckValue == 1) {
+  if (checkValue == 1) {
     console.log(TaskcheckValue);
     if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129 || Number(prnnn) == 19070122134) {
       let arrClass = ["A", "C", "IT", "B"];
@@ -161,13 +161,13 @@ function oneTime(demo) {
       for (let i = 0; i < arrClass.length; i++) {
         xyzClass = arrClass[i];
 
-        nodeCreate(xyzClass);
+        nodeCreate(xyzClass, prnnn);
       }
 
       for (let i = 0; i < arrDivision.length; i++) {
         xyz = arrDivision[i];
 
-        nodeCreate(xyz);
+        nodeCreate(xyz, prnnn);
       }
 
       console.log(xyz);
@@ -175,60 +175,61 @@ function oneTime(demo) {
     } else if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
       xyz = "B1";
 
-      nodeCreate(xyz);
+      nodeCreate(xyz), prnnn;
       //create_unfinished_task();
     } else if (Number(prnnn) >= 19070122096 && Number(prnnn) <= 19070122119) {
       xyz = "B2";
 
-      nodeCreate(xyz);
+      nodeCreate(xyz, prnnn);
       //create_unfinished_task();
     } else if (Number(prnnn) >= 19070122120 && Number(prnnn) <= 19070122145) {
       xyz = "B3";
 
-      nodeCreate(xyz);
+      nodeCreate(xyz, prnnn);
+      console.log(xyz);
     } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122025) {
       xyz = "A1";
 
-      nodeCreate(xyz);
+      nodeCreate(xyz, prnnn);
     } else if (Number(prnnn) >= 19070122026 && Number(prnnn) <= 19070122048) {
       xyz = "A2";
-      nodeCreate(xyz);
+      nodeCreate(xyz, prnnn);
     } else if (Number(prnnn) >= 19070122049 && Number(prnnn) <= 19070122072) {
       xyz = "A3";
-      nodeCreate(xyz);
+      nodeCreate(xyz, prnnn);
     } else if (Number(prnnn) >= 19070122146 && Number(prnnn) <= 19070122167) {
       xyz = "C1";
-      nodeCreate(xyz);
+      nodeCreate(xyz, prnnn);
     } else if (Number(prnnn) >= 19070122168 && Number(prnnn) <= 19070122190) {
       xyz = "C2";
-      nodeCreate(xyz);
+      nodeCreate(xyz, prnnn);
     } else if (Number(prnnn) >= 19070122191 && Number(prnnn) <= 20070122515) {
       xyz = "C3";
-      nodeCreate(xyz);
+      nodeCreate(xyz, prnnn);
     } else if (Number(prnnn) >= 19070124001 && Number(prnnn) <= 19070124028) {
       xyz = "T1";
-      nodeCreate(xyz);
+      nodeCreate(xyz, prnnn);
     } else if (Number(prnnn) >= 19070124029 && Number(prnnn) <= 19070124055) {
       xyz = "T2";
-      nodeCreate(xyz);
+      nodeCreate(xyz, prnnn);
     } else if (Number(prnnn) >= 19070124056 && Number(prnnn) <= 20070124502) {
       xyz = "T3";
-      nodeCreate(xyz);
+      nodeCreate(xyz), prnnn;
     }
 
     if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122145) {
       xyzClass = "B";
 
-      nodeCreate(xyzClass);
+      nodeCreate(xyzClass, prnnn);
     } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
       xyzClass = "A";
-      nodeCreate(xyzClass);
+      nodeCreate(xyzClass, prnnn);
     } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
       xyzClass = "C";
-      nodeCreate(xyzClass);
+      nodeCreate(xyzClass, prnnn);
     } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
       xyzClass = "IT";
-      nodeCreate(xyzClass);
+      nodeCreate(xyzClass, prnnn);
     }
 
     console.log(xyz);
@@ -284,8 +285,15 @@ function onetimeUpdate(demo, updateDivision, updateClass) {
   );
 }
 
-function nodeCreate(value) {
-  var updates1 = {};
+async function nodeCreate(value, prnnn) {
+  let updates1 = {};
   updates1["/Source/" + value + "/" + demo] = Number(prnnn);
-  firebase.database().ref().update(updates1);
+  await firebase.database().ref().update(updates1);
+
+  let prn_source = {};
+  prn_source["/PRN-Source/" + "/" + demo] = value;
+  await firebase.database().ref().update(prn_source);
+
+  console.log({ updates1 });
+  console.log({ prn_source });
 }
