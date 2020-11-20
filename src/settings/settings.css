@@ -82,7 +82,12 @@ h3{
     padding-bottom: 0;
     opacity: 70%;
 }
-h4{padding-bottom: 0;}
+
+#sub-head{
+    padding-bottom: 0;
+    font-size:large;
+    font-weight: bold;
+}
 
 .content{
     padding: 10px 10px;
