@@ -122,7 +122,7 @@ function signOut() {
   firebase.auth().signOut();
   popup_alltasks2("Please login !", 4000, "alert alert-warning");
   setTimeout(function () {
-    //window.location.assign("../Login/login.html");
+    window.location.assign("../Login/login.html");
   }, 2000);
 }
 
