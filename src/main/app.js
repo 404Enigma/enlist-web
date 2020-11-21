@@ -31,7 +31,6 @@ let uniqkey, finalDate;
 
 let encrypted, encryptKey;
 var db = firebase.firestore();
-let impTask = db.collection("starflag").doc("Class");
 
 var today = new Date();
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -126,7 +125,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     // alert("Please login");
     popup_alltasks2("Please login !", 4000, "alert alert-warning");
     setTimeout(function () {
-      window.location.assign("../Login/login.html");
+      window.location.assign("login.html");
     }, 2000);
   }
 });
@@ -155,6 +154,8 @@ function Class() {
   hello.style.visibility = "visible";
   personal.disabled = false;
   shared.disabled = false;
+  // update_alert.style.visibility = "visible";
+  // update_alert.disabled = false;
 
   if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122145) {
     xyz = "B";
@@ -189,6 +190,8 @@ function Division() {
   hello.style.visibility = "visible";
   personal.disabled = false;
   shared.disabled = false;
+  // update_alert.style.visibility = "visible";
+  // update_alert.disabled = false;
 
   if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129) {
     xyz = "B3";
@@ -697,6 +700,7 @@ function Decript(key, to_encript) {
 function task_done(task, task_tool) {
   finished_task_container = document.getElementsByClassName("container")[1];
 
+  console.log(task);
   //var key = task.getAttribute("data-key");
   uniqkey = "-" + Math.floor(1000000000 + Math.random() * 9000000000);
 
@@ -925,6 +929,10 @@ function task_delete(task) {
   task_to_remove = firebase.database().ref("To-Do-List/" + demo + "/" + xyz + "/" + "Task" + key);
   task_to_remove.remove();
 
+  remove_IMP = firebase.database().ref("/To-Do-List/" + demo + "/Imp/" + xyz + "/" + "Task" + key);
+  remove_IMP.remove();
+
+  console.log(task);
   task.remove();
   if (flag == 1) {
     popup_alltasks("Task has been Completed !", 2000, "alert alert-success");
@@ -947,12 +955,15 @@ function Pvt() {
       let personal = document.getElementById("personalList");
       let shared = document.getElementById("sharedList");
       let hello = document.getElementById("hello");
+      // let update_alert = document.getElementById("update_alert");
 
       personal.style.visibility = "hidden";
       shared.style.visibility = "hidden";
       personal.disabled = true;
       shared.disabled = true;
       hello.style.visibility = "hidden";
+      // update_alert.style.visibility = "hidden";
+      // update_alert.disabled = true;
 
       xyz = "Pvt";
       document.getElementById("finish_task_header").innerHTML = "Personal";
@@ -1058,17 +1069,13 @@ function create_unfinished_task() {
         fa_delete.setAttribute("class", "fa fa-trash fa-2x");
         fa_delete.setAttribute("style", "color: red");
 
-        // star_button = document.createElement("button");
-        // star_button.setAttribute("id", "star_button");
-
-        // fa_star = document.createElement("i");
-        // fa_star.setAttribute("id", "toggle");
-        // var x = document.getElementById("toggle");
-        // star_button.setAttribute("onclick", "myFunction(this.parentElement.parentElement, this.parentElement,fa_star)");
-
-        // impTask.onSnapshot(function (doc) {
-        //   console.log("Current data: ", doc.data());
-        // });
+        task_star_button = document.createElement("button");
+        task_star_button.setAttribute("id", "star_button");
+        task_star_button.setAttribute("onclick", "Imp_list(this.parentElement.parentElement)");
+        fa_star = document.createElement("i");
+        fa_star.setAttribute("id", "toggle");
+        fa_star.setAttribute("class", "far fa-star fa-2x "); //unfilled
+        fa_star.setAttribute("style", "color: orange");
 
         // impTask
         //   .get()
@@ -1084,16 +1091,13 @@ function create_unfinished_task() {
         //     console.log("Error getting documents: ", error);
         //   });
 
-        // // if (impTask.where("starflag", "==", 0)) {
-        // //   fa_star.setAttribute("class", "far fa-star fa-2x "); //unfilled
-        // //   fa_star.setAttribute("style", "color: orange");
-        // // } else {
-        // //   fa_star.setAttribute("class", "far fa-star fa-2x "); //unfilled
-        // //   fa_star.setAttribute("style", "color: orange");
-        // // }
-
-        // fa_star.setAttribute("class", "far fa-star fa-2x "); //unfilled
-        // fa_star.setAttribute("style", "color: orange");
+        // if (impTask.where("starflag", "==", 0)) {
+        //   fa_star.setAttribute("class", "far fa-star fa-2x "); //unfilled
+        //   fa_star.setAttribute("style", "color: orange");
+        // } else {
+        //   fa_star.setAttribute("class", "far fa-star fa-2x "); //unfilled
+        //   fa_star.setAttribute("style", "color: orange");
+        // }
 
         unfinished_task_container.append(task_container);
         task_container.append(task_data);
@@ -1108,9 +1112,8 @@ function create_unfinished_task() {
         task_edit_button.append(fa_edit);
         task_tool.append(task_delete_button);
         task_delete_button.append(fa_delete);
-
-        // task_tool.append(star_button);
-        // star_button.append(fa_star);
+        task_tool.append(task_star_button);
+        task_star_button.append(fa_star);
 
         let todaytime16 = new Date();
         let todaytime1 = new Date();
@@ -1144,38 +1147,170 @@ function create_unfinished_task() {
     });
 }
 
-let starflag, x;
+let starflag = 0;
+let x;
 
-// function myFunction(task, task_tool, x) {
-//   //x = document.getElementsByClassName("container")[4];
-//   key = task.getAttribute("data-key");
-//   console.log(key);
-//   //console.log(x);
-//   console.log(task);
-//   console.log(task_tool);
+function Imp_list(task) {
+  key = task.getAttribute("data-key");
+  uniqkey = key;
 
-//   if (x.className === "far fa-star fa-2x") {
-//     //unfilled
-//     x.className = "fas fa-star fa-2x"; // filled
-//     starflag = 1;
-//     console.log(xyz);
+  console.log(key);
+  console.log(demo);
+  console.log(xyz);
+  console.log(task);
 
-//     impTask.set({
-//       starflag: starflag,
-//       class: xyz,
-//     });
+  var IMPPPP = {
+    title: task.childNodes[0].childNodes[0].innerHTML,
+    deadline: task.childNodes[0].childNodes[1].innerHTML,
+    key: key,
+    description: task.childNodes[0].childNodes[2].innerHTML,
+  };
 
-//     popup_alltasks("Task added to important !", 2000, "alert alert-warning");
-//   } else {
-//     x.className = "far fa-star fa-2x";
-//     starflag = 0;
-//     impTask.set({
-//       starflag: starflag,
-//       class: xyz,
-//     });
-//     popup_alltasks("Task removed from important !", 2000, "alert alert-danger");
-//   }
-// }
+  console.log(task.title);
+  console.log(title);
+
+  let DotArrayImportant = [
+    ".@#1%%42",
+    ".&2^36@",
+    ".$%aASH2343",
+    ".sahd%$%^$",
+    ".%$*%GF%",
+    ".^&&^Hjj5",
+    ".!^%&",
+    ".!@!@!",
+    ".!#$!",
+    ".#%GFY$^",
+    ".&^%&^GFUYRUYF%$&^",
+    ".$^%^%#^GGFHDKJ",
+    ".#@*&gfuF",
+    ".jgj564$#@",
+    ".frdk4667$#",
+    ".53fh#$",
+    ".HJ57554&%",
+    ".JKfy6754F",
+    ".DS5DHF$%ds",
+    ".ds23478h#!$",
+    ".HGWIU",
+    ".12387192",
+    ".479128",
+    ".[$$^$^]][]",
+    ".{}{}{}{**",
+    ".**&&*",
+    ".%%{{{767",
+    ".^^JASKNA768",
+    ".^^##^^)",
+    ".{gvh^%",
+    ".872%$^^",
+    ".*&^*hvj",
+    ".++__kjHK",
+    ".~@@!@#$@",
+    ".||***guy",
+    ".y1741938cjb",
+    ".239182h^&d",
+    ".jscnak3@#s",
+    ".^&&^Hbq45jj5",
+    ".!atw4^%&",
+    ".qr!@!@!",
+    ".!#rgee$!",
+    ".#%GdfheraFY$^",
+    ".&^%25&^UYF%$&^",
+    ".$^%^%D423ef#^GGFHDKJ",
+    ".#@waeawgr*&gfuF",
+    ".jgjqb5564$#@",
+    ".frdk2q54667$#",
+    ".53f245vh#$",
+    ".HJ57356554&%",
+    ".JK35fy6754F",
+    ".DS5aegDHF$%ds",
+    ".ds23478hsd#!$",
+    ".HG436WIU",
+    ".12387sgd192",
+    ".47sg9128",
+    ".[$$^$^]]sg[]",
+    ".{}dg{}{}{**",
+    ".*sgd*&&*",
+    ".%%532{{{767",
+    ".^^JASK253NA768",
+    ".^^##234^^)",
+    ".!@#!GJFYD<UT}{|",
+    ".hbjHGU6567@$",
+    ".!#1$%gq",
+    ".32^qw@",
+    ".$%a71*343",
+    ".*$cv%$%i$",
+    ".%-pu%GF%",
+    ".^*8asjj5",
+    ".p1%&",
+    ".!@ty!",
+    ".!#&$q",
+    ".#gq%Y$^",
+    ".&^%&^ua^*$%$&^",
+    ".$^%^%hagq%KJ",
+    ".#@*&UA*F",
+    ".jgjNUI^%*$#@",
+    ".frdkna*7$#",
+    ".IA&%#$",
+    ".HJ56&*)&%",
+    ".JK&#@(54F",
+    ".DS^(#%ds",
+    ".ds23^ANA!$",
+    ".HA&BAIU",
+    ".12nuaa^*92",
+    ".4^*SNA28",
+    ".[A^*YCB]][]",
+    ".{}KUA&{**",
+    ".*&^%A*",
+    ".%^&a67",
+  ];
+
+  let encryptTitle = Encript(IMPPPP.title, DotArrayImportant, uniqkey);
+  IMPPPP.title = encryptTitle;
+
+  console.log(input_description.value);
+  let encryptDescription = Encript(IMPPPP.description, DotArrayImportant, uniqkey);
+  IMPPPP.description = encryptDescription;
+
+  // if (starflag == 0) {
+  //   starflag = 1;
+  //   console.log(starflag);
+  //   popup_alltasks("Task added to important !", 2000, "alert alert-warning");
+
+  //   var updates = {};
+  //   updates["/To-Do-List/" + demo + "/Imp/" + xyz + "/" + "Task" + uniqkey] = IMPPPP;
+  //   firebase.database().ref().update(updates);
+  //   //create_unfinished_task();
+  //   console.log(updates);
+  // } else {
+  //   starflag = 0;
+  //   remove_IMP = firebase.database().ref("/To-Do-List/" + demo + "/Imp/" + xyz + "/" + "Task" + uniqkey);
+  //   remove_IMP.remove();
+
+  //   popup_alltasks("Task removed from important !", 2000, "alert alert-danger");
+
+  //   console.log("yupieee");
+  //   console.log(starflag);
+  // }
+
+  firebase
+    .database()
+    .ref("/To-Do-List/" + demo + "/Imp/" + xyz + "/" + "Task" + uniqkey)
+    .once("value", (snapshot) => {
+      if (snapshot.exists()) {
+        popup_alltasks("Task removed from important !", 2000, "alert alert-danger");
+        console.log("exists!");
+        console.log(snapshot.val());
+        remove_IMP = firebase.database().ref("/To-Do-List/" + demo + "/Imp/" + xyz + "/" + "Task" + uniqkey);
+        remove_IMP.remove();
+      } else {
+        popup_alltasks("Task added to important !", 2000, "alert alert-warning");
+        var updates = {};
+        updates["/To-Do-List/" + demo + "/Imp/" + xyz + "/" + "Task" + uniqkey] = IMPPPP;
+        firebase.database().ref().update(updates);
+        //create_unfinished_task();
+        console.log(updates);
+      }
+    });
+}
 
 function date_picker() {
   console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
@@ -1252,6 +1387,9 @@ function add_task() {
         let shared = document.getElementById("sharedList");
 
         console.log(uniqkey);
+        // var IMP_Task = {};
+        // IMP_Task["/To-Do-List/" + demo + "/" + "IMP" + "/" + xyz + "/" + "Task" + uniqkey] = task;
+        // firebase.database().ref().update(IMP_Task);
 
         if (xyz === "Pvt") {
           let DotArrayPersonalPrivate = [

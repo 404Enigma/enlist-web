@@ -287,11 +287,11 @@ function onetimeUpdate(demo, updateDivision, updateClass) {
 
 async function nodeCreate(value, prnnn) {
   let updates1 = {};
-  updates1["/Source/" + value + "/" + demo] = Number(prnnn);
+  updates1["/Source/" + value + "/" + demo] = "";
   await firebase.database().ref().update(updates1);
 
   let prn_source = {};
-  prn_source["/PRN-Source/" + "/" + demo] = value;
+  prn_source["/PRN-Source/" + "/" + demo] = Number(prnnn);
   await firebase.database().ref().update(prn_source);
 
   console.log({ updates1 });
