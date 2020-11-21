@@ -713,7 +713,7 @@ function task_edit(task, edit_button) {
   title.setAttribute("onkeypress", "allowAlphaNumericSpace(event); return (this.innerText.length < 21)");
 
   deadline = task.childNodes[0].childNodes[1];
-  deadline.setAttribute("contenteditable", true);
+  deadline.setAttribute("contenteditable", false);
   deadline.setAttribute("id", "date_editing");
   deadline.disabled = false;
   deadline.append(dateDisplay);
@@ -1012,13 +1012,13 @@ function create_unfinished_task() {
 
         dateDisplay = document.createElement("input");
         dateDisplay.setAttribute("id", "task_displaydate");
-        dateDisplay.setAttribute("contenteditable", true);
+        dateDisplay.setAttribute("contenteditable", false);
         dateDisplay.innerHTML = task_date;
         dateDisplay.setAttribute("type", "date");
 
         deadline = document.createElement("p");
         deadline.setAttribute("id", "task_date");
-        deadline.setAttribute("contenteditable", false);
+        deadline.setAttribute("contenteditable", true);
         deadline.innerHTML = task_date;
         deadline.disabled = true;
 
