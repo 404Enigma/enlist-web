@@ -82,6 +82,16 @@ function ImportantTask(xyz) {
         task_tool = document.createElement("div");
         task_tool.setAttribute("id", "task_tool");
 
+        console.log(xyz);
+
+        task_star_button = document.createElement("button");
+        task_star_button.setAttribute("id", "star_button");
+        task_star_button.setAttribute("onclick", "Imp_list(this.parentElement.parentElement," + xyz + ")");
+        fa_star = document.createElement("i");
+        fa_star.setAttribute("id", "toggle");
+        fa_star.setAttribute("class", "far fa-star fa-2x "); //unfilled
+        fa_star.setAttribute("style", "color: orange");
+
         unfinished_task_container.append(task_container);
         task_container.append(task_data);
         task_data.append(title);
@@ -89,6 +99,8 @@ function ImportantTask(xyz) {
         task_data.append(description);
 
         task_container.append(task_tool);
+        task_tool.append(task_star_button);
+        task_star_button.append(fa_star);
       }
     });
 }
@@ -235,6 +247,26 @@ function signOut() {
   }, 2000);
 }
 
+function popup_alltasks(sent, time, color) {
+  console.log("Popup finction");
+  let pass = document.getElementById("pop-upppp");
+  let A = document.createElement("div");
+  console.log(color);
+  A.setAttribute("class", color);
+  A.setAttribute("role", "alert");
+  A.setAttribute("id", "popup");
+  A.innerHTML = sent;
+  pass.append(A);
+  console.log("Execute");
+  setTimeout(function () {
+    $(".alert")
+      .fadeTo(500, 0)
+      .slideUp(500, function () {
+        $(this).remove();
+      });
+  }, time);
+}
+
 function popup_alltasks2(sent, time, color) {
   console.log("Popup finction");
   let pass = document.getElementById("pop-uppppppppp");
@@ -253,4 +285,44 @@ function popup_alltasks2(sent, time, color) {
         $(this).remove();
       });
   }, time);
+}
+
+function Imp_list(task, qwerty) {
+  key = task.getAttribute("data-key");
+  uniqkey = key;
+  xyz = qwerty.id;
+  console.log(qwerty.id);
+  console.log(key);
+  console.log(demo);
+  console.log(xyz);
+  console.log(task);
+
+  var IMPPPP = {
+    title: task.childNodes[0].childNodes[0].innerHTML,
+    deadline: task.childNodes[0].childNodes[1].innerHTML,
+    key: key,
+    description: task.childNodes[0].childNodes[2].innerHTML,
+  };
+
+  console.log(IMPPPP.title);
+  console.log(title);
+
+  firebase
+    .database()
+    .ref("/To-Do-List/" + demo + "/Imp/" + xyz + "/" + "Task" + uniqkey)
+    .once("value", (snapshot) => {
+      if (snapshot.exists()) {
+        popup_alltasks("Task removed from important !", 2000, "alert alert-danger");
+        console.log("exists!");
+        console.log(snapshot.val());
+        remove_IMP = firebase.database().ref("/To-Do-List/" + demo + "/Imp/" + xyz + "/" + "Task" + uniqkey);
+        remove_IMP.remove();
+
+        console.log(task);
+        task.remove();
+        console.log("Yupieeeeeeeeeeeee");
+      } else {
+        console.log("there is nothing");
+      }
+    });
 }
