@@ -748,6 +748,8 @@ function finish_edit(task, edit_button) {
   deadline.setAttribute("id", "task_date");
   deadline.disabled = true;
 
+  console.log(deadline);
+
   let date_edit = dateDisplay.value.split("-");
   let day_edit = date_edit[2];
   let month_edit = date_edit[1];
@@ -774,6 +776,7 @@ function finish_edit(task, edit_button) {
   if (finalDate_edit === "undefined undefined") {
     dateDisplay.style.visibility = "hidden";
     console.log("date is not edited");
+    finalDate_edit = slice_deadline;
   } else {
     dateDisplay.style.visibility = "visible";
     deadline.innerHTML = finalDate_edit;
@@ -793,7 +796,7 @@ function finish_edit(task, edit_button) {
   //console.log(key);
   var task_obj = {
     title: task.childNodes[0].childNodes[0].innerHTML,
-    deadline: task.childNodes[0].childNodes[1].innerHTML,
+    deadline: finalDate_edit,
     key: key,
     description: task.childNodes[0].childNodes[2].innerHTML,
   };
@@ -896,6 +899,7 @@ function finish_edit(task, edit_button) {
 
   console.log(task_obj.title);
   console.log(task_obj.description);
+  console.log(task_obj.deadline);
 
   let encryptTitle = Encript(task_obj.title, DotArray, task_obj.key);
   task_obj.title = encryptTitle;
