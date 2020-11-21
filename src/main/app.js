@@ -182,7 +182,7 @@ function Division() {
   // update_alert.style.visibility = "visible";
   // update_alert.disabled = false;
 
-  if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129) {
+  if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 ) {
     xyz = "B3";
 
     create_unfinished_task();

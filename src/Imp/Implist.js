@@ -14,7 +14,7 @@ function ImportantTask(xyz) {
   console.log(xyz);
   console.log(demo);
 
-  let imparray = ["B", "B3", "Pvt"];
+  // let imparray = ["B", "B3", "Pvt"];
 
   //   xyz = "B3";
   //let impTask = db.collection("starflag").doc(key);
@@ -91,7 +91,7 @@ function ImportantTask(xyz) {
         task_star_button.setAttribute("onclick", "Imp_list(this.parentElement.parentElement," + xyz + ")");
         fa_star = document.createElement("i");
         fa_star.setAttribute("id", "toggle");
-        fa_star.setAttribute("class", "far fa-star fa-2x "); //unfilled
+        fa_star.setAttribute("class", "fas fa-star fa-2x "); //unfilled
         fa_star.setAttribute("style", "color: orange");
 
         unfinished_task_container.append(task_container);
