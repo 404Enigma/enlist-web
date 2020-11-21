@@ -1,12 +1,12 @@
 let xyz, demo;
 let impUID = localStorage.getItem("finalUIDD");
-
+let PRN = localStorage.getItem("PRN");
 demo = impUID;
-
+console.log(PRN);
 // function ImportantTask() {}
 
 function ImportantTask(xyz) {
-  document.getElementById("finish_task_header").innerHTML = xyz;
+  document.getElementById("finish_task_header").innerHTML = document.getElementById(xyz).innerHTML;
 
   console.log(xyz);
   unfinished_task_container = document.getElementsByClassName("container")[0];
@@ -105,6 +105,13 @@ function ImportantTask(xyz) {
         task_star_button.append(fa_star);
       }
     });
+
+  Qwerty();
+}
+
+function Qwerty() {
+  let demo = document.getElementById("ImpClass").innerHTML;
+  console.log(demo);
 }
 
 function Decript(key, to_encript) {
@@ -327,4 +334,122 @@ function Imp_list(task, qwerty) {
         console.log("there is nothing");
       }
     });
+}
+
+function ImpHeading() {
+  let RespectiveClass = localStorage.getItem("RespectiveClass");
+  let RespectiveDivision = localStorage.getItem("RespectiveDivision");
+
+  console.log(RespectiveDivision);
+  console.log(RespectiveClass);
+
+  let CSarray = ["A", "C", "B", "B1", "B2", "B3", "A1", "A2", "A3", "C1", "C2", "C3"];
+
+  if (CSarray.includes(RespectiveClass) || CSarray.includes(RespectiveDivision)) {
+    console.log("CS");
+    document.getElementById("Impdivision").innerHTML = "CS-" + RespectiveClass;
+    document.getElementById("ImpClass").innerHTML = "CS-" + RespectiveDivision;
+  } else {
+    document.getElementById("Impdivision").innerHTML = RespectiveClass;
+    document.getElementById("ImpClass").innerHTML = "IT-" + RespectiveDivision;
+    console.log("IT");
+  }
+}
+
+function Imp_Class() {
+  if (Number(PRN) >= 19070122073 && Number(PRN) <= 19070122145) {
+    xyzClass = "B";
+
+    ImportantTask(xyzClass);
+    document.getElementById("finish_task_header").innerHTML = "CS-B";
+  } else if (Number(PRN) >= 19070122001 && Number(PRN) <= 19070122072) {
+    xyzClass = "A";
+
+    ImportantTask(xyzClass);
+    document.getElementById("finish_task_header").innerHTML = "CS-A";
+  } else if (Number(PRN) >= 19070122001 && Number(PRN) <= 19070122072) {
+    xyzClass = "C";
+
+    ImportantTask(xyzClass);
+    document.getElementById("finish_task_header").innerHTML = "CS-C";
+  } else if (Number(PRN) >= 19070122001 && Number(PRN) <= 19070122072) {
+    xyzClass = "IT";
+
+    ImportantTask(xyzClass);
+    document.getElementById("finish_task_header").innerHTML = "IT";
+  }
+}
+
+function Imp_Division() {
+  if (Number(PRN) == 19070122120 || Number(PRN) == 19070122126) {
+    xyz = "B3";
+
+    ImportantTask(xyz);
+    document.getElementById("finish_task_header").innerHTML = "Admin";
+  } else if (Number(PRN) >= 19070122073 && Number(PRN) <= 19070122095) {
+    xyz = "B1";
+    ImportantTask(xyz);
+    document.getElementById("finish_task_header").innerHTML = "CS-B1";
+  } else if (Number(PRN) >= 19070122096 && Number(PRN) <= 19070122119) {
+    xyz = "B2";
+
+    ImportantTask(xyz);
+    document.getElementById("finish_task_header").innerHTML = "CS-B2";
+  } else if (Number(PRN) >= 19070122120 && Number(PRN) <= 19070122145) {
+    xyz = "B3";
+
+    ImportantTask(xyz);
+    document.getElementById("finish_task_header").innerHTML = "CS-B3";
+  } else if (Number(PRN) >= 19070122001 && Number(PRN) <= 19070122025) {
+    xyz = "A1";
+
+    ImportantTask(xyz);
+    document.getElementById("finish_task_header").innerHTML = "CS-A1";
+  } else if (Number(PRN) >= 19070122026 && Number(PRN) <= 19070122048) {
+    xyz = "A2";
+
+    ImportantTask(xyz);
+    document.getElementById("finish_task_header").innerHTML = "CS-A2";
+  } else if (Number(PRN) >= 19070122049 && Number(PRN) <= 19070122072) {
+    xyz = "A3";
+
+    ImportantTask(xyz);
+    document.getElementById("finish_task_header").innerHTML = "CS-A3";
+  } else if (Number(PRN) >= 19070122146 && Number(PRN) <= 19070122167) {
+    xyz = "C1";
+
+    ImportantTask(xyz);
+    document.getElementById("finish_task_header").innerHTML = "CS-C1";
+  } else if (Number(PRN) >= 19070122168 && Number(PRN) <= 19070122190) {
+    xyz = "C2";
+
+    ImportantTask(xyz);
+    document.getElementById("finish_task_header").innerHTML = "CS-C2";
+  } else if (Number(PRN) >= 19070122191 && Number(PRN) <= 20070122515) {
+    xyz = "C3";
+
+    ImportantTask(xyz);
+    document.getElementById("finish_task_header").innerHTML = "CS-C3";
+  } else if (Number(PRN) >= 19070124001 && Number(PRN) <= 19070124028) {
+    xyz = "T1";
+
+    ImportantTask(xyz);
+    document.getElementById("finish_task_header").innerHTML = "CS-T1";
+  } else if (Number(PRN) >= 19070124029 && Number(PRN) <= 19070124055) {
+    xyz = "T2";
+
+    ImportantTask(xyz);
+    document.getElementById("finish_task_header").innerHTML = "CS-T2";
+  } else if (Number(PRN) >= 19070124056 && Number(PRN) <= 20070124502) {
+    xyz = "T3";
+
+    ImportantTask(xyz);
+    document.getElementById("finish_task_header").innerHTML = "CS-T3";
+  }
+}
+
+function Imp_Pvt() {
+  xyz = "Pvt";
+  ImportantTask(xyz);
+  document.getElementById("finish_task_header").innerHTML = "Pvt";
 }

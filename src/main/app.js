@@ -1757,7 +1757,6 @@ function sideBar() {
   console.log(RespectiveClass);
 
   let CSarray = ["A", "C", "B", "B1", "B2", "B3", "A1", "A2", "A3", "C1", "C2", "C3"];
-  let arrDivision = ["B1", "B2", "B3", "A1", "A2", "A3", "C1", "C2", "C3"];
 
   if (CSarray.includes(RespectiveClass) || CSarray.includes(RespectiveDivision)) {
     console.log("CS");
