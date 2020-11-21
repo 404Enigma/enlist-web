@@ -6,6 +6,8 @@ demo = impUID;
 // function ImportantTask() {}
 
 function ImportantTask(xyz) {
+  document.getElementById("finish_task_header").innerHTML = xyz;
+
   console.log(xyz);
   unfinished_task_container = document.getElementsByClassName("container")[0];
   unfinished_task_container.innerHTML = "";
