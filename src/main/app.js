@@ -1779,4 +1779,19 @@ function sideBar() {
     document.getElementById("ResClass").innerHTML = "IT" + RespectiveDivision;
     console.log("IT");
   }
+
+  Nodirectpass();
+}
+
+function Nodirectpass() {
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      // User is signed in.
+      console.log("aaja aaja aaaja");
+    } else {
+      // No user is signed in.
+      console.log("naja naja naja");
+      signOut();
+    }
+  });
 }
