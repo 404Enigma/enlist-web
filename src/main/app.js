@@ -970,7 +970,15 @@ let dateDisplay;
 function create_unfinished_task(xyz) {
   console.log(xyz);
   unfinished_task_container = document.getElementsByClassName("container")[0];
-  unfinished_task_container.innerHTML = "";
+  unfinished_task_container.innerHTML === "";
+
+  if ($(".container").is(":empty")) {
+    document.querySelector(".output1").textContent = true;
+    console.log("Agaiyo");
+  } else {
+    console.log("dddddddddddddddddddddddddddddddddddddd");
+  }
+
   console.log(xyz);
   console.log(demo);
 
