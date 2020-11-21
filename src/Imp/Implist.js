@@ -3,9 +3,9 @@ let impUID = localStorage.getItem("uniqueUid");
 
 demo = impUID;
 
-function ImportantTask() {}
+// function ImportantTask() {}
 
-function create_unfinished_task() {
+function ImportantTask(xyz) {
   console.log(xyz);
   unfinished_task_container = document.getElementsByClassName("container")[0];
   unfinished_task_container.innerHTML = "";
@@ -14,7 +14,7 @@ function create_unfinished_task() {
 
   let imparray = ["B", "B3", "Pvt"];
 
-  xyz = "B3";
+  //   xyz = "B3";
   //let impTask = db.collection("starflag").doc(key);
 
   task_array = [];
