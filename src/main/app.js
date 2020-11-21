@@ -17,7 +17,7 @@ let prN = localStorage.getItem("PRN");
 let prnnn = prN;
 console.log(prnnn);
 
-let q = localStorage.getItem("uniqueUid");
+let q = localStorage.getItem("finalUIDD");
 console.log(q);
 let xyz, demo;
 // xyz = "B";
@@ -115,26 +115,15 @@ if (flagTime == 1) {
   console.log("banana");
 }
 
-firebase.auth().onAuthStateChanged(function (user) {
-  console.log("12345");
-  if (user !== null) {
-    demo = user.uid;
-    console.log(user.uid);
-    //console.log(TaskcheckValue);
-  } else {
-    // alert("Please login");
-    popup_alltasks2("Please login !", 4000, "alert alert-warning");
-    setTimeout(function () {
-      window.location.assign("login.html");
-    }, 2000);
-  }
-});
-
 function signOut() {
-  xyz = "";
-  task_array = [];
+  // xyz = "";
+  // task_array = [];
 
   firebase.auth().signOut();
+  popup_alltasks2("Please login !", 4000, "alert alert-warning");
+  setTimeout(function () {
+    //window.location.assign("../Login/login.html");
+  }, 2000);
 }
 
 function onloadEverytime() {
@@ -946,34 +935,28 @@ function task_delete(task) {
 let UIDDDD;
 
 function Pvt() {
-  firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-      // User is signed in.
-      UIDDDD = user.uid;
-      console.log(UIDDDD);
+  // User is signed in.
+  // UIDDDD = user.uid;
+  // console.log(UIDDDD);
 
-      let personal = document.getElementById("personalList");
-      let shared = document.getElementById("sharedList");
-      let hello = document.getElementById("hello");
-      // let update_alert = document.getElementById("update_alert");
+  let personal = document.getElementById("personalList");
+  let shared = document.getElementById("sharedList");
+  let hello = document.getElementById("hello");
+  // let update_alert = document.getElementById("update_alert");
 
-      personal.style.visibility = "hidden";
-      shared.style.visibility = "hidden";
-      personal.disabled = true;
-      shared.disabled = true;
-      hello.style.visibility = "hidden";
-      // update_alert.style.visibility = "hidden";
-      // update_alert.disabled = true;
+  personal.style.visibility = "hidden";
+  shared.style.visibility = "hidden";
+  personal.disabled = true;
+  shared.disabled = true;
+  hello.style.visibility = "hidden";
+  // update_alert.style.visibility = "hidden";
+  // update_alert.disabled = true;
 
-      xyz = "Pvt";
-      document.getElementById("finish_task_header").innerHTML = "Personal";
-      console.log(demo);
-      create_unfinished_task();
-      console.log("yupieee");
-    } else {
-      // No user is signed in.
-    }
-  });
+  xyz = "Pvt";
+  document.getElementById("finish_task_header").innerHTML = "Personal";
+  console.log(demo);
+  create_unfinished_task();
+  console.log("yupieee");
 }
 
 let dateDisplay;

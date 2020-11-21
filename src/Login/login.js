@@ -79,6 +79,7 @@ function signIn() {
               prnnn = PRN;
 
               demo = user.uid;
+              localStorage.setItem("finalUIDD", demo);
               let aaa = oneTime(demo, checkValue);
 
               console.log("aaa");

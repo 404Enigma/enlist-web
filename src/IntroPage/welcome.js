@@ -1,4 +1,6 @@
-let checkValue;
+let checkValue, check_class;
+let storage_UIDD;
+// console.log(storage_UIDD);
 
 var pathEls = document.querySelectorAll("path");
 for (var i = 0; i < pathEls.length; i++) {
@@ -17,18 +19,19 @@ for (var i = 0; i < pathEls.length; i++) {
   });
 }
 
-function first(ID) {
+function first(ID, storage_UIDD) {
   firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
+    if (storage_UIDD) {
       // User is signed in.
       console.log("aaaaaaa");
-      let UIDD = user.uid;
+      let UIDD = storage_UIDD.uid;
       console.log(UIDD);
       let prnValue = localStorage.getItem("bypassPRN");
       console.log(prnValue);
 
       localStorage.setItem("uniqueUid", UIDD);
-      get_PRN = firebase.database().ref("/PRN-source/" + "/" + UIDD);
+
+      get_PRN = firebase.database().ref("/PRN-Source/" + "/" + storage_UIDD);
       console.log(get_PRN);
 
       get_PRN.on(
@@ -38,11 +41,27 @@ function first(ID) {
           console.log(ID);
           let get_PRN_value = snapshot.val();
 
-          if (get_PRN_value === ID) {
+          console.log(get_PRN_value);
+
+          if (Number(get_PRN_value) >= 19070122073 && Number(get_PRN_value) <= 19070122145) {
+            check_class = "B";
+          } else if (Number(get_PRN_value) >= 19070122001 && Number(get_PRN_value) <= 19070122072) {
+            check_class = "A";
+          } else if (Number(get_PRN_value) >= 19070122001 && Number(get_PRN_value) <= 19070122072) {
+            check_class = "C";
+          } else if (Number(get_PRN_value) >= 19070122001 && Number(get_PRN_value) <= 19070122072) {
+            check_class = "IT";
+          }
+
+          console.log(check_class);
+          console.log(ID);
+
+          if (check_class === ID) {
             console.log("qqqqqqqqqqqqqqqqqqqqqq");
             window.location.assign("../main/home.html");
           } else {
             window.location.assign("../Login/login.html");
+            console.log("NOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
           }
         },
         function (error) {
@@ -62,27 +81,35 @@ function first(ID) {
 
 function CS_A(ID) {
   sessionStorage.setItem("class", "CS-A");
-  console.log({ ID });
-  first(ID);
+  storage_UIDD = localStorage.getItem("finalUIDD");
+  console.log({ ID, storage_UIDD });
+  console.log("I am in A");
+  first(ID, storage_UIDD);
 }
 
 function CS_B(ID) {
   sessionStorage.setItem("class", "CS-B");
-  console.log({ ID });
+  storage_UIDD = localStorage.getItem("finalUIDD");
+  console.log({ ID, storage_UIDD });
+  console.log("I am in B");
 
-  first(ID);
+  first(ID, storage_UIDD);
 }
 
 function CS_C(ID) {
   sessionStorage.setItem("class", "CS-C");
-  console.log({ ID });
+  storage_UIDD = localStorage.getItem("finalUIDD");
+  console.log({ ID, storage_UIDD });
+  console.log("I am in C");
 
-  first(ID);
+  first(ID, storage_UIDD);
 }
 
 function IT(ID) {
   sessionStorage.setItem("class", "IT");
-  console.log({ ID });
+  storage_UIDD = localStorage.getItem("finalUIDD");
+  console.log({ ID, storage_UIDD });
+  console.log("I am in IT");
 
-  first(ID);
+  first(ID, storage_UIDD);
 }

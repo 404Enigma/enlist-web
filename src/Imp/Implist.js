@@ -1,5 +1,5 @@
 let xyz, demo;
-let impUID = localStorage.getItem("uniqueUid");
+let impUID = localStorage.getItem("finalUIDD");
 
 demo = impUID;
 
@@ -20,7 +20,7 @@ function ImportantTask(xyz) {
   task_array = [];
   firebase
     .database()
-    .ref("/To-Do-List/" + demo + "/" + xyz)
+    .ref("/To-Do-List/" + demo + "/Imp/" + xyz)
     .once("value", function (snapshot) {
       snapshot.forEach(function (childSnapshot) {
         var childKey = childSnapshot.uniqkey;
@@ -222,4 +222,35 @@ function Swap(v, chooseArray) {
   }
   //console.log(d22);
   return d22;
+}
+
+function signOut() {
+  // xyz = "";
+  // task_array = [];
+
+  firebase.auth().signOut();
+  popup_alltasks2("Please login !", 4000, "alert alert-warning");
+  setTimeout(function () {
+    window.location.assign("../login/login.html");
+  }, 2000);
+}
+
+function popup_alltasks2(sent, time, color) {
+  console.log("Popup finction");
+  let pass = document.getElementById("pop-uppppppppp");
+  let A = document.createElement("div");
+  console.log(color);
+  A.setAttribute("class", color);
+  A.setAttribute("role", "alert");
+  A.setAttribute("id", "popup");
+  A.innerHTML = sent;
+  pass.append(A);
+  console.log("Execute");
+  setTimeout(function () {
+    $(".alert")
+      .fadeTo(500, 0)
+      .slideUp(500, function () {
+        $(this).remove();
+      });
+  }, time);
 }
