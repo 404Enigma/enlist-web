@@ -20,8 +20,7 @@ console.log(prnnn);
 let q = localStorage.getItem("finalUIDD");
 console.log(q);
 let xyz, demo;
-// xyz = "B";
-console.log(xyz);
+
 demo = q;
 let parsedBase64Key, encryptedData;
 console.log(demo);
@@ -147,26 +146,27 @@ function Class() {
   // update_alert.disabled = false;
 
   if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122145) {
-    xyz = "B";
+    xyzClass = "B";
 
-    create_unfinished_task();
+    create_unfinished_task(xyzClass);
     document.getElementById("finish_task_header").innerHTML = "CS-B";
   } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
-    xyz = "A";
+    xyzClass = "A";
 
-    create_unfinished_task();
+    create_unfinished_task(xyzClass);
     document.getElementById("finish_task_header").innerHTML = "CS-A";
   } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
-    xyz = "C";
+    xyzClass = "C";
 
-    create_unfinished_task();
+    create_unfinished_task(xyzClass);
     document.getElementById("finish_task_header").innerHTML = "CS-C";
   } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
-    xyz = "IT";
+    xyzClass = "IT";
 
-    create_unfinished_task();
+    create_unfinished_task(xyzClass);
     document.getElementById("finish_task_header").innerHTML = "IT";
   }
+  //sideBarClass(xyzClass);
 }
 
 function Division() {
@@ -182,71 +182,73 @@ function Division() {
   // update_alert.style.visibility = "visible";
   // update_alert.disabled = false;
 
-  if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 ) {
+  if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126) {
     xyz = "B3";
 
-    create_unfinished_task();
+    create_unfinished_task(xyz);
     document.getElementById("finish_task_header").innerHTML = "Admin";
   } else if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
     xyz = "B1";
-    create_unfinished_task();
+    create_unfinished_task(xyz);
     document.getElementById("finish_task_header").innerHTML = "CS-B1";
   } else if (Number(prnnn) >= 19070122096 && Number(prnnn) <= 19070122119) {
     xyz = "B2";
 
-    create_unfinished_task();
+    create_unfinished_task(xyz);
     document.getElementById("finish_task_header").innerHTML = "CS-B2";
   } else if (Number(prnnn) >= 19070122120 && Number(prnnn) <= 19070122145) {
     xyz = "B3";
 
-    create_unfinished_task();
+    create_unfinished_task(xyz);
     document.getElementById("finish_task_header").innerHTML = "CS-B3";
   } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122025) {
     xyz = "A1";
 
-    create_unfinished_task();
+    create_unfinished_task(xyz);
     document.getElementById("finish_task_header").innerHTML = "CS-A1";
   } else if (Number(prnnn) >= 19070122026 && Number(prnnn) <= 19070122048) {
     xyz = "A2";
 
-    create_unfinished_task();
+    create_unfinished_task(xyz);
     document.getElementById("finish_task_header").innerHTML = "CS-A2";
   } else if (Number(prnnn) >= 19070122049 && Number(prnnn) <= 19070122072) {
     xyz = "A3";
 
-    create_unfinished_task();
+    create_unfinished_task(xyz);
     document.getElementById("finish_task_header").innerHTML = "CS-A3";
   } else if (Number(prnnn) >= 19070122146 && Number(prnnn) <= 19070122167) {
     xyz = "C1";
 
-    create_unfinished_task();
+    create_unfinished_task(xyz);
     document.getElementById("finish_task_header").innerHTML = "CS-C1";
   } else if (Number(prnnn) >= 19070122168 && Number(prnnn) <= 19070122190) {
     xyz = "C2";
 
-    create_unfinished_task();
+    create_unfinished_task(xyz);
     document.getElementById("finish_task_header").innerHTML = "CS-C2";
   } else if (Number(prnnn) >= 19070122191 && Number(prnnn) <= 20070122515) {
     xyz = "C3";
 
-    create_unfinished_task();
+    create_unfinished_task(xyz);
     document.getElementById("finish_task_header").innerHTML = "CS-C3";
   } else if (Number(prnnn) >= 19070124001 && Number(prnnn) <= 19070124028) {
     xyz = "T1";
 
-    create_unfinished_task();
+    create_unfinished_task(xyz);
     document.getElementById("finish_task_header").innerHTML = "CS-T1";
   } else if (Number(prnnn) >= 19070124029 && Number(prnnn) <= 19070124055) {
     xyz = "T2";
 
-    create_unfinished_task();
+    create_unfinished_task(xyz);
     document.getElementById("finish_task_header").innerHTML = "CS-T2";
   } else if (Number(prnnn) >= 19070124056 && Number(prnnn) <= 20070124502) {
     xyz = "T3";
 
-    create_unfinished_task();
+    create_unfinished_task(xyz);
     document.getElementById("finish_task_header").innerHTML = "CS-T3";
   }
+
+  //sideBarDivision(xyz);
 }
 
 function Swap(v, chooseArray) {
@@ -955,13 +957,13 @@ function Pvt() {
   xyz = "Pvt";
   document.getElementById("finish_task_header").innerHTML = "Personal";
   console.log(demo);
-  create_unfinished_task();
+  create_unfinished_task(xyz);
   console.log("yupieee");
 }
 
 let dateDisplay;
 
-function create_unfinished_task() {
+function create_unfinished_task(xyz) {
   console.log(xyz);
   unfinished_task_container = document.getElementsByClassName("container")[0];
   unfinished_task_container.innerHTML = "";
@@ -1276,18 +1278,18 @@ function Imp_list(task) {
 
   firebase
     .database()
-    .ref("/To-Do-List/" + demo + "/Imp/" + xyz + "/" + "Task" + uniqkey)
+    .ref("/To-Do-List/" + demo + "/IMP/" + xyz + "/" + "Task" + uniqkey)
     .once("value", (snapshot) => {
       if (snapshot.exists()) {
         popup_alltasks("Task removed from important !", 2000, "alert alert-danger");
         console.log("exists!");
         console.log(snapshot.val());
-        remove_IMP = firebase.database().ref("/To-Do-List/" + demo + "/Imp/" + xyz + "/" + "Task" + uniqkey);
+        remove_IMP = firebase.database().ref("/To-Do-List/" + demo + "/IMP/" + xyz + "/" + "Task" + uniqkey);
         remove_IMP.remove();
       } else {
         popup_alltasks("Task added to important !", 2000, "alert alert-warning");
         var updates = {};
-        updates["/To-Do-List/" + demo + "/Imp/" + xyz + "/" + "Task" + uniqkey] = IMPPPP;
+        updates["/To-Do-List/" + demo + "/IMP/" + xyz + "/" + "Task" + uniqkey] = IMPPPP;
         firebase.database().ref().update(updates);
         //create_unfinished_task();
         console.log(updates);
@@ -1479,7 +1481,7 @@ function add_task() {
           var personal_Tasks = {};
           personal_Tasks["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task;
           firebase.database().ref().update(personal_Tasks);
-          create_unfinished_task();
+          create_unfinished_task(xyz);
         } else {
           if (personal.checked) {
             let DotArrayPersonal = [
@@ -1586,7 +1588,7 @@ function add_task() {
             var updates = {};
             updates["/To-Do-List/" + demo + "/" + xyz + "/" + "Task" + uniqkey] = task;
             firebase.database().ref().update(updates);
-            create_unfinished_task();
+            create_unfinished_task(xyz);
           } else if (shared.checked) {
             console.log(task.title);
             //console.log(encryptedData);
@@ -1713,7 +1715,7 @@ function add_task() {
             var All_Tasks = {};
             All_Tasks["All-Tasks" + "/" + xyz + "/" + "Task" + uniqkey] = task;
             firebase.database().ref().update(All_Tasks);
-            create_unfinished_task();
+            create_unfinished_task(xyz);
           }
         }
         input_box.value = "";
@@ -1744,5 +1746,26 @@ function allowAlphaNumericSpace(e) {
 function on_load() {
   if (xyz === "Pvt") {
     Pvt();
+  }
+}
+
+function sideBar() {
+  let RespectiveClass = localStorage.getItem("RespectiveClass");
+  let RespectiveDivision = localStorage.getItem("RespectiveDivision");
+
+  console.log(RespectiveDivision);
+  console.log(RespectiveClass);
+
+  let CSarray = ["A", "C", "B", "B1", "B2", "B3", "A1", "A2", "A3", "C1", "C2", "C3"];
+  let arrDivision = ["B1", "B2", "B3", "A1", "A2", "A3", "C1", "C2", "C3"];
+
+  if (CSarray.includes(RespectiveClass) || CSarray.includes(RespectiveDivision)) {
+    console.log("CS");
+    document.getElementById("division").innerHTML = "CS-" + RespectiveClass;
+    document.getElementById("ResClass").innerHTML = "CS-" + RespectiveDivision;
+  } else {
+    document.getElementById("division").innerHTML = RespectiveClass;
+    document.getElementById("ResClass").innerHTML = "IT" + RespectiveDivision;
+    console.log("IT");
   }
 }

@@ -235,6 +235,8 @@ function oneTime(demo, checkValue) {
 
     console.log(xyz);
     console.log(xyzClass);
+    localStorage.setItem("RespectiveClass", xyz);
+    localStorage.setItem("RespectiveDivision", xyzClass);
     //return 1;
     //return xyz;
   } else {
