@@ -32,9 +32,13 @@ body::-webkit-scrollbar-thumb
     background-color: #FF8370;
 }
 
-#container1{
-    width: 80%;
+.container1{
+    width: 100%;
     align-items: center;
+    background-color: #905858;
+    color: white;
+    height: 80px;
+
 }
 
 .logo{
@@ -42,6 +46,13 @@ body::-webkit-scrollbar-thumb
     align-items: center;
     justify-content: center;
     /* width: 60%; */
+}
+
+#page_head{ padding-top: 18px; opacity: 1;}
+
+#logo_img{
+    width: 10vh;
+    height: auto;
 }
 
 img{
@@ -177,10 +188,10 @@ body::-webkit-scrollbar-thumb
     /* width: 60%; */
 }
 
-img{
+/* img{
     height: auto;
     width: 13vh;
-}
+} */
 
 h1{
     text-align: center;
@@ -269,10 +280,10 @@ body::-webkit-scrollbar-thumb
     justify-content: center;
 }
 
-img{
+/* img{
     height: 100px;
     width: 100px;
-}
+} */
 
 h1{
     text-align: center;
@@ -367,3 +378,5 @@ hr{
     width: 80px;
     margin: 20px auto;
 }
+
+
