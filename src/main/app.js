@@ -216,7 +216,7 @@ function Class() {
     create_unfinished_task();
     document.getElementById("finish_task_header").innerHTML = "IT";
   }
-  Count_Node();
+  Count_Node(RespectiveDivision, count_class);
 }
 
 function Division() {
@@ -298,7 +298,7 @@ function Division() {
     document.getElementById("finish_task_header").innerHTML = "CS-T3";
   }
 
-  Count_Node();
+  Count_Node(RespectiveClass, count_division);
 }
 
 function Swap(v, chooseArray) {
@@ -986,6 +986,14 @@ function task_delete(task) {
     popup_alltasks("Task has been Deleted !", 2000, "alert alert-danger");
     flag = 0;
   }
+  console.log(xyz);
+  if (xyz == RespectiveClass) {
+    Count_Node(xyz, count_division);
+  } else if (xyz == RespectiveDivision) {
+    Count_Node(xyz, count_class);
+  } else {
+    Count_Node(xyz, count_Pvt);
+  }
 }
 
 let UIDDDD;
@@ -1013,7 +1021,7 @@ function Pvt() {
   console.log(demo);
   create_unfinished_task();
   console.log("yupieee");
-  Count_Node();
+  Count_Node(xyz, count_Pvt);
 }
 
 let dateDisplay;
@@ -1847,7 +1855,14 @@ function add_task() {
       popup_alltasks("Enter title!!!", 2000, "alert alert-danger");
     }
   }
-  Count_Node();
+  console.log(xyz);
+  if (xyz == RespectiveClass) {
+    Count_Node(xyz, count_division);
+  } else if (xyz == RespectiveDivision) {
+    Count_Node(xyz, count_class);
+  } else {
+    Count_Node(xyz, count_Pvt);
+  }
 }
 
 function allowAlphaNumericSpace(e) {
@@ -1863,7 +1878,12 @@ function allowAlphaNumericSpace(e) {
   }
 }
 
+let count_class = "count_class";
+let count_division = "count_division";
+let count_Pvt = "count_Pvt";
+
 function sideBar() {
+  Pvt();
   console.log(RespectiveDivision);
   console.log(RespectiveClass);
 
@@ -1880,13 +1900,38 @@ function sideBar() {
   }
 
   //Nodirectpass();
+
+  // var ref = firebase.database().ref("/To-Do-List/" + demo + "/" + RespectiveDivision);
+  // ref.once("value").then(function (snapshot) {
+  //   console.log(snapshot.numChildren());
+  //   document.getElementById("count_class").innerHTML = snapshot.numChildren();
+  //   //console.log(badge.innerHTML);
+  // });
+
+  // var ref = firebase.database().ref("/To-Do-List/" + demo + "/" + RespectiveClass);
+  // ref.once("value").then(function (snapshot) {
+  //   console.log(snapshot.numChildren());
+  //   document.getElementById("count_division").innerHTML = snapshot.numChildren();
+  //   //console.log(badge.innerHTML);
+  // });
+
+  // var ref = firebase.database().ref("/To-Do-List/" + demo + "/" + "Pvt");
+  // ref.once("value").then(function (snapshot) {
+  //   console.log(snapshot.numChildren());
+  //   document.getElementById("count_Pvt").innerHTML = snapshot.numChildren();
+  //   //console.log(badge.innerHTML);
+  // });
+
+  Count_Node(RespectiveDivision, count_class);
+  Count_Node(RespectiveClass, count_division);
+  Count_Node("Pvt", count_Pvt);
 }
 
-function Count_Node() {
-  var ref = firebase.database().ref("/To-Do-List/" + demo + "/" + xyz);
+function Count_Node(badge_value, count_id) {
+  var ref = firebase.database().ref("/To-Do-List/" + demo + "/" + badge_value);
   ref.once("value").then(function (snapshot) {
     console.log(snapshot.numChildren());
-    document.getElementById("count_badge").innerHTML = snapshot.numChildren();
+    document.getElementById(count_id).innerHTML = snapshot.numChildren();
     //console.log(badge.innerHTML);
   });
 }
