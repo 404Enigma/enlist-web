@@ -441,10 +441,15 @@
   }
 
   .container:empty::before{
-    content: 'Onee-chan, your list is empty🧑';
-    font-size: large;
+    content: 'Onii-chan, your list is empty.🧑';
+    opacity: 0.6;
+    font-weight: bolder;
+    font-size: x-large;
+    margin: auto;
+    width: 100%;
     text-align: center;
   }
+
 
   .container::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px white;
@@ -1167,6 +1172,16 @@
     height: 50vh;
     overflow-y: scroll;
     overflow-x: hidden;
+  }
+
+
+  .container:empty::before{
+    content: 'Onii-chan, your list is empty.🧑';
+    font-weight: bolder;
+    font-size: x-large;
+    margin: auto;
+    width: 100%;
+    text-align: center;
   }
 
   .container::-webkit-scrollbar-track {
