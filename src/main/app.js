@@ -1443,8 +1443,8 @@ function add_task() {
     var montharray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     for (let i = 0; i < montharray.length; i++) {
-      if (i === Number(month)) {
-        month = montharray[i - 1];
+      if (i + 1 === Number(month)) {
+        month = montharray[i];
       }
     }
 
@@ -1469,16 +1469,18 @@ function add_task() {
         var user = firebase.auth().currentUser;
 
         if (user != null) {
-          name = user.displayName;
+          user_name = user.displayName;
           uid = user.uid;
+          console.log("User is there");
         }
+        console.log(user_name);
 
         const docRef = db.doc("AnalysisB/" + time);
         docRef
           .set({
-            date: Currentdate,
+            date: finalDate,
             title: input_box.value,
-            name: name,
+            name: user_name,
           })
           .then(function (docRef) {})
           .catch(function (error) {
