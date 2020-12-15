@@ -14,21 +14,20 @@
 //   }
 
 let prN = localStorage.getItem("PRN");
-let prnnn = prN;
-console.log(prnnn);
-
 let q = localStorage.getItem("finalUIDD");
-console.log(q);
-let xyz, demo;
-// xyz = "B";
-console.log(xyz);
-demo = q;
+
+let prnnn = prN;
+let demo, xyz;
 let parsedBase64Key, encryptedData;
+
+demo = q;
+console.log(prnnn);
+console.log(q);
 console.log(demo);
+
 let flag = 0;
 var task;
 let uniqkey, finalDate;
-
 let encrypted, encryptKey;
 var db = firebase.firestore();
 
@@ -115,21 +114,6 @@ if (flagTime == 1) {
   console.log("banana");
 }
 
-// firebase.auth().onAuthStateChanged(function (user) {
-//   console.log("12345");
-//   if (user !== null) {
-//     demo = user.uid;
-//     console.log(user.uid);
-//     //console.log(TaskcheckValue);
-//   } else {
-//     // alert("Please login");
-//     popup_alltasks2("Please login !", 4000, "alert alert-warning");
-//     setTimeout(function () {
-//       window.location.assign("login.html");
-//     }, 2000);
-//   }
-// });
-
 function signOut() {
   // xyz = "";
   // task_array = [];
@@ -191,6 +175,7 @@ function Class() {
     create_unfinished_task();
     document.getElementById("finish_task_header").innerHTML = "IT";
   }
+  //sideBarClass(xyz);
 }
 
 function Division() {
@@ -203,8 +188,6 @@ function Division() {
   hello.style.visibility = "visible";
   personal.disabled = false;
   shared.disabled = false;
-  // update_alert.style.visibility = "visible";
-  // update_alert.disabled = false;
 
   if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129) {
     xyz = "B3";
@@ -737,7 +720,7 @@ function task_edit(task, edit_button) {
   title.setAttribute("onkeypress", "allowAlphaNumericSpace(event); return (this.innerText.length < 21)");
 
   deadline = task.childNodes[0].childNodes[1];
-  deadline.setAttribute("contenteditable", true);
+  deadline.setAttribute("contenteditable", false);
   deadline.setAttribute("id", "date_editing");
   deadline.disabled = false;
   deadline.append(dateDisplay);
@@ -770,6 +753,8 @@ function finish_edit(task, edit_button) {
   deadline.setAttribute("id", "task_date");
   deadline.disabled = true;
 
+  console.log(deadline);
+
   let date_edit = dateDisplay.value.split("-");
   let day_edit = date_edit[2];
   let month_edit = date_edit[1];
@@ -796,6 +781,7 @@ function finish_edit(task, edit_button) {
   if (finalDate_edit === "undefined undefined") {
     dateDisplay.style.visibility = "hidden";
     console.log("date is not edited");
+    finalDate_edit = slice_deadline;
   } else {
     dateDisplay.style.visibility = "visible";
     deadline.innerHTML = finalDate_edit;
@@ -815,7 +801,7 @@ function finish_edit(task, edit_button) {
   //console.log(key);
   var task_obj = {
     title: task.childNodes[0].childNodes[0].innerHTML,
-    deadline: task.childNodes[0].childNodes[1].innerHTML,
+    deadline: finalDate_edit,
     key: key,
     description: task.childNodes[0].childNodes[2].innerHTML,
   };
@@ -918,6 +904,7 @@ function finish_edit(task, edit_button) {
 
   console.log(task_obj.title);
   console.log(task_obj.description);
+  console.log(task_obj.deadline);
 
   let encryptTitle = Encript(task_obj.title, DotArray, task_obj.key);
   task_obj.title = encryptTitle;
@@ -942,7 +929,7 @@ function task_delete(task) {
   task_to_remove = firebase.database().ref("To-Do-List/" + demo + "/" + xyz + "/" + "Task" + key);
   task_to_remove.remove();
 
-  remove_IMP = firebase.database().ref("/To-Do-List/" + demo + "/IMP/" + xyz + "/" + "Task" + key);
+  remove_IMP = firebase.database().ref("/To-Do-List/" + demo + "/Imp/" + xyz + "/" + "Task" + key);
   remove_IMP.remove();
 
   console.log(task);
@@ -988,7 +975,15 @@ let dateDisplay;
 function create_unfinished_task() {
   console.log(xyz);
   unfinished_task_container = document.getElementsByClassName("container")[0];
-  unfinished_task_container.innerHTML = "";
+  unfinished_task_container.innerHTML === "";
+
+  // if ($(".container").is(":empty")) {
+  //   document.querySelector(".output1").textContent = true;
+  //   console.log("Agaiyo");
+  // } else {
+  //   console.log("dddddddddddddddddddddddddddddddddddddd");
+  // }
+
   console.log(xyz);
   console.log(demo);
 
@@ -1012,7 +1007,6 @@ function create_unfinished_task() {
         console.log(xyz);
         console.log(task_title);
         console.log(task_array);
-        console.log(xyz);
 
         let task_decrypted_title = Decript(Math.abs(task_key), task_title);
         let task_decrypted_description = Decript(Math.abs(task_key), task_description);
@@ -1036,13 +1030,13 @@ function create_unfinished_task() {
 
         dateDisplay = document.createElement("input");
         dateDisplay.setAttribute("id", "task_displaydate");
-        dateDisplay.setAttribute("contenteditable", true);
+        dateDisplay.setAttribute("contenteditable", false);
         dateDisplay.innerHTML = task_date;
         dateDisplay.setAttribute("type", "date");
 
         deadline = document.createElement("p");
         deadline.setAttribute("id", "task_date");
-        deadline.setAttribute("contenteditable", false);
+        deadline.setAttribute("contenteditable", true);
         deadline.innerHTML = task_date;
         deadline.disabled = true;
 
@@ -1317,68 +1311,6 @@ function Imp_list(task) {
         console.log(updates);
       }
     });
-}
-
-function myFunction(task, task_tool, y) {
-  //x = document.getElementsByClassName("container")[4];
-  let x = document.getElementById("toggle");
-  console.log(x);
-  key = task.getAttribute("data-key");
-  console.log(demo);
-  console.log(xyz);
-  console.log(key);
-  ImptaskRefrence = firebase.database().ref("To-Do-List/" + demo + "/" + xyz + "/" + "Task" + key);
-  console.log(key);
-  //console.log(x);
-  console.log(ImptaskRefrence);
-  let q = ImptaskRefrence.x;
-  console.log(task);
-  console.log(y);
-  console.log(task_tool);
-
-  // ImptaskRefrence.remove();
-  // task.remove();
-
-  // if (y.className === "far fa-star fa-2x") {
-  //   //unfilled
-  //   y.className = "fas fa-star fa-2x"; // filled
-  //   starflag = 1;
-  //   console.log(xyz);
-
-  //   impTask.set({
-  //     starflag: starflag,
-  //     class: xyz,
-  //   });
-
-  //   popup_alltasks("Task added to important !", 2000, "alert alert-warning");
-  // } else {
-  //   y.className = "far fa-star fa-2x";
-  //   starflag = 0;
-  //   impTask.set({
-  //     starflag: starflag,
-  //     class: xyz,
-  //   });
-  //   popup_alltasks("Task removed from important !", 2000, "alert alert-danger");
-  // }
-  // $("#star_button").toggle(
-  //   function () {
-  //     $(this).addClass("fas fa-star fa-2x"); //unfilled
-  //     popup_alltasks("Task removed from important !", 2000, "alert alert-danger");
-  //   },
-  //   function () {
-  //     $(this).removeClass("far fa-star fa-2x"); //filled
-  //     popup_alltasks("Task added to important !", 2000, "alert alert-warning");
-  //   }
-  // );
-
-  // $("#star_button").toggle(
-  //   function () {
-  //     alert("First handler for .toggle() called.");
-  //   },
-  //   function () {
-  //     alert("Second handler for .toggle() called.");
-  //   }
-  // );
 }
 
 function date_picker() {
@@ -1799,7 +1731,7 @@ function add_task() {
             var All_Tasks = {};
             All_Tasks["All-Tasks" + "/" + xyz + "/" + "Task" + uniqkey] = task;
             firebase.database().ref().update(All_Tasks);
-            create_unfinished_task();
+            create_unfinished_task(xyz);
           }
         }
         input_box.value = "";
@@ -1827,6 +1759,12 @@ function allowAlphaNumericSpace(e) {
   }
 }
 
+function on_load() {
+  if (xyz === "Pvt") {
+    Pvt();
+  }
+}
+
 function sideBar() {
   let RespectiveClass = localStorage.getItem("RespectiveClass");
   let RespectiveDivision = localStorage.getItem("RespectiveDivision");
@@ -1847,4 +1785,17 @@ function sideBar() {
   }
 
   //Nodirectpass();
+}
+
+function Nodirectpass() {
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      // User is signed in.
+      console.log("aaja aaja aaaja");
+    } else {
+      // No user is signed in.
+      console.log("naja naja naja");
+      signOut();
+    }
+  });
 }

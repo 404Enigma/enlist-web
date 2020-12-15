@@ -249,11 +249,20 @@ function signOut() {
   // xyz = "";
   // task_array = [];
 
-  firebase.auth().signOut();
-  popup_alltasks2("Please login !", 4000, "alert alert-warning");
-  setTimeout(function () {
-    window.location.assign("../login/login.html");
-  }, 2000);
+  firebase
+    .auth()
+    .signOut()
+    .then(function () {
+      // Sign-out successful.
+      popup_alltasks2("Please login !", 4000, "alert alert-warning");
+      setTimeout(function () {
+        window.location.assign("../Login/login.html");
+      }, 2000);
+    })
+    .catch(function (error) {
+      // An error happened.
+      console.log(error);
+    });
 }
 
 function popup_alltasks(sent, time, color) {
@@ -318,13 +327,13 @@ function Imp_list(task, qwerty) {
 
   firebase
     .database()
-    .ref("/To-Do-List/" + demo + "/Imp/" + xyz + "/" + "Task" + uniqkey)
+    .ref("/To-Do-List/" + demo + "/IMP/" + xyz + "/" + "Task" + uniqkey)
     .once("value", (snapshot) => {
       if (snapshot.exists()) {
         popup_alltasks("Task removed from important !", 2000, "alert alert-danger");
         console.log("exists!");
         console.log(snapshot.val());
-        remove_IMP = firebase.database().ref("/To-Do-List/" + demo + "/Imp/" + xyz + "/" + "Task" + uniqkey);
+        remove_IMP = firebase.database().ref("/To-Do-List/" + demo + "/IMP/" + xyz + "/" + "Task" + uniqkey);
         remove_IMP.remove();
 
         console.log(task);

@@ -24,12 +24,13 @@ function first(ID, storage_UIDD) {
     if (storage_UIDD) {
       // User is signed in.
       console.log("aaaaaaa");
-      let UIDD = storage_UIDD.uid;
-      console.log(UIDD);
-      let prnValue = localStorage.getItem("bypassPRN");
-      console.log(prnValue);
+      // let UIDD = storage_UIDD.uid;
+      // console.log(UIDD);
 
-      localStorage.setItem("uniqueUid", UIDD);
+      // let prnValue = localStorage.getItem("bypassPRN");
+      // console.log(prnValue);
+
+      //localStorage.setItem("uniqueUid", UIDD);
 
       get_PRN = firebase.database().ref("/PRN-Source/" + "/" + storage_UIDD);
       console.log(get_PRN);
@@ -84,6 +85,7 @@ function CS_A(ID) {
   storage_UIDD = localStorage.getItem("finalUIDD");
   console.log({ ID, storage_UIDD });
   console.log("I am in A");
+
   first(ID, storage_UIDD);
 }
 
