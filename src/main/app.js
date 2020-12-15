@@ -216,6 +216,7 @@ function Class() {
     create_unfinished_task();
     document.getElementById("finish_task_header").innerHTML = "IT";
   }
+  Count_Node();
 }
 
 function Division() {
@@ -296,6 +297,8 @@ function Division() {
     create_unfinished_task();
     document.getElementById("finish_task_header").innerHTML = "CS-T3";
   }
+
+  Count_Node();
 }
 
 function Swap(v, chooseArray) {
@@ -1010,6 +1013,7 @@ function Pvt() {
   console.log(demo);
   create_unfinished_task();
   console.log("yupieee");
+  Count_Node();
 }
 
 let dateDisplay;
@@ -1841,6 +1845,7 @@ function add_task() {
       popup_alltasks("Enter title!!!", 2000, "alert alert-danger");
     }
   }
+  Count_Node();
 }
 
 function allowAlphaNumericSpace(e) {
@@ -1873,4 +1878,11 @@ function sideBar() {
   }
 
   //Nodirectpass();
+}
+
+function Count_Node() {
+  var ref = firebase.database().ref("/To-Do-List/" + demo + "/" + xyz);
+  ref.once("value").then(function (snapshot) {
+    console.log(snapshot.numChildren());
+  });
 }
