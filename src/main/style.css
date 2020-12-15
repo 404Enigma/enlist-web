@@ -440,6 +440,12 @@
     overflow-x: hidden;
   }
 
+  .container:empty::before{
+    content: 'Onee-chan, your list is empty🧑';
+    font-size: large;
+    text-align: center;
+  }
+
   .container::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px white;
     background-color: white;
