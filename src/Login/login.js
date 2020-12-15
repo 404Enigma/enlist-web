@@ -135,6 +135,7 @@ function popup(sent, time, color) {
       .slideUp(500, function () {
         $(this).remove();
       });
+      document.getElementById("btechEmail").disabled = false;
   }, time);
 }
 
