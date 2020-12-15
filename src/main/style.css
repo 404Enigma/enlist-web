@@ -10,6 +10,18 @@
 }
 
 @media (min-device-width: 1024px) {
+
+  .notification .badge {
+    position: absolute;
+    top: 5px;
+    right: -10px;
+    padding: 2.5px 7.5px;
+    font-size:smaller;
+    border-radius: 50%;
+    background: red;
+    color: white;
+  }
+  
   body {
     background-color: white;
   }
@@ -717,6 +729,18 @@
 /* FOR MOBILE */
 
 @media (max-device-width: 480px) {
+
+  .notification .badge {
+    position: absolute;
+    top: 5px;
+    right: -10px;
+    padding: 5px 10px;
+    font-size:small;
+    border-radius: 50%;
+    background: red;
+    color: white;
+  }
+
   body {
     background-color: white;
   }

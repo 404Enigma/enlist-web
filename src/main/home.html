@@ -13,7 +13,7 @@
 		});
 	</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
     <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="icon" href="../Extra/logo.png" type="image/gif" sizes="270×270">
 
@@ -85,18 +85,21 @@
     
     <div class="sidebar">
         <ul>
-          <li><a onclick="Class()" id="class"  class="pointer">
+          <li><a class="notification pointer" onclick="Class()" id="class">
             <span class="icon"><i class="fas fa-book fa-2x"></i></span>
-            <span class="title" id="ResClass">Class</span></a></li>
+            <span class="title" id="ResClass">Class</span>
+            <span class="badge">5</span></a></li>
 
-          <li><a onclick="Division()" id="B1" class="pointer">
+          <li><a class="notification pointer" onclick="Division()" id="B1">
             <span class="icon"><i class="fas fa-book fa-2x"></i></span>
             <span class="title" id="division" >Div</span>
+            <span class="badge" style="background: rgb(20, 71, 87);">5</span>
             </a></li>
-
-            <li><a onclick="Pvt()" id="personalTaskList" class="pointer">
+         
+            <li><a onclick="Pvt()" id="personalTaskList" class="notification pointer">
               <span class="icon"><i class="fas fa-user-alt fa-2x"></i></span>
               <span class="title" id="ivision" >Personal</span>
+              <span class="badge" style="background: green;">5</span>
               </a></li>
 
             <li><a href="../Imp/Implist.html"  id="Imp" class="pointer">
