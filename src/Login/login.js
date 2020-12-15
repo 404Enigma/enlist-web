@@ -155,7 +155,7 @@ function oneTime(demo, checkValue) {
   console.log(TaskcheckValue);
   if (checkValue == 1) {
     console.log(TaskcheckValue);
-    if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129 || Number(prnnn) == 19070122134) {
+    if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129) {
       let arrClass = ["A", "C", "IT", "B"];
       let arrDivision = ["B1", "B2", "A1", "A2", "A3", "C1", "C2", "C3", "T1", "T2", "T3", "B3"];
 

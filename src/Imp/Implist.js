@@ -3,7 +3,10 @@ let impUID = localStorage.getItem("finalUIDD");
 let PRN = localStorage.getItem("PRN");
 demo = impUID;
 console.log(PRN);
-// function ImportantTask() {}
+
+let RespectiveClass = localStorage.getItem("RespectiveClass");
+let RespectiveDivision = localStorage.getItem("RespectiveDivision");
+let arr_class_division = [RespectiveClass, RespectiveDivision];
 
 function ImportantTask(xyz) {
   document.getElementById("finish_task_header").innerHTML = document.getElementById(xyz).innerHTML;
@@ -254,6 +257,15 @@ function signOut() {
     .signOut()
     .then(function () {
       // Sign-out successful.
+
+      for (let i = 0; i < arr_class_division.length; i++) {
+        remove_source = firebase.database().ref("/Source/" + arr_class_division[i] + "/" + demo);
+        remove_source.remove();
+      }
+
+      remove_PRN_Source = firebase.database().ref("/PRN-Source/" + "/" + demo);
+      remove_PRN_Source.remove();
+
       popup_alltasks2("Please login !", 4000, "alert alert-warning");
       setTimeout(function () {
         window.location.assign("../Login/login.html");
@@ -346,9 +358,6 @@ function Imp_list(task, qwerty) {
 }
 
 function ImpHeading() {
-  let RespectiveClass = localStorage.getItem("RespectiveClass");
-  let RespectiveDivision = localStorage.getItem("RespectiveDivision");
-
   console.log(RespectiveDivision);
   console.log(RespectiveClass);
 

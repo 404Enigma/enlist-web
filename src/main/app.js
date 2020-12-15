@@ -13,6 +13,11 @@
 //   }
 //   }
 
+let RespectiveClass = localStorage.getItem("RespectiveClass");
+let RespectiveDivision = localStorage.getItem("RespectiveDivision");
+
+let arr_class_division = [RespectiveClass, RespectiveDivision];
+
 let prN = localStorage.getItem("PRN");
 let prnnn = prN;
 console.log(prnnn);
@@ -31,6 +36,17 @@ let uniqkey, finalDate;
 
 let encrypted, encryptKey;
 var db = firebase.firestore();
+
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+    // User is signed in.
+    let current_uid = user.uid;
+    console.log(current_uid);
+  } else {
+    // No user is signed in.
+    console.log("I am not signed in");
+  }
+});
 
 var today = new Date();
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -139,6 +155,15 @@ function signOut() {
     .signOut()
     .then(function () {
       // Sign-out successful.
+
+      for (let i = 0; i < arr_class_division.length; i++) {
+        remove_source = firebase.database().ref("/Source/" + arr_class_division[i] + "/" + demo);
+        remove_source.remove();
+      }
+
+      remove_PRN_Source = firebase.database().ref("/PRN-Source/" + "/" + demo);
+      remove_PRN_Source.remove();
+
       popup_alltasks2("Please login !", 4000, "alert alert-warning");
       setTimeout(function () {
         window.location.assign("../Login/login.html");
@@ -737,7 +762,7 @@ function task_edit(task, edit_button) {
   title.setAttribute("onkeypress", "allowAlphaNumericSpace(event); return (this.innerText.length < 21)");
 
   deadline = task.childNodes[0].childNodes[1];
-  deadline.setAttribute("contenteditable", true);
+  deadline.setAttribute("contenteditable", false);
   deadline.setAttribute("id", "date_editing");
   deadline.disabled = false;
   deadline.append(dateDisplay);
@@ -770,6 +795,8 @@ function finish_edit(task, edit_button) {
   deadline.setAttribute("id", "task_date");
   deadline.disabled = true;
 
+  console.log(deadline);
+
   let date_edit = dateDisplay.value.split("-");
   let day_edit = date_edit[2];
   let month_edit = date_edit[1];
@@ -796,6 +823,7 @@ function finish_edit(task, edit_button) {
   if (finalDate_edit === "undefined undefined") {
     dateDisplay.style.visibility = "hidden";
     console.log("date is not edited");
+    finalDate_edit = slice_deadline;
   } else {
     dateDisplay.style.visibility = "visible";
     deadline.innerHTML = finalDate_edit;
@@ -815,7 +843,7 @@ function finish_edit(task, edit_button) {
   //console.log(key);
   var task_obj = {
     title: task.childNodes[0].childNodes[0].innerHTML,
-    deadline: task.childNodes[0].childNodes[1].innerHTML,
+    deadline: finalDate_edit,
     key: key,
     description: task.childNodes[0].childNodes[2].innerHTML,
   };
@@ -918,6 +946,7 @@ function finish_edit(task, edit_button) {
 
   console.log(task_obj.title);
   console.log(task_obj.description);
+  console.log(task_obj.deadline);
 
   let encryptTitle = Encript(task_obj.title, DotArray, task_obj.key);
   task_obj.title = encryptTitle;
@@ -942,7 +971,7 @@ function task_delete(task) {
   task_to_remove = firebase.database().ref("To-Do-List/" + demo + "/" + xyz + "/" + "Task" + key);
   task_to_remove.remove();
 
-  remove_IMP = firebase.database().ref("/To-Do-List/" + demo + "/IMP/" + xyz + "/" + "Task" + key);
+  remove_IMP = firebase.database().ref("/To-Do-List/" + demo + "/Imp/" + xyz + "/" + "Task" + key);
   remove_IMP.remove();
 
   console.log(task);
@@ -1828,9 +1857,6 @@ function allowAlphaNumericSpace(e) {
 }
 
 function sideBar() {
-  let RespectiveClass = localStorage.getItem("RespectiveClass");
-  let RespectiveDivision = localStorage.getItem("RespectiveDivision");
-
   console.log(RespectiveDivision);
   console.log(RespectiveClass);
 
