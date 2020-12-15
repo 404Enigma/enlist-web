@@ -1886,5 +1886,7 @@ function Count_Node() {
   var ref = firebase.database().ref("/To-Do-List/" + demo + "/" + xyz);
   ref.once("value").then(function (snapshot) {
     console.log(snapshot.numChildren());
+    document.getElementById("count_badge").innerHTML = snapshot.numChildren();
+    //console.log(badge.innerHTML);
   });
 }
