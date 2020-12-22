@@ -438,10 +438,11 @@
     height: 390px;
     overflow-y: scroll;
     overflow-x: hidden;
+    text-align: center;
   }
 
   .container:empty::before{
-    content: 'Onii-chan, your list is empty.🧑';
+    content: 'Your list is empty.🧑';
     opacity: 0.6;
     font-weight: bolder;
     font-size: x-large;
@@ -473,6 +474,7 @@
     margin-bottom: 10px;
     margin-top: 20px;
     border: 2px solid black;
+    text-align: left;
   }
 
   .task_container:hover {
@@ -1172,11 +1174,13 @@
     height: 50vh;
     overflow-y: scroll;
     overflow-x: hidden;
+    text-align: center;
   }
 
 
   .container:empty::before{
-    content: 'Onii-chan, your list is empty.🧑';
+    content: 'Your list is empty.🧑';
+    opacity: 0.6;
     font-weight: bolder;
     font-size: x-large;
     margin: auto;
@@ -1206,6 +1210,7 @@
     margin-bottom: 10px;
     margin-top: 20px;
     border: 2px solid black;
+    text-align: left;
   }
 
   .task_container:hover {
