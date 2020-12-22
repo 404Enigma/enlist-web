@@ -64,6 +64,11 @@ function signIn() {
               if (prnn.value === pry && doc.id === user.email) {
                 flag = 1;
                 console.log("aaaaaaaaaaa");
+                let counterID = doc.id;
+                console.log(counterID);
+                docRef.doc(doc.id).update({
+                  UID_count: firebase.firestore.FieldValue.increment(1),
+                });
               } else {
                 // popup("Please enter your PRN !", 1000, "alert alert-danger");
               }
@@ -135,7 +140,7 @@ function popup(sent, time, color) {
       .slideUp(500, function () {
         $(this).remove();
       });
-      document.getElementById("btechEmail").disabled = false;
+    document.getElementById("btechEmail").disabled = false;
   }, time);
 }
 
