@@ -1,12 +1,43 @@
 let xyz, demo;
-let impUID = localStorage.getItem("finalUIDD");
-let PRN = localStorage.getItem("PRN");
-demo = impUID;
-console.log(PRN);
+let q = localStorage.getItem("finalUIDD");
+let PRNNNN = localStorage.getItem("PRN");
+
+console.log(PRNNNN);
 
 let RespectiveClass = localStorage.getItem("RespectiveClass");
 let RespectiveDivision = localStorage.getItem("RespectiveDivision");
 let arr_class_division = [RespectiveClass, RespectiveDivision];
+
+async function ImpHeading() {
+  await firebase
+    .database()
+    .ref("/PRN-Source/" + q)
+    .once("value", (snapshot) => {
+      if (snapshot.exists()) {
+        console.log("exists!");
+        console.log(snapshot.val());
+        console.log(snapshot.key);
+        PRN = snapshot.val();
+        demo = snapshot.key;
+      }
+    });
+
+  Imp_Pvt();
+  console.log(RespectiveDivision);
+  console.log(RespectiveClass);
+
+  let CSarray = ["A", "C", "B", "B1", "B2", "B3", "A1", "A2", "A3", "C1", "C2", "C3"];
+
+  if (CSarray.includes(RespectiveClass) || CSarray.includes(RespectiveDivision)) {
+    console.log("CS");
+    document.getElementById("Impdivision").innerHTML = "CS-" + RespectiveClass;
+    document.getElementById("ImpClass").innerHTML = "CS-" + RespectiveDivision;
+  } else {
+    document.getElementById("Impdivision").innerHTML = RespectiveClass;
+    document.getElementById("ImpClass").innerHTML = "IT-" + RespectiveDivision;
+    console.log("IT");
+  }
+}
 
 function ImportantTask(xyz) {
   document.getElementById("finish_task_header").innerHTML = document.getElementById(xyz).innerHTML;
@@ -355,23 +386,6 @@ function Imp_list(task, qwerty) {
         console.log("there is nothing");
       }
     });
-}
-
-function ImpHeading() {
-  console.log(RespectiveDivision);
-  console.log(RespectiveClass);
-
-  let CSarray = ["A", "C", "B", "B1", "B2", "B3", "A1", "A2", "A3", "C1", "C2", "C3"];
-
-  if (CSarray.includes(RespectiveClass) || CSarray.includes(RespectiveDivision)) {
-    console.log("CS");
-    document.getElementById("Impdivision").innerHTML = "CS-" + RespectiveClass;
-    document.getElementById("ImpClass").innerHTML = "CS-" + RespectiveDivision;
-  } else {
-    document.getElementById("Impdivision").innerHTML = RespectiveClass;
-    document.getElementById("ImpClass").innerHTML = "IT-" + RespectiveDivision;
-    console.log("IT");
-  }
 }
 
 function Imp_Class() {
