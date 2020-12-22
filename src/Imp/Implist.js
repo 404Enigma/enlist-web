@@ -266,7 +266,7 @@ function signOut() {
       remove_PRN_Source = firebase.database().ref("/PRN-Source/" + "/" + demo);
       remove_PRN_Source.remove();
 
-      popup_alltasks2("Please login !", 4000, "alert alert-warning");
+      popup_alltasks2("Logout Successfully !", 4000, "alert alert-warning");
       setTimeout(function () {
         window.location.assign("../Login/login.html");
       }, 2000);

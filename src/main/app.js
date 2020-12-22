@@ -15,26 +15,99 @@
 
 let RespectiveClass = localStorage.getItem("RespectiveClass");
 let RespectiveDivision = localStorage.getItem("RespectiveDivision");
-
 let arr_class_division = [RespectiveClass, RespectiveDivision];
-
 let prN = localStorage.getItem("PRN");
-let prnnn = prN;
-console.log(prnnn);
-
 let q = localStorage.getItem("finalUIDD");
+let demo, prnnn;
+
+// firebase
+//   .database()
+//   .ref("/PRN-Source/")
+//   .once("value", function (snapshot) {
+//     snapshot.forEach(function (childSnapshot) {
+//       var childKey = childSnapshot.key;
+//       var childData = Object.keys(snapshot.val());
+//       var childPRN = childSnapshot.val();
+//       //task_array.push(Object.values(childData));
+//       console.log(childKey);
+//       console.log(childPRN);
+
+//       console.log(childData);
+//     });
+//   });
+
+async function sideBar() {
+  await firebase
+    .database()
+    .ref("/PRN-Source/" + q)
+    .once("value", (snapshot) => {
+      if (snapshot.exists()) {
+        console.log("exists!");
+        console.log(snapshot.val());
+        console.log(snapshot.key);
+        prnnn = snapshot.val();
+        demo = snapshot.key;
+      }
+    });
+
+  Pvt();
+  console.log(RespectiveDivision);
+  console.log(RespectiveClass);
+
+  let CSarray = ["A", "C", "B", "B1", "B2", "B3", "A1", "A2", "A3", "C1", "C2", "C3"];
+
+  if (CSarray.includes(RespectiveClass) || CSarray.includes(RespectiveDivision)) {
+    console.log("CS");
+    document.getElementById("division").innerHTML = "CS-" + RespectiveClass;
+    document.getElementById("ResClass").innerHTML = "CS-" + RespectiveDivision;
+  } else {
+    document.getElementById("division").innerHTML = RespectiveClass;
+    document.getElementById("ResClass").innerHTML = "IT" + RespectiveDivision;
+    console.log("IT");
+  }
+
+  //Nodirectpass();
+
+  // var ref = firebase.database().ref("/To-Do-List/" + demo + "/" + RespectiveDivision);
+  // ref.once("value").then(function (snapshot) {
+  //   console.log(snapshot.numChildren());
+  //   document.getElementById("count_class").innerHTML = snapshot.numChildren();
+  //   //console.log(badge.innerHTML);
+  // });
+
+  // var ref = firebase.database().ref("/To-Do-List/" + demo + "/" + RespectiveClass);
+  // ref.once("value").then(function (snapshot) {
+  //   console.log(snapshot.numChildren());
+  //   document.getElementById("count_division").innerHTML = snapshot.numChildren();
+  //   //console.log(badge.innerHTML);
+  // });
+
+  // var ref = firebase.database().ref("/To-Do-List/" + demo + "/" + "Pvt");
+  // ref.once("value").then(function (snapshot) {
+  //   console.log(snapshot.numChildren());
+  //   document.getElementById("count_Pvt").innerHTML = snapshot.numChildren();
+  //   //console.log(badge.innerHTML);
+  // });
+
+  Count_Node(RespectiveDivision, count_class);
+  Count_Node(RespectiveClass, count_division);
+  Count_Node("Pvt", count_Pvt);
+
+  console.log(prnnn);
+}
+
+//prnnn = prN;
+
 console.log(q);
-let xyz, demo;
+
+let xyz, parsedBase64Key, encryptedData, uniqkey, finalDate, encrypted, encryptKey;
 // xyz = "B";
-console.log(xyz);
-demo = q;
-let parsedBase64Key, encryptedData;
-console.log(demo);
+
+//demo = q;
+
+// console.log(demo);
 let flag = 0;
 var task;
-let uniqkey, finalDate;
-
-let encrypted, encryptKey;
 var db = firebase.firestore();
 
 firebase.auth().onAuthStateChanged(function (user) {
@@ -164,7 +237,7 @@ function signOut() {
       remove_PRN_Source = firebase.database().ref("/PRN-Source/" + "/" + demo);
       remove_PRN_Source.remove();
 
-      popup_alltasks2("Please login !", 4000, "alert alert-warning");
+      popup_alltasks2("Logout Successfully !", 4000, "alert alert-warning");
       setTimeout(function () {
         window.location.assign("../Login/login.html");
       }, 2000);
@@ -999,6 +1072,7 @@ function task_delete(task) {
 let UIDDDD;
 
 function Pvt() {
+  console.log(demo);
   // User is signed in.
   // UIDDDD = user.uid;
   // console.log(UIDDDD);
@@ -1018,7 +1092,7 @@ function Pvt() {
 
   xyz = "Pvt";
   document.getElementById("finish_task_header").innerHTML = "Personal";
-  console.log(demo);
+
   create_unfinished_task();
   console.log("yupieee");
   Count_Node(xyz, count_Pvt);
@@ -1881,51 +1955,6 @@ function allowAlphaNumericSpace(e) {
 let count_class = "count_class";
 let count_division = "count_division";
 let count_Pvt = "count_Pvt";
-
-function sideBar() {
-  Pvt();
-  console.log(RespectiveDivision);
-  console.log(RespectiveClass);
-
-  let CSarray = ["A", "C", "B", "B1", "B2", "B3", "A1", "A2", "A3", "C1", "C2", "C3"];
-
-  if (CSarray.includes(RespectiveClass) || CSarray.includes(RespectiveDivision)) {
-    console.log("CS");
-    document.getElementById("division").innerHTML = "CS-" + RespectiveClass;
-    document.getElementById("ResClass").innerHTML = "CS-" + RespectiveDivision;
-  } else {
-    document.getElementById("division").innerHTML = RespectiveClass;
-    document.getElementById("ResClass").innerHTML = "IT" + RespectiveDivision;
-    console.log("IT");
-  }
-
-  //Nodirectpass();
-
-  // var ref = firebase.database().ref("/To-Do-List/" + demo + "/" + RespectiveDivision);
-  // ref.once("value").then(function (snapshot) {
-  //   console.log(snapshot.numChildren());
-  //   document.getElementById("count_class").innerHTML = snapshot.numChildren();
-  //   //console.log(badge.innerHTML);
-  // });
-
-  // var ref = firebase.database().ref("/To-Do-List/" + demo + "/" + RespectiveClass);
-  // ref.once("value").then(function (snapshot) {
-  //   console.log(snapshot.numChildren());
-  //   document.getElementById("count_division").innerHTML = snapshot.numChildren();
-  //   //console.log(badge.innerHTML);
-  // });
-
-  // var ref = firebase.database().ref("/To-Do-List/" + demo + "/" + "Pvt");
-  // ref.once("value").then(function (snapshot) {
-  //   console.log(snapshot.numChildren());
-  //   document.getElementById("count_Pvt").innerHTML = snapshot.numChildren();
-  //   //console.log(badge.innerHTML);
-  // });
-
-  Count_Node(RespectiveDivision, count_class);
-  Count_Node(RespectiveClass, count_division);
-  Count_Node("Pvt", count_Pvt);
-}
 
 function Count_Node(badge_value, count_id) {
   var ref = firebase.database().ref("/To-Do-List/" + demo + "/" + badge_value);
