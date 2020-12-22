@@ -106,7 +106,8 @@ let xyz, parsedBase64Key, encryptedData, uniqkey, finalDate, encrypted, encryptK
 //demo = q;
 
 // console.log(demo);
-let flag = 0;
+let flag = 0,
+  signout_check = 0;
 var task;
 var db = firebase.firestore();
 
@@ -116,12 +117,17 @@ firebase.auth().onAuthStateChanged(function (user) {
     let current_uid = user.uid;
     console.log(current_uid);
   } else {
-    // No user is signed in.
-    console.log("I am not signed in");
-    // window.location.assign("../IntroPage/welcome.html");
+    if (signout_check === 1) {
+      console.log("normal signout");
+      signout_check = 0;
+    } else {
+      // No user is signed in.
+      console.log("I am not signed in");
+      // window.location.assign("../IntroPage/welcome.html");
 
-    document.getElementById("myDialog").showModal();
-    //signOut();
+      document.getElementById("myDialog").showModal();
+      //signOut();
+    }
   }
 });
 
@@ -223,11 +229,13 @@ if (flagTime == 1) {
 //   }
 // });
 
-function signOut() {
+async function signOut() {
+  signout_check = 1;
+  console.log("normal signout check");
   // xyz = "";
   // task_array = [];
 
-  firebase
+  await firebase
     .auth()
     .signOut()
     .then(function () {

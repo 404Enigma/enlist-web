@@ -1,4 +1,5 @@
 let xyz, demo, PRN;
+let signout_check = 0;
 let q = localStorage.getItem("finalUIDD");
 let PRNNNN = localStorage.getItem("PRN");
 
@@ -14,12 +15,17 @@ firebase.auth().onAuthStateChanged(function (user) {
     let current_uid = user.uid;
     console.log(current_uid);
   } else {
-    // No user is signed in.
-    console.log("I am not signed in");
-    // window.location.assign("../IntroPage/welcome.html");
-    //signOut();
-    document.getElementById("myDialog").showModal();
-    //signOut();
+    if (signout_check === 1) {
+      console.log("normal signout");
+      signout_check = 0;
+    } else {
+      // No user is signed in.
+      console.log("I am not signed in");
+      // window.location.assign("../IntroPage/welcome.html");
+
+      document.getElementById("myDialog").showModal();
+      //signOut();
+    }
   }
 });
 
@@ -295,6 +301,8 @@ function Swap(v, chooseArray) {
 }
 
 function signOut() {
+  signout_check = 1;
+  console.log("normal signout check");
   // xyz = "";
   // task_array = [];
 
