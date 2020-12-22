@@ -1,4 +1,4 @@
-let xyz, demo;
+let xyz, demo, PRN;
 let q = localStorage.getItem("finalUIDD");
 let PRNNNN = localStorage.getItem("PRN");
 
@@ -7,6 +7,21 @@ console.log(PRNNNN);
 let RespectiveClass = localStorage.getItem("RespectiveClass");
 let RespectiveDivision = localStorage.getItem("RespectiveDivision");
 let arr_class_division = [RespectiveClass, RespectiveDivision];
+
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+    // User is signed in.
+    let current_uid = user.uid;
+    console.log(current_uid);
+  } else {
+    // No user is signed in.
+    console.log("I am not signed in");
+    // window.location.assign("../IntroPage/welcome.html");
+    //signOut();
+    document.getElementById("myDialog").showModal();
+    //signOut();
+  }
+});
 
 async function ImpHeading() {
   await firebase

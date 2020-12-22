@@ -119,6 +119,8 @@ firebase.auth().onAuthStateChanged(function (user) {
     // No user is signed in.
     console.log("I am not signed in");
     // window.location.assign("../IntroPage/welcome.html");
+
+    document.getElementById("myDialog").showModal();
     //signOut();
   }
 });
