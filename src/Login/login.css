@@ -38,6 +38,18 @@ body{
 }
 
 
+.display_class{
+    font-family: 'Montserrat', sans-serif;
+    float: left;
+    width: 300px;
+    height: 30px;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: bold;
+    font-size:xx-large;
+}
+
+
 #btechEmail{
     font-family: 'Montserrat', sans-serif;
     float: left;
@@ -102,3 +114,117 @@ body{
 p a{
     text-decoration: underline;
 }
+
+
+#cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1110px;
+    opacity: 0;
+    background: black;
+    z-index: 10;
+    display: none;
+  }
+
+  #myDialog {
+    padding-top: 30px;
+    width: 30%;
+    height: 20%;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: rgb(216, 195, 195);
+  }
+
+  #myDialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  #login_button {
+    width: 60%;
+    float: left;
+    margin-left: 20%;
+    margin-top: 20px;
+    background-color: #fff;
+    height: 30px;
+    color: black;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    font-family: monospace;
+    font-size: 17px;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 5px;
+  }
+
+  #login_button:hover {
+    color: white;
+    background-color: black;
+  }
+
+  #login_button:hover a {
+    color: white;
+  }
+
+
+  @media (max-device-width: 480px) {
+    #cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 105%;
+      opacity: 0;
+      background: black;
+      z-index: 10;
+      display: none;
+    }
+  
+    #myDialog {
+      padding-top: 30px;
+      width: 50%;
+      height: 10%;
+      text-align: center;
+      font-size: larger;
+      font-weight: bold;
+      border-radius: 10px;
+      background-color: rgb(216, 195, 195);
+    }
+  
+    #myDialog::backdrop {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  
+    #login_button {
+      width: 60%;
+      float: left;
+      margin-left: 20%;
+      margin-top: 20px;
+      background-color: #fff;
+      height: 30px;
+      color: black;
+      cursor: pointer;
+      outline: none;
+      text-align: center;
+      font-family: monospace;
+      font-size: large;
+      text-align: center;
+      border: 2px solid black;
+      border-radius: 5px;
+    }
+  
+    #login_button:hover {
+      color: white;
+      background-color: black;
+    }
+  
+    #login_button:hover a {
+      color: white;
+    }
+  }  

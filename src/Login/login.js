@@ -23,7 +23,7 @@ function onload_start() {
   if (whichClass) {
     document.querySelector(".display_class").innerHTML = whichClass;
   } else {
-    document.querySelector(".display_class").innerHTML = "Looks like you haven't selected the class";
+    document.querySelector(".display_class").innerHTML = "Choose class";
     document.getElementById("myDialog").showModal();
   }
 }
