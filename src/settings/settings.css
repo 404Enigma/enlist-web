@@ -305,3 +305,17 @@ hr{
 }
 
 
+@media (max-device-width: 1024px){
+
+    #page_head{
+        text-align: center;
+        font-weight: bold;
+        font-size: 35px;
+        padding: 0.5rem;
+        padding-left: 0px;
+        opacity: 75%;
+    }
+
+}
+
+
