@@ -24,6 +24,7 @@ function onload_start() {
     document.querySelector(".display_class").innerHTML = whichClass;
   } else {
     document.querySelector(".display_class").innerHTML = "Looks like you haven't selected the class";
+    document.getElementById("myDialog").showModal();
   }
 }
 
