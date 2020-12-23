@@ -301,6 +301,9 @@ function Swap(v, chooseArray) {
 }
 
 function signOut() {
+
+  $("#cover").fadeIn(0);
+
   signout_check = 1;
   console.log("normal signout check");
   // xyz = "";

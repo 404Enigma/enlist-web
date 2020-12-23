@@ -11,6 +11,20 @@
 
 @media (min-device-width: 1024px) {
 
+
+  #cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1110px;
+    opacity: 0.0;
+    background: black;
+    z-index: 10;
+    display: none;
+ }
+
   #myDialog{
     padding-top: 30px;
     width: 30%;
@@ -786,6 +800,19 @@
 /* FOR MOBILE */
 
 @media (max-device-width: 480px) {
+
+  #cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 105%;
+    opacity: 0.0;
+    background: black;
+    z-index: 10;
+    display: none;
+ }
 
   #myDialog{
     padding-top: 30px;
