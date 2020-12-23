@@ -53,8 +53,8 @@ function signIn() {
     .then(function (result) {
       var user = result.user;
       let flag = 0;
-      console.log(user.email);
-      console.log(prnn.value);
+      // console.log(user.email);
+      // console.log(prnn.value);
       var docRef = db.collection(whichClass + "/");
 
       docRef
@@ -74,7 +74,7 @@ function signIn() {
                 flag = 1;
                 console.log("aaaaaaaaaaa");
                 let counterID = doc.id;
-                console.log(counterID);
+                // console.log(counterID);
                 docRef.doc(doc.id).update({
                   UID_count: firebase.firestore.FieldValue.increment(1),
                 });
@@ -96,10 +96,10 @@ function signIn() {
               localStorage.setItem("finalUIDD", demo);
               let aaa = oneTime(demo, checkValue);
 
-              console.log("aaa");
-              console.log(aaa);
-              console.log(aaa[0]);
-              console.log(aaa[1]);
+              // console.log("aaa");
+              // console.log(aaa);
+              // console.log(aaa[0]);
+              // console.log(aaa[1]);
 
               updateDivision = aaa[0];
               updateClass = aaa[1];
@@ -164,7 +164,6 @@ let xyzClass;
 function oneTime(demo, checkValue) {
   flagTime = 1;
 
-  console.log("12345");
   //demo = user.uid;
   //console.log(user.uid);
   console.log(TaskcheckValue);
@@ -186,8 +185,8 @@ function oneTime(demo, checkValue) {
         nodeCreate(xyz, prnnn);
       }
 
-      console.log(xyz);
-      console.log(xyzClass);
+      // console.log(xyz);
+      // console.log(xyzClass);
     } else if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
       xyz = "B1";
 
@@ -312,6 +311,6 @@ async function nodeCreate(value, prnnn) {
   prn_source["/PRN-Source/" + "/" + demo] = Number(prnnn);
   await firebase.database().ref().update(prn_source);
 
-  console.log({ updates1 });
-  console.log({ prn_source });
+  // console.log({ updates1 });
+  // console.log({ prn_source });
 }
