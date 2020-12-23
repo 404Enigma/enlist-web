@@ -19,6 +19,14 @@ var prnn = document.getElementById("prn");
 let PRNlength = prnn.value.length;
 var PRN;
 
+function onload_start() {
+  if (whichClass) {
+    document.querySelector(".display_class").innerHTML = whichClass;
+  } else {
+    document.querySelector(".display_class").innerHTML = "Looks like you haven't selected the class";
+  }
+}
+
 function signInWithGoogle() {
   if (prnn.value === "") {
     popup("Please enter the PRN !", 4000, "alert alert-info");
