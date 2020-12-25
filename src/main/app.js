@@ -19,6 +19,9 @@ let arr_class_division = [RespectiveClass, RespectiveDivision];
 let prN = localStorage.getItem("PRN");
 let q = localStorage.getItem("finalUIDD");
 let demo, prnnn;
+var db = firebase.firestore();
+
+const RefToken = db.collection("Token Access");
 
 async function sideBar() {
   await firebase
@@ -55,6 +58,13 @@ async function sideBar() {
   Count_Node("Pvt", count_Pvt);
 
   console.log(prnnn);
+
+  console.log(sessionStorage.getItem("check_Bypass"));
+  if (sessionStorage.getItem("check_Bypass")) {
+    console.log("BYpassed");
+  } else {
+    console.log("Fresh Login");
+  }
 }
 
 //prnnn = prN;
@@ -70,7 +80,6 @@ let xyz, parsedBase64Key, encryptedData, uniqkey, finalDate, encrypted, encryptK
 let flag = 0,
   signout_check = 0;
 var task;
-var db = firebase.firestore();
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
@@ -176,28 +185,18 @@ if (flagTime == 1) {
   console.log("banana");
 }
 
-// firebase.auth().onAuthStateChanged(function (user) {
-//   console.log("12345");
-//   if (user !== null) {
-//     demo = user.uid;
-//     console.log(user.uid);
-//     //console.log(TaskcheckValue);
-//   } else {
-//     // alert("Please login");
-//     popup_alltasks2("Please login !", 4000, "alert alert-warning");
-//     setTimeout(function () {
-//       window.location.assign("login.html");
-//     }, 2000);
-//   }
-// });
-
 async function signOut() {
   $("#cover").fadeIn(0);
 
   signout_check = 1;
   console.log("normal signout check");
-  // xyz = "";
-  // task_array = [];
+
+  //var cityRef = db.collection("cities").doc("BJ");
+  var user = firebase.auth().currentUser;
+  // Remove the 'capital' field from the document
+  await RefToken.doc(user.uid).update({
+    Token_web: firebase.firestore.FieldValue.delete(),
+  });
 
   await firebase
     .auth()
@@ -213,6 +212,7 @@ async function signOut() {
       remove_PRN_Source = firebase.database().ref("/PRN-Source/" + "/" + demo);
       remove_PRN_Source.remove();
 
+      localStorage.clear();
       popup_alltasks2("Logout Successfully !", 4000, "alert alert-warning");
       setTimeout(function () {
         window.location.assign("../Login/login.html");

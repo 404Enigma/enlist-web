@@ -18,6 +18,8 @@ var db = firebase.firestore();
 var prnn = document.getElementById("prn");
 let PRNlength = prnn.value.length;
 var PRN;
+const messaging = firebase.messaging();
+const RefToken = db.collection("Token Access" + "/");
 
 function onload_start() {
   if (whichClass) {
@@ -68,11 +70,11 @@ function signIn() {
             // console.log(prnn);
 
             if (doc.id === user.email) {
-              console.log("Document data:", doc.data());
+              //console.log("Document data:", doc.data());
 
               if (prnn.value === pry && doc.id === user.email) {
                 flag = 1;
-                console.log("aaaaaaaaaaa");
+
                 let counterID = doc.id;
                 // console.log(counterID);
                 docRef.doc(doc.id).update({
@@ -89,17 +91,12 @@ function signIn() {
               PRN = prnn.value;
               checkValue = 1;
               localStorage.setItem("PRN", PRN);
-              sessionStorage.setItem("checkValue", checkValue);
+              localStorage.setItem("checkValue", checkValue);
               prnnn = PRN;
 
               demo = user.uid;
               localStorage.setItem("finalUIDD", demo);
               let aaa = oneTime(demo, checkValue);
-
-              // console.log("aaa");
-              // console.log(aaa);
-              // console.log(aaa[0]);
-              // console.log(aaa[1]);
 
               updateDivision = aaa[0];
               updateClass = aaa[1];
@@ -109,6 +106,33 @@ function signIn() {
               setTimeout(function () {
                 window.location.assign("../main/home.html");
               }, 3000);
+              messaging
+                .requestPermission()
+                .then(function () {
+                  console.log("Notification permission granted.");
+                  let unique_token = messaging.getToken();
+                  console.log(user.uid);
+
+                  return unique_token;
+                })
+                .then(function (token) {
+                  console.log(token);
+
+                  RefToken.doc(user.uid)
+                    .set({
+                      Name: user.displayName,
+                      Token_web: token,
+                    })
+                    .then(function () {
+                      console.log("Success");
+                    })
+                    .catch(function (error) {
+                      console.error("Error adding document: ", error);
+                    });
+                })
+                .catch(function (err) {
+                  console.log("Unable to get permission to notify.", err);
+                });
 
               console.log("Woahhhhhhhh!");
             } else {
@@ -158,7 +182,6 @@ function sessionSignOut() {
   firebase.auth().signOut();
 }
 
-let TaskcheckValue = sessionStorage.getItem("checkValue");
 let xyzClass;
 
 function oneTime(demo, checkValue) {
@@ -166,9 +189,7 @@ function oneTime(demo, checkValue) {
 
   //demo = user.uid;
   //console.log(user.uid);
-  console.log(TaskcheckValue);
   if (checkValue == 1) {
-    console.log(TaskcheckValue);
     if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129) {
       let arrClass = ["A", "C", "IT", "B"];
       let arrDivision = ["B1", "B2", "A1", "A2", "A3", "C1", "C2", "C3", "T1", "T2", "T3", "B3"];
@@ -314,3 +335,7 @@ async function nodeCreate(value, prnnn) {
   // console.log({ updates1 });
   // console.log({ prn_source });
 }
+
+messaging.onMessage(function (payload) {
+  console.log("onMessage : ", payload);
+});

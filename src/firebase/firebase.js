@@ -10,3 +10,5 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+//let db_token_access = db.collection("Token Access").doc("");

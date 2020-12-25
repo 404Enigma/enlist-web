@@ -1,4 +1,4 @@
-let checkValue, check_class;
+let check_class;
 let storage_UIDD;
 // console.log(storage_UIDD);
 
@@ -58,7 +58,8 @@ function first(ID, storage_UIDD) {
           console.log(ID);
 
           if (check_class === ID) {
-            console.log("qqqqqqqqqqqqqqqqqqqqqq");
+            console.log("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
+            sessionStorage.setItem("check_Bypass", "1");
             window.location.assign("../main/home.html");
           } else {
             window.location.assign("../Login/login.html");
