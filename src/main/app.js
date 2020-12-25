@@ -20,22 +20,6 @@ let prN = localStorage.getItem("PRN");
 let q = localStorage.getItem("finalUIDD");
 let demo, prnnn;
 
-// firebase
-//   .database()
-//   .ref("/PRN-Source/")
-//   .once("value", function (snapshot) {
-//     snapshot.forEach(function (childSnapshot) {
-//       var childKey = childSnapshot.key;
-//       var childData = Object.keys(snapshot.val());
-//       var childPRN = childSnapshot.val();
-//       //task_array.push(Object.values(childData));
-//       console.log(childKey);
-//       console.log(childPRN);
-
-//       console.log(childData);
-//     });
-//   });
-
 async function sideBar() {
   await firebase
     .database()
@@ -66,29 +50,6 @@ async function sideBar() {
     console.log("IT");
   }
 
-  //Nodirectpass();
-
-  // var ref = firebase.database().ref("/To-Do-List/" + demo + "/" + RespectiveDivision);
-  // ref.once("value").then(function (snapshot) {
-  //   console.log(snapshot.numChildren());
-  //   document.getElementById("count_class").innerHTML = snapshot.numChildren();
-  //   //console.log(badge.innerHTML);
-  // });
-
-  // var ref = firebase.database().ref("/To-Do-List/" + demo + "/" + RespectiveClass);
-  // ref.once("value").then(function (snapshot) {
-  //   console.log(snapshot.numChildren());
-  //   document.getElementById("count_division").innerHTML = snapshot.numChildren();
-  //   //console.log(badge.innerHTML);
-  // });
-
-  // var ref = firebase.database().ref("/To-Do-List/" + demo + "/" + "Pvt");
-  // ref.once("value").then(function (snapshot) {
-  //   console.log(snapshot.numChildren());
-  //   document.getElementById("count_Pvt").innerHTML = snapshot.numChildren();
-  //   //console.log(badge.innerHTML);
-  // });
-
   Count_Node(RespectiveDivision, count_class);
   Count_Node(RespectiveClass, count_division);
   Count_Node("Pvt", count_Pvt);
@@ -116,6 +77,14 @@ firebase.auth().onAuthStateChanged(function (user) {
     // User is signed in.
     let current_uid = user.uid;
     console.log(current_uid);
+    console.log(user.displayName);
+    let wantUser = firebase.auth().currentUser;
+    console.log(wantUser.displayName);
+    if (user != null) {
+      console.log(wantUser.displayName);
+      console.log(wantUser.email);
+      console.log(wantUser.uid);
+    }
   } else {
     if (signout_check === 1) {
       console.log("normal signout");
@@ -230,7 +199,6 @@ if (flagTime == 1) {
 // });
 
 async function signOut() {
-
   $("#cover").fadeIn(0);
 
   signout_check = 1;
