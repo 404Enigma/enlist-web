@@ -78,13 +78,6 @@ firebase.auth().onAuthStateChanged(function (user) {
     let current_uid = user.uid;
     console.log(current_uid);
     console.log(user.displayName);
-    let wantUser = firebase.auth().currentUser;
-    console.log(wantUser.displayName);
-    if (user != null) {
-      console.log(wantUser.displayName);
-      console.log(wantUser.email);
-      console.log(wantUser.uid);
-    }
   } else {
     if (signout_check === 1) {
       console.log("normal signout");
