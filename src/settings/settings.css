@@ -8,6 +8,20 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+#back_button{
+        position: absolute;
+        left: 30px;
+        top: 25px;
+        color: white;
+}
+
+#back_button:hover{
+        position: absolute;
+        left: 30px;
+        top: 25px;
+        color: rgb(196, 187, 187);
+}
+
 body{
     display: grid;
     place-items: center;
@@ -311,9 +325,12 @@ hr{
         text-align: center;
         font-weight: bold;
         font-size: 35px;
-        padding: 0.5rem;
         padding-left: 0px;
         opacity: 75%;
+    }
+
+    #back_button{
+        display: none;
     }
 
 }
