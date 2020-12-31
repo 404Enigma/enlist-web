@@ -495,7 +495,7 @@
   }
 
   .container:empty::before {
-    content: "Your list is empty.🧑";
+    content: "Your list is empty.";
     opacity: 0.6;
     font-weight: bolder;
     font-size: x-large;
@@ -1284,7 +1284,7 @@
   }
 
   .container:empty::before {
-    content: "Your list is empty.🧑";
+    content: "Your list is empty.";
     opacity: 0.6;
     font-weight: bolder;
     font-size: x-large;
