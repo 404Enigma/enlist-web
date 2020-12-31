@@ -10,6 +10,15 @@
 }
 
 @media (min-device-width: 1024px) {
+
+  a:link{
+    color: white;
+  }
+
+  a:visited{
+    color: white;
+  }
+
   #cover {
     position: absolute;
     top: 0;
@@ -794,6 +803,14 @@
 /* FOR MOBILE */
 
 @media (max-device-width: 480px) {
+
+  a:link{
+    color: white;
+  }
+
+  a:visited{
+    color: white;
+  }
   #cover {
     position: absolute;
     top: 0;
