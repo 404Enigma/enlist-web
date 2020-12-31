@@ -166,6 +166,22 @@
     cursor: pointer;
   }
 
+  #back_to_home{
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    width: auto;
+    height: 37.5px;
+  }
+
+  #back_to_home:hover{
+    background: none;
+    color: #d1243b;
+  }
+
   #user {
     padding-top: 5px;
   }
@@ -803,6 +819,10 @@
 /* FOR MOBILE */
 
 @media (max-device-width: 480px) {
+
+  #back_to_home{
+    display: none;
+  }
 
   a:link{
     color: white;

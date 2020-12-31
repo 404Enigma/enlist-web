@@ -509,5 +509,5 @@ function Imp_Division() {
 function Imp_Pvt() {
   xyz = "Pvt";
   ImportantTask(xyz);
-  document.getElementById("finish_task_header").innerHTML = "Pvt";
+  document.getElementById("finish_task_header").innerHTML = "Personal";
 }
