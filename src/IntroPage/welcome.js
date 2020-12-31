@@ -2,22 +2,22 @@ let check_class;
 let storage_UIDD;
 // console.log(storage_UIDD);
 
-var pathEls = document.querySelectorAll("path");
-for (var i = 0; i < pathEls.length; i++) {
-  var pathEl = pathEls[i];
-  var offset = anime.setDashoffset(pathEl);
-  pathEl.setAttribute("stroke-dashoffset", offset);
-  anime({
-    targets: pathEl,
-    strokeDashoffset: [offset, 0],
-    duration: anime.random(1000, 3000),
-    delay: anime.random(0, 1000),
-    loop: true,
-    direction: "alternate",
-    easing: "easeInOutSine",
-    autoplay: true,
-  });
-}
+// var pathEls = document.querySelectorAll("path");
+// for (var i = 0; i < pathEls.length; i++) {
+//   var pathEl = pathEls[i];
+//   var offset = anime.setDashoffset(pathEl);
+//   pathEl.setAttribute("stroke-dashoffset", offset);
+//   anime({
+//     targets: pathEl,
+//     strokeDashoffset: [offset, 0],
+//     duration: anime.random(1000, 3000),
+//     delay: anime.random(0, 1000),
+//     loop: true,
+//     direction: "alternate",
+//     easing: "easeInOutSine",
+//     autoplay: true,
+//   });
+// }
 
 function first(ID, storage_UIDD) {
   firebase.auth().onAuthStateChanged(function (user) {
@@ -116,3 +116,33 @@ function IT(ID) {
 
   first(ID, storage_UIDD);
 }
+
+
+// Wrap every letter in a span
+var textWrapper = document.querySelector('.ml1 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml1 .letter',
+    scale: [0.3,1],
+    opacity: [0,1],
+    translateZ: 0,
+    easing: "easeOutExpo",
+    duration: 600,
+    delay: (el, i) => 70 * (i+1)
+  }).add({
+    targets: '.ml1 .line',
+    scaleX: [0,1],
+    opacity: [0.5,1],
+    easing: "easeOutExpo",
+    duration: 700,
+    offset: '-=875',
+    delay: (el, i, l) => 80 * (l - i)
+  }).add({
+    targets: '.ml1',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
