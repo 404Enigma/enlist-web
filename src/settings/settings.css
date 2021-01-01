@@ -318,6 +318,10 @@ hr{
     margin: 20px auto;
 }
 
+ #work{
+        opacity: 1;
+    }
+
 @media (max-device-width: 1024px){
 
     #page_head{
@@ -333,10 +337,7 @@ hr{
     }
 
 
-    #work{
-        opacity: 1;
-        border-bottom: 1px solid white;
-    }
+   
         
 }
 
@@ -461,10 +462,10 @@ body
       border-radius: 10px;
     }
     .img-card{
-      width: 240px;
+      width: 220px;
     }
     .title{
-      padding: 140px 20px 15px 20px;
+      padding: 160px 20px 15px 20px;
       font-size: 15px;
     }
     .text-body{
@@ -474,7 +475,7 @@ body
     }
     .card-footer,
       .btn-card{
-        width: 100px;
+        width: 100%;
         height: 36px;
         padding: 9px;
         font-size: 14px;
