@@ -347,15 +347,6 @@ hr{
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;500&display=swap')
 @import url('https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css')
 
-/* *
-  box-sizing: border-box
-  margin: 0
-
-body
-  background: #F6F7FD
-  font-family: 'Raleway', sans-serif
-  overflow-x: hidden */
-
 .wrapper{
   width: 60vw;
   height: 100vh;
@@ -367,7 +358,6 @@ body
 
 .card-item{
   width: 380px;
-  /*min-height: 300px*/
   margin: 25px;
   background: #fff;
   border-radius: 20px;
@@ -493,5 +483,74 @@ body
     font-size: 30px;
   }
     }
+    
 
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:800,400);
+    .mail-btn {
+      position:relative;
+      top:35%;
+      display:inline-block;
+      padding:0.5rem 1rem;
+      border:2px solid black;
+      background:none;
+      outline:none;
+      -webkit-appearance: none;
+      font-size:2rem;
+      color:black;
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:0.5rem;
+      text-indent:0.5rem;
+      cursor:pointer;
+      transition:
+        color 1.5s .5s,
+        border 3s 1s;
+      
+    }
+    .mail-btn:before,
+    .mail-btn:after {
+      content:'';
+      position:absolute;
+      opacity:0;
+      backface-visibility:visible;
+      transform-style:preserve-3d;
+      perspective:400px;
+      transform-origin:50% -50%;
+      transform:rotateX(360deg) rotateY(0) translateX(-50%) translateY(0) scale(0.2);
+      transition:all 0.5s;
+    }
+    .mail-btn:before {
+      top:5px;
+      left:50%;
+      height:3rem;
+      background:black;
+      border-top:2rem solid gray;
+      border-right:3rem solid transparent;
+      border-left:3rem solid transparent;
+    }
+    .mail-btn:after {
+      top:0;
+      left:50%;
+      border-top:2rem solid white;
+      border-right:3rem solid transparent;
+      border-left:3rem solid transparent;
+      outline: none;
 
+    }
+    .mail-btn:hover {
+      color:rgba(255,255,255,0);
+      border:2px solid rgba(255,255,255,0);
+      transition:
+        color .25s,
+        border .25s;
+    }
+    .mail-btn:hover:before,
+    .mail-btn:hover:after {
+      opacity:1;
+      transform:rotateX(0) rotateY(-10deg) translateX(-50%) translateY(0) scale(1);
+      outline: none;
+    }
+
+#mail{
+    margin-top: 30px;
+}
