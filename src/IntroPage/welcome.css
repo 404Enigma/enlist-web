@@ -141,7 +141,29 @@ svg {
   stroke-width: 2;
 }
 
-@media (max-device-width: 1024px) {
+#demo{
+  margin-top: 25px;
+  color: white;
+  font-size: small;
+}
+#demo a{
+  text-decoration: underline;
+}
+
+@media (max-device-width: 480px) {
+
+  .ml1 {
+    font-weight: 900;
+    font-size: 30px;
+
+  }
+
+  #demo{
+    margin-top: 25px;
+    color: white;
+    font-size: smaller;
+  }
+
   .center {
     display: grid;
     position: absolute;
