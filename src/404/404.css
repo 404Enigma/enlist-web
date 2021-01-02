@@ -3,6 +3,8 @@
     404 page
 =======================*/
 
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 
 .page_404{ 
     padding:40px 0; 
@@ -16,10 +18,13 @@
     background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
     height: 400px;
     background-position: center;
+    background-repeat: no-repeat;
  }
  
-.four_zero_four_bg h1{
+h1{
     font-size:80px;
+    margin-bottom: -30px;
+    margin-top: 10px;
  }
  
 .four_zero_four_bg h3{
@@ -33,5 +38,6 @@
     margin: 20px 0;
     display: inline-block;
 }
+
 
 .contant_box_404{ margin-top:-50px;}
