@@ -502,8 +502,8 @@
     text-decoration: underline;
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
     width: 20%;
   }
 
@@ -707,7 +707,7 @@
   font-weight: bolder;
   text-decoration: double;
   text-align: center;
-  width: 60%;
+  width: 40%;
   float: left;
 }
 
@@ -814,6 +814,26 @@
 
 .alert-danger .alert-link {
   color: #843534;
+}
+
+
+#clear{
+  float: right;
+  width: 7%;
+  margin-right: 55px;
+  margin-top: 5px;
+  cursor: pointer;
+  border: 1px solid red;
+  background: none;
+  font-size:large;
+  border-radius: 10%;
+  outline: none;
+}
+
+#clear:hover{
+  background: #f80022;
+  color: white;
+  outline: none;
 }
 
 /* FOR MOBILE */
