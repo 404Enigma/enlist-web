@@ -819,13 +819,13 @@
 
 #clear{
   float: right;
-  width: 7%;
+  width: 8%;
   margin-right: 55px;
-  margin-top: 5px;
+  margin-top: 15px;
   cursor: pointer;
   border: 1px solid red;
   background: none;
-  font-size:large;
+  font-size:medium;
   border-radius: 10%;
   outline: none;
 }
