@@ -106,28 +106,6 @@ var today = new Date();
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 var Currentdate = today.getDate() + " " + today.getMonth() + " " + today.getFullYear();
 
-let ZeroDate = today.getDate();
-if (ZeroDate === 1 || ZeroDate === 2 || ZeroDate === 3 || ZeroDate === 4 || ZeroDate === 5 || ZeroDate === 6 || ZeroDate === 7 || ZeroDate === 8 || ZeroDate === 9) {
-  ZeroDate = "0" + ZeroDate;
-  Currentdate = ZeroDate + " " + today.getMonth() + " " + today.getFullYear();
-} else {
-  Currentdate = ZeroDate + " " + today.getMonth() + " " + today.getFullYear();
-}
-//console.log(Currentdate);
-let dateC = Currentdate.split(" ");
-let dayC = dateC[0];
-let monthC = dateC[1];
-let yearC = dateC[2];
-
-let montharrayC = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-for (let i = 0; i < montharrayC.length; i++) {
-  if (i === Number(monthC)) {
-    monthC = montharrayC[i];
-  }
-}
-Currentdate = dayC + " " + monthC + " " + yearC;
-
 let a = document.getElementById("B");
 let c = document.getElementById("B2");
 let d = document.getElementById("B3");
@@ -266,6 +244,7 @@ function Class() {
     document.getElementById("finish_task_header").innerHTML = "IT";
   }
   Count_Node(RespectiveDivision, count_class);
+  return xyz;
 }
 
 function Division() {
@@ -348,6 +327,7 @@ function Division() {
   }
 
   Count_Node(RespectiveClass, count_division);
+  return xyz;
 }
 
 function Swap(v, chooseArray) {
@@ -828,7 +808,7 @@ function task_edit(task, edit_button) {
   description.setAttribute("contenteditable", true);
   description.setAttribute("id", "description_editing");
   description.focus();
-  description.setAttribute("onkeypress", "allowAlphaNumericSpace(event); return (this.innerText.length < 21)");
+  description.setAttribute("onkeypress", "allowAlphaNumericSpace(event); return (this.innerText.length < 35)");
 }
 
 function finish_edit(task, edit_button) {
@@ -1130,6 +1110,7 @@ function create_unfinished_task() {
         dateDisplay.setAttribute("contenteditable", true);
         dateDisplay.innerHTML = task_date;
         dateDisplay.setAttribute("type", "date");
+        dateDisplay.setAttribute("min", "new Date().toISOString().split('T')[0]");
 
         deadline = document.createElement("p");
         deadline.setAttribute("id", "task_date");
@@ -1506,11 +1487,10 @@ function add_task() {
       }
     }
 
-    finalDate = day + " " + month;
+    finalDate = day + " " + month + " " + year;
+
     console.log(day);
-
     console.log(month);
-
     console.log(finalDate);
     console.log(input_box.value.length);
     console.log(finalDate.length);
@@ -1527,18 +1507,23 @@ function add_task() {
         var user = firebase.auth().currentUser;
 
         if (user != null) {
-          user_name = user.displayName;
+          user_full_ID = user.displayName;
           uid = user.uid;
           console.log("User is there");
         }
-        console.log(user_name);
+
+        let user_name = user_full_ID.split(".");
+        let user_lastname = user_name[1].split(" ");
+        let user_fullname = user_name[0] + " " + user_lastname[0];
+
+        console.log(user_fullname);
 
         const docRef = db.doc("AnalysisB/" + time);
         docRef
           .set({
             date: finalDate,
             title: input_box.value,
-            name: user_name,
+            name: user_fullname,
           })
           .then(function (docRef) {})
           .catch(function (error) {
@@ -1549,9 +1534,6 @@ function add_task() {
         let shared = document.getElementById("sharedList");
 
         console.log(uniqkey);
-        // var IMP_Task = {};
-        // IMP_Task["/To-Do-List/" + demo + "/" + "IMP" + "/" + xyz + "/" + "Task" + uniqkey] = task;
-        // firebase.database().ref().update(IMP_Task);
 
         if (xyz === "Pvt") {
           let DotArrayPersonalPrivate = [
@@ -1933,10 +1915,28 @@ let count_division = "count_division";
 let count_Pvt = "count_Pvt";
 
 function Count_Node(badge_value, count_id) {
+  console.log(badge_value);
   var ref = firebase.database().ref("/To-Do-List/" + demo + "/" + badge_value);
   ref.once("value").then(function (snapshot) {
     console.log(snapshot.numChildren());
     document.getElementById(count_id).innerHTML = snapshot.numChildren();
     //console.log(badge.innerHTML);
   });
+}
+
+function Clear_All() {
+  console.log(demo);
+  console.log(xyz);
+
+  document.getElementsByClassName("container")[0].innerHTML = "";
+
+  task_clear = firebase.database().ref("To-Do-List/" + demo + "/" + xyz);
+  task_clear.remove();
+  if (xyz == RespectiveClass) {
+    Count_Node(xyz, count_division);
+  } else if (xyz == RespectiveDivision) {
+    Count_Node(xyz, count_class);
+  } else {
+    Count_Node(xyz, count_Pvt);
+  }
 }
