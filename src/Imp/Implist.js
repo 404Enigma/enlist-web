@@ -313,13 +313,13 @@ function signOut() {
     .then(function () {
       // Sign-out successful.
 
-      for (let i = 0; i < arr_class_division.length; i++) {
-        remove_source = firebase.database().ref("/Source/" + arr_class_division[i] + "/" + demo);
-        remove_source.remove();
-      }
+      // for (let i = 0; i < arr_class_division.length; i++) {
+      //   remove_source = firebase.database().ref("/Source/" + arr_class_division[i] + "/" + demo);
+      //   remove_source.remove();
+      // }
 
-      remove_PRN_Source = firebase.database().ref("/PRN-Source/" + "/" + demo);
-      remove_PRN_Source.remove();
+      // remove_PRN_Source = firebase.database().ref("/PRN-Source/" + "/" + demo);
+      // remove_PRN_Source.remove();
 
       popup_alltasks2("Logout Successfully !", 4000, "alert alert-warning");
       setTimeout(function () {

@@ -100,12 +100,24 @@ function signIn() {
 
               updateDivision = aaa[0];
               updateClass = aaa[1];
-              onetimeUpdate(demo, updateDivision, updateClass);
+
+              firebase
+                .database()
+                .ref("/PRN-Source/" + "/" + demo)
+                .once("value", (snapshot) => {
+                  if (!snapshot.exists()) {
+                    console.log("exists!");
+                    const demo_clone = snapshot.val();
+                    console.log(demo_clone);
+                    onetimeUpdate(demo, updateDivision, updateClass);
+                  }
+                });
 
               popup("Sign-in successful !", 2000, "alert alert-success");
               setTimeout(function () {
                 window.location.assign("../main/home.html");
               }, 3000);
+
               messaging
                 .requestPermission()
                 .then(function () {
