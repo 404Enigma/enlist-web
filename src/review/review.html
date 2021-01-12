@@ -14,6 +14,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-firestore.js"></script>
   </head>
   <body>
+    <div id="container">
     <div class="supaviews">
       <a href="../IntroPage/welcome.html"><img class="supaviews__logo" src="../Extra/logo.png" /></a>
       <div class="supaviews__gradient"></div>
@@ -21,7 +22,7 @@
         <div class="supaview">
           <h1 class="supaview__title">Add a Review🚀</h1>
           <form id="review">
-            <fieldset class="supaview__rating"><input type="radio" id="star5" name="rate" value="5" /><label for="star5"></label> <input type="radio" id="star4" name="rate" value="4" /><label for="star4"></label> <input type="radio" id="star3" name="rate" value="3" /><label for="star3"></label> <input type="radio" id="star2" name="rate" value="2" /><label for="star2"></label> <input type="radio" id="star1" name="rate" value="1" /><label for="star1"></label></fieldset>
+            <fieldset class="supaview__rating"><input type="radio" id="star5" name="rate" value="5"/><label for="star5"></label> <input type="radio" id="star4" name="rate" value="4" /><label for="star4"></label> <input type="radio" id="star3" name="rate" value="3" /><label for="star3"></label> <input type="radio" id="star2" name="rate" value="2" /><label for="star2"></label> <input type="radio" id="star1" name="rate" value="1" /><label for="star1"></label></fieldset>
             <div class="supaview__copy">
               <input type="text" name="name" placeholder="Name *" />
               <input type="email" name="email" placeholder="Email *" required />
@@ -35,7 +36,7 @@
         <div class="supaview">Looks empty around here..</div>
       </div>
     </div>
-
+    </div>
     <script src="../firebase/firebase.js"></script>
     <script src="review.js"></script>
   </body>
