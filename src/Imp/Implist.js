@@ -9,26 +9,6 @@ let RespectiveClass = localStorage.getItem("RespectiveClass");
 let RespectiveDivision = localStorage.getItem("RespectiveDivision");
 let arr_class_division = [RespectiveClass, RespectiveDivision];
 
-firebase.auth().onAuthStateChanged(function (user) {
-  if (user) {
-    // User is signed in.
-    let current_uid = user.uid;
-    console.log(current_uid);
-  } else {
-    if (signout_check === 1) {
-      console.log("normal signout");
-      signout_check = 0;
-    } else {
-      // No user is signed in.
-      console.log("I am not signed in");
-      // window.location.assign("../IntroPage/welcome.html");
-
-      document.getElementById("myDialog").showModal();
-      //signOut();
-    }
-  }
-});
-
 async function ImpHeading() {
   await firebase
     .database()
@@ -43,21 +23,40 @@ async function ImpHeading() {
       }
     });
 
-  Imp_Pvt();
-  console.log(RespectiveDivision);
-  console.log(RespectiveClass);
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      // User is signed in.
+      let current_uid = user.uid;
+      console.log(current_uid);
+      Imp_Pvt();
+      console.log(RespectiveDivision);
+      console.log(RespectiveClass);
 
-  let CSarray = ["A", "C", "B", "B1", "B2", "B3", "A1", "A2", "A3", "C1", "C2", "C3"];
+      let CSarray = ["A", "C", "B", "B1", "B2", "B3", "A1", "A2", "A3", "C1", "C2", "C3"];
 
-  if (CSarray.includes(RespectiveClass) || CSarray.includes(RespectiveDivision)) {
-    console.log("CS");
-    document.getElementById("Impdivision").innerHTML = "CS-" + RespectiveClass;
-    document.getElementById("ImpClass").innerHTML = "CS-" + RespectiveDivision;
-  } else {
-    document.getElementById("Impdivision").innerHTML = RespectiveClass;
-    document.getElementById("ImpClass").innerHTML = "IT-" + RespectiveDivision;
-    console.log("IT");
-  }
+      if (CSarray.includes(RespectiveClass) || CSarray.includes(RespectiveDivision)) {
+        console.log("CS");
+        document.getElementById("Impdivision").innerHTML = "CS-" + RespectiveClass;
+        document.getElementById("ImpClass").innerHTML = "CS-" + RespectiveDivision;
+      } else {
+        document.getElementById("Impdivision").innerHTML = RespectiveClass;
+        document.getElementById("ImpClass").innerHTML = "IT-" + RespectiveDivision;
+        console.log("IT");
+      }
+    } else {
+      if (signout_check === 1) {
+        console.log("normal signout");
+        signout_check = 0;
+      } else {
+        // No user is signed in.
+        console.log("I am not signed in");
+        // window.location.assign("../IntroPage/welcome.html");
+
+        document.getElementById("myDialog").showModal();
+        //signOut();
+      }
+    }
+  });
 }
 
 function ImportantTask(xyz) {
@@ -301,7 +300,6 @@ function Swap(v, chooseArray) {
 }
 
 function signOut() {
-
   $("#cover").fadeIn(0);
 
   signout_check = 1;

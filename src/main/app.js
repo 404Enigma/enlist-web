@@ -37,27 +37,47 @@ async function sideBar() {
       }
     });
 
-  Pvt();
-  console.log(RespectiveDivision);
-  console.log(RespectiveClass);
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      // User is signed in.
+      let current_uid = user.uid;
+      console.log(current_uid);
+      console.log(user.displayName);
+      Pvt();
+      console.log(RespectiveDivision);
+      console.log(RespectiveClass);
 
-  let CSarray = ["A", "C", "B", "B1", "B2", "B3", "A1", "A2", "A3", "C1", "C2", "C3"];
+      let CSarray = ["A", "C", "B", "B1", "B2", "B3", "A1", "A2", "A3", "C1", "C2", "C3"];
 
-  if (CSarray.includes(RespectiveClass) || CSarray.includes(RespectiveDivision)) {
-    console.log("CS");
-    document.getElementById("division").innerHTML = "CS-" + RespectiveClass;
-    document.getElementById("ResClass").innerHTML = "CS-" + RespectiveDivision;
-  } else {
-    document.getElementById("division").innerHTML = RespectiveClass;
-    document.getElementById("ResClass").innerHTML = "IT" + RespectiveDivision;
-    console.log("IT");
-  }
+      if (CSarray.includes(RespectiveClass) || CSarray.includes(RespectiveDivision)) {
+        console.log("CS");
+        document.getElementById("division").innerHTML = "CS-" + RespectiveClass;
+        document.getElementById("ResClass").innerHTML = "CS-" + RespectiveDivision;
+      } else {
+        document.getElementById("division").innerHTML = RespectiveClass;
+        document.getElementById("ResClass").innerHTML = "IT" + RespectiveDivision;
+        console.log("IT");
+      }
 
-  Count_Node(RespectiveDivision, count_class);
-  Count_Node(RespectiveClass, count_division);
-  Count_Node("Pvt", count_Pvt);
+      Count_Node(RespectiveDivision, count_class);
+      Count_Node(RespectiveClass, count_division);
+      Count_Node("Pvt", count_Pvt);
 
-  console.log(prnnn);
+      console.log(prnnn);
+    } else {
+      if (signout_check === 1) {
+        console.log("normal signout");
+        signout_check = 0;
+      } else {
+        // No user is signed in.
+        console.log("I am not signed in");
+        // window.location.assign("../IntroPage/welcome.html");
+
+        document.getElementById("myDialog").showModal();
+        //signOut();
+      }
+    }
+  });
 
   console.log(sessionStorage.getItem("check_Bypass"));
   if (sessionStorage.getItem("check_Bypass")) {
@@ -80,27 +100,6 @@ let xyz, parsedBase64Key, encryptedData, uniqkey, finalDate, encrypted, encryptK
 let flag = 0,
   signout_check = 0;
 var task;
-
-firebase.auth().onAuthStateChanged(function (user) {
-  if (user) {
-    // User is signed in.
-    let current_uid = user.uid;
-    console.log(current_uid);
-    console.log(user.displayName);
-  } else {
-    if (signout_check === 1) {
-      console.log("normal signout");
-      signout_check = 0;
-    } else {
-      // No user is signed in.
-      console.log("I am not signed in");
-      // window.location.assign("../IntroPage/welcome.html");
-
-      document.getElementById("myDialog").showModal();
-      //signOut();
-    }
-  }
-});
 
 var today = new Date();
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
