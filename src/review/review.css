@@ -34,7 +34,9 @@ body::-webkit-scrollbar-thumb
 	 position: relative;
 	 width: 500px;
 	 margin: 100px 0 50px 0;
+	 padding: 0%;
 	 color: #fff;
+	 /* left: 250px; */
 	 background-color: #1c1e20;
 }
  .supaviews__logo {
@@ -75,12 +77,17 @@ body::-webkit-scrollbar-thumb
 	 text-shadow: 0 0 6px #4da76e BD;
 }
  .supaview__name {
+	 margin-top: 10px;
 	 font-weight: 700;
 	 font-size: 20px;
 }
  .supaview__date {
-	 margin-top: 15px;
+	 margin-top: 5px;
 	 color: #7d7f81;
+}
+
+.supaview__message{
+	word-wrap: break-word;
 }
  .supaview__rating {
 	 display: block;
@@ -145,4 +152,22 @@ body::-webkit-scrollbar-thumb
 }
  .supaerror {
 	 background-color: #e56460;
+}
+
+@media(max-width:480px){
+
+	.container{
+		display: flex;
+		justify-content: center;
+	}
+
+	.supaviews {
+		position: absolute;
+		width: 780px;
+		margin: 100px auto 50px auto;
+		padding: 0%;
+		color: #fff;
+		/* left: 250px; */
+		background-color: #1c1e20;
+   }
 }
