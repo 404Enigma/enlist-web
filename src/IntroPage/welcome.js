@@ -146,3 +146,8 @@ anime.timeline({loop: true})
     easing: "easeOutExpo",
     delay: 1000
   });
+
+
+  function Review() {
+    window.location.assign("../review/review.html");
+  }
