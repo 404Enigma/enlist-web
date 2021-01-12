@@ -22,12 +22,12 @@ const messaging = firebase.messaging();
 const RefToken = db.collection("Token Access" + "/");
 
 function onload_start() {
-  if (whichClass) {
-    document.querySelector(".display_class").innerHTML = whichClass;
-  } else {
-    document.querySelector(".display_class").innerHTML = "Choose class";
-    document.getElementById("myDialog").showModal();
-  }
+  // if (whichClass) {
+  //   document.querySelector(".display_class").innerHTML = whichClass;
+  // } else {
+  //   document.querySelector(".display_class").innerHTML = "Choose class";
+  //   document.getElementById("myDialog").showModal();
+  // }
 }
 
 function signInWithGoogle() {
@@ -57,7 +57,7 @@ function signIn() {
       let flag = 0;
       // console.log(user.email);
       // console.log(prnn.value);
-      var docRef = db.collection(whichClass + "/");
+      var docRef = db.collection("Member Access" + "/");
 
       docRef
         .get()

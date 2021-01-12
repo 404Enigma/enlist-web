@@ -1,5 +1,7 @@
 let check_class;
 let storage_UIDD;
+let RespectiveClass = localStorage.getItem("RespectiveClass");
+let RespectiveDivision = localStorage.getItem("RespectiveDivision");
 // console.log(storage_UIDD);
 
 // var pathEls = document.querySelectorAll("path");
@@ -19,27 +21,40 @@ let storage_UIDD;
 //   });
 // }
 
-function first(ID, storage_UIDD) {
+function first(storage_UIDD) {
   firebase.auth().onAuthStateChanged(function (user) {
     if (storage_UIDD) {
       // User is signed in.
-      console.log("aaaaaaa");
-      // let UIDD = storage_UIDD.uid;
-      // console.log(UIDD);
-
-      // let prnValue = localStorage.getItem("bypassPRN");
-      // console.log(prnValue);
-
-      //localStorage.setItem("uniqueUid", UIDD);
 
       get_PRN = firebase.database().ref("/PRN-Source/" + "/" + storage_UIDD);
       console.log(get_PRN);
+
+      console.log(RespectiveClass);
+      console.log(RespectiveDivision);
+      //sessionStorage.setItem("class", RespectiveDivision);
+      // firebase
+      //   .database()
+      //   .ref("/PRN-Source/")
+      //   .once("value", function (snapshot) {
+      //     snapshot.forEach(function (childSnapshot) {
+      //       if (childSnapshot.exists()) {
+      //         console.log("hogaya");
+      //         var childKey = childSnapshot.key;
+      //         var childData = childSnapshot.val();
+      //         //task_array.push(Object.values(childData));
+      //         console.log(childData);
+      //         console.log(childKey);
+      //       } else {
+      //         console.log("errrrrrrrrrrrrrrrrr");
+      //       }
+      //     });
+      //   });
 
       get_PRN.on(
         "value",
         function (snapshot) {
           console.log(snapshot.val());
-          console.log(ID);
+          //console.log(ID);
           let get_PRN_value = snapshot.val();
 
           console.log(get_PRN_value);
@@ -55,21 +70,15 @@ function first(ID, storage_UIDD) {
           }
 
           console.log(check_class);
-          console.log(ID);
-
-          if (check_class === ID) {
-            console.log("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
-            sessionStorage.setItem("check_Bypass", "1");
-            window.location.assign("../main/home.html");
-          } else {
-            window.location.assign("../Login/login.html");
-            console.log("NOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-          }
+          //console.log(ID);
         },
         function (error) {
           console.log("Error: " + error.code);
         }
       );
+      console.log("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
+      sessionStorage.setItem("check_Bypass", "1");
+      window.location.assign("../main/home.html");
     } else {
       // No user is signed in.
       console.log("bbbbbbbbbbbbb");
@@ -81,73 +90,44 @@ function first(ID, storage_UIDD) {
 // let BBB = document.getElementById("BBB");
 // console.log(BBB.getAttribute("value"));
 
-function CS_A(ID) {
-  sessionStorage.setItem("class", "CS-A");
+function Enter_first() {
   storage_UIDD = localStorage.getItem("finalUIDD");
-  console.log({ ID, storage_UIDD });
-  console.log("I am in A");
-
-  first(ID, storage_UIDD);
+  console.log(storage_UIDD);
+  first(storage_UIDD);
 }
-
-function CS_B(ID) {
-  sessionStorage.setItem("class", "CS-B");
-  storage_UIDD = localStorage.getItem("finalUIDD");
-  console.log({ ID, storage_UIDD });
-  console.log("I am in B");
-
-  first(ID, storage_UIDD);
-}
-
-function CS_C(ID) {
-  sessionStorage.setItem("class", "CS-C");
-  storage_UIDD = localStorage.getItem("finalUIDD");
-  console.log({ ID, storage_UIDD });
-  console.log("I am in C");
-
-  first(ID, storage_UIDD);
-}
-
-function IT(ID) {
-  sessionStorage.setItem("class", "IT");
-  storage_UIDD = localStorage.getItem("finalUIDD");
-  console.log({ ID, storage_UIDD });
-  console.log("I am in IT");
-
-  first(ID, storage_UIDD);
-}
-
 
 // Wrap every letter in a span
-var textWrapper = document.querySelector('.ml1 .letters');
+var textWrapper = document.querySelector(".ml1 .letters");
 textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-anime.timeline({loop: true})
+anime
+  .timeline({ loop: true })
   .add({
-    targets: '.ml1 .letter',
-    scale: [0.3,1],
-    opacity: [0,1],
+    targets: ".ml1 .letter",
+    scale: [0.3, 1],
+    opacity: [0, 1],
     translateZ: 0,
     easing: "easeOutExpo",
     duration: 600,
-    delay: (el, i) => 70 * (i+1)
-  }).add({
-    targets: '.ml1 .line',
-    scaleX: [0,1],
-    opacity: [0.5,1],
+    delay: (el, i) => 70 * (i + 1),
+  })
+  .add({
+    targets: ".ml1 .line",
+    scaleX: [0, 1],
+    opacity: [0.5, 1],
     easing: "easeOutExpo",
     duration: 700,
-    offset: '-=875',
-    delay: (el, i, l) => 80 * (l - i)
-  }).add({
-    targets: '.ml1',
+    offset: "-=875",
+    delay: (el, i, l) => 80 * (l - i),
+  })
+  .add({
+    targets: ".ml1",
     opacity: 0,
     duration: 1000,
     easing: "easeOutExpo",
-    delay: 1000
+    delay: 1000,
   });
 
-
-  function Review() {
-    window.location.assign("../review/review.html");
-  }
+function Review() {
+  window.location.assign("../review/review.html");
+}
