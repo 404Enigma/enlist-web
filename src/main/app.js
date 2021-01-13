@@ -798,6 +798,12 @@ function task_edit(task, edit_button) {
   deadline.disabled = false;
   deadline.append(dateDisplay);
   dateDisplay.style.visibility = "visible";
+
+  var cdate = new Date();
+  cdate.setDate(cdate.getDate());
+  $("#task_displaydate").datepicker({
+    minDate: cdate,
+  });
   // dateDisplay.setAttribute("onclick", "popup_alltasks(" / "Date changed !", 2000, "alert alert-info" / ")");
 
   console.log(deadline.innerHTML);
@@ -835,15 +841,16 @@ function finish_edit(task, edit_button) {
 
   var montharray_edit = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-  for (let i = 0; i < montharray_edit.length; i++) {
+  for (let i = 0; i <= montharray_edit.length; i++) {
     if (i === Number(month_edit)) {
       month_edit = montharray_edit[i - 1];
     }
   }
 
-  let finalDate_edit = day_edit + " " + month_edit;
+  let finalDate_edit = day_edit + " " + month_edit + " " + year_edit;
   console.log(day_edit);
   console.log(month_edit);
+  console.log(year_edit);
   console.log(finalDate_edit);
   console.log(input_box.value.length);
   console.log(finalDate_edit.length);
