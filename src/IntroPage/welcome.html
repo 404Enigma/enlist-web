@@ -89,19 +89,13 @@
       </h1>
 
       <div class="btn-group">
-        <button id="button" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Branch</button>
-        <div id="menu" class="dropdown-menu">
-          <a class="link" id="A" onclick="CS_A(this.id)" value="CS-A"><li>CS-A</li></a>
-          <a class="link" id="B" onclick="CS_B(this.id)" value="CS-B" id="BBB"><li>CS-B</li></a>
-          <a class="link" id="C" onclick="CS_C(this.id)" value="CS-C"><li>CS-C</li></a>
-          <a class="link" id="IT" onclick="IT(this.id)" value="IT"><li>IT</li></a>
-        </div>
+        <button id="button" class="btn btn-secondary" type="button" aria-haspopup="true" aria-expanded="false" onclick="Enter_first()">ENTER</button>
       </div>
     </div>
 
     <div class="mx-auto fixed-top">
       <button id="review" type="button" class="btn btn-outline-light btn-sm" onclick="Review()">Review 🚀</button>
-      <button id="try_enlist" type="button" class="btn btn-outline-light btn-sm" onclick="Enter_first()">Try Enlist 📓</button>
+      <button id="try_enlist" type="button" class="btn btn-outline-light btn-sm" >Try Enlist 📓</button>
     </div>
 
     <script src="../firebase/firebase.js"></script>
