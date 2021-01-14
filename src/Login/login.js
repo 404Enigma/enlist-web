@@ -96,10 +96,6 @@ function signIn() {
 
               demo = user.uid;
               localStorage.setItem("finalUIDD", demo);
-              let aaa = oneTime(demo, checkValue);
-
-              updateDivision = aaa[0];
-              updateClass = aaa[1];
 
               firebase
                 .database()
@@ -107,6 +103,12 @@ function signIn() {
                 .once("value", (snapshot) => {
                   if (!snapshot.exists()) {
                     console.log("exists!");
+
+                    let aaa = oneTime(demo, checkValue);
+
+                    updateDivision = aaa[0];
+                    updateClass = aaa[1];
+
                     const demo_clone = snapshot.val();
                     console.log(demo_clone);
                     onetimeUpdate(demo, updateDivision, updateClass);
