@@ -131,3 +131,7 @@ anime
 function Review() {
   window.location.assign("../review/review.html");
 }
+
+function Demo_way() {
+  window.location.assign("../demo/demo.html");
+}
