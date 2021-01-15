@@ -48,6 +48,12 @@ async function sideBar() {
       console.log(current_uid);
       console.log(user.displayName);
 
+      let user_name = user.displayName.split(".");
+      let user_lastname = user_name[1].split(" ");
+      let user_fullname = user_name[0] + " " + user_lastname[0];
+
+      console.log(user_fullname);
+
       console.log(RespectiveDivision);
       console.log(localStorage.getItem("RespectiveClass"));
 
@@ -69,7 +75,7 @@ async function sideBar() {
       Count_Node("Pvt", count_Pvt);
 
       console.log(prnnn);
-      Ask_Notification(current_uid, displayName);
+      Ask_Notification(current_uid, user_fullname);
     } else {
       if (signout_check === 1) {
         console.log("normal signout");
@@ -1953,7 +1959,7 @@ function Clear_All() {
   }
 }
 
-function Ask_Notification(current_uid, displayName) {
+function Ask_Notification(current_uid, user_fullname) {
   messaging
     .requestPermission()
     .then(function () {
@@ -1969,7 +1975,7 @@ function Ask_Notification(current_uid, displayName) {
       RefToken.doc(current_uid)
         .set(
           {
-            Name: displayName,
+            Name: user_fullname,
             Token_web: token,
           },
           { merge: true }
