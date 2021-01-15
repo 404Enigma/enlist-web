@@ -18,8 +18,6 @@ var db = firebase.firestore();
 var prnn = document.getElementById("prn");
 let PRNlength = prnn.value.length;
 var PRN;
-const messaging = firebase.messaging();
-const RefToken = db.collection("Token Access" + "/");
 
 function onload_start() {
   // if (whichClass) {
@@ -119,34 +117,6 @@ function signIn() {
               setTimeout(function () {
                 window.location.assign("../main/home.html");
               }, 3000);
-
-              messaging
-                .requestPermission()
-                .then(function () {
-                  console.log("Notification permission granted.");
-                  let unique_token = messaging.getToken();
-                  console.log(user.uid);
-
-                  return unique_token;
-                })
-                .then(function (token) {
-                  console.log(token);
-
-                  RefToken.doc(user.uid)
-                    .set({
-                      Name: user.displayName,
-                      Token_web: token,
-                    })
-                    .then(function () {
-                      console.log("Success");
-                    })
-                    .catch(function (error) {
-                      console.error("Error adding document: ", error);
-                    });
-                })
-                .catch(function (err) {
-                  console.log("Unable to get permission to notify.", err);
-                });
 
               console.log("Woahhhhhhhh!");
             } else {
@@ -349,7 +319,3 @@ async function nodeCreate(value, prnnn) {
   // console.log({ updates1 });
   // console.log({ prn_source });
 }
-
-messaging.onMessage(function (payload) {
-  console.log("onMessage : ", payload);
-});

@@ -20,6 +20,7 @@ let prN = localStorage.getItem("PRN");
 let q = localStorage.getItem("finalUIDD");
 let demo, prnnn;
 var db = firebase.firestore();
+const messaging = firebase.messaging();
 
 const RefToken = db.collection("Token Access");
 
@@ -43,9 +44,10 @@ async function sideBar() {
     if (user) {
       // User is signed in.
       let current_uid = user.uid;
+      let displayName = user.displayName;
       console.log(current_uid);
       console.log(user.displayName);
-      Pvt();
+
       console.log(RespectiveDivision);
       console.log(RespectiveClass);
 
@@ -60,12 +62,14 @@ async function sideBar() {
         document.getElementById("ResClass").innerHTML = "IT" + RespectiveDivision;
         console.log("IT");
       }
+      Pvt();
 
       Count_Node(RespectiveDivision, count_class);
       Count_Node(RespectiveClass, count_division);
       Count_Node("Pvt", count_Pvt);
 
       console.log(prnnn);
+      Ask_Notification(current_uid, displayName);
     } else {
       if (signout_check === 1) {
         console.log("normal signout");
@@ -1947,4 +1951,38 @@ function Clear_All() {
   } else {
     Count_Node(xyz, count_Pvt);
   }
+}
+
+function Ask_Notification(current_uid, displayName) {
+  messaging
+    .requestPermission()
+    .then(function () {
+      console.log("Notification permission granted.");
+      let unique_token = messaging.getToken();
+      console.log(current_uid);
+
+      return unique_token;
+    })
+    .then(function (token) {
+      console.log(token);
+
+      RefToken.doc(current_uid)
+        .set({
+          Name: displayName,
+          Token_web: token,
+        })
+        .then(function () {
+          console.log("Success");
+        })
+        .catch(function (error) {
+          console.error("Error adding document: ", error);
+        });
+    })
+    .catch(function (err) {
+      console.log("Unable to get permission to notify.", err);
+    });
+
+  messaging.onMessage(function (payload) {
+    console.log("onMessage : ", payload);
+  });
 }
