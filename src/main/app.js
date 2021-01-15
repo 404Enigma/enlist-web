@@ -1967,10 +1967,13 @@ function Ask_Notification(current_uid, displayName) {
       console.log(token);
 
       RefToken.doc(current_uid)
-        .set({
-          Name: displayName,
-          Token_web: token,
-        })
+        .set(
+          {
+            Name: displayName,
+            Token_web: token,
+          },
+          { merge: true }
+        )
         .then(function () {
           console.log("Success");
         })
