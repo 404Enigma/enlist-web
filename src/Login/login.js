@@ -110,6 +110,9 @@ function signIn() {
                     const demo_clone = snapshot.val();
                     console.log(demo_clone);
                     onetimeUpdate(demo, updateDivision, updateClass);
+                  } else {
+                    Class_declare(checkValue);
+                    console.log("class value stored");
                   }
                 });
 
@@ -318,4 +321,85 @@ async function nodeCreate(value, prnnn) {
 
   // console.log({ updates1 });
   // console.log({ prn_source });
+}
+
+function Class_declare(checkValue) {
+  flagTime = 1;
+
+  //demo = user.uid;
+  //console.log(user.uid);
+  if (checkValue == 1) {
+    if (Number(prnnn) == 19070122120 || Number(prnnn) == 19070122126 || Number(prnnn) == 19070122129) {
+      let arrClass = ["A", "C", "IT", "B"];
+      let arrDivision = ["B1", "B2", "A1", "A2", "A3", "C1", "C2", "C3", "T1", "T2", "T3", "B3"];
+
+      for (let i = 0; i < arrClass.length; i++) {
+        xyzClass = arrClass[i];
+      }
+
+      for (let i = 0; i < arrDivision.length; i++) {
+        xyz = arrDivision[i];
+      }
+
+      // console.log(xyz);
+      // console.log(xyzClass);
+    } else if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122095) {
+      xyz = "B1";
+
+      //create_unfinished_task();
+    } else if (Number(prnnn) >= 19070122096 && Number(prnnn) <= 19070122119) {
+      xyz = "B2";
+
+      //create_unfinished_task();
+    } else if (Number(prnnn) >= 19070122120 && Number(prnnn) <= 19070122145) {
+      xyz = "B3";
+
+      console.log(xyz);
+    } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122025) {
+      xyz = "A1";
+    } else if (Number(prnnn) >= 19070122026 && Number(prnnn) <= 19070122048) {
+      xyz = "A2";
+    } else if (Number(prnnn) >= 19070122049 && Number(prnnn) <= 19070122072) {
+      xyz = "A3";
+    } else if (Number(prnnn) >= 19070122146 && Number(prnnn) <= 19070122167) {
+      xyz = "C1";
+    } else if (Number(prnnn) >= 19070122168 && Number(prnnn) <= 19070122190) {
+      xyz = "C2";
+    } else if (Number(prnnn) >= 19070122191 && Number(prnnn) <= 20070122515) {
+      xyz = "C3";
+    } else if (Number(prnnn) >= 19070124001 && Number(prnnn) <= 19070124028) {
+      xyz = "T1";
+    } else if (Number(prnnn) >= 19070124029 && Number(prnnn) <= 19070124055) {
+      xyz = "T2";
+    } else if (Number(prnnn) >= 19070124056 && Number(prnnn) <= 20070124502) {
+      xyz = "T3";
+    }
+
+    if (Number(prnnn) >= 19070122073 && Number(prnnn) <= 19070122145) {
+      xyzClass = "B";
+    } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
+      xyzClass = "A";
+    } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
+      xyzClass = "C";
+    } else if (Number(prnnn) >= 19070122001 && Number(prnnn) <= 19070122072) {
+      xyzClass = "IT";
+    }
+
+    console.log(xyz);
+    console.log(xyzClass);
+    localStorage.setItem("RespectiveClass", xyz);
+    localStorage.setItem("RespectiveDivision", xyzClass);
+    //return 1;
+    //return xyz;
+  } else {
+    console.log(TaskcheckValue);
+    console.log("I am hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee!!1");
+  }
+
+  console.log(xyz);
+  console.log(xyzClass);
+
+  //console.log(ccc);
+  console.log(xyz);
+  return [xyz, xyzClass];
 }

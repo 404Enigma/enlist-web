@@ -40,7 +40,7 @@ async function sideBar() {
 
   console.log(demo);
 
-  firebase.auth().onAuthStateChanged(function (user) {
+  await firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       // User is signed in.
       let current_uid = user.uid;
@@ -49,7 +49,7 @@ async function sideBar() {
       console.log(user.displayName);
 
       console.log(RespectiveDivision);
-      console.log(RespectiveClass);
+      console.log(localStorage.getItem("RespectiveClass"));
 
       let CSarray = ["A", "C", "B", "B1", "B2", "B3", "A1", "A2", "A3", "C1", "C2", "C3"];
 
