@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Karla:400,700&display=swap");
-@import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "/plugins/css/bootstrap.min.css";
 
 body {
   font-family: "Karla", sans-serif;
