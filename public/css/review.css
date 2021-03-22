@@ -1,0 +1,118 @@
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css?family=Raleway:0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+@import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "/node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+
+body {
+  font-family: "Raleway";
+}
+.star-rating {
+  font-family: "FontAwesome";
+  margin: 0px auto;
+}
+.star-rating > fieldset {
+  border: none;
+  display: inline-block;
+}
+.star-rating > fieldset:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+  clip: rect(0, 0, 0, 0);
+}
+.star-rating > fieldset:not(:checked) > label {
+  float: right;
+  width: 1em;
+  padding: 0 0.05em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 200%;
+  color: coral;
+}
+.star-rating > fieldset:not(:checked) > label:before {
+  content: "\f006 ";
+}
+.star-rating > fieldset:not(:checked) > label:hover,
+.star-rating > fieldset:not(:checked) > label:hover ~ label {
+  color: coral;
+  text-shadow: 0 0 3px coral;
+}
+.star-rating > fieldset:not(:checked) > label:hover:before,
+.star-rating > fieldset:not(:checked) > label:hover ~ label:before {
+  content: "\f005 ";
+}
+.star-rating > fieldset > input:checked ~ label:before {
+  content: "\f005 ";
+}
+.star-rating > fieldset > label:active {
+  position: relative;
+  top: 2px;
+}
+nav {
+  background: #905858;
+  color: #fff;
+}
+.nav-link:hover {
+  border-bottom: 2px solid #fff;
+}
+.navbar-brand {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+form {
+  max-width: 420px;
+  margin: 50px auto;
+}
+
+.feedback-input {
+  color: black;
+  font-weight: 500;
+  font-size: 18px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: transparent;
+  border: 2px solid coral;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+.feedback-input:focus {
+  border: 2px solid coral;
+}
+
+textarea {
+  height: 150px;
+  line-height: 150%;
+  resize: vertical;
+}
+
+[type="submit"] {
+  width: 100%;
+  background: coral;
+  border-radius: 5px;
+  border: 0;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transition: all 0.3s;
+  margin-top: -4px;
+  font-weight: 400;
+}
+[type="submit"]:hover {
+  color: black;
+  border: 2px solid coral;
+  background-color: #fff;
+}
+
+@media only screen and (max-width: 991px) {
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+}
