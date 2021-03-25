@@ -7,6 +7,12 @@
     <title>ENLIST | Login</title>
     <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="/css/login.css" />
+    <!-- Firebase Package-->
+    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+
+    <!-- Loads the login UI elements-->
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
   </head>
   <body>
     <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
@@ -38,6 +44,7 @@
                     />
                   </div> -->
                   <input name="login" id="login" class="btn btn-block login-btn mb-4" type="button" value="Login with B.Tech ID" />
+                  <div id="firebaseui-auth-container"> </div>
                 </form>
                 <!-- <a href="#!" class="forgot-password-link">Forgot password?</a>
                 <p class="login-card-footer-text"
@@ -53,9 +60,6 @@
         </div>
       </div>
     </main>
-
-    <!-- SCRIPTS -->
-    <script src="/plugins/js/jquery.min.js"></script>
-    <script src="/plugins/js/bootstrap.bundle.min.js"></script>
+    <script src="js/login_session.js"></script>
   </body>
 </html>

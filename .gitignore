@@ -1,2 +1,9 @@
 node_modules
 .vscode
+
+serviceAccountKey.json
+
+src/db/db.js
+
+public/js/login_session.js
+
