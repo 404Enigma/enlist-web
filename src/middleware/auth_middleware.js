@@ -35,7 +35,8 @@ function checkCookie(req, res, next) {
     })
     .catch((error) => {
       // Session cookie is unavailable or invalid. Force user to login.
-      res.redirect("/login");
+      next();
+      //res.redirect("/login");
     });
 }
 

@@ -2,15 +2,28 @@ const express = require("express");
 
 var router = express.Router();
 
-router.get("/", function (req, res) {
-  res.render("pages/home");
+const { checkCookie } = require("../src/middleware/auth_middleware");
+
+router.get("/", checkCookie, (req, res) => {
+  let options = {};
+
+  if (!req.decodedClaims) {
+    options.islogged = false;
+    res.render("pages/home", { options });
+  } else {
+    console.log(req.decodedClaims);
+    options.islogged = true;
+
+    res.render("pages/home", { options });
+  }
 });
 
-router.get("/settings", function (req, res) {
+router.get("/settings", (req, res) => {
   res.render("/templates/settings.html");
 });
 
-router.get("/reviews", function (req, res) {
+router.get("/reviews", (req, res) => {
   res.render("pages/review");
 });
+
 module.exports = router;

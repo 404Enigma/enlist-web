@@ -121,7 +121,7 @@
               <i class="fas fa-cog fa-2x dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="/templates/settings.html"><i class="fas fa-sliders-h"></i>&nbsp; Settings</a>
-                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i>&nbsp; Logout</a>
+                <a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i>&nbsp; Logout</a>
               </div>
             </div>
           </div>
@@ -164,12 +164,15 @@
           </div>
 
           <div>
+            <% if(Object.keys(tasks).length === 0) { %>
+            <h1>Empty list</h1> <% }else{ %>
             <ul>
               <% for(task of Object.keys(tasks)){ %>
 
               <li><%= task %></li>
               <% } %>
             </ul>
+            <% } %>
           </div>
 
           <!-- <p>

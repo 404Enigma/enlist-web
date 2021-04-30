@@ -7,7 +7,7 @@ const csrf = require("csurf");
 
 const app = express();
 
-const csrfMiddleware = csrf({ cookie: true });
+//const csrfMiddleware = csrf({ cookie: true });
 
 const PORT = process.env.port || 3000;
 app.use(express.static("public"));
@@ -16,12 +16,11 @@ app.set("view engine", "ejs");
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 app.use(cookieParser());
-app.use(csrfMiddleware);
 
-app.all("*", (req, res, next) => {
-  res.cookie("XSRF-TOKEN", req.csrfToken());
-  next();
-});
+// app.all("*", (req, res, next) => {
+//   res.cookie("XSRF-TOKEN", req.csrfToken());
+//   next();
+// });
 
 app.use(require("./routes/index"));
 app.use(require("./routes/login/login"));

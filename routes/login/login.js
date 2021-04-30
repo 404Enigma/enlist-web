@@ -4,7 +4,7 @@ var router = express.Router();
 const auth = require("../../src/controller/auth");
 const { checkCookie, savecookie } = require("../../src/middleware/auth_middleware");
 
-router.get("/login", function (req, res) {
+router.get("/login", (req, res) => {
   res.render("pages/login");
 });
 
