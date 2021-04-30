@@ -18,20 +18,14 @@ app.use(bodyparser.json());
 app.use(cookieParser());
 app.use(csrfMiddleware);
 
-const home = require("./routes/home/home");
-const login = require("./routes/login/login");
-const review = require("./routes/review/review");
-const tasks = require("./routes/tasks/tasks");
-
 app.all("*", (req, res, next) => {
   res.cookie("XSRF-TOKEN", req.csrfToken());
   next();
 });
 
-app.use(home);
-app.use(login);
-app.use("/review", review);
-app.use("/tasks", tasks);
+app.use(require("./routes/index"));
+app.use(require("./routes/login/login"));
+app.use("/tasks", require("./routes/tasks/tasks"));
 
 app.get("/logout", (req, res) => {
   res.clearCookie("__session");
