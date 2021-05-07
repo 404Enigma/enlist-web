@@ -3,10 +3,11 @@ const express = require("express");
 var router = express.Router();
 
 const { checkCookie } = require("../../src/middleware/auth_middleware");
+const { add_nodes } = require("../../src/middleware/createNodes");
 
 const { add_task, get_tasks } = require("../../src/model/tasks");
 
-router.get("/", checkCookie, async (req, res) => {
+router.get("/", checkCookie, add_nodes, async (req, res) => {
   if (!req.decodedClaims) {
     res.redirect("/login");
   } else {

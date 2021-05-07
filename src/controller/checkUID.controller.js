@@ -1,7 +1,7 @@
 const admin = require("../../src/db/db");
 const db = admin.firestore();
 
-var docRef = db.collection("Member Access");
+const docRef = db.collection("Member Access");
 
 const checkUID = (req, res) => {
   console.log(req.body);
@@ -10,7 +10,7 @@ const checkUID = (req, res) => {
   docRef
     .doc(email)
     .get()
-    .then((doc) => {
+    .then(async (doc) => {
       if (doc.exists) {
         console.log(doc.data());
 

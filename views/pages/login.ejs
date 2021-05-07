@@ -12,10 +12,7 @@
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <meta
-      name="google-signin-client_id"
-      content="766738254879-bhbpsvt0769jn0d68l8einscfu9pouop.apps.googleusercontent.com"
-    />
+    <meta name="google-signin-client_id" content="766738254879-bhbpsvt0769jn0d68l8einscfu9pouop.apps.googleusercontent.com" />
     <!-- Loads the login UI elements-->
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
@@ -37,7 +34,7 @@
                 <form id="loginForm">
                   <div class="form-group">
                     <label for="PRN" class="sr-only">PRN</label>
-                    <input type="text" name="PRN" id="email" class="form-control" placeholder="PRN" />
+                    <input type="text" name="PRN" id="email" class="form-control" placeholder="PRN" required />
                   </div>
                   <!-- <div class="form-group mb-4">
                     <label for="password" class="sr-only">Password</label>
@@ -57,9 +54,7 @@
                     value="Login with B.Tech ID"
                   /> -->
                   <!-- <div id="firebaseui-auth-container"> </div> -->
-                  <button name="login" id="login btechEmail" class="btn btn-block login-btn mb-4" type="submit"
-                    >Login with B.Tech ID
-                  </button>
+                  <button name="login" id="login btechEmail" class="btn btn-block login-btn mb-4" type="submit">Login with B.Tech ID </button>
                 </form>
                 <!-- <button type="submit" id="btechEmail">Sign-in with B.Tech ID</button> -->
                 <!-- <div class="g-signin2" data-width="300" data-height="50" data-longtitle="true"></div> -->
