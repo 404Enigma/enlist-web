@@ -260,20 +260,48 @@
             <div class="modal-dialog modal-dialog-aside" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Right fixed sample</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                  <h4 class="modal-title">Details</h4>
+                  <button type="button" data-dismiss="modal" aria-label="Close" class="btn">
+                    <i class="fas fa-window-close fa-lg"></i>
                   </button>
                 </div>
                 <div class="modal-body">
-                  <p
-                    >Modal body text goes here. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo</p
-                  >
+                  <form>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput" class="small text-muted font-weight-bold">Task Title</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="formGroupExampleInput"
+                        placeholder="Example input placeholder"
+                        value="DS Lab 10"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2" class="small text-muted font-weight-bold"
+                        >Task Description</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="formGroupExampleInput2"
+                        placeholder="Another input placeholder"
+                        value="DS Lab 10 karna hai"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput3" class="small text-muted font-weight-bold">Deadline</label>
+                      <input type="date" name="date" class="form-control" id="formGroupExampleInput3" />
+                    </div>
+                  </form>
+                  <div>
+                    <button class="btn btn-success">Done ✅</button>
+                  </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <div class="modal-footer align-middle justify-content-between">
+                  <i class="far fa-trash-alt"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-trash-alt"></i>
                   <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
               </div>

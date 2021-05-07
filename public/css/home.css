@@ -299,10 +299,33 @@ ul.CTAs a {
 *:focus > .fa-hover-hidden {
   display: none;
 }
+
 *:focus > .fa-hover-show,
 *:hover > .fa-hover-show {
   display: inline-block;
 }
+
+.form-group {
+  margin-bottom: 40px;
+}
+
+.form-group input {
+  border: 0;
+}
+
+.form-group label {
+  margin-left: 10px;
+}
+
+.modal-title {
+  text-decoration: underline double coral;
+  color: #ff5100;
+}
+
+.modal-title button i {
+  color: #fe6019;
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
