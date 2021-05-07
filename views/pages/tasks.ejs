@@ -4,12 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
     <title>ENLIST | Home</title>
-
     <!-- Favicon -->
     <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon" />
-
     <!-- Bootstrap CSS CDN -->
     <link
       rel="stylesheet"
@@ -17,25 +14,17 @@
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
     />
-
+    <!-- Font Awesome JS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="/css/home.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-    <!-- Font Awesome JS -->
-    <!-- <script
-      defer
-      src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
-      integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      defer
-      src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
-      integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
-      crossorigin="anonymous"
-    ></script> -->
   </head>
 
   <body>
@@ -51,7 +40,7 @@
           <li class="active">
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
               <i class="fas fa-home"></i>
-              Home
+              <span>Home</span>
             </a>
             <ul class="collapse list-unstyled" id="homeSubmenu">
               <li>
@@ -68,40 +57,37 @@
           <li>
             <a href="#">
               <i class="fas fa-briefcase"></i>
-              About
+              <span>About</span>
             </a>
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
               <i class="fas fa-copy"></i>
-              Pages
+              <span>Class</span>
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
               <li>
-                <a href="#">Page 1</a>
+                <a href="#">B</a>
               </li>
               <li>
-                <a href="#">Page 2</a>
-              </li>
-              <li>
-                <a href="#">Page 3</a>
+                <a href="#">B3</a>
               </li>
             </ul>
           </li>
           <li>
             <a href="#">
               <i class="fas fa-image"></i>
-              Portfolio
+              <span>Portfolio</span>
             </a>
           </li>
           <li>
             <a href="#">
               <i class="fas fa-question"></i>
-              FAQ
+              <span>FAQ</span>
             </a>
           </li>
           <li>
             <a href="#">
-              <i class="fas fa-paper-plane"></i>
-              Contact
+              <i class="fas fa-paper-plane shadow-lg"></i>
+              <span>Contact</span>
             </a>
           </li>
         </ul>
@@ -112,15 +98,24 @@
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid">
-            <button type="button" id="sidebarCollapse" class="btn btn-info">
+            <button type="button" id="sidebarCollapse" class="btn btn-toggle">
               <i class="fas fa-align-left"></i>
               <!-- <span>Toggle Sidebar</span> -->
             </button>
             <h2 class="justify-content-between">CS-B</h2>
             <div class="dropleft justify-content-end">
-              <i class="fas fa-cog fa-2x dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+              <i
+                class="fas fa-cog fa-2x dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              ></i>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="/templates/settings.html"><i class="fas fa-sliders-h"></i>&nbsp; Settings</a>
+                <a class="dropdown-item" href="/templates/settings.html"
+                  ><i class="fas fa-sliders-h"></i>&nbsp; Settings</a
+                >
                 <a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i>&nbsp; Logout</a>
               </div>
             </div>
@@ -156,10 +151,15 @@
               </div>
               <div class="form-row justify-content-center">
                 <div class="col-md-8">
-                  <textarea class="form-control input" aria-label="With textarea" name="description" placeholder="Description"></textarea>
+                  <textarea
+                    class="form-control input"
+                    aria-label="With textarea"
+                    name="description"
+                    placeholder="Description"
+                  ></textarea>
                 </div>
               </div>
-              <button type="submit">Add Task</button>
+              <button type="submit" class="btn btn-danger">Add Task</button>
             </form>
           </div>
 
@@ -220,10 +220,19 @@
             <span></span>
           </div>
 
-          <button data-toggle="toast" data-target="#liveToast" type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+          <button data-toggle="toast" data-target="#liveToast" type="button" class="btn btn-primary" id="liveToastBtn"
+            >Show live toast</button
+          >
 
           <div class="position-fixed bottom-0 right-0 p-3" style="z-index: 10; right: 0; bottom: 0">
-            <div id="liveToast" class="toast hide bg-body" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+            <div
+              id="liveToast"
+              class="toast hide bg-body"
+              role="alert"
+              aria-live="assertive"
+              aria-atomic="true"
+              data-delay="2000"
+            >
               <div class="toast-header bg-danger text-white">
                 <strong class="mr-auto">ENLIST</strong>
                 <button type="button" class="ml-2 mb-1 close text-white" data-dismiss="toast" aria-label="Close">
@@ -234,7 +243,9 @@
             </div>
           </div>
 
-          <button data-toggle="modal" data-target="#modal_aside_right" class="btn btn-primary" type="button"> Modal aside right </button>
+          <button data-toggle="modal" data-target="#modal_aside_right" class="btn btn-primary" type="button">
+            Modal aside right
+          </button>
 
           <div id="modal_aside_right" class="modal fixed-left fade" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-aside" role="document">
@@ -247,8 +258,9 @@
                 </div>
                 <div class="modal-body">
                   <p
-                    >Modal body text goes here. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p
+                    >Modal body text goes here. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo</p
                   >
                 </div>
                 <div class="modal-footer">
@@ -265,7 +277,11 @@
     </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
     <!-- Popper.JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"

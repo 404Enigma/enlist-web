@@ -3,4 +3,3 @@ node_modules
 src/db
 .env
 public/js/login_session.js
-

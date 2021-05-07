@@ -1,7 +1,7 @@
 /*
     DEMO STYLE
 */
-@import "../plugins/css/all.min\ copy.css";
+
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
   font-family: "Poppins", sans-serif;
@@ -64,7 +64,7 @@ span {
   min-width: 250px;
   max-width: 250px;
   /* background: #7386d5; */
-  background: #971f2f;
+  background: #fff;
   color: #fff;
   transition: all 0.3s;
 }
@@ -97,8 +97,12 @@ span {
 #sidebar.active ul li a i {
   margin-right: 0;
   display: block;
-  font-size: 1.8em;
-  margin-bottom: 5px;
+  font-size: 1.3em;
+  padding: 0;
+  margin-bottom: 0px;
+}
+#sidebar.active ul li a span {
+  display: none;
 }
 
 #sidebar.active ul ul a {
@@ -117,7 +121,7 @@ span {
 #sidebar .sidebar-header {
   padding: 20px;
   /* background: #6d7fcc; */
-  background: #971f2f;
+  color: coral;
 }
 
 #sidebar .sidebar-header strong {
@@ -134,12 +138,17 @@ span {
   padding: 10px;
   font-size: 1.1em;
   display: block;
+  color: coral;
+  background: rgb(255, 255, 255);
+  border: 2px solid coral;
+  margin: 10px;
+  border-radius: 20px;
 }
 
 #sidebar ul li a:hover {
   /* color: #7386d5; */
-  color: #971f2f;
-  background: #fff;
+  color: #fff;
+  background: coral;
 }
 
 #sidebar ul li a i {
@@ -150,7 +159,7 @@ span {
 a[aria-expanded="true"] {
   color: #fff;
   /* background: #6d7fcc; */
-  background: #dd8893;
+  background: coral;
 }
 
 a[data-toggle="collapse"] {
@@ -181,6 +190,11 @@ ul.CTAs a {
   display: block;
   border-radius: 5px;
   margin-bottom: 5px;
+}
+
+.btn-toggle {
+  background-color: coral;
+  color: #fff;
 }
 
 /* ---------------------------------------------------
