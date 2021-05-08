@@ -1,7 +1,7 @@
 const admin = require("../db/db");
 const db = admin.database();
 
-const { get_PRN_by_email, get_status } = require("../utils/methods");
+const { get_PRN_by_email, get_status, set_status } = require("../utils/methods");
 const assign = require("../lib/assign");
 
 const nodeCreate_prnsource = async (uid, PRN) => {
@@ -24,12 +24,16 @@ const add_nodes = async (req, res, next) => {
   if (!req.decodedClaims) {
     res.redirect("/login");
   } else {
-    if (get_status(req.decodedClaims.email === false)) {
+    const status = await get_status(req.decodedClaims.email);
+
+    console.log("Status: " + status);
+    if (status === undefined) {
       const PRN = await get_PRN_by_email(req.decodedClaims.email);
       const _class = assign.check_class(PRN);
       const _division = assign.check_division(PRN);
       await nodeCreate_prnsource(req.decodedClaims.uid, PRN);
       await nodeCreate_source(req.decodedClaims.uid, _class, _division, PRN);
+      await set_status(req.decodedClaims.email);
     }
 
     next();

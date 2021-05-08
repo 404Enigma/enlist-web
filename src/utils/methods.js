@@ -26,6 +26,17 @@ const get_status = async (email) => {
   } else {
     return doc.data().status;
   }
+  console.log(doc.data().status);
 };
 
-module.exports = { get_PRN_by_email, logout_status, get_status };
+const set_status = async (email) => {
+  //status of that uid is true
+  await docRef.doc(email).set(
+    {
+      status: true,
+    },
+    { merge: true }
+  );
+};
+
+module.exports = { get_PRN_by_email, logout_status, get_status, set_status };

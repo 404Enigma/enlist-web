@@ -16,14 +16,6 @@ const checkUID = (req, res) => {
         console.log(doc.data());
 
         if (doc.data().PRN === Number(PRN)) {
-          //status of that uid is true
-          docRef.doc(email).set(
-            {
-              status: true,
-            },
-            { merge: true }
-          );
-
           res.send("matched");
         } else {
           res.send("PRN is wrong");
@@ -35,9 +27,9 @@ const checkUID = (req, res) => {
 };
 
 const logout = async (req, res) => {
-  if (req.decodedClaims) {
-    await logout_status(req.decodedClaims.email);
-  }
+  // if (req.decodedClaims) {
+  //   await logout_status(req.decodedClaims.email);
+  // }
 
   res.clearCookie("__session");
   res.redirect("/");
