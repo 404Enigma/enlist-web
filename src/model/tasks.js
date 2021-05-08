@@ -5,7 +5,7 @@ moment().format();
 const db = admin.database();
 const taskRef = db.ref("To-Do-List");
 
-const add_task = (user, task, categorie) => {
+const add_a_task = (user, task, categorie) => {
   task["date"] = moment(task.date).format("X");
   const random = Math.floor(Math.random() * 100000000 + 1);
 
@@ -19,7 +19,7 @@ const add_task = (user, task, categorie) => {
   }
 };
 
-const get_tasks = async (uid) => {
+const get_all_tasks = async (uid) => {
   let tasks = {};
   await taskRef.child(uid).once("value", (snapshot) => {
     tasks = snapshot.val();
@@ -33,4 +33,4 @@ const get_tasks = async (uid) => {
   return tasks;
 };
 
-module.exports = { add_task, get_tasks };
+module.exports = { add_a_task, get_all_tasks };
