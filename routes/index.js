@@ -3,6 +3,7 @@ const express = require("express");
 var router = express.Router();
 
 const { checkCookie } = require("../src/middleware/auth_middleware");
+const { logout } = require("../src/controller/checkUID.controller");
 
 router.get("/", checkCookie, (req, res) => {
   let options = {};
@@ -17,6 +18,8 @@ router.get("/", checkCookie, (req, res) => {
     res.render("pages/home", { options });
   }
 });
+
+router.get("/logout", checkCookie, logout);
 
 router.get("/settings", (req, res) => {
   res.render("/templates/settings.html");

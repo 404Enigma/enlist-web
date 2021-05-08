@@ -26,11 +26,6 @@ app.use(require("./routes/index"));
 app.use(require("./routes/login/login"));
 app.use("/tasks", require("./routes/tasks/tasks"));
 
-app.get("/logout", (req, res) => {
-  res.clearCookie("__session");
-  res.redirect("/");
-});
-
 app.listen(PORT, () => {
   console.log(`listening at http://localhost:${PORT}`);
 });
