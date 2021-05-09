@@ -325,27 +325,6 @@ header .width-container #banner ul li img {
   margin-left: -10px;
 }
 
-header .width-container #empresas {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  padding: 50px 0px;
-}
-
-header .width-container #empresas article img {
-  width: 150px;
-  max-width: 200px;
-  margin: 0px 35px;
-}
-
 main {
   width: 100%;
   height: auto;
@@ -588,217 +567,6 @@ main #performance button {
   font-weight: 500;
   font-size: 1rem;
   background-color: #202020;
-}
-
-main #depoimentos {
-  width: 100%;
-  height: auto;
-  text-align: center;
-  padding: 100px;
-  background-color: #f1f1f1;
-}
-
-main #depoimentos h2 {
-  font-size: 2.5rem;
-  margin-bottom: 50px;
-}
-
-main #depoimentos article {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
-main #depoimentos article div {
-  width: 45%;
-  text-align: left;
-}
-
-main #depoimentos article div h3 {
-  font-size: 2rem;
-  font-weight: 400;
-  padding-right: 20px;
-}
-
-main #depoimentos article div p {
-  font-size: 1.1rem;
-  max-width: 350px;
-}
-
-main #depoimentos article div h5 {
-  margin-top: 40px;
-  font-size: 1.3rem;
-  font-weight: 500;
-}
-
-main #depoimentos article div span {
-  width: 300px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-top: 35px;
-}
-
-main #depoimentos article div span ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-main #depoimentos article div span ul li {
-  background-color: #a5a5a5;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin-right: 20px;
-}
-
-main #depoimentos article div span ul .ativo {
-  background-color: #5add9e;
-  width: 12px;
-  height: 12px;
-  border: 1px solid #a5a5a5;
-}
-
-main #depoimentos article div span ul .fa {
-  font-size: 2rem;
-  margin-right: 25px;
-}
-
-main #depoimentos article div span ul .fa:nth-child(2) {
-  margin-right: 0px;
-}
-
-main #depoimentos article img {
-  width: 55%;
-  -webkit-filter: drop-shadow(0px 40px 52px rgba(0, 0, 0, 0.07));
-  filter: drop-shadow(0px 40px 52px rgba(0, 0, 0, 0.07));
-}
-
-main #saiba-mais {
-  width: 100%;
-  height: auto;
-  text-align: center;
-  padding: 100px;
-  background-color: #f7f7fc;
-}
-
-main #saiba-mais h2 {
-  font-size: 2.5rem;
-  margin-bottom: 50px;
-}
-
-main #saiba-mais div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  text-align: left;
-}
-
-main #saiba-mais div article {
-  margin: 10px;
-  width: calc(33% - 20px);
-}
-
-main #saiba-mais div article > div {
-  margin: 20px 0px;
-}
-
-main #saiba-mais div article > div ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: #5add9e;
-  padding: 5px 25px;
-  border-radius: 30px;
-  margin-top: 20px;
-}
-
-main #saiba-mais div article > div ul li {
-  color: #fff;
-  font-weight: 500;
-  margin-left: 10px;
-  font-size: 1.1rem;
-}
-
-main #saiba-mais div article > div ul img {
-  width: 30px;
-  display: inline;
-}
-
-main #saiba-mais div article h3 {
-  font-weight: 400;
-  font-size: 1.4rem;
-  min-height: 125px;
-}
-
-main #saiba-mais div article .data-post {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
-main #saiba-mais div article .data-post span {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
-main #saiba-mais div article .data-post span img {
-  width: 30px;
-}
-
-main #saiba-mais div article .data-post span p {
-  margin-left: 10px;
-  color: #6e7191;
-}
-
-main #saiba-mais div article:nth-child(1) {
-  margin-left: 0px;
-}
-
-main #saiba-mais div article:nth-child(3) {
-  margin-right: 0px;
 }
 
 main #email {
@@ -1067,9 +835,7 @@ footer .width-container span i {
     padding-left: 0px;
     margin: 0 auto 30px auto;
   }
-  header .width-container #empresas {
-    display: none;
-  }
+
   main #collaborate {
     padding: 50px 35px;
   }
@@ -1169,51 +935,7 @@ footer .width-container span i {
   main #manage .width-container button {
     display: none;
   }
-  main #depoimentos {
-    padding: 50px 35px;
-    background-color: #202020;
-    color: #fff;
-  }
-  main #depoimentos .width-container h2 {
-    font-size: 2rem;
-    max-width: 100%;
-    margin: 0 auto 30px auto;
-    line-height: 30px;
-  }
-  main #depoimentos .width-container article div {
-    width: 100%;
-  }
-  main #depoimentos .width-container article div h3 {
-    font-size: 1.7rem;
-    letter-spacing: 1px;
-    line-height: 33px;
-  }
-  main #depoimentos .width-container article div h5 {
-    font-weight: 500;
-  }
-  main #depoimentos .width-container article div p {
-    max-width: 90%;
-  }
-  main #depoimentos .width-container article img {
-    margin-top: 50px;
-    width: 100%;
-  }
-  main #saiba-mais {
-    padding: 50px 35px;
-  }
-  main #saiba-mais .width-container h2 {
-    font-size: 2rem;
-    max-width: 100%;
-    margin: 0 auto 30px auto;
-    line-height: 30px;
-  }
-  main #saiba-mais .width-container div article {
-    margin: 10px;
-    width: calc(50% - 20px);
-  }
-  main #saiba-mais .width-container div article h3 {
-    min-height: 100px;
-  }
+
   main #email {
     padding: 50px 35px 0px 35px;
   }
@@ -1346,13 +1068,6 @@ footer .width-container span i {
   }
   footer .width-container p {
     font-size: 1.1rem;
-  }
-}
-
-@media screen and (max-width: 1250px) and (max-width: 950px) {
-  main #saiba-mais .width-container div article {
-    margin: 10px;
-    width: calc(100% - 20px);
   }
 }
 
