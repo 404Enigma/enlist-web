@@ -936,7 +936,7 @@ footer .width-container span p {
   margin-right: 20px;
 }
 
-footer .width-container span .fa {
+footer .width-container span i {
   font-size: 1.3rem;
   margin-right: 20px;
 }
@@ -1338,8 +1338,9 @@ footer .width-container span .fa {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
+    align-items: center;
   }
-  footer .width-container span span .fa {
+  footer .width-container span span i {
     font-size: 1.6rem;
     margin: 50px 20px;
   }
