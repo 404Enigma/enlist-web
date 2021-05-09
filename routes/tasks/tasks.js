@@ -12,5 +12,6 @@ const redirect = require("../../src/controller/route.controller");
 router.get("/", redirect.to_class);
 router.get("/:group", checkCookie, add_nodes, tasks.get_tasks);
 router.post("/addTask/:group", checkCookie, add_nodes, tasks.add_task);
+router.post("/updateTask/:group", checkCookie, add_nodes, tasks.update_Task);
 
 module.exports = router;

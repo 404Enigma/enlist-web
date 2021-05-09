@@ -7,10 +7,7 @@
     <title>ENLIST</title>
     <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,500;1,700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,500;1,700&display=swap" rel="stylesheet" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -28,15 +25,7 @@
             <a class="navbar-brand" href="#">
               <img id="logo" src="/images/logo.png" alt="" />
             </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarText"
-              aria-controls="navbarText"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
@@ -62,6 +51,14 @@
             <span>
               <input class="input-field" type="email" placeholder="Type your email" />
               <button>Start Free</button>
+              <div class="d-flex justify-content-center mt-5">
+                <% if(options.islogged === true){ %>
+                <a class="btn btn-lg px-5" href="/tasks" role="button" id="enter">Get started</a>
+                <% }else{ %>
+                <a class="btn btn-lg px-5" href="/login" role="button" id="enter">Get started</a>
+
+                <% } %>
+              </div>
             </span>
             <p id="input-description">By creating the account, you will accept the website terms and conditions</p>
             <ul>
@@ -70,6 +67,7 @@
               <li><img src=" /images/estrela.svg" alt="" /><a href="#">Chat interno</a></li>
             </ul>
           </article>
+
           <article>
             <img src=" /images/ilustracao-header.png" alt="" id="illustration" />
           </article>
@@ -81,10 +79,7 @@
       <section id="collaborate">
         <div class="width-container">
           <h2>Collaborate online with Enlist</h2>
-          <p>
-            Approve tasks, analyze project costs, understand your team's performance, all in a shared space. See your
-            project the way you want it.
-          </p>
+          <p> Approve tasks, analyze project costs, understand your team's performance, all in a shared space. See your project the way you want it. </p>
           <img src=" /images/kanban.svg" alt="" id="images-desktop" />
           <img src=" /images/images-mobile.svg" alt="" id="images-mobile" />
           <div>
@@ -93,20 +88,14 @@
                 <img src=" /images/card-kanban.svg" alt="" />
               </div>
               <h3>Kanban</h3>
-              <p>
-                Visualize work, limit work in progress and maximize efficiency. Have a constant improvement in the flow
-                and quality of your projects.
-              </p>
+              <p> Visualize work, limit work in progress and maximize efficiency. Have a constant improvement in the flow and quality of your projects. </p>
             </article>
             <article id="card-collaboration">
               <div>
                 <img src=" /images/card-colaboracao.svg" alt="" />
               </div>
               <h3>Online Collaboration</h3>
-              <p>
-                Organize and collaborate in real time with your team. Make comments and plans. Delegate tasks and set
-                delivery dates for projects with your team.
-              </p>
+              <p> Organize and collaborate in real time with your team. Make comments and plans. Delegate tasks and set delivery dates for projects with your team. </p>
             </article>
           </div>
           <button>Create your free account.</button>
@@ -116,10 +105,7 @@
       <section id="manage">
         <div class="width-container">
           <h2>Manage the project your way</h2>
-          <p>
-            Do everything in an automated way, check metrics, turn tables into calendars and schedules, change dates and
-            task managers and more.
-          </p>
+          <p> Do everything in an automated way, check metrics, turn tables into calendars and schedules, change dates and task managers and more. </p>
           <article>
             <div>
               <div>
@@ -141,68 +127,32 @@
       </section>
       <div class="d-flex align-items-start width-container">
         <div class="nav tabs flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <button
-            class="nav-link active"
-            id="v-pills-home-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#v-pills-home"
-            type="button"
-            role="tab"
-            aria-controls="v-pills-home"
-            aria-selected="true"
+          <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"
             >Home</button
           >
-          <button
-            class="nav-link"
-            id="v-pills-profile-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#v-pills-profile"
-            type="button"
-            role="tab"
-            aria-controls="v-pills-profile"
-            aria-selected="false"
+          <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false"
             >Profile</button
           >
-          <button
-            class="nav-link"
-            id="v-pills-messages-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#v-pills-messages"
-            type="button"
-            role="tab"
-            aria-controls="v-pills-messages"
-            aria-selected="false"
+          <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false"
             >Messages</button
           >
-          <button
-            class="nav-link"
-            id="v-pills-settings-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#v-pills-settings"
-            type="button"
-            role="tab"
-            aria-controls="v-pills-settings"
-            aria-selected="false"
+          <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"
             >Settings</button
           >
         </div>
         <div class="tab-content" id="v-pills-tabContent">
-          <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"
-            ><img src=" /images/gerencie.svg" alt="" class="images-desktop"
-          /></div>
+          <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"><img src=" /images/gerencie.svg" alt="" class="images-desktop" /></div>
           <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
-            >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque ullam est quaerat eligendi! Odio quas
-            adipisci deleniti accusamus atque asperiores facere explicabo consequatur animi blanditiis? Veritatis
-            reprehenderit dolore beatae est!</div
+            >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque ullam est quaerat eligendi! Odio quas adipisci deleniti accusamus atque asperiores facere explicabo consequatur animi
+            blanditiis? Veritatis reprehenderit dolore beatae est!</div
           >
           <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"
-            >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa corrupti quas quisquam animi eligendi ex
-            necessitatibus libero, repudiandae quo asperiores id quos amet ut, magni est vitae beatae quis eum!</div
+            >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa corrupti quas quisquam animi eligendi ex necessitatibus libero, repudiandae quo asperiores id quos amet ut, magni est vitae
+            beatae quis eum!</div
           >
           <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab"
-            >Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut mollitia, aperiam doloremque deleniti, quo
-            praesentium incidunt tempore assumenda, laborum sapiente ipsum alias ipsam impedit. Saepe sapiente
-            temporibus voluptate. Voluptatem, aperiam.</div
+            >Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut mollitia, aperiam doloremque deleniti, quo praesentium incidunt tempore assumenda, laborum sapiente ipsum alias ipsam impedit.
+            Saepe sapiente temporibus voluptate. Voluptatem, aperiam.</div
           >
         </div>
       </div>
@@ -213,9 +163,7 @@
             <div>
               <h2>Performance and Analysis</h2>
               <p> Focus on your core business, increase your productivity and leave the administrative work to us. </p>
-              <p>
-                Improve your team's allocation and cultivate customer confidence by including time reports on invoices.
-              </p>
+              <p> Improve your team's allocation and cultivate customer confidence by including time reports on invoices. </p>
             </div>
             <img src=" /images/analise.svg" alt="" />
           </article>
@@ -224,10 +172,7 @@
             <div>
               <h2>Costs and expenses</h2>
               <p>Monitor the health of projects in the company by monitoring progress, effort and cost indicators.</p>
-              <p>
-                Check out all the important information to ensure the profitability and efficiency of all work
-                performed.
-              </p>
+              <p> Check out all the important information to ensure the profitability and efficiency of all work performed. </p>
               <p>All in real time, connected, anywhere and anytime.</p>
             </div>
           </article>

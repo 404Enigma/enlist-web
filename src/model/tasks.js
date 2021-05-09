@@ -14,7 +14,7 @@ const add_a_task = (user, task, group, categorie) => {
     date: task.date,
     description: task.description,
     key: uniqkey,
-    created_at: moment.now(),
+    created_at: moment().unix(),
   };
 
   if (categorie === "private") {
@@ -44,6 +44,20 @@ const add_a_task = (user, task, group, categorie) => {
   }
 };
 
+const update_a_task = (user, task, group) => {
+  const task_Data = {
+    title: task.title,
+    date: task.date,
+    description: task.description,
+    key: uniqkey,
+    created_at: moment().unix(),
+  };
+
+  var update_a_task = {};
+  update_a_task["/To-Do-List/" + user.uid + "/" + group + "/" + "Task" + uniqkey] = task_Data;
+  db.ref().update(update_a_task);
+};
+
 const get_all_tasks = async (uid, group) => {
   let tasks = [];
 
@@ -61,4 +75,4 @@ const get_all_tasks = async (uid, group) => {
   return tasks;
 };
 
-module.exports = { add_a_task, get_all_tasks };
+module.exports = { add_a_task, get_all_tasks, update_a_task };

@@ -249,31 +249,47 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <form>
+                  <% if ((metadata.standard) === 'class'){%>
+                    <form id="update_form_class">
+                      <%} %>
+                    <% if ((metadata.standard) === 'division'){%>
+                    <form id="update_form_division">
+                          <%} %>
+                    <% if ((metadata.standard) === 'personal'){%>
+                    <form id="update_form_personal">
+                          <%} %> 
+
+                    <div id="data-id" data-key="">
+                
                     <div class="form-group">
-                      <label for="formGroupExampleInput" class="small text-muted font-weight-bold">Task Title</label>
-                      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder" value="DS Lab 10" />
+                      <label for="title_edit" class="small text-muted font-weight-bold">Task Title</label>
+                      <input type="text" class="form-control" name="title" id="title_edit" placeholder="Example input placeholder" value="DS Lab 10" />
                     </div>
                     <div class="form-group">
-                      <label for="formGroupExampleInput2" class="small text-muted font-weight-bold">Task Description</label>
-                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder" value="DS Lab 10 karna hai" />
+                      <label for="description_edit" class="small text-muted font-weight-bold">Task Description</label>
+                      <input type="text" class="form-control" name="description" id="description_edit" placeholder="Another input placeholder" value="DS Lab 10 karna hai" />
                     </div>
+                  
                     <div class="form-group">
-                      <label for="formGroupExampleInput3" class="small text-muted font-weight-bold">Deadline</label>
-                      <input type="date" name="date" class="form-control" id="formGroupExampleInput3" value=""/>
+                      <label for="deadline_edit11" class="small text-muted font-weight-bold">Deadline</label>
+                      <input type="date" class="form-control" name="date" id="deadline_edit11" value="2017-06-01">
                     </div>
-                  </form>
+                   
+                  
                   <div>
                     <button class="btn btn-success">Done ✅</button>
                   </div>
-                  <div id="created-at"></div>
+                  <div>Created at :<p id="created-at"></p></div>
                 </div>
                 <div class="modal-footer align-middle justify-content-between">
                     <a href="" type="button"><i class="far fa-trash-alt"></i></a>
                     <a href="" type="button"><i class="far fa-check-square"></i></a>
                     <a href="" type="button"><i class="far fa-star"></i></a>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
+
+              </div>
+              </form>
               </div>
             </div>
             <!-- modal-bialog .// -->
@@ -297,35 +313,9 @@
       integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $("#sidebarCollapse").on("click", function () {
-          $("#sidebar").toggleClass("active");
-        });
-      });
-
-      $("#liveToast").toast("show");
     
-
-      $(".task-details").click(function () {
-        // var $domElement = $('.task-details');
-        var title = $(this).data('title');
-        var id = $(this).data('id');
-        var description = $(this).data('description');
-        var deadline = $(this).data('deadline');
-        var created = $(this).data('created');
-        $("#formGroupExampleInput").val(title);
-        $("#formGroupExampleInput2").val(description);
-        $("#formGroupExampleInput3").val(deadline);
-        $("#created-at").text(created);
-        console.log(title);
-        console.log(id);
-        console.log(description);
-        console.log(deadline);
-        console.log(created);
-    });
-    </script>
     <script src="/js/main.js"></script>
   </body>
 </html>
