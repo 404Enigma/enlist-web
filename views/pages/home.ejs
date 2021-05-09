@@ -1,65 +1,336 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ENLIST</title>
-    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon" />
-
-    <!-- STYLES -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/css/style.css" />
-    <!-- <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" /> -->
-
-    <!-- SCRIPTS -->
-    <script src="/plugins/js/jquery.slim.min.js"></script>
-    <script src="/plugins/js/bootstrap.bundle.min.js"></script>
+    <!--Ícones do Font Awesome-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   </head>
   <body>
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <a class="navbar-brand" href="#">
-        <img src="/images/logo.png" width="45" height="45" class="d-inline-block align-top" alt="" />
-        ENLIST
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-        <div class="navbar-nav d-flex justify-content-end">
-          <a class="nav-link active" href="#">📓 TRY ENLIST</a>
-          <a class="nav-link active" href="#">🔎 Review</a>
-        </div>
-      </div>
-    </nav>
-
-    <div class="d-flex justify-content-center" id="content">
-      <div class="d-block mt-5 pt-5">
-        <h1 class="ml14 d-flex justify-content-center">
-          <span class="text-wrapper">
-            <span class="letters">Welcome to ENLIST</span>
-            <span class="line"></span>
+    <header>
+      <div class="width-container">
+        <nav>
+          <div id="div-mobile">
+            <img src="/images/logo.png" alt="" />
+            <div id="menu">
+              <div class="nav">
+                <div class="nav-toggle">
+                  <span></span>
+                </div>
+                <li><a href="#">Functionalities</a></li>
+                <li><a href="#">To sign</a></li>
+                <li><a href="#">On</a></li>
+                <li><a href="#">Career</a></li>
+                <li><a href="#">Login</a></li>
+                <button>Create free account</button>
+              </div>
+            </div>
+          </div>
+          <ul>
+            <img src="/images/logo.png" alt="Logo" id="logo-header" />
+            <li><a href="#">Functionalities</a></li>
+            <li><a href="#">To sign</a></li>
+            <li><a href="#">On</a></li>
+            <li><a href="#">Career</a></li>
+          </ul>
+          <span>
+            <li><a href="#">Login</a></li>
+            <button>Download APK</button>
           </span>
-        </h1>
-        <div class="d-flex justify-content-center mt-5">
-          <% if(options.islogged === true){ %>
-          <a class="btn btn-lg px-5" href="/tasks" role="button" id="enter">Get started</a>
-          <% }else{ %>
-          <a class="btn btn-lg px-5" href="/login" role="button" id="enter">Get started</a>
+        </nav>
 
-          <% } %>
-        </div>
-        <div class="d-flex justify-content-center mt-4 px-5" id="policy">
-          <p>
-            By continuing, you agree to our &nbsp;
-            <a id="link" href="#"> Terms & Privacy Policy </a>
-          </p>
-        </div>
+        <section id="banner">
+          <article>
+            <h2>Save time by organizing your activities correctly</h2>
+            <p>Gipo helps you to streamline your projects, with features that adjust to any style.</p>
+            <span>
+              <input class="input-field" type="email" placeholder="Type your email" />
+              <button>Start Free</button>
+            </span>
+            <p id="input-description">By creating the account, you will accept the website terms and conditions</p>
+            <ul>
+              <li><img src="assets/image/estrela.svg" alt="" /><a href="#">Kanban de tarefas</a></li>
+              <li><img src="assets/image/estrela.svg" alt="" /><a href="#">Controle de Tempo</a></li>
+              <li><img src="assets/image/estrela.svg" alt="" /><a href="#">Chat interno</a></li>
+            </ul>
+          </article>
+          <article>
+            <img src="/images/home-1.svg" alt="" id="illustration" />
+          </article>
+        </section>
+
+        <!-- <section id="empresas">
+          <article>
+            <img src="assets/image/empresa1.svg" alt="" />
+            <img src="assets/image/empresa2.svg" alt="" />
+            <img src="assets/image/empresa3.svg" alt="" />
+            <img src="assets/image/empresa4.svg" alt="" />
+          </article>
+        </section> -->
       </div>
+    </header>
+
+    <main>
+      <section id="collaborate">
+        <div class="width-container">
+          <h2>Collaborate online with Gipo</h2>
+          <p>
+            Approve tasks, analyze project costs, understand your team's performance, all in a shared space. See your
+            project the way you want it.
+          </p>
+          <img src="assets/image/kanban.svg" alt="" id="image-desktop" />
+          <img src="assets/image/image-mobile.svg" alt="" id="image-mobile" />
+          <div>
+            <article id="card-kanban">
+              <div>
+                <img src="assets/image/card-kanban.svg" alt="" />
+              </div>
+              <h3>Kanban</h3>
+              <p>
+                Visualize work, limit work in progress and maximize efficiency. Have a constant improvement in the flow
+                and quality of your projects.
+              </p>
+            </article>
+            <article id="card-collaboration">
+              <div>
+                <img src="assets/image/card-colaboracao.svg" alt="" />
+              </div>
+              <h3>Online Collaboration</h3>
+              <p>
+                Organize and collaborate in real time with your team. Make comments and plans. Delegate tasks and set
+                delivery dates for projects with your team.
+              </p>
+            </article>
+          </div>
+          <button>Create your free account.</button>
+        </div>
+      </section>
+
+      <section id="manage">
+        <div class="width-container">
+          <h2>Manage the project your way</h2>
+          <p>
+            Do everything in an automated way, check metrics, turn tables into calendars and schedules, change dates and
+            task managers and more.
+          </p>
+          <article>
+            <div>
+              <div>
+                <h3>Kanban</h3>
+                <p> Manage processes and all team members. Implement your Kanban methodology with Gipo's tools. </p>
+              </div>
+              <ul>
+                <li>Timetracker</li>
+                <li>Project management</li>
+                <li>Personal panel</li>
+                <li>Gannt chart</li>
+                <li>Approval of tasks</li>
+              </ul>
+            </div>
+            <img src="assets/image/gerencie.svg" alt="" class="image-desktop" />
+          </article>
+          <button>Create your free account</button>
+        </div>
+      </section>
+
+      <section id="performance">
+        <div class="width-container">
+          <article id="analysis">
+            <div>
+              <h2>Performance and Analysis</h2>
+              <p> Focus on your core business, increase your productivity and leave the administrative work to us. </p>
+              <p>
+                Improve your team's allocation and cultivate customer confidence by including time reports on invoices.
+              </p>
+            </div>
+            <img src="assets/image/analise.svg" alt="" />
+          </article>
+          <article id="costs">
+            <img src="assets/image/custos.svg" alt="" />
+            <div>
+              <h2>Costs and expenses</h2>
+              <p>Monitor the health of projects in the company by monitoring progress, effort and cost indicators.</p>
+              <p>
+                Check out all the important information to ensure the profitability and efficiency of all work
+                performed.
+              </p>
+              <p>All in real time, connected, anywhere and anytime.</p>
+            </div>
+          </article>
+          <button>Get Started.</button>
+        </div>
+      </section>
+
+      <!-- <section id="depoimentos">
+        <div class="width-container">
+          <h2>O que estão falando</h2>
+          <article>
+            <div>
+              <h3
+                >“Nós automatizamos muitos de nossos processos cotidianos. Agora podemos dedicar mais tempo aos
+                trabalhos que requerem nosso talento.”</h3
+              >
+              <h5>Samyuktha Shivakumar</h5>
+              <p>Chefe de Operações de Marketing Global, ThoughtWorks</p>
+              <span>
+                <ul>
+                  <li class="ativo"></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </ul>
+                <ul id="setas">
+                  <i class="fa fa-angle-left"></i>
+                  <i class="fa fa-angle-right"></i>
+                </ul>
+              </span>
+            </div>
+            <img src="assets/image/mulher.svg" alt="" />
+          </article>
+        </div>
+      </section> -->
+
+      <!-- <section id="saiba-mais">
+        <div class="width-container">
+          <h2>Saiba mais com o Gipo</h2>
+          <div>
+            <article>
+              <img src="assets/image/card-saiba-mais1.svg" alt="" />
+              <div>
+                <ul>
+                  <img src="assets/image/tag.svg" alt="" />
+                  <li>Produtividade</li>
+                </ul>
+              </div>
+              <h3>Como identificar os sintomas de estresse no trabalho</h3>
+              <div class="data-post">
+                <span>
+                  <img src="assets/image/icon.svg" alt="" />
+                  <p>Equipe Gipo</p>
+                </span>
+                <p>18 de Setembro, 2020</p>
+              </div>
+            </article>
+
+            <article>
+              <img src="assets/image/card-saiba-mais2.svg" alt="" />
+              <div>
+                <ul>
+                  <img src="assets/image/tag.svg" alt="" />
+                  <li>Produtividade</li>
+                </ul>
+              </div>
+              <h3>Estresse no trabalho? 4 técnicas poderosas para relaxar e ter foco</h3>
+              <div class="data-post">
+                <span>
+                  <img src="assets/image/icon.svg" alt="" />
+                  <p>Equipe Gipo</p>
+                </span>
+                <p>7 de Setembro, 2020</p>
+              </div>
+            </article>
+
+            <article>
+              <img src="assets/image/card-saiba-mais3.svg" alt="" />
+              <div>
+                <ul>
+                  <img src="assets/image/tag.svg" alt="" />
+                  <li>Produtividade</li>
+                </ul>
+              </div>
+              <h3>Como organizar projetos visualmente usando o software Kanban</h3>
+              <div class="data-post">
+                <span>
+                  <img src="assets/image/icon.svg" alt="" />
+                  <p>Equipe Gipo</p>
+                </span>
+                <p>31 de Agosto, 2020</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section> -->
+
+      <section id="email">
+        <div class="width-container">
+          <span>
+            <img src="assets/image/email1.svg" alt="" id="email1" />
+            <img src="assets/image/email2.svg" alt="" id="email2" />
+          </span>
+          <div>
+            <h2>Start free with Gipo</h2>
+            <p>A complete platform for your entire team to work in an organized and fully productive way</p>
+            <span>
+              <input type="text" placeholder="Type your email" />
+              <button>Get Free</button>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <div id="separator"></div>
+
+      <section id="sub-footer">
+        <div class="width-container">
+          <ul>
+            <img src="assets/image/logo-footer.svg" alt="" />
+            <h3>Login</h3>
+            <h3>Create free account.</h3>
+          </ul>
+          <ul>
+            <h2>Functionalities</h2>
+            <li>Timetracker</li>
+            <li>Project Management</li>
+            <li>Task Management</li>
+            <li>Flexible Planning</li>
+          </ul>
+          <ul>
+            <h2>To sign</h2>
+            <li>Premium</li>
+            <li>Free heads</li>
+            <li>How does it work</li>
+          </ul>
+          <ul>
+            <h2>On</h2>
+            <li>Who we are</li>
+            <li>Press</li>
+            <li>Customers</li>
+            <li>Contact us</li>
+          </ul>
+          <ul>
+            <h2>Career</h2>
+            <li>Jobs</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <div id="division-hr">
+      <hr />
     </div>
 
-    <!-- SCRIPTS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    <script src="/js/app.js"></script>
+    <footer>
+      <div class="width-container">
+        <span>
+          <p>Terms of Use & Privacy Policy</p>
+          <span>
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+          </span>
+        </span>
+        <p>Copyright © 2021 | 404Enigma</p>
+      </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
   </body>
 </html>
