@@ -4,7 +4,7 @@ const db = admin.database();
 const { get_PRN_by_email } = require("../utils/methods");
 const assign = require("../lib/assign");
 
-const { check_uid } = require("../../src/model/nodes");
+const { check_uid, get_PRN } = require("../../src/model/nodes");
 
 const nodeCreate_prnsource = async (uid, PRN) => {
   let prn_source = {};
@@ -23,6 +23,8 @@ const nodeCreate_source = async (uid, _class, _division, PRN) => {
 };
 
 const add_nodes = async (req, res, next) => {
+  let PRN, _class, _division;
+
   if (!req.decodedClaims) {
     res.redirect("/login");
   } else {
@@ -31,15 +33,26 @@ const add_nodes = async (req, res, next) => {
     console.log("Status: " + status);
 
     if (status == false) {
-      const PRN = await get_PRN_by_email(req.decodedClaims.email);
-      const _class = assign.check_class(PRN);
-      const _division = assign.check_division(PRN);
+      PRN = await get_PRN_by_email(req.decodedClaims.email);
+      _class = assign.check_class(PRN);
+      _division = assign.check_division(PRN);
       await nodeCreate_prnsource(req.decodedClaims.uid, PRN);
       await nodeCreate_source(req.decodedClaims.uid, _class, _division, PRN);
 
       //update
+    } else {
+      PRN = await get_PRN(req.decodedClaims.uid);
+      _class = assign.check_class(PRN);
+      _division = assign.check_division(PRN);
     }
 
+    const _payload = {
+      PRN,
+      _class,
+      _division,
+    };
+
+    req._payload = _payload;
     next();
   }
 };

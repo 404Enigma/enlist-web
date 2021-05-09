@@ -5,29 +5,57 @@ moment().format();
 const db = admin.database();
 const taskRef = db.ref("To-Do-List");
 
-const add_a_task = (user, task, categorie) => {
+const add_a_task = (user, task, group, categorie) => {
   task["date"] = moment(task.date).format("X");
-  const random = Math.floor(Math.random() * 100000000 + 1);
+  const uniqkey = "-" + Math.floor(1000000000 + Math.random() * 9000000000);
 
-  if (categorie === "personal") {
-    taskRef.child(user.uid + "/" + random).set({
-      title: task.title,
-      date: task.date,
-      description: task.description,
-    });
+  const task_Data = {
+    title: task.title,
+    date: task.date,
+    description: task.description,
+    key: uniqkey,
+    created_at: moment.now(),
+  };
+
+  if (categorie === "private") {
+    let personal_tasks = {};
+    personal_tasks["/To-Do-List/" + user.uid + "/" + group + "/" + "Task" + uniqkey] = task_Data;
+    db.ref().update(personal_tasks);
   } else {
+    var urlRef = db.ref().child("Source/" + group);
+
+    urlRef.once("value", function (snapshot) {
+      snapshot.forEach(function (child) {
+        let allchild = child.key;
+        keySplittedArray = allchild.split(" ");
+
+        for (let i = 0; i < keySplittedArray.length; i++) {
+          let shared_task = {};
+          shared_task["/To-Do-List/" + keySplittedArray[i] + "/" + group + "/" + "Task" + uniqkey] = task_Data;
+
+          db.ref().update(shared_task);
+        }
+      });
+    });
+
+    let all_shared_tasks = {};
+    all_shared_tasks["All-Tasks" + "/" + group + "/" + "Task" + uniqkey] = task_Data;
+    db.ref().update(all_shared_tasks);
   }
 };
 
-const get_all_tasks = async (uid) => {
-  let tasks = {};
-  await taskRef.child(uid).once("value", (snapshot) => {
-    tasks = snapshot.val();
-  });
+const get_all_tasks = async (uid, group) => {
+  let tasks = [];
 
-  if (tasks == null) {
-    tasks = {};
-  }
+  await db.ref("To-Do-List/" + uid + "/" + group).once("value", function (snapshot) {
+    snapshot.forEach(function (childSnapshot) {
+      var childKey = childSnapshot.uniqkey;
+      var childData = childSnapshot.val();
+      //console.log(childData);
+
+      tasks.push(childData);
+    });
+  });
 
   console.log("tasksss:  ", tasks);
   return tasks;

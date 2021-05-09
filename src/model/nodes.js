@@ -3,7 +3,7 @@ const db = admin.database();
 
 const get_PRN = async (uid) => {
   let PRN;
-  db.ref(`/PRN-Source/${uid}`).once("value", (snapshot) => {
+  await db.ref(`/PRN-Source/${uid}`).once("value", (snapshot) => {
     if (snapshot.exists()) {
       PRN = snapshot.val();
     }

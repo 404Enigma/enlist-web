@@ -7,7 +7,10 @@ const { add_nodes } = require("../../src/middleware/createNodes");
 
 const tasks = require("../../src/controller/task.controller");
 
-router.get("/", checkCookie, add_nodes, tasks.get_tasks);
-router.post("/add", checkCookie, tasks.add_task);
+const redirect = require("../../src/controller/route.controller");
+
+router.get("/", redirect.to_class);
+router.get("/:group", checkCookie, add_nodes, tasks.get_tasks);
+router.post("/addTask/:group", checkCookie, add_nodes, tasks.add_task);
 
 module.exports = router;
