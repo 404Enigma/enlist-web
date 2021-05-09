@@ -36,6 +36,28 @@ html {
   margin: 0 auto;
 }
 
+#logo {
+  width: 100px;
+  height: 100px;
+}
+#navbar-text {
+  background-color: coral;
+  color: #fff;
+  padding: 10px;
+  border-radius: 2px;
+}
+#navbar-text:hover {
+  background-color: #fff;
+  border: 2px solid coral;
+  color: #202020;
+  box-shadow: 2px 2px 2px 1px coral;
+}
+.nav-link {
+  font-size: larger;
+}
+.nav-link:hover {
+  text-decoration: underline 5px coral;
+}
 header {
   width: 100%;
   height: auto;
@@ -46,177 +68,10 @@ header #div-mobile {
   display: none;
 }
 
-header #div-mobile #menu .nav {
-  background-color: coral;
-  width: 300px;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: -300px;
-  -webkit-transition: right 0.3s ease-in-out;
-  transition: right 0.3s ease-in-out;
-  padding: 30px;
-}
-
-header #div-mobile #menu .nav li {
-  margin-bottom: 15px;
-}
-
-header #div-mobile #menu .nav li a {
-  color: #202020;
-  font-weight: 500;
-  font-size: 1.5rem;
-}
-
-header #div-mobile #menu .nav button {
-  background-color: #5add9e;
-  color: #fff;
-  padding: 15px 30px;
-  border-radius: 3px;
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 1rem;
-  background-color: #202020;
-  margin-top: 30px;
-}
-
-header #div-mobile #menu .nav-toggle {
-  height: 40px;
-  width: 40px;
-  cursor: pointer;
-  position: absolute;
-  left: -80px;
-  top: 30px;
-}
-
-header #div-mobile #menu .nav-toggle > span,
-header #div-mobile #menu .nav-toggle > span::before,
-header #div-mobile #menu .nav-toggle > span::after {
-  content: "";
-  display: block;
-  position: absolute;
-  height: 4px;
-  width: 100%;
-  background-color: #202020;
-  top: calc(50% - 3px);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-header #div-mobile #menu .nav-toggle > span::before {
-  top: -10px;
-}
-
-header #div-mobile #menu .nav-toggle > span::after {
-  top: 10px;
-}
-
-header #div-mobile #menu .nav.nav-open {
-  right: 0%;
-}
-
-header #div-mobile #menu .nav-toggle.nav-open > span {
-  -webkit-transform-origin: 50% 50%;
-  transform-origin: 50% 50%;
-  -webkit-transform: rotate(360deg);
-  transform: rotate(360deg);
-  background-color: transparent;
-}
-
-header #div-mobile #menu .nav-toggle.nav-open > span::before {
-  top: 0;
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-  background-color: #202020;
-}
-
-header #div-mobile #menu .nav-toggle.nav-open > span::after {
-  top: 0;
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  background-color: #202020;
-}
-
-header .width-container nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  width: 100%;
-  height: 100px;
-  padding: 20px 0px;
-  background-color: #fff;
-  z-index: 999;
-}
-
-header .width-container nav img {
-  width: 120px;
-  margin-right: 50px;
-}
-
-header .width-container nav ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #202020;
-  font-size: 1.1rem;
-}
-
-header .width-container nav ul li {
-  margin: 0px 30px;
-}
-
-header .width-container nav ul li a {
-  color: #202020;
-  -webkit-transition: all 0.1s ease;
-  transition: all 0.1s ease;
-}
-
-header .width-container nav span {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-header .width-container nav span li a {
-  color: #202020;
-  -webkit-transition: all 0.1s ease;
-  transition: all 0.1s ease;
-  font-size: 1.1rem;
-}
-
-header .width-container nav span li a:hover {
-  border-bottom: 4px solid #5add9e;
-}
-
-header .width-container nav span button {
-  background-color: coral;
-  color: #fff;
-  padding: 15px 30px;
-  border-radius: 3px;
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 1rem;
-  margin-left: 50px;
-}
-
 header .width-container #banner {
   width: 100%;
   height: auto;
-  padding: 100px 0px 50px 0px;
+  padding: 50px 0px 50px 0px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -724,31 +579,7 @@ footer .width-container span i {
   html {
     font-size: 14px;
   }
-  header .width-container nav ul {
-    display: none;
-  }
-  header .width-container nav span {
-    display: none;
-  }
-  header .width-container nav #div-mobile {
-    display: inherit;
-    width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-  }
-  header .width-container nav #div-mobile #menu {
-    width: 30px;
-    margin-right: 0px;
-  }
+
   header .width-container #banner article span input {
     width: 100%;
   }

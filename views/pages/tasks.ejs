@@ -168,7 +168,7 @@
               <h1>Empty list</h1>
               <% }else{ %> <% tasks.map((task) => {%>
 
-              <div class="task-details" data-toggle="modal" data-target="#modal_aside_right">
+              <div class="task-details" data-id="<%= task.key %>" data-toggle="modal" data-target="#modal_aside_right" data-title="<%= task.title%>" data-description="<%= task.description%>" data-deadline="<%= task.date%>" data-created="<%= task.created_at%>">
                 <div class="col-1">
                   <a href="#">
                     <i class="far fa-check-circle fa-hover-hidden"></i>
@@ -260,17 +260,18 @@
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput3" class="small text-muted font-weight-bold">Deadline</label>
-                      <input type="date" name="date" class="form-control" id="formGroupExampleInput3" />
+                      <input type="date" name="date" class="form-control" id="formGroupExampleInput3" value=""/>
                     </div>
                   </form>
                   <div>
                     <button class="btn btn-success">Done ✅</button>
                   </div>
+                  <div id="created-at"></div>
                 </div>
                 <div class="modal-footer align-middle justify-content-between">
-                  <i class="far fa-trash-alt"></i>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-trash-alt"></i>
+                    <a href="" type="button"><i class="far fa-trash-alt"></i></a>
+                    <a href="" type="button"><i class="far fa-check-square"></i></a>
+                    <a href="" type="button"><i class="far fa-star"></i></a>
                   <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
               </div>
@@ -305,6 +306,25 @@
       });
 
       $("#liveToast").toast("show");
+    
+
+      $(".task-details").click(function () {
+        // var $domElement = $('.task-details');
+        var title = $(this).data('title');
+        var id = $(this).data('id');
+        var description = $(this).data('description');
+        var deadline = $(this).data('deadline');
+        var created = $(this).data('created');
+        $("#formGroupExampleInput").val(title);
+        $("#formGroupExampleInput2").val(description);
+        $("#formGroupExampleInput3").val(deadline);
+        $("#created-at").text(created);
+        console.log(title);
+        console.log(id);
+        console.log(description);
+        console.log(deadline);
+        console.log(created);
+    });
     </script>
     <script src="/js/main.js"></script>
   </body>
