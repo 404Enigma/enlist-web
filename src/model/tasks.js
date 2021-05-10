@@ -2,6 +2,8 @@ const admin = require("../../src/db/db");
 var moment = require("moment");
 moment().format();
 
+const { moveFbRecord } = require("../utils/moveNode");
+
 const db = admin.database();
 const taskRef = db.ref("To-Do-List");
 
@@ -59,6 +61,45 @@ const update_a_task = (user, task, group) => {
   db.ref().update(update_a_task);
 };
 
+const mark_as_important = async (user, task, group) => {
+  const uniquekey = task.key;
+
+  console.log(uniquekey);
+  const task_ref = db.ref("To-Do-List/" + user.uid + "/" + group + "/Task" + uniquekey);
+  const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "IMP" + "/" + group + "/Task" + uniquekey);
+
+  await moveFbRecord(task_ref, new_task_ref);
+};
+
+const get_all_imp_tasks = async (uid) => {
+  let group_task = [];
+
+  await db.ref("To-Do-List/" + uid + "/" + "IMP").once("value", function (snapshot) {
+    console.log("Snapshot: ", snapshot);
+
+    snapshot.forEach(function (childSnapshot) {
+      let obj = {};
+      var childKey = childSnapshot.key;
+      var childData = childSnapshot.val();
+      //console.log(childData);
+      obj[childKey] = childData;
+      group_task.push(obj);
+      // console.log("Key: ", childKey);
+      // console.log("Data: ", childData);
+    });
+  });
+
+  return group_task;
+};
+
+const complete_a_task = (user, task, group) => {
+  const key = task.key;
+  const task_ref = db.ref("To-Do-List/" + user.uid + "/" + group + "/Task" + key);
+  const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "IMP" + "/Task" + key);
+
+  moveFbRecord(task_ref, new_task_ref);
+};
+
 const get_all_tasks = async (uid, group) => {
   let tasks = [];
 
@@ -76,4 +117,4 @@ const get_all_tasks = async (uid, group) => {
   return tasks;
 };
 
-module.exports = { add_a_task, get_all_tasks, update_a_task };
+module.exports = { add_a_task, get_all_tasks, update_a_task, complete_a_task, mark_as_important, get_all_imp_tasks };

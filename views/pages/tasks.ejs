@@ -141,14 +141,14 @@
               <div class="form-row justify-content-center my-3">
                 <div class="input-group-prepend">
                   <div class="input-group-text border-dark border-right-0 rounded-0">
-                    <input type="radio" aria-label="radio" name="personal" checked />
+                    <input type="radio" name="common" aria-label="radio" name="personal" checked />
                   </div>
                   <span class="input-group-text input rounded-0" id="inputGroup-sizing-sm">Personal</span>
                 </div>
 
                 <div class="input-group-prepend">
                   <div class="input-group-text border-dark rounded-0">
-                    <input type="radio" aria-label="radio" name="shared" />
+                    <input type="radio" name="common" aria-label="radio" name="shared" />
                   </div>
                   <span class="input-group-text input rounded-0" id="inputGroup-sizing-sm">Shared</span>
                 </div>
@@ -282,9 +282,22 @@
                   <div>Created at :<p id="created-at"></p></div>
                 
                 <div class="modal-footer align-middle justify-content-between">
-                    <a href="" type="button"><i class="far fa-trash-alt"></i></a>
-                    <a href="" type="button"><i class="far fa-check-square"></i></a>
-                    <a href="" type="button"><i class="far fa-star"></i></a>
+                  <% if ((metadata.standard) === 'class'){%>
+                    <a  type="button" id="trash_class"><i class="far fa-trash-alt"></i></a>
+                    <a  type="button" id="done_class"><i class="far fa-check-square"></i></a>
+                    <a  type="button" id="IMP_class"><i class="far fa-star"></i></a>
+                      <%} %>
+                    <% if ((metadata.standard) === 'division'){%>
+                      <a  type="button" id="trash_division"><i class="far fa-trash-alt"></i></a>
+                      <a  type="button" id="done_division"><i class="far fa-check-square"></i></a>
+                      <a  type="button" id="IMP_division"><i class="far fa-star"></i></a>
+                          <%} %>
+                    <% if ((metadata.standard) === 'personal'){%>
+                      <a  type="button" id="trash_personal"><i class="far fa-trash-alt"></i></a>
+                      <a  type="button" id="done_personal"><i class="far fa-check-square"></i></a>
+                      <a  type="button" id="IMP_personal"><i class="far fa-star"></i></a>
+                          <%} %>
+                    
                   <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
 
