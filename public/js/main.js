@@ -2,8 +2,8 @@ const add_form_class = document.getElementById("add_task_class");
 const add_form_division = document.getElementById("add_task_division");
 const add_form_personal = document.getElementById("add_task_personal");
 const update_form_class = document.getElementById("update_task_class");
-const update_form_division = document.getElementById("update_form_division");
-const update_form_personal = document.getElementById("update_form_personal");
+const update_form_division = document.getElementById("update_task_division");
+const update_form_personal = document.getElementById("update_task_personal");
 
 if (typeof add_form_class != "undefined" && add_form_class != null) {
   // Exists.
@@ -65,12 +65,18 @@ if (typeof add_form_personal != "undefined" && add_form_personal != null) {
 
 if (typeof update_form_class != "undefined" && update_form_class != null) {
   // Exists.
+  console.log("classssss");
   update_form_class.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     data.categorie = "personal";
+    var keyID = document.getElementById("data-taskkey");
+    var key = keyID.getAttribute("data-taskkey");
+
+    data.key = key;
+
     console.log({ data });
 
     axios({
@@ -91,6 +97,11 @@ if (typeof update_form_division != "undefined" && update_form_division != null) 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     data.categorie = "personal";
+    var keyID = document.getElementById("data-taskkey");
+    var key = keyID.getAttribute("data-taskkey");
+
+    data.key = key;
+
     console.log({ data });
 
     axios({
@@ -111,6 +122,12 @@ if (typeof update_form_personal != "undefined" && update_form_personal != null) 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     data.categorie = "personal";
+
+    var keyID = document.getElementById("data-taskkey");
+    var key = keyID.getAttribute("data-taskkey");
+
+    data.key = key;
+
     console.log({ data });
 
     axios({
@@ -149,7 +166,8 @@ $(".task-details").click(function () {
   $("#deadline_edit11").val(date);
   $("#created-at").text(created_at);
 
-  $("#data-id").data("key", id);
+  $("#data-taskkey").attr("data-taskkey", id);
+
   console.log(title);
   console.log(id);
   console.log(description);

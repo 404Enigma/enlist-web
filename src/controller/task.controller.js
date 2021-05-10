@@ -78,6 +78,7 @@ const update_Task = (req, res) => {
     };
 
     console.log(req.body);
+    console.log("Group :", group);
     //res.json("success");
     update_a_task(user, req.body, group);
   }

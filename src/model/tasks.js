@@ -45,16 +45,17 @@ const add_a_task = (user, task, group, categorie) => {
 };
 
 const update_a_task = (user, task, group) => {
+  const updated_date = moment(task.date).format("X");
   const task_Data = {
     title: task.title,
-    date: task.date,
+    date: updated_date,
     description: task.description,
-    key: uniqkey,
+    key: task.key,
     created_at: moment().unix(),
   };
 
   var update_a_task = {};
-  update_a_task["/To-Do-List/" + user.uid + "/" + group + "/" + "Task" + uniqkey] = task_Data;
+  update_a_task["/To-Do-List/" + user.uid + "/" + group + "/" + "Task" + task.key] = task_Data;
   db.ref().update(update_a_task);
 };
 

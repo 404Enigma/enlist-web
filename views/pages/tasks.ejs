@@ -250,16 +250,16 @@
                 </div>
                 <div class="modal-body">
                   <% if ((metadata.standard) === 'class'){%>
-                    <form id="update_form_class">
+                    <form id="update_task_class">
                       <%} %>
                     <% if ((metadata.standard) === 'division'){%>
-                    <form id="update_form_division">
+                    <form id="update_task_division">
                           <%} %>
                     <% if ((metadata.standard) === 'personal'){%>
-                    <form id="update_form_personal">
+                    <form id="update_task_personal">
                           <%} %> 
 
-                    <div id="data-id" data-key="">
+                    <div id="data-taskkey" data-taskkey=""></div>
                 
                     <div class="form-group">
                       <label for="title_edit" class="small text-muted font-weight-bold">Task Title</label>
@@ -280,7 +280,7 @@
                     <button class="btn btn-success">Done ✅</button>
                   </div>
                   <div>Created at :<p id="created-at"></p></div>
-                </div>
+                
                 <div class="modal-footer align-middle justify-content-between">
                     <a href="" type="button"><i class="far fa-trash-alt"></i></a>
                     <a href="" type="button"><i class="far fa-check-square"></i></a>
