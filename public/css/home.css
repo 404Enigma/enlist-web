@@ -283,7 +283,7 @@ ul.CTAs a {
 }
 .task-date {
   color: rgba(36, 33, 33, 0.808);
-  font-size: small;
+  /* font-size: small; */
   margin: auto;
   font-weight: 500;
   text-align: end;
