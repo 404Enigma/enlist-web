@@ -1,4 +1,4 @@
-const { add_a_task, get_all_tasks, update_a_task, complete_a_task, mark_as_important, get_all_imp_tasks } = require("../model/tasks");
+const { add_a_task, get_all_tasks, update_a_task, complete_a_task, mark_as_important, get_all_imp_tasks, mark_as_completed, get_all_completed_tasks } = require("../model/tasks");
 var moment = require("moment");
 
 const get_tasks = async (req, res) => {
@@ -104,7 +104,7 @@ const completed_Task = (req, res) => {
     console.log(req.body);
     console.log("Group :", group);
     //res.json("success");
-    complete_a_task(user, req.body, group);
+    mark_as_completed(user, req.body, group);
   }
 };
 
@@ -157,7 +157,7 @@ const get_important_Tasks = async (req, res) => {
       metadata.standard = req.params.group;
     }
 
-    const tasks = await get_all_imp_tasks(req.decodedClaims.uid);
+    const impTasks = await get_all_imp_tasks(req.decodedClaims.uid);
 
     metadata.group = group;
 
@@ -165,10 +165,59 @@ const get_important_Tasks = async (req, res) => {
     //   task.date = moment.unix(task.date).format("DD MMMM YYYY");
     // });
 
-    console.log(tasks);
+    //console.log(impTasks);
 
-    //res.render("pages/tasks", { user, tasks, metadata });
+    impTasks.map((group) => {
+      for (const tasks in group) {
+        Object.values(group[tasks]).forEach((task) => console.log(task.title));
+      }
+    });
+
+    res.render("pages/services/important", { user, impTasks, metadata });
   }
 };
 
-module.exports = { get_tasks, add_task, update_Task, completed_Task, important_Task, get_important_Tasks };
+const get_completed_Tasks = async (req, res) => {
+  if (!req.decodedClaims) {
+    res.redirect("/login");
+  } else {
+    let group;
+    console.log(req.decodedClaims);
+    const user = { name: req.decodedClaims.name, email: req.decodedClaims.email, picture: req.decodedClaims.picture };
+
+    const metadata = req._payload;
+    if (req.params.group == "class") {
+      group = req._payload._class;
+      metadata.standard = req.params.group;
+    }
+    if (req.params.group == "division") {
+      group = req._payload._division;
+      metadata.standard = req.params.group;
+    }
+
+    if (req.params.group == "personal") {
+      group = "Pvt";
+      metadata.standard = req.params.group;
+    }
+
+    const completedTasks = await get_all_completed_tasks(req.decodedClaims.uid);
+
+    metadata.group = group;
+
+    // tasks.map((task) => {
+    //   task.date = moment.unix(task.date).format("DD MMMM YYYY");
+    // });
+
+    //console.log(completedTasks);
+
+    completedTasks.map((group) => {
+      for (const tasks in group) {
+        Object.values(group[tasks]).forEach((task) => console.log(task.title));
+      }
+    });
+
+    res.render("pages/services/completed", { user, completedTasks, metadata });
+  }
+};
+
+module.exports = { get_tasks, add_task, update_Task, completed_Task, important_Task, get_important_Tasks, get_completed_Tasks };

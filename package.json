@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pratyushjain122/enlist-ultimate.git"
+    "url": "git+https://github.com/404Enigma/ENLIST-WEB.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pratyushjain122/enlist-ultimate/issues"
+    "url": "https://github.com/404Enigma/ENLIST-WEB/issues"
   },
-  "homepage": "https://github.com/pratyushjain122/enlist-ultimate#readme",
+  "homepage": "https://github.com/404Enigma/ENLIST-WEB#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "bootstrap": "^4.6.0",

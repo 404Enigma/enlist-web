@@ -143,6 +143,9 @@ if (typeof update_form_personal != "undefined" && update_form_personal != null) 
 const IMP_class = document.getElementById("IMP_class");
 const IMP_division = document.getElementById("IMP_division");
 const IMP_personal = document.getElementById("IMP_personal");
+const done_class = document.getElementById("done_class");
+const done_division = document.getElementById("done_division");
+const done_personal = document.getElementById("done_personal");
 
 if (typeof IMP_class != "undefined" && IMP_class != null) {
   IMP_class.addEventListener("click", () => {
@@ -192,6 +195,63 @@ if (typeof IMP_personal != "undefined" && IMP_personal != null) {
     axios({
       method: "post",
       url: "/tasks/important/personal",
+      data,
+    });
+
+    location.reload();
+  });
+}
+
+if (typeof done_class != "undefined" && done_class != null) {
+  done_class.addEventListener("click", () => {
+    console.log("done clicked");
+    var keyID = document.getElementById("data-taskkey");
+    var key = keyID.getAttribute("data-taskkey");
+
+    console.log(key);
+    let data = { key };
+
+    axios({
+      method: "post",
+      url: "/tasks/completed/class",
+      data,
+    });
+
+    location.reload();
+  });
+}
+
+if (typeof done_division != "undefined" && done_division != null) {
+  done_division.addEventListener("click", () => {
+    console.log("done clicked");
+    var keyID = document.getElementById("data-taskkey");
+    var key = keyID.getAttribute("data-taskkey");
+
+    console.log(key);
+    let data = { key };
+
+    axios({
+      method: "post",
+      url: "/tasks/completed/division",
+      data,
+    });
+
+    location.reload();
+  });
+}
+
+if (typeof done_personal != "undefined" && done_personal != null) {
+  done_personal.addEventListener("click", () => {
+    console.log("done clicked");
+    var keyID = document.getElementById("data-taskkey");
+    var key = keyID.getAttribute("data-taskkey");
+
+    console.log(key);
+    let data = { key };
+
+    axios({
+      method: "post",
+      url: "/tasks/completed/personal",
       data,
     });
 
