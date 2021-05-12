@@ -140,6 +140,65 @@ if (typeof update_form_personal != "undefined" && update_form_personal != null) 
   });
 }
 
+const IMP_class = document.getElementById("IMP_class");
+const IMP_division = document.getElementById("IMP_division");
+const IMP_personal = document.getElementById("IMP_personal");
+
+if (typeof IMP_class != "undefined" && IMP_class != null) {
+  IMP_class.addEventListener("click", () => {
+    console.log("imp clicked");
+    var keyID = document.getElementById("data-taskkey");
+    var key = keyID.getAttribute("data-taskkey");
+
+    console.log(key);
+    let data = { key };
+
+    axios({
+      method: "post",
+      url: "/tasks/important/class",
+      data,
+    });
+
+    location.reload();
+  });
+}
+
+if (typeof IMP_division != "undefined" && IMP_division != null) {
+  IMP_division.addEventListener("click", () => {
+    console.log("imp clicked");
+    var keyID = document.getElementById("data-taskkey");
+    var key = keyID.getAttribute("data-taskkey");
+
+    console.log(key);
+    let data = { key };
+    axios({
+      method: "post",
+      url: "/tasks/important/division",
+      data,
+    });
+
+    location.reload();
+  });
+}
+
+if (typeof IMP_personal != "undefined" && IMP_personal != null) {
+  IMP_personal.addEventListener("click", () => {
+    console.log("imp clicked");
+    var keyID = document.getElementById("data-taskkey");
+    var key = keyID.getAttribute("data-taskkey");
+
+    console.log(key);
+    let data = { key };
+    axios({
+      method: "post",
+      url: "/tasks/important/personal",
+      data,
+    });
+
+    location.reload();
+  });
+}
+
 $(document).ready(function () {
   $("#sidebarCollapse").on("click", function () {
     $("#sidebar").toggleClass("active");
