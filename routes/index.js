@@ -30,4 +30,6 @@ router.get("/reviews", (req, res) => {
   res.render("pages/review");
 });
 
+router.use(require("./tasks/services"));
+
 module.exports = router;
