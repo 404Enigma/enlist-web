@@ -106,8 +106,6 @@ const get_all_completed_tasks = async (uid) => {
   let group_task = [];
 
   await db.ref("To-Do-List/" + uid + "/" + "Completed").once("value", function (snapshot) {
-    console.log("Snapshot: ", snapshot);
-
     snapshot.forEach(function (childSnapshot) {
       let obj = {};
       var childKey = childSnapshot.key;

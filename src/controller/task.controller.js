@@ -210,11 +210,11 @@ const get_completed_Tasks = async (req, res) => {
 
     //console.log(completedTasks);
 
-    completedTasks.map((group) => {
-      for (const tasks in group) {
-        Object.values(group[tasks]).forEach((task) => console.log(task.title));
-      }
-    });
+    // completedTasks.map((group) => {
+    //   for (const tasks in group) {
+    //     Object.values(group[tasks]).forEach((task) => console.log(task.title));
+    //   }
+    // });
 
     res.render("pages/services/completed", { user, completedTasks, metadata });
   }

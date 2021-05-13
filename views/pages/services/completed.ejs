@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Completed Tasks</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <h1>Completed Tasks</h1>
@@ -12,9 +15,33 @@
     <ul
       ><b><%= tasks %></b>
       <% Object.values(group[tasks]).forEach((task) => {%>
-      <li><%= task.title %> </li>
+      <li><%= task.title %> <a data-id="<%=task.key%>" data-group="<%=tasks%>" class="delete-task">Trash</a> </li>
       <%});%>
     </ul>
     <% }%> <% }); %>
+
+    <script>
+      $(".delete-task").click(function () {
+        var group = $(this).data("group");
+        var id = $(this).data("id");
+
+        let data = {};
+        data.key = id;
+
+        console.log(group);
+        console.log(data);
+        if (confirm("Are you sure?")) {
+          axios
+            .delete("/tasks/deleted/" + group, { data })
+            .then(function (response) {
+              console.log(response);
+              //location.reload();
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        }
+      });
+    </script>
   </body>
 </html>
