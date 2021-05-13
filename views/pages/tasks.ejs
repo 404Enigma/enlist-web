@@ -91,6 +91,12 @@
             </a>
           </li>
         </ul>
+
+        <div style="color: black">
+          <a href="/tasks/important/all" type="button">Important Tasks</a>
+          <a href="/tasks/completed/all" type="button">Complete Tasks</a>
+        
+        </div>
       </nav>
 
       <!-- Page Content  -->
@@ -130,30 +136,30 @@
 
               <div class="form-row justify-content-center">
                 <div class="col-md-5">
-                  <input type="text" class="form-control input" name="title" placeholder="Title" />
+                  <input type="text" class="form-control input" name="title" placeholder="Title" maxlength="21" />
                 </div>
                 <div class="col-md-3">
-                  <input type="date" name="date" class="form-control input" />
+                  <input type="date" name="date" id='limitdate' class="form-control input"  />
                 </div>
               </div>
               <div class="form-row justify-content-center my-3">
                 <div class="input-group-prepend">
                   <div class="input-group-text border-dark border-right-0 rounded-0">
-                    <input type="radio" name="common" aria-label="radio" name="personal" checked />
+                    <input type="radio" name="categorie" aria-label="radio" value="private" checked />
                   </div>
                   <span class="input-group-text input rounded-0" id="inputGroup-sizing-sm">Personal</span>
                 </div>
 
                 <div class="input-group-prepend">
                   <div class="input-group-text border-dark rounded-0">
-                    <input type="radio" name="common" aria-label="radio" name="shared" />
+                    <input type="radio" name="categorie" aria-label="radio" value="shared" />
                   </div>
                   <span class="input-group-text input rounded-0" id="inputGroup-sizing-sm">Shared</span>
                 </div>
               </div>
               <div class="form-row justify-content-center">
                 <div class="col-md-8">
-                  <textarea class="form-control input" aria-label="With textarea" name="description" placeholder="Description"></textarea>
+                  <textarea class="form-control input" aria-label="With textarea" name="description" placeholder="Description" maxlength="35"></textarea>
                 </div>
               </div>
               <button type="submit" class="btn btn-danger">Add Task</button>

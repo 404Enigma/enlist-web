@@ -71,6 +71,16 @@ const mark_as_important = async (user, task, group) => {
   await moveFbRecord(task_ref, new_task_ref);
 };
 
+const mark_as_completed = async (user, task, group) => {
+  const uniquekey = task.key;
+
+  console.log(uniquekey);
+  const task_ref = db.ref("To-Do-List/" + user.uid + "/" + group + "/Task" + uniquekey);
+  const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "Completed" + "/" + group + "/Task" + uniquekey);
+
+  await moveFbRecord(task_ref, new_task_ref);
+};
+
 const get_all_imp_tasks = async (uid) => {
   let group_task = [];
 
@@ -86,6 +96,25 @@ const get_all_imp_tasks = async (uid) => {
       group_task.push(obj);
       // console.log("Key: ", childKey);
       // console.log("Data: ", childData);
+    });
+  });
+
+  return group_task;
+};
+
+const get_all_completed_tasks = async (uid) => {
+  let group_task = [];
+
+  await db.ref("To-Do-List/" + uid + "/" + "Completed").once("value", function (snapshot) {
+    console.log("Snapshot: ", snapshot);
+
+    snapshot.forEach(function (childSnapshot) {
+      let obj = {};
+      var childKey = childSnapshot.key;
+      var childData = childSnapshot.val();
+      //console.log(childData);
+      obj[childKey] = childData;
+      group_task.push(obj);
     });
   });
 
@@ -117,4 +146,4 @@ const get_all_tasks = async (uid, group) => {
   return tasks;
 };
 
-module.exports = { add_a_task, get_all_tasks, update_a_task, complete_a_task, mark_as_important, get_all_imp_tasks };
+module.exports = { add_a_task, get_all_tasks, update_a_task, complete_a_task, mark_as_important, mark_as_completed, get_all_imp_tasks, get_all_completed_tasks };

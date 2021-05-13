@@ -9,11 +9,13 @@ const tasks = require("../../src/controller/task.controller");
 
 const redirect = require("../../src/controller/route.controller");
 
-router.get("/", redirect.to_class);
-router.get("/:group", checkCookie, add_nodes, tasks.get_tasks);
-router.post("/addTask/:group", checkCookie, add_nodes, tasks.add_task);
-router.post("/updateTask/:group", checkCookie, add_nodes, tasks.update_Task);
-router.post("/important/:group", checkCookie, add_nodes, tasks.important_Task);
-router.get("/important/all", checkCookie, add_nodes, tasks.get_important_Tasks);
+router.get("/", redirect.to_class); // GET class page
+router.get("/:group", checkCookie, add_nodes, tasks.get_tasks); //GET group page
+router.post("/addTask/:group", checkCookie, add_nodes, tasks.add_task); //POST add task
+router.post("/updateTask/:group", checkCookie, add_nodes, tasks.update_Task); //POST update task
+router.post("/important/:group", checkCookie, add_nodes, tasks.important_Task); //POST important task
+router.get("/important/all", checkCookie, add_nodes, tasks.get_important_Tasks); // GET important tasks
+router.post("/completed/:group", checkCookie, add_nodes, tasks.completed_Task); //POST completed tasks
+router.get("/completed/all", checkCookie, add_nodes, tasks.get_completed_Tasks); // GET completed tasks
 
 module.exports = router;
