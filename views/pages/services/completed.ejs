@@ -282,7 +282,7 @@
         console.log(data);
         if (confirm("Are you sure?")) {
           axios
-            .delete("/tasks/deleted/" + group, { data })
+            .delete("/tasks/trash/" + group, { data })
             .then(function (response) {
               console.log(response);
               //location.reload();

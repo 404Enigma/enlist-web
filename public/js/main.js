@@ -152,6 +152,9 @@ const IMP_personal = document.getElementById("IMP_personal");
 const done_class = document.getElementById("done_class");
 const done_division = document.getElementById("done_division");
 const done_personal = document.getElementById("done_personal");
+const trash_class = document.getElementById("trash_class");
+const trash_division = document.getElementById("trash_division");
+const trash_personal = document.getElementById("trash_personal");
 
 if (typeof IMP_class != "undefined" && IMP_class != null) {
   IMP_class.addEventListener("click", () => {
@@ -258,6 +261,63 @@ if (typeof done_personal != "undefined" && done_personal != null) {
     axios({
       method: "post",
       url: "/tasks/completed/personal",
+      data,
+    });
+
+    location.reload();
+  });
+}
+
+if (typeof trash_class != "undefined" && trash_class != null) {
+  trash_class.addEventListener("click", () => {
+    console.log("done clicked");
+    var keyID = document.getElementById("data-taskkey");
+    var key = keyID.getAttribute("data-taskkey");
+
+    console.log(key);
+    let data = { key };
+
+    axios({
+      method: "post",
+      url: "/tasks/delete/class",
+      data,
+    });
+
+    location.reload();
+  });
+}
+
+if (typeof trash_division != "undefined" && trash_division != null) {
+  trash_division.addEventListener("click", () => {
+    console.log("done clicked");
+    var keyID = document.getElementById("data-taskkey");
+    var key = keyID.getAttribute("data-taskkey");
+
+    console.log(key);
+    let data = { key };
+
+    axios({
+      method: "post",
+      url: "/tasks/delete/division",
+      data,
+    });
+
+    location.reload();
+  });
+}
+
+if (typeof trash_personal != "undefined" && trash_personal != null) {
+  trash_personal.addEventListener("click", () => {
+    console.log("done clicked");
+    var keyID = document.getElementById("data-taskkey");
+    var key = keyID.getAttribute("data-taskkey");
+
+    console.log(key);
+    let data = { key };
+
+    axios({
+      method: "post",
+      url: "/tasks/delete/personal",
       data,
     });
 
