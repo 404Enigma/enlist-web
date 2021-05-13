@@ -27,6 +27,7 @@ body {
   height: 100%;
   -o-object-fit: cover;
   object-fit: cover;
+  border: 0;
 }
 .login-card .card-body {
   padding: 85px 60px 60px;
