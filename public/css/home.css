@@ -469,3 +469,14 @@ ul.CTAs a {
     font-size: 0.7rem;
   }
 }
+
+/* IMPORTANT */
+.accordion .card {
+  background: none;
+  border: none;
+}
+.accordion .card .card-header {
+  background: none;
+  border: none;
+  padding: 0.4rem 1rem;
+}
