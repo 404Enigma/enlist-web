@@ -245,6 +245,9 @@ ul.CTAs a {
 .modal.show .modal-dialog-aside {
   transform: translateX(0);
 }
+#dropdownMenuButton {
+  cursor: pointer;
+}
 .task-list {
   width: 65%;
 }

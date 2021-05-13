@@ -23,7 +23,6 @@
     />
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="/css/home.css" />
-
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
 
@@ -101,15 +100,14 @@
           <div class="container-fluid">
             <button type="button" id="sidebarCollapse" class="btn btn-toggle">
               <i class="fas fa-align-left"></i>
-              <!-- <span>Toggle Sidebar</span> -->
             </button>
-            <h2 class="justify-content-between">CS- <%= metadata.group %></h2>
-            <h6><%= user.name %> </h6>
-            <h6><%= user.email %> </h6>
-            <img src="<%= user.picture %> " alt="..." class="rounded-circle">
-            <div class="dropleft justify-content-end">
-              <i class="fas fa-cog fa-2x dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <h2 class="justify-content-between">CS- <%= metadata.group %></h2>            
+            <div class="dropdown d-flex justify-content-end">
+              <img src="<%= user.picture %> " alt="profile-pic" class="rounded-circle w-50 h-50" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                <h6 class="dropdown-header"><%= user.name %></h6>
+                <p class="dropdown-header "><%= user.email %></p>
+                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/templates/settings.html"><i class="fas fa-sliders-h"></i>&nbsp; Settings</a>
                 <a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i>&nbsp; Logout</a>
               </div>
@@ -165,7 +163,11 @@
           <div class="d-flex justify-content-center">
             <div class="d-block justify-content-center m-0 p-0 task-list">
               <% if(tasks.length === 0) { %>
-              <h1>Empty list</h1>
+              <div class="d-flex justify-content-center">
+                <p class="mx-auto">Horray! Your list is empty!</p>
+              </div>
+              <img src="/images/empty.svg" alt="">
+              
               <% }else{ %> <% tasks.map((task) => {%>
 
               <div class="task-details" data-id="<%= task.key %>" data-toggle="modal" data-target="#modal_aside_right" data-title="<%= task.title%>" data-description="<%= task.description%>" data-deadline="<%= task.date%>" data-created="<%= task.created_at%>">
@@ -223,7 +225,7 @@
             </div>
           </div>
 
-          <button data-toggle="toast" data-target="#liveToast" type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+          <!-- <button data-toggle="toast" data-target="#liveToast" type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button> -->
 
           <div class="position-fixed bottom-0 right-0 p-3" style="z-index: 10; right: 0; bottom: 0">
             <div id="liveToast" class="toast hide bg-body" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
@@ -237,7 +239,7 @@
             </div>
           </div>
 
-          <button data-toggle="modal" data-target="#modal_aside_right" class="btn btn-primary" type="button"> Modal aside right </button>
+          <!-- <button data-toggle="modal" data-target="#modal_aside_right" class="btn btn-primary" type="button"> Modal aside right </button> -->
 
           <div id="modal_aside_right" class="modal fixed-left fade" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-aside" role="document">
