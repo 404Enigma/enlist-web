@@ -74,21 +74,22 @@ span {
   text-align: center;
 }
 
-#sidebar.active .sidebar-header h3,
+#sidebar.active .sidebar-header span,
 #sidebar.active .CTAs {
   display: none;
 }
 
-#sidebar.active .sidebar-header strong {
+#sidebar.active .sidebar-header h3 img {
   display: block;
 }
 
 #sidebar ul li a {
   text-align: left;
+  padding: 10px 10px;
 }
 
 #sidebar.active ul li a {
-  padding: 20px 10px;
+  padding: 10px 10px;
   text-align: center;
   font-size: 0.85em;
 }
@@ -121,6 +122,8 @@ span {
   padding: 20px;
   /* background: #6d7fcc; */
   color: coral;
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 
 #sidebar .sidebar-header strong {
@@ -130,16 +133,16 @@ span {
 
 #sidebar ul.components {
   padding: 20px 0;
-  border-bottom: 1px solid #47748b;
+  /* border-bottom: 1px solid #47748b; */
 }
 
 #sidebar ul li a {
-  padding: 10px;
+  padding: 10px 10px;
   font-size: 1.1em;
   display: block;
   color: #fff;
   background: #fe6019;
-  border: 2px solid coral;
+  border: 2px solid rgba(255, 127, 80, 0.493);
   margin: 10px;
   border-radius: 20px;
 }
@@ -210,12 +213,43 @@ ul.CTAs a {
 .jumbotron {
   background: white;
   border: 2px solid #971f2f;
-  border-radius: 5px 5px 5px 5px;
+  padding: 10px;
+  box-shadow: 12px 12px 2px 1px rgba(255, 127, 80, 0.562);
 }
-
 .input {
   border: 1px solid rgb(46, 45, 45);
   background: white;
+}
+.input-group-prepend {
+  padding: 3px;
+  margin: 3px;
+}
+.input-group-text {
+  background: none;
+  border: none;
+}
+
+.form__input {
+  border: 1px solid coral;
+  border-radius: 5px;
+  /* box-shadow: inset 0.1rem 0.1rem 0.3rem rgba(255, 127, 80, 0.452), inset -0.2rem -0.2rem 0.5rem var(--white); */
+}
+.form__input:focus {
+  outline: none;
+  box-shadow: 0.1rem 0.1rem 0.3rem rgba(255, 127, 80, 0.452), -0.2rem -0.2rem 0.5rem #fff;
+}
+
+.add-btn {
+  padding: 13px 20px 12px;
+  background-color: coral;
+  border-radius: 4px;
+  color: #fff;
+  margin-bottom: 24px;
+}
+.add-btn:hover {
+  border: 1px solid coral;
+  background-color: transparent;
+  color: #000;
 }
 
 .modal .modal-dialog-aside {
@@ -291,6 +325,11 @@ ul.CTAs a {
   font-weight: 500;
   text-align: end;
 }
+.task-date i {
+  font-size: small;
+  color: rgba(0, 0, 0, 0.397);
+  padding-bottom: 4px;
+}
 
 .task-content {
   display: flex;
@@ -351,11 +390,11 @@ ul.CTAs a {
   #sidebar.active {
     margin-left: 0 !important;
   }
-  #sidebar .sidebar-header h3,
+  #sidebar .sidebar-header span,
   #sidebar .CTAs {
     display: none;
   }
-  #sidebar .sidebar-header strong {
+  #sidebar .sidebar-header img {
     display: block;
   }
   #sidebar ul li a {
