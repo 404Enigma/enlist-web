@@ -1,6 +1,9 @@
 var limitdate = new Date().toISOString().slice(0, 10);
 $("#limitdate").attr("min", limitdate);
 
+var deadline_edit11 = new Date().toISOString().slice(0, 10);
+$("#deadline_edit11").attr("min", deadline_edit11);
+
 const add_form_class = document.getElementById("add_task_class");
 const add_form_division = document.getElementById("add_task_division");
 const add_form_personal = document.getElementById("add_task_personal");
