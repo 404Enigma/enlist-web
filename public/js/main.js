@@ -1,3 +1,6 @@
+var limitdate = new Date().toISOString().slice(0, 10);
+$("#limitdate").attr("min", limitdate);
+
 const add_form_class = document.getElementById("add_task_class");
 const add_form_division = document.getElementById("add_task_division");
 const add_form_personal = document.getElementById("add_task_personal");

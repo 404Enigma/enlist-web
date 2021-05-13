@@ -138,10 +138,10 @@
 
               <div class="form-row justify-content-center">
                 <div class="col-md-5">
-                  <input type="text" class="form-control input" name="title" placeholder="Title" />
+                  <input type="text" class="form-control input" name="title" placeholder="Title" maxlength="21" />
                 </div>
                 <div class="col-md-3">
-                  <input type="date" name="date" class="form-control input" />
+                  <input type="date" name="date" id='limitdate' class="form-control input"  />
                 </div>
               </div>
               <div class="form-row justify-content-center my-3">
@@ -161,7 +161,7 @@
               </div>
               <div class="form-row justify-content-center">
                 <div class="col-md-8">
-                  <textarea class="form-control input" aria-label="With textarea" name="description" placeholder="Description"></textarea>
+                  <textarea class="form-control input" aria-label="With textarea" name="description" placeholder="Description" maxlength="35"></textarea>
                 </div>
               </div>
               <button type="submit" class="btn btn-danger">Add Task</button>
