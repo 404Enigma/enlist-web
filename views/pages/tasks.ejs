@@ -103,15 +103,14 @@
         </nav>
 
         <div class="container">
-        
           <!-- FORM -->
           <div class="d-flex justify-content-center">
-            <div class="dblock justify-content-center">
-              <div>
+            <div class="d-block justify-content-center">
+              <!-- <div>
             <button class="btn add-btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
               Add a new Task
             </button>
-          </div>
+          </div> -->
             <div class="collapse" id="collapseExample">
               <div class="jumbotron mt-3" >
                 <% if ((metadata.standard) === 'class'){%>
@@ -124,10 +123,10 @@
                 <form id="add_task_personal">
                   <%} %>      
                   <div class="form-row justify-content-center">
-                    <div class="col-md-8">
+                    <div class="col-md-7">
                       <input type="text" class="form-control input form__input" name="title" placeholder="Title" maxlength="21" />
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-5">
                       <input type="date" name="date" id='limitdate' class="form-control input form__input"  />
                     </div>
                   </div>
@@ -171,8 +170,10 @@
               </div>
               <img src="/images/empty.svg" alt="" />
 
-              <% }else{ %> <% tasks.map((task) => {%>
-
+              <% }else{ %>
+                <h2 class="mt-3 mb-5">Tasks List</h2> 
+                <% tasks.map((task) => {%>
+                
               <div
                 class="task-details"
                 data-id="<%= task.key %>"
@@ -326,6 +327,10 @@
             </div>
           </div>
           <!-- modal.// -->
+        </div>
+
+        <div class="add d-flex justify-content-center align-items-center" >
+          <span id="#back2Top"><i class="fas fa-plus-circle fa-2x" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></i></span>
         </div>
       </div>
     </div>
