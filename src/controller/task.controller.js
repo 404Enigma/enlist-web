@@ -56,7 +56,7 @@ const add_task = (req, res) => {
 
     console.log(req.body);
     //res.json("success");
-    add_a_task(user, req.body, group, "private");
+    add_a_task(user, req.body, group, req.body.categorie);
   }
 };
 
