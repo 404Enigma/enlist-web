@@ -45,6 +45,8 @@ html {
   color: #fff;
   padding: 10px;
   border-radius: 2px;
+  cursor: pointer;
+  transition: ease 0.2s;
 }
 #navbar-text:hover {
   background-color: #fff;

@@ -271,7 +271,7 @@ ul.CTAs a {
   right: 30px;
   bottom: 30px;
   z-index: 2;
-  border: 5px solid coral;
+  /* border: 5px solid coral; */
   border-radius: 50%;
 }
 .add i {
