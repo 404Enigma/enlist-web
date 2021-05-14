@@ -19,7 +19,7 @@ const add_a_task = (user, task, group, categorie) => {
     created_at: moment().unix(),
   };
 
-  if (categorie === "private") {
+  if (categorie === "personal") {
     let personal_tasks = {};
     personal_tasks["/To-Do-List/" + user.uid + "/" + group + "/" + "Task" + uniqkey] = task_Data;
     db.ref().update(personal_tasks);

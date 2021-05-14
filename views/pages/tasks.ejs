@@ -136,29 +136,32 @@
                       <input type="date" name="date" id='limitdate' class="form-control input form__input"  />
                     </div>
                   </div>
-                  <div class="d-md-flex d-sm-block">
+                  <% if ((metadata.standard) !== 'personal'){%>
+                    <div class="d-md-flex d-sm-block">
                   
-                  <div class="form col-md-4 col-sm-12 my-3">
-                    <div class="form-row">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <input type="radio" name="categorie" aria-label="radio" value="private" checked />
+                      <div class="form col-md-4 col-sm-12 my-3">
+                        <div class="form-row">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <input type="radio" name="categorie" aria-label="radio" value="private" checked />
+                          </div>
+                          <span class="col-9" id="inputGroup-sizing-sm">Personal</span>
+                        </div>
+        
+                        <div class="input-group-prepend mt-1">
+                          <div class="input-group-text">
+                            <input type="radio" name="categorie" aria-label="radio" value="shared" />
+                          </div>
+                          <span class="col-9" id="inputGroup-sizing-sm">Shared</span>
+                        </div>
                       </div>
-                      <span class="col-9" id="inputGroup-sizing-sm">Personal</span>
                     </div>
-    
-                    <div class="input-group-prepend mt-1">
-                      <div class="input-group-text">
-                        <input type="radio" name="categorie" aria-label="radio" value="shared" />
-                      </div>
-                      <span class="col-9" id="inputGroup-sizing-sm">Shared</span>
+                      
                     </div>
-                  </div>
-                </div>
-                  <div class="form col-md-8 col-sm-12 justify-content-center my-3 px-0">
-                      <textarea class="form-control input form__input" aria-label="With textarea" name="description" placeholder="Description" maxlength="35" rows="2"></textarea>
-                  </div>
-                </div>
+                      <%} %>      
+                      <div class="form col-md-8 col-sm-12 justify-content-center my-3 px-0">
+                        <textarea class="form-control input form__input" aria-label="With textarea" name="description" placeholder="Description" maxlength="35" rows="2"></textarea>
+                    </div>
                 <div class="d-flex justify-content-end">
                   <button type="submit" class="btn btn-danger"><i class="fas fa-arrow-right"></i></button>
                 </div>

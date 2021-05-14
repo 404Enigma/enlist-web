@@ -79,24 +79,14 @@
             <button type="button" id="sidebarCollapse" class="btn btn-toggle">
               <i class="fas fa-align-left"></i>
             </button>
-            <h2 class="justify-content-between">Important</h2>
+            <h2 class="justify-content-between">Completed</h2>
             <div class="dropdown d-flex justify-content-end">
-              <img
-                src="<%= user.picture %> "
-                alt="profile-pic"
-                class="rounded-circle w-50 h-50"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              />
+              <img src="<%= user.picture %> " alt="profile-pic" class="rounded-circle w-50 h-50" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                 <h6 class="dropdown-header"><%= user.name %></h6>
                 <p class="dropdown-header"><%= user.email %></p>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/templates/settings.html"
-                  ><i class="fas fa-sliders-h"></i>&nbsp; Settings</a
-                >
+                <a class="dropdown-item" href="/templates/settings.html"><i class="fas fa-sliders-h"></i>&nbsp; Settings</a>
                 <a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i>&nbsp; Logout</a>
               </div>
             </div>
@@ -108,26 +98,25 @@
             <div class="col-lg-12">
               <h2 class="page-title mb-3">Tasks List</h2>
               <div class="accordion" id="accordionExample">
+                <!-- Condition for EJS -->
+
+                <% impTasks.map((group) => {%> <% for (const tasks in group) {%>
+
                 <div class="card">
                   <div class="card-header" id="headingOne">
                     <h2 class="clearfix mb-0">
-                      <a
-                        class="btn"
-                        data-toggle="collapse"
-                        data-target="#collapseOne"
-                        aria-expanded="true"
-                        aria-controls="collapseOne"
-                        ><i class="fa fa-chevron-circle-down"></i> CS-B</a
-                      >
+                      <% if (tasks === 'Pvt') { %>
+                      <a class="btn" data-toggle="collapse" data-target="#<%= tasks %>" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-chevron-circle-down"></i> Personal</a>
+
+                      <% }else{%>
+                      <a class="btn" data-toggle="collapse" data-target="#<%= tasks %>" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-chevron-circle-down"></i> CS-<%= tasks %></a>
+
+                      <% } %>
                     </h2>
                   </div>
-                  <div
-                    id="collapseOne"
-                    class="collapse show"
-                    aria-labelledby="headingOne"
-                    data-parent="#accordionExample"
-                  >
+                  <div id="<%= tasks %>" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
+                      <% Object.values(group[tasks]).forEach((task) => {%>
                       <div class="task-details task-1" data-toggle="modal" data-target="#modal_aside_right">
                         <div class="col-1">
                           <a href="#">
@@ -135,101 +124,26 @@
                             <i class="far fa-star fa-hover-show"> </i>
                           </a>
                         </div>
-                        <div class="col-11 task-content">
-                          <div class="col-md-9 col-sm-12 task-title">DS Lab 8</div>
-                          <div class="col-md-3 col-sm-12 task-date text-end">5 May 2021</div>
+                        <div class="col-10 task-content">
+                          <div class="col-md-9 col-sm-12 task-title"><%= task.title %> </div>
+                          <div class="col-md-3 col-sm-12 task-date text-end"><%= task.date %></div>
                         </div>
                       </div>
-                      <div class="task-details task-2" data-toggle="modal" data-target="#modal_aside_right">
-                        <div class="col-1">
-                          <a href="#">
-                            <i class="fas fa-star fa-hover-hidden"></i>
-                            <i class="far fa-star fa-hover-show"> </i>
-                          </a>
-                        </div>
-                        <div class="col-11 task-content">
-                          <div class="col-md-9 col-sm-12 task-title">DS Lab 9 </div>
-                          <div class="col-md-3 col-sm-12 task-date text-end">5 May 2021</div>
-                        </div>
-                      </div>
+                      <%});%>
+                    </div>
+                  </div>
+                </div>
 
-                      <div class="task-details task-3" data-toggle="modal" data-target="#modal_aside_right">
-                        <div class="col-1">
-                          <a href="#">
-                            <i class="fas fa-star fa-hover-hidden"></i>
-                            <i class="far fa-star fa-hover-show"> </i>
-                          </a>
-                        </div>
-                        <div class="col-11 task-content">
-                          <div class="col-md-9 col-sm-12 task-title">DS Lab 10</div>
-                          <div class="col-md-3 col-sm-12 task-date text-end">5 May 2021</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-header" id="headingTwo">
-                    <h2 class="mb-0">
-                      <a
-                        class="btn collapsed"
-                        data-toggle="collapse"
-                        data-target="#collapseTwo"
-                        aria-expanded="false"
-                        aria-controls="collapseTwo"
-                        ><i class="fa fa-chevron-circle-down"></i> CS - B3</a
-                      >
-                    </h2>
-                  </div>
-                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                    <div class="card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                      wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                      eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                      assumenda shoreditch et.
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-header" id="headingThree">
-                    <h2 class="mb-0">
-                      <a
-                        class="btn collapsed"
-                        data-toggle="collapse"
-                        data-target="#collapseThree"
-                        aria-expanded="false"
-                        aria-controls="collapseThree"
-                      >
-                        <i class="fa fa-chevron-circle-down"></i> Personal
-                      </a>
-                    </h2>
-                  </div>
-                  <div
-                    id="collapseThree"
-                    class="collapse"
-                    aria-labelledby="headingThree"
-                    data-parent="#accordionExample"
-                  >
-                    <div class="card-body">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus
-                      dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Vestibulum id metus ac
-                      nisl bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet sagittis. In
-                      tincidunt orci sit amet elementum vestibulum.
-                    </div>
-                  </div>
-                </div>
+                <% }%> <% }); %>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
     <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <!-- Popper.JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"

@@ -169,7 +169,9 @@ const get_important_Tasks = async (req, res) => {
 
     impTasks.map((group) => {
       for (const tasks in group) {
-        Object.values(group[tasks]).forEach((task) => console.log(task.title));
+        Object.values(group[tasks]).forEach((task) => {
+          task.date = task.date = moment.unix(task.date).format("DD MMMM YYYY");
+        });
       }
     });
 

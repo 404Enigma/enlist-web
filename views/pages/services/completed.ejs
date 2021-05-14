@@ -105,13 +105,18 @@
                 <div class="card">
                   <div class="card-header" id="headingOne">
                     <h2 class="clearfix mb-0">
-                      <a class="btn" data-toggle="collapse" data-target="#<%= tasks %>" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-chevron-circle-down"></i> <%= tasks %></a>
+                      <% if (tasks === 'Pvt') { %>
+                      <a class="btn" data-toggle="collapse" data-target="#<%= tasks %>" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-chevron-circle-down"></i> Personal</a>
+
+                      <% }else{%>
+                      <a class="btn" data-toggle="collapse" data-target="#<%= tasks %>" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-chevron-circle-down"></i> CS-<%= tasks %></a>
+
+                      <% } %>
                     </h2>
                   </div>
                   <div id="<%= tasks %>" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                    <% Object.values(group[tasks]).forEach((task) => {%>
-
                     <div class="card-body">
+                      <% Object.values(group[tasks]).forEach((task) => {%>
                       <div class="task-details task-1" data-toggle="modal" data-target="#modal_aside_right">
                         <div class="col-2">
                           <a data-id="<%=task.key%>" data-group="<%=tasks%>" class="delete-task">
@@ -128,8 +133,8 @@
                           <div class="col-md-3 col-sm-12 task-date text-end"><%= task.date %></div>
                         </div>
                       </div>
+                      <%});%>
                     </div>
-                    <%});%>
                   </div>
                 </div>
 
