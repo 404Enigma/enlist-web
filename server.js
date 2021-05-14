@@ -4,12 +4,13 @@ const path = require("path");
 const bodyparser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const csrf = require("csurf");
+require("dotenv").config();
 
 const app = express();
 
 //const csrfMiddleware = csrf({ cookie: true });
 
-const PORT = process.env.port || 3000;
+const PORT = process.env.PORT || 8080;
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
