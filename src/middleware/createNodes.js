@@ -3,8 +3,8 @@ const db = admin.database();
 
 const { get_PRN_by_email } = require("../utils/methods");
 const assign = require("../lib/assign");
-
 const { check_uid, get_PRN } = require("../../src/model/nodes");
+const { cache_middleware } = require("../utils/cache");
 
 const nodeCreate_prnsource = async (uid, PRN) => {
   let prn_source = {};
@@ -41,9 +41,13 @@ const add_nodes = async (req, res, next) => {
 
       //update
     } else {
-      PRN = await get_PRN(req.decodedClaims.uid);
-      _class = assign.check_class(PRN);
-      _division = assign.check_division(PRN);
+      const cache_data = await cache_middleware(req.decodedClaims.uid);
+
+      console.log("conffff: ", cache_data);
+
+      PRN = cache_data.PRN;
+      _class = cache_data._class;
+      _division = cache_data._division;
     }
 
     const _payload = {
