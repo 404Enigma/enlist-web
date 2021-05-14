@@ -52,10 +52,10 @@ html {
   color: #202020;
   box-shadow: 2px 2px 2px 1px coral;
 }
-.nav-link {
+nav .nav-link {
   font-size: larger;
 }
-.nav-link:hover {
+nav .nav-link:hover {
   text-decoration: underline 5px coral;
 }
 header {
@@ -115,7 +115,6 @@ header .width-container #banner article span input {
 
 header .width-container #banner article span button {
   margin-top: 35px;
-  background-color: #5add9e;
   color: #fff;
   padding: 15px 30px;
   border-radius: 3px;
@@ -257,78 +256,6 @@ main #manage {
   height: auto;
   width: 100%;
   text-align: center;
-}
-
-main #manage .width-container > h2 {
-  font-size: 2.5rem;
-}
-
-main #manage .width-container > p {
-  max-width: 650px;
-  margin: 20px auto 50px auto;
-}
-
-main #manage .width-container article {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
-main #manage .width-container article div {
-  width: 25%;
-}
-
-main #manage .width-container article div div {
-  background-color: #202020;
-  width: 100%;
-  height: auto;
-  color: #fff;
-  padding: 20px;
-  border-radius: 20px;
-  text-align: left;
-}
-
-main #manage .width-container article div div h3 {
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-
-main #manage .width-container article div div p {
-  font-size: 1rem;
-}
-
-main #manage .width-container article div ul {
-  text-align: left;
-  margin: 50px 0px 0px 20px;
-}
-
-main #manage .width-container article div ul li {
-  font-weight: 600;
-  font-size: 1.2rem;
-  margin: 30px 0px;
-}
-
-main #manage .width-container article img {
-  width: 70%;
-  -webkit-filter: drop-shadow(0px 40px 52px rgba(0, 0, 0, 0.07));
-  filter: drop-shadow(0px 40px 52px rgba(0, 0, 0, 0.07));
-}
-
-main #manage .width-container button {
-  background-color: #5add9e;
-  color: #fff;
-  padding: 15px 30px;
-  border-radius: 3px;
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 1rem;
-  background-color: #202020;
 }
 
 main #performance {
