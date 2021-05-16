@@ -45,17 +45,17 @@
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
               <li>
-                <a href="/tasks/class"><%= metadata._class %> </a>
+                <a href="/tasks/class"><%= metadata._class %> <%= metadata.badge._class %> </a>
               </li>
               <li>
-                <a href="/tasks/division"><%= metadata._division %></a>
+                <a href="/tasks/division"><%= metadata._division %> <%= metadata.badge._division %> </a>
               </li>
             </ul>
           </li>
           <li>
             <a href="/tasks/personal">
               <i class="fas fa-user"></i>
-              <span>Personal</span>
+              <span>Personal <%= metadata.badge.personal %></span>
             </a>
           </li>
           <li>

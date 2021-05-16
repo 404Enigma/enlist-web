@@ -6,7 +6,7 @@ const get_tasks = async (req, res) => {
     res.redirect("/login");
   } else {
     let group;
-    console.log(req.decodedClaims);
+
     const user = { name: req.decodedClaims.name, email: req.decodedClaims.email, picture: req.decodedClaims.picture };
 
     const metadata = req._payload;
@@ -27,13 +27,15 @@ const get_tasks = async (req, res) => {
     const tasks = await get_all_tasks(req.decodedClaims.uid, group);
 
     metadata.group = group;
+    metadata.badge = req.badge;
 
     tasks.map((task) => {
       task.date = moment.unix(task.date).format("DD MMMM YYYY");
     });
 
+    console.log(metadata);
+
     res.render("pages/tasks", { user, tasks, metadata });
-    console.log("UID of Signed in User is " + req.decodedClaims.uid);
   }
 };
 
