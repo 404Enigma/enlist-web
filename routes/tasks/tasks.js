@@ -18,5 +18,6 @@ router.post("/unimportant/:group", checkCookie, add_nodes, tasks.unimportant_Tas
 router.get("/important/all", checkCookie, add_nodes, tasks.get_important_Tasks); // GET important tasks
 router.post("/completed/:group", checkCookie, add_nodes, tasks.completed_Task); //POST completed tasks
 router.get("/completed/all", checkCookie, add_nodes, tasks.get_completed_Tasks); // GET completed tasks
+router.post("/restore/:group", checkCookie, add_nodes, tasks.restore_tasks); //POST restore tasks
 
 module.exports = router;

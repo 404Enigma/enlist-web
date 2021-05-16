@@ -137,6 +137,15 @@ const complete_a_task = (user, task, group) => {
   moveFbRecord(task_ref, new_task_ref);
 };
 
+const restore_a_Task = (user, task, group) => {
+  const key = task.data.key;
+  console.log(task.data.key);
+  const task_ref = db.ref("To-Do-List/" + user.uid + "/" + "Completed" + "/" + group + "/Task" + key);
+  const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + group + "/Task" + key);
+
+  moveFbRecord(task_ref, new_task_ref);
+};
+
 const get_all_tasks = async (uid, group) => {
   let tasks = [];
 
@@ -154,4 +163,4 @@ const get_all_tasks = async (uid, group) => {
   return tasks;
 };
 
-module.exports = { add_a_task, get_all_tasks, update_a_task, complete_a_task, mark_as_important, mark_as_unimportant, mark_as_completed, get_all_imp_tasks, get_all_completed_tasks };
+module.exports = { add_a_task, get_all_tasks, update_a_task, complete_a_task, mark_as_important, mark_as_unimportant, mark_as_completed, get_all_imp_tasks, get_all_completed_tasks, restore_a_Task };
