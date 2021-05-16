@@ -184,11 +184,10 @@
           <div class="d-flex justify-content-center">
             <div class="d-block justify-content-center m-0 p-0 task-list">
               <% if(tasks.length === 0) { %>
-              <div class="d-flex justify-content-center">
-                <p class="mx-auto">Horray! Your list is empty!</p>
+              <div class="d-block justify-content-center">
+                <p class="text-center">Horray! Your list is empty!</p>
+                <div align="center"><img src="/images/empty.gif" alt="" width="65%" /></div>
               </div>
-              <img src="/images/empty.gif" alt="" width="100%" />
-
               <% }else{ %>
                 <h2 class="mt-3 mb-5">Tasks List</h2> 
                 <% tasks.map((task) => {%>
