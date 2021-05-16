@@ -23,38 +23,6 @@
   <body>
     <header>
       <div class="width-container">
-        <!-- <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-              <img id="logo" src="/images/logo.png" alt="" />
-            </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarText"
-              aria-controls="navbarText"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Pricing</a>
-                </li>
-              </ul>
-              <span class="btn" id="navbar-text"> Download App </span>
-            </div>
-          </div>
-        </nav> -->
         <nav class="navbar navbar-expand-lg navbar-light">
           <a class="navbar-brand" href="#">
             <img id="logo" src="/images/logo.png" alt="" />
@@ -76,10 +44,10 @@
                 <a class="nav-link" href="#">Home </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="#manage">Features</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link" href="#sub-footer">Policy</a>
               </li>
             </ul>
             <span class="navbar-text" id="navbar-text"> Download App <i class="fas fa-download"></i></span>
@@ -91,14 +59,11 @@
             <p>Enlist helps you to streamline your projects, with features that adjust to any style.</p>
             <span>
               <!-- <input class="input-field" type="email" placeholder="Type your email" /> -->
-              <button class="btn w-75">Get Started with ENLIST <i class="fas fa-arrow-circle-right"></i></button>
+              <button class="btn w-75" onclick="window.location.href='/login'">
+                Get Started with ENLIST <i class="fas fa-arrow-circle-right"></i>
+              </button>
             </span>
             <p id="input-description">By creating the account, you will accept the website terms and conditions.</p>
-            <!-- <ul>
-              <li><img src=" /images/estrela.svg" alt="" /><a href="#">Kanban de tarefas</a></li>
-              <li><img src=" /images/estrela.svg" alt="" /><a href="#">Controle de Tempo</a></li>
-              <li><img src=" /images/estrela.svg" alt="" /><a href="#">Chat interno</a></li>
-            </ul> -->
           </article>
 
           <article>
@@ -140,102 +105,10 @@
               </p>
             </article>
           </div>
-          <!-- <button>Create your free account.</button> -->
         </div>
       </section>
 
       <section id="manage">
-        <!-- <div class="width-container">
-          <h2>Manage the project your way</h2>
-          <p>
-            Do everything in an automated way, check metrics, turn tables into calendars and schedules, change dates and
-            task managers and more.
-          </p>
-          <article>
-            <div>
-              <div>
-                <h3>Kanban</h3>
-                <p> Manage processes and all team members. Implement your Kanban methodology with Enlist's tools. </p>
-              </div>
-              <ul>
-                <li>Timetracker</li>
-                <li>Project management</li>
-                <li>Personal panel</li>
-                <li>Gannt chart</li>
-                <li>Approval of tasks</li>
-              </ul>
-            </div>
-            <img src=" /images/gerencie.svg" alt="" class="images-desktop" />
-          </article>
-          <button>Create your free account</button>
-        </div> -->
-        <!-- <div class="d-flex align-items-start width-container">
-          <div class="nav tabs flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <button
-              class="nav-link active"
-              id="v-pills-home-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-home"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-home"
-              aria-selected="true"
-              >Home</button
-            >
-            <button
-              class="nav-link"
-              id="v-pills-profile-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-profile"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-profile"
-              aria-selected="false"
-              >Profile</button
-            >
-            <button
-              class="nav-link"
-              id="v-pills-messages-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-messages"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-messages"
-              aria-selected="false"
-              >Messages</button
-            >
-            <button
-              class="nav-link"
-              id="v-pills-settings-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-settings"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-settings"
-              aria-selected="false"
-              >Settings</button
-            >
-          </div>
-          <div class="tab-content" id="v-pills-tabContent">
-            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"
-              ><img src=" /images/gerencie.svg" alt="" class="images-desktop"
-            /></div>
-            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
-              >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque ullam est quaerat eligendi! Odio quas
-              adipisci deleniti accusamus atque asperiores facere explicabo consequatur animi blanditiis? Veritatis
-              reprehenderit dolore beatae est!</div
-            >
-            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"
-              >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa corrupti quas quisquam animi eligendi ex
-              necessitatibus libero, repudiandae quo asperiores id quos amet ut, magni est vitae beatae quis eum!</div
-            >
-            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab"
-              >Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut mollitia, aperiam doloremque deleniti, quo
-              praesentium incidunt tempore assumenda, laborum sapiente ipsum alias ipsam impedit. Saepe sapiente
-              temporibus voluptate. Voluptatem, aperiam.</div
-            >
-          </div>
-        </div> -->
         <div class="container ind-module mt-4">
           <div class="row mt-50">
             <div class="col-md-12 text-center"> </div>
@@ -363,7 +236,6 @@
               <p>All in real time, connected, anywhere and anytime.</p>
             </div>
           </article>
-          <!-- <button>Get Started.</button> -->
         </div>
       </section>
 
@@ -378,7 +250,7 @@
             <p>A complete platform for your entire team to work in an organized and fully productive way</p>
             <span>
               <!-- <input type="text" placeholder="Type your email" /> -->
-              <button>Get Started with ENLIST.</button>
+              <button onclick="window.location.href='/login'">Get Started with ENLIST.</button>
             </span>
           </div>
         </div>
@@ -390,7 +262,7 @@
         <div class="width-container">
           <ul>
             <img src=" /images/logo.png" alt="" />
-            <h3>Get Started</h3>
+            <h3><a href="/login"> Get Started</a></h3>
             <!-- <h3>Create free account.</h3> -->
           </ul>
           <ul>
@@ -428,13 +300,13 @@
     <footer>
       <div class="width-container">
         <span>
-          <p> Terms of Use & Privacy Policy</p>
+          <p> <a href="/settings"> Terms of Use & Privacy Policy</a></p>
           <span>
             <i class="fab fa-facebook-square fa-2x"></i>
             <i class="fab fa-twitter-square fa-2x"></i>
           </span>
         </span>
-        <p>Copyright © 2021 | 404Enigma</p>
+        <p>© 2021 | 404Enigma</p>
       </div>
     </footer>
     <!-- SCRIPTS -->
