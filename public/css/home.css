@@ -405,6 +405,10 @@ ul.CTAs a {
   color: #fe6019;
 }
 
+#container {
+  width: 65%;
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -475,6 +479,10 @@ ul.CTAs a {
     text-align: left;
     margin-top: 3px;
     font-size: 0.7rem;
+  }
+
+  #container {
+    width: auto;
   }
 }
 
