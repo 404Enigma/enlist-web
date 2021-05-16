@@ -56,7 +56,7 @@ if (typeof add_form_personal != "undefined" && add_form_personal != null) {
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    data.categorie = "personal";
+    data.categorie = "private";
     console.log({ data });
 
     axios({
@@ -77,7 +77,7 @@ if (typeof update_form_class != "undefined" && update_form_class != null) {
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    data.categorie = "personal";
+    data.categorie = "private";
     var keyID = document.getElementById("data-taskkey");
     var key = keyID.getAttribute("data-taskkey");
 
@@ -102,7 +102,7 @@ if (typeof update_form_division != "undefined" && update_form_division != null) 
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    data.categorie = "personal";
+    data.categorie = "private";
     var keyID = document.getElementById("data-taskkey");
     var key = keyID.getAttribute("data-taskkey");
 
@@ -127,7 +127,7 @@ if (typeof update_form_personal != "undefined" && update_form_personal != null) 
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    data.categorie = "personal";
+    data.categorie = "private";
 
     var keyID = document.getElementById("data-taskkey");
     var key = keyID.getAttribute("data-taskkey");
