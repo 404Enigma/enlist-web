@@ -99,8 +99,9 @@
               <h2 class="page-title mb-3">Tasks List</h2>
               <div class="accordion" id="accordionExample">
                 <!-- Condition for EJS -->
-
-                <% impTasks.map((group) => {%> <% for (const tasks in group) {%>
+                <% if(impTasks.length === 0){%>
+                <div>Empty</div>
+                <% } else{%> <% impTasks.map((group) => {%> <% for (const tasks in group) {%>
 
                 <div class="card">
                   <div class="card-header" id="headingOne">
@@ -147,7 +148,7 @@
                   </div>
                 </div>
 
-                <% }%> <% }); %>
+                <% }%> <% }); %> <% }%>
               </div>
             </div>
           </div>

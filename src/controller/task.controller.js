@@ -260,6 +260,8 @@ const get_completed_Tasks = async (req, res) => {
       }
     });
 
+    console.log(completedTasks);
+
     res.render("pages/services/completed", { user, completedTasks, metadata });
   }
 };
