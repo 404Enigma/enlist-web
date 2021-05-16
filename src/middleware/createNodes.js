@@ -4,7 +4,7 @@ const db = admin.database();
 const { get_PRN_by_email } = require("../utils/methods");
 const assign = require("../lib/assign");
 const { check_uid, get_PRN } = require("../../src/model/nodes");
-const { cache_middleware } = require("../utils/cache");
+const { cache_middleware } = require("../middleware/routecache");
 
 const nodeCreate_prnsource = async (uid, PRN) => {
   let prn_source = {};
