@@ -1,5 +1,2 @@
 node_modules
-.vscode
-src/db
-.env
-public/js/login_session.js
+
