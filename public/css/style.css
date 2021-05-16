@@ -9,6 +9,11 @@
 
 a {
   text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+  color: inherit;
 }
 
 button {
@@ -252,7 +257,7 @@ main #collaborate .width-container button {
   background-color: #202020;
 }
 
-main #manage {
+main #features {
   padding: 100px;
   background-color: #fff;
   height: auto;
@@ -673,26 +678,26 @@ footer .width-container span i {
   main #performance .width-container button {
     display: none;
   }
-  main #manage {
+  main #features {
     padding: 50px 35px;
   }
-  main #manage .width-container h2 {
+  main #features .width-container h2 {
     font-size: 2rem;
     max-width: 80%;
     margin: 0 auto;
     line-height: 30px;
   }
-  main #manage .width-container article div {
+  main #features .width-container article div {
     width: 100%;
     margin-bottom: 20px;
   }
-  main #manage .width-container article div ul {
+  main #features .width-container article div ul {
     display: none;
   }
-  main #manage .width-container article .image-desktop {
+  main #features .width-container article .image-desktop {
     display: none;
   }
-  main #manage .width-container button {
+  main #features .width-container button {
     display: none;
   }
 
