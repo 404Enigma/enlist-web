@@ -2,7 +2,7 @@ const admin = require("../../src/db/db");
 var moment = require("moment");
 moment().format();
 
-const { moveFbRecord } = require("../utils/moveNode");
+const { moveFbRecord, copyFbRecord } = require("../utils/moveNode");
 
 const db = admin.database();
 const taskRef = db.ref("To-Do-List");
@@ -68,7 +68,7 @@ const mark_as_important = async (user, task, group) => {
   const task_ref = db.ref("To-Do-List/" + user.uid + "/" + group + "/Task" + uniquekey);
   const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "IMP" + "/" + group + "/Task" + uniquekey);
 
-  await moveFbRecord(task_ref, new_task_ref);
+  await copyFbRecord(task_ref, new_task_ref);
 };
 
 const mark_as_completed = async (user, task, group) => {
