@@ -71,6 +71,16 @@ const mark_as_important = async (user, task, group) => {
   await copyFbRecord(task_ref, new_task_ref);
 };
 
+const mark_as_unimportant = async (user, task, group) => {
+  const uniquekey = task.key;
+
+  console.log(uniquekey);
+  const task_ref = db.ref("To-Do-List/" + user.uid + "/" + "IMP" + "/" + group + "/Task" + uniquekey);
+  const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + group + "/Task" + uniquekey);
+
+  await moveFbRecord(task_ref, new_task_ref);
+};
+
 const mark_as_completed = async (user, task, group) => {
   const uniquekey = task.key;
 
@@ -144,4 +154,4 @@ const get_all_tasks = async (uid, group) => {
   return tasks;
 };
 
-module.exports = { add_a_task, get_all_tasks, update_a_task, complete_a_task, mark_as_important, mark_as_completed, get_all_imp_tasks, get_all_completed_tasks };
+module.exports = { add_a_task, get_all_tasks, update_a_task, complete_a_task, mark_as_important, mark_as_unimportant, mark_as_completed, get_all_imp_tasks, get_all_completed_tasks };

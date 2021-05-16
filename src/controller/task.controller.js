@@ -1,4 +1,4 @@
-const { add_a_task, get_all_tasks, update_a_task, complete_a_task, mark_as_important, get_all_imp_tasks, mark_as_completed, get_all_completed_tasks } = require("../model/tasks");
+const { add_a_task, get_all_tasks, update_a_task, complete_a_task, mark_as_important, mark_as_unimportant, get_all_imp_tasks, mark_as_completed, get_all_completed_tasks } = require("../model/tasks");
 var moment = require("moment");
 
 const get_tasks = async (req, res) => {
@@ -136,6 +136,32 @@ const important_Task = (req, res) => {
   }
 };
 
+const unimportant_Task = (req, res) => {
+  if (!req.decodedClaims) {
+    res.redirect("/login");
+  } else {
+    let group;
+
+    console.log(req.body);
+    console.log(req._payload);
+    if (req.params.group == "class") group = req._payload._class;
+    if (req.params.group == "division") group = req._payload._division;
+    if (req.params.group == "personal") group = "Pvt";
+
+    const user = {
+      name: req.decodedClaims.name,
+      email: req.decodedClaims.email,
+      uid: req.decodedClaims.uid,
+      picture: req.decodedClaims.picture,
+    };
+
+    console.log(req.body);
+    console.log("Group :", group);
+    //res.json("success");
+    mark_as_unimportant(user, req.body, group);
+  }
+};
+
 const get_important_Tasks = async (req, res) => {
   if (!req.decodedClaims) {
     res.redirect("/login");
@@ -226,4 +252,4 @@ const get_completed_Tasks = async (req, res) => {
   }
 };
 
-module.exports = { get_tasks, add_task, update_Task, completed_Task, important_Task, get_important_Tasks, get_completed_Tasks };
+module.exports = { get_tasks, add_task, update_Task, completed_Task, important_Task, unimportant_Task, get_important_Tasks, get_completed_Tasks };
