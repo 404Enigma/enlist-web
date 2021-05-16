@@ -147,12 +147,17 @@
                     <div class="card-body">
                       <% Object.values(group[tasks]).forEach((task) => {%>
                       <div class="task-details task-1" data-toggle="modal" data-target="#modal_aside_right">
-                        <div class="col-1">
+                        <div class="col-2">
                           <a href="#">
-                            <i class="fas fa-star fa-hover-hidden"></i>
-                            <i class="far fa-star fa-hover-show"> </i>
+                            <i class="far fa-trash-alt fa-hover-hidden"></i>
+                            <i class="fas fa-trash-alt fa-hover-show"> </i>
+                          </a>
+                          <a href="#" class="px-2">
+                            <i class="fas fa-undo fa-hover-hidden"></i>
+                            <i class="fas fa-undo fa-hover-show"> </i>
                           </a>
                         </div>
+
                         <div class="col-10 task-content">
                           <div class="col-md-9 col-sm-12 task-title"><%= task.title %> </div>
                           <div class="col-md-3 col-sm-12 task-date text-end"><%= task.date %></div>
