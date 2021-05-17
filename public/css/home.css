@@ -409,6 +409,16 @@ ul.CTAs a {
   width: 65%;
 }
 
+.modal-footer .fa-trash-alt {
+  color: red;
+}
+.modal-footer .fa-check-square {
+  color: green;
+}
+.modal-footer .fa-star {
+  color: coral;
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
