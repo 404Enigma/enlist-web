@@ -14,6 +14,15 @@ const trash_a_task = async (user, task, group) => {
   await completed_to_delete.remove();
 };
 
+const trash_a_bin_task = async (user, task, group) => {
+  const uniquekey = task.key;
+
+  console.log(uniquekey);
+
+  const completed_to_delete = db.ref("To-Do-List/" + user.uid + "/" + "Deleted" + "/" + group + "/Task" + uniquekey);
+  await completed_to_delete.remove();
+};
+
 const delete_a_task = async (user, task, group) => {
   const uniquekey = task.key;
 
@@ -45,4 +54,4 @@ const get_all_deleted_tasks = async (uid) => {
   return group_task;
 };
 
-module.exports = { trash_a_task, delete_a_task, get_all_deleted_tasks };
+module.exports = { trash_a_task, delete_a_task, get_all_deleted_tasks, trash_a_bin_task };

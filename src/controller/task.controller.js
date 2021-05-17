@@ -9,6 +9,7 @@ const {
   mark_as_completed,
   get_all_completed_tasks,
   restore_a_Task,
+  restore_a_bin_Task,
 } = require("../model/tasks");
 var moment = require("moment");
 
@@ -292,7 +293,7 @@ const get_completed_Tasks = async (req, res) => {
   }
 };
 
-const restore_tasks = (req, res) => {
+const restore_tasks = async (req, res) => {
   if (!req.decodedClaims) {
     res.redirect("/login");
   } else {
@@ -313,7 +314,7 @@ const restore_tasks = (req, res) => {
     console.log("Group :", group);
 
     try {
-      restore_a_Task(user, req.body, group);
+      await restore_a_Task(user, req.body, group);
       res.json("Success");
     } catch (error) {
       console.log(error);
@@ -321,4 +322,33 @@ const restore_tasks = (req, res) => {
   }
 };
 
-module.exports = { get_tasks, add_task, update_Task, completed_Task, important_Task, unimportant_Task, get_important_Tasks, get_completed_Tasks, restore_tasks };
+const restore_bin_tasks = async (req, res) => {
+  if (!req.decodedClaims) {
+    res.redirect("/login");
+  } else {
+    let group;
+
+    console.log(req.body);
+    console.log(req._payload);
+    group = req.params.group;
+
+    const user = {
+      name: req.decodedClaims.name,
+      email: req.decodedClaims.email,
+      uid: req.decodedClaims.uid,
+      picture: req.decodedClaims.picture,
+    };
+
+    console.log(req.body);
+    console.log("Group :", group);
+
+    try {
+      await restore_a_bin_Task(user, req.body, group);
+      res.json("Success");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+};
+
+module.exports = { get_tasks, add_task, update_Task, completed_Task, important_Task, unimportant_Task, get_important_Tasks, get_completed_Tasks, restore_tasks, restore_bin_tasks };

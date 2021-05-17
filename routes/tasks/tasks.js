@@ -19,5 +19,6 @@ router.get("/important/all", checkCookie, add_nodes, tasks.get_important_Tasks);
 router.post("/completed/:group", checkCookie, add_nodes, tasks.completed_Task); //POST completed tasks
 router.get("/completed/all", checkCookie, add_nodes, tasks.get_completed_Tasks); // GET completed tasks
 router.post("/restore/:group", checkCookie, add_nodes, tasks.restore_tasks); //POST restore tasks
+router.post("/restore/bin/:group", checkCookie, add_nodes, tasks.restore_bin_tasks); //POST restore tasks from bin
 
 module.exports = router;

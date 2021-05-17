@@ -17,7 +17,7 @@ $(".delete-task").click(function () {
   console.log(data);
   if (confirm("Are you sure?")) {
     axios
-      .delete("/tasks/trash/" + group, { data })
+      .delete("/tasks/trash/bin/" + group, { data })
       .then(function (response) {
         console.log(response);
         //location.reload();
@@ -41,7 +41,7 @@ $(".restore-task").click(function () {
   console.log(data);
   if (confirm("Are you sure you want to restore?")) {
     axios
-      .post("/tasks/restore/" + group, { data })
+      .post("/tasks/restore/bin/" + group, { data })
       .then(function (response) {
         console.log(response);
         //location.reload();

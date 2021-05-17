@@ -161,11 +161,11 @@
                               <div class="task-details task-1" data-toggle="modal" data-target="#modal_aside_right">
 
                               <%  }%>                         <div class="col-2">
-                          <a href="#">
+                          <a data-id="<%=task.key%>" data-group="<%=tasks%>" class="delete-task">
                             <i class="far fa-trash-alt fa-hover-hidden"></i>
                             <i class="fas fa-trash-alt fa-hover-show"> </i>
                           </a>
-                          <a href="#" class="px-2">
+                          <a data-id="<%=task.key%>" data-group="<%=tasks%>" class="restore-task" class="px-2">
                             <i class="fas fa-undo fa-hover-hidden"></i>
                             <i class="fas fa-undo fa-hover-show"> </i>
                           </a>
@@ -211,6 +211,6 @@
       integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
       crossorigin="anonymous"
     ></script>
-    <script src="/js/main.js"></script>
+    <script src="/js/bin.js"></script>
   </body>
 </html>

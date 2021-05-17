@@ -1,6 +1,6 @@
 const moment = require("moment");
 
-const { trash_a_task, delete_a_task, get_all_deleted_tasks } = require("../model/services");
+const { trash_a_task, delete_a_task, get_all_deleted_tasks, trash_a_bin_task } = require("../model/services");
 
 let today = moment().format("DD MMMM YYYY");
 let tomorrow = moment().add(1, "days").format("DD MMMM YYYY");
@@ -67,6 +67,35 @@ const deleteTask = async (req, res) => {
   }
 };
 
+const delete_task_bin = async (req, res) => {
+  if (!req.decodedClaims) {
+    res.redirect("/login");
+  } else {
+    let group;
+    console.log(req._payload);
+
+    if (req.params.group == "personal") group = "Pvt";
+
+    const user = {
+      name: req.decodedClaims.name,
+      email: req.decodedClaims.email,
+      uid: req.decodedClaims.uid,
+      picture: req.decodedClaims.picture,
+    };
+
+    console.log(req.body);
+    console.log("Group :", req.params.group);
+
+    try {
+      await trash_a_bin_task(user, req.body, req.params.group);
+
+      res.json("Success");
+    } catch (error) {
+      res.json("Failed to delete");
+    }
+  }
+};
+
 const get_deleted_tasks = async (req, res) => {
   if (!req.decodedClaims) {
     res.redirect("/login");
@@ -120,4 +149,4 @@ const get_deleted_tasks = async (req, res) => {
   }
 };
 
-module.exports = { trash_Task, deleteTask, get_deleted_tasks };
+module.exports = { trash_Task, deleteTask, get_deleted_tasks, delete_task_bin };
