@@ -151,7 +151,16 @@
                   >
                     <div class="card-body">
                       <% Object.values(group[tasks]).forEach((task) => {%>
-                      <div class="task-details task-1" data-toggle="modal" data-target="#modal_aside_right">
+                        <% if(task.today){%>
+                          <div class="task-details task-2" data-toggle="modal" data-target="#modal_aside_right">
+
+                          <%}else if(task.tomorrow){%> 
+                            <div class="task-details task-3" data-toggle="modal" data-target="#modal_aside_right">
+
+                            <% } else{%>
+                              <div class="task-details task-1" data-toggle="modal" data-target="#modal_aside_right">
+
+                              <%  }%> 
                         <div class="col-1">
                           <div id="data-taskkey" data-taskkey="<%= task.key%>"></div>
                           <% if(tasks ==='B') {%>

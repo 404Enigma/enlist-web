@@ -2,6 +2,9 @@ const moment = require("moment");
 
 const { trash_a_task, delete_a_task, get_all_deleted_tasks } = require("../model/services");
 
+let today = moment().format("DD MMMM YYYY");
+let tomorrow = moment().add(1, "days").format("DD MMMM YYYY");
+
 const trash_Task = async (req, res) => {
   if (!req.decodedClaims) {
     res.redirect("/login");
@@ -101,6 +104,14 @@ const get_deleted_tasks = async (req, res) => {
       for (const tasks in group) {
         Object.values(group[tasks]).forEach((task) => {
           task.date = task.date = moment.unix(task.date).format("DD MMMM YYYY");
+
+          if (moment(today).isSame(task.date)) {
+            task.today = true;
+          }
+
+          if (moment(tomorrow).isSame(task.date)) {
+            task.tomorrow = true;
+          }
         });
       }
     });

@@ -12,6 +12,9 @@ const {
 } = require("../model/tasks");
 var moment = require("moment");
 
+let today = moment().format("DD MMMM YYYY");
+let tomorrow = moment().add(1, "days").format("DD MMMM YYYY");
+
 const get_tasks = async (req, res) => {
   if (!req.decodedClaims) {
     res.redirect("/login");
@@ -42,6 +45,13 @@ const get_tasks = async (req, res) => {
 
     tasks.map((task) => {
       task.date = moment.unix(task.date).format("DD MMMM YYYY");
+      if (moment(today).isSame(task.date)) {
+        task.today = true;
+      }
+
+      if (moment(tomorrow).isSame(task.date)) {
+        task.tomorrow = true;
+      }
     });
 
     console.log(metadata);
@@ -211,6 +221,14 @@ const get_important_Tasks = async (req, res) => {
       for (const tasks in group) {
         Object.values(group[tasks]).forEach((task) => {
           task.date = task.date = moment.unix(task.date).format("DD MMMM YYYY");
+
+          if (moment(today).isSame(task.date)) {
+            task.today = true;
+          }
+
+          if (moment(tomorrow).isSame(task.date)) {
+            task.tomorrow = true;
+          }
         });
       }
     });
@@ -256,6 +274,14 @@ const get_completed_Tasks = async (req, res) => {
       for (const tasks in group) {
         Object.values(group[tasks]).forEach((task) => {
           task.date = task.date = moment.unix(task.date).format("DD MMMM YYYY");
+
+          if (moment(today).isSame(task.date)) {
+            task.today = true;
+          }
+
+          if (moment(tomorrow).isSame(task.date)) {
+            task.tomorrow = true;
+          }
         });
       }
     });
