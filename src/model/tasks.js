@@ -168,6 +168,10 @@ const get_all_tasks = async (uid, group) => {
     });
   });
 
+  tasks.sort(function (x, y) {
+    return x.date - y.date;
+  });
+
   console.log("tasksss:  ", tasks);
   return tasks;
 };
