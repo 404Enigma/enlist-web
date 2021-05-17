@@ -196,8 +196,6 @@
                       <div
                 class="task-details task-2"
                 data-id="<%= task.key %>"
-                data-toggle="modal"
-                data-target="#modal_aside_right"
                 data-title="<%= task.title%>"
                 data-description="<%= task.description%>"
                 data-deadline="<%= task.date%>"
@@ -208,8 +206,6 @@
                         <div
                         class="task-details task-3"
                         data-id="<%= task.key %>"
-                        data-toggle="modal"
-                        data-target="#modal_aside_right"
                         data-title="<%= task.title%>"
                         data-description="<%= task.description%>"
                         data-deadline="<%= task.date%>"
@@ -219,23 +215,20 @@
                           <div
                           class="task-details task-1"
                           data-id="<%= task.key %>"
-                          data-toggle="modal"
-                          data-target="#modal_aside_right"
                           data-title="<%= task.title%>"
                           data-description="<%= task.description%>"
                           data-deadline="<%= task.date%>"
                           data-created="<%= task.created_at%>"
                         >
                         <%  }%> 
-              
-              
+                        
                 <div class="col-1">
-                  <a href="#">
+                  <a >
                     <i class="far fa-check-circle fa-hover-hidden"></i>
                     <i class="fas fa-check-circle fa-hover-show"> </i>
                   </a>
                 </div>
-                <div class="col-11 task-content">
+                <div class="col-11 task-content" data-toggle="modal" data-target="#modal_aside_right">
                   <div class="col-md-9 col-sm-12 task-title"><%= task.title %></div>
                   <div class="col-md-3 col-sm-12 task-date text-end"><i class="fas fa-calendar-alt align-middle"></i>&nbsp;<%= task.date %></div>
                 </div>
