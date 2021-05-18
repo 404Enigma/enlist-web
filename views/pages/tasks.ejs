@@ -198,7 +198,7 @@
                 data-id="<%= task.key %>"
                 data-title="<%= task.title%>"
                 data-description="<%= task.description%>"
-                data-deadline="<%= task.date%>"
+                data-deadline="<%= task.deadline%>"
                 data-created="<%= task.created_at%>"
               >
 
@@ -208,7 +208,7 @@
                         data-id="<%= task.key %>"
                         data-title="<%= task.title%>"
                         data-description="<%= task.description%>"
-                        data-deadline="<%= task.date%>"
+                        data-deadline="<%= task.deadline%>"
                         data-created="<%= task.created_at%>"
                       >
                       <% } else{%>
@@ -217,7 +217,7 @@
                           data-id="<%= task.key %>"
                           data-title="<%= task.title%>"
                           data-description="<%= task.description%>"
-                          data-deadline="<%= task.date%>"
+                          data-deadline="<%= task.deadline%>"
                           data-created="<%= task.created_at%>"
                         >
                         <%  }%> 
@@ -230,7 +230,7 @@
                 </div>
                 <div class="col-11 task-content" data-toggle="modal" data-target="#modal_aside_right">
                   <div class="col-md-9 col-sm-12 task-title"><%= task.title %></div>
-                  <div class="col-md-3 col-sm-12 task-date text-end"><i class="fas fa-calendar-alt align-middle"></i>&nbsp;<%= task.date %></div>
+                  <div class="col-md-3 col-sm-12 task-date text-end"><i class="fas fa-calendar-alt align-middle"></i>&nbsp;<%= task.deadline %></div>
                 </div>
               </div>
 

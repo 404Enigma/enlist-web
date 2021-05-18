@@ -15,6 +15,9 @@ const checkUID = (req, res) => {
       if (doc.exists) {
         console.log(doc.data());
 
+        console.log("Your entered prn: ", Number(PRN));
+        console.log("prn form database: ", doc.data().PRN);
+
         if (doc.data().PRN === Number(PRN)) {
           res.send("matched");
         } else {

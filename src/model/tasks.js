@@ -13,10 +13,10 @@ const add_a_task = (user, task, group, categorie) => {
 
   const task_Data = {
     title: task.title,
-    date: task.date,
+    deadline: task.date,
     description: task.description,
     key: uniqkey,
-    created_at: moment().unix(),
+    created: moment().unix(),
   };
 
   if (categorie === "private") {
@@ -50,10 +50,10 @@ const update_a_task = (user, task, group) => {
   const updated_date = moment(task.date).format("X");
   const task_Data = {
     title: task.title,
-    date: updated_date,
+    deadline: updated_date,
     description: task.description,
     key: task.key,
-    created_at: moment().unix(),
+    created: moment().unix(),
   };
 
   var update_a_task = {};
@@ -139,7 +139,7 @@ const get_all_imp_tasks = async (uid) => {
     console.log(obj[group]);
 
     obj[group].sort((a, b) => {
-      return a.date - b.date;
+      return a.deadline - b.deadline;
     });
   }
 
@@ -206,7 +206,7 @@ const get_all_tasks = async (uid, group) => {
 
   console.log(tasks);
   tasks.sort(function (x, y) {
-    return x.date - y.date;
+    return x.deadline - y.deadline;
   });
 
   console.log("tasksss:  ", tasks);

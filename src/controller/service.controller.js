@@ -10,7 +10,6 @@ const trash_Task = async (req, res) => {
     res.redirect("/login");
   } else {
     let group;
-    console.log(req._payload);
 
     if (req.params.group == "personal") group = "Pvt";
 
@@ -21,9 +20,7 @@ const trash_Task = async (req, res) => {
       picture: req.decodedClaims.picture,
     };
 
-    console.log(req.body);
     console.log("Group :", req.params.group);
-    //res.json("success");
 
     try {
       await trash_a_task(user, req.body, req.params.group);
@@ -101,7 +98,7 @@ const get_deleted_tasks = async (req, res) => {
     res.redirect("/login");
   } else {
     let group;
-    console.log(req.decodedClaims);
+
     const user = { name: req.decodedClaims.name, email: req.decodedClaims.email, picture: req.decodedClaims.picture };
 
     const metadata = req._payload;
@@ -124,7 +121,7 @@ const get_deleted_tasks = async (req, res) => {
     metadata.group = group;
 
     // tasks.map((task) => {
-    //   task.date = moment.unix(task.date).format("DD MMMM YYYY");
+    //   task.deadline = moment.unix(task.deadline).format("DD MMMM YYYY");
     // });
 
     //console.log(impTasks);
@@ -132,13 +129,13 @@ const get_deleted_tasks = async (req, res) => {
     deletedTasks.map((group) => {
       for (const tasks in group) {
         Object.values(group[tasks]).forEach((task) => {
-          task.date = task.date = moment.unix(task.date).format("DD MMMM YYYY");
+          task.deadline = task.deadline = moment.unix(task.deadline).format("DD MMMM YYYY");
 
-          if (moment(today).isSame(task.date)) {
+          if (moment(today).isSame(task.deadline)) {
             task.today = true;
           }
 
-          if (moment(tomorrow).isSame(task.date)) {
+          if (moment(tomorrow).isSame(task.deadline)) {
             task.tomorrow = true;
           }
         });

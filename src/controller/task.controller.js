@@ -47,8 +47,8 @@ const get_tasks = async (req, res) => {
     metadata.badge = req.badge;
 
     tasks.map((task) => {
-      task.date = moment.unix(task.date).format("DD MMMM YYYY");
-      if (moment(today).isSame(task.date)) {
+      task.deadline = moment.unix(task.deadline).format("DD MMMM YYYY");
+      if (moment(today).isSame(task.deadline)) {
         task.today = true;
       }
 
@@ -223,16 +223,16 @@ const get_important_Tasks = async (req, res) => {
       //console.log("impTasks: ", impTasks[section]);
       console.log("section: ", section);
       impTasks[section].map((task) => {
-        task.date = task.date = moment.unix(task.date).format("DD MMMM YYYY");
-        if (moment(today).isSame(task.date)) {
+        task.deadline = task.deadline = moment.unix(task.deadline).format("DD MMMM YYYY");
+        if (moment(today).isSame(task.deadline)) {
           task.today = true;
         }
 
-        if (moment(tomorrow).isSame(task.date)) {
+        if (moment(tomorrow).isSame(task.deadline)) {
           task.tomorrow = true;
         }
 
-        if (moment(day_after_tomorrow).isSame(task.date)) {
+        if (moment(day_after_tomorrow).isSame(task.deadline)) {
           task.day_after_tomorrow = true;
         }
 
@@ -270,7 +270,7 @@ const get_completed_Tasks = async (req, res) => {
     res.redirect("/login");
   } else {
     let group;
-    console.log(req.decodedClaims);
+
     const user = { name: req.decodedClaims.name, email: req.decodedClaims.email, picture: req.decodedClaims.picture };
 
     const metadata = req._payload;
@@ -301,13 +301,13 @@ const get_completed_Tasks = async (req, res) => {
     completedTasks.map((group) => {
       for (const tasks in group) {
         Object.values(group[tasks]).forEach((task) => {
-          task.date = task.date = moment.unix(task.date).format("DD MMMM YYYY");
+          task.deadline = task.deadline = moment.unix(task.deadline).format("DD MMMM YYYY");
 
-          if (moment(today).isSame(task.date)) {
+          if (moment(today).isSame(task.deadline)) {
             task.today = true;
           }
 
-          if (moment(tomorrow).isSame(task.date)) {
+          if (moment(tomorrow).isSame(task.deadline)) {
             task.tomorrow = true;
           }
         });
