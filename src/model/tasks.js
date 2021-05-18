@@ -53,7 +53,7 @@ const update_a_task = (user, task, group) => {
     deadline: updated_date,
     description: task.description,
     key: task.key,
-    created: moment().unix(),
+    created: task.created,
   };
 
   var update_a_task = {};

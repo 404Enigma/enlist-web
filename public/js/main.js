@@ -78,10 +78,13 @@ if (typeof update_form_class != "undefined" && update_form_class != null) {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     data.categorie = "private";
-    var keyID = document.getElementById("data-taskkey");
-    var key = keyID.getAttribute("data-taskkey");
+    const keyID = document.getElementById("data-taskkey");
+    const key = keyID.getAttribute("data-taskkey");
+    const created = keyID.getAttribute("data-created_at");
 
+    console.log(created);
     data.key = key;
+    data.created = created;
 
     console.log({ data });
 
@@ -105,8 +108,11 @@ if (typeof update_form_division != "undefined" && update_form_division != null) 
     data.categorie = "private";
     var keyID = document.getElementById("data-taskkey");
     var key = keyID.getAttribute("data-taskkey");
+    const created = keyID.getAttribute("data-created_at");
 
+    console.log(created);
     data.key = key;
+    data.created = created;
 
     console.log({ data });
 
@@ -131,8 +137,11 @@ if (typeof update_form_personal != "undefined" && update_form_personal != null) 
 
     var keyID = document.getElementById("data-taskkey");
     var key = keyID.getAttribute("data-taskkey");
+    const created = keyID.getAttribute("data-created_at");
 
+    console.log(created);
     data.key = key;
+    data.created = created;
 
     console.log({ data });
 
@@ -352,7 +361,7 @@ $(".task-details").click(function () {
   $("#created-at").text(created_at);
 
   $("#data-taskkey").attr("data-taskkey", id);
-
+  $("#data-taskkey").attr("data-created_at", created);
   console.log(title);
   console.log(id);
   console.log(description);

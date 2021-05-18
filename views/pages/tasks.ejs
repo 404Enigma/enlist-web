@@ -199,7 +199,7 @@
                 data-title="<%= task.title%>"
                 data-description="<%= task.description%>"
                 data-deadline="<%= task.deadline%>"
-                data-created="<%= task.created_at%>"
+                data-created="<%= task.created%>"
               >
 
                     <%}else if(task.tomorrow){%> 
@@ -209,7 +209,7 @@
                         data-title="<%= task.title%>"
                         data-description="<%= task.description%>"
                         data-deadline="<%= task.deadline%>"
-                        data-created="<%= task.created_at%>"
+                        data-created="<%= task.created%>"
                       >
                       <% } else{%>
                           <div
@@ -218,7 +218,7 @@
                           data-title="<%= task.title%>"
                           data-description="<%= task.description%>"
                           data-deadline="<%= task.deadline%>"
-                          data-created="<%= task.created_at%>"
+                          data-created="<%= task.created%>"
                         >
                         <%  }%> 
                         
@@ -263,7 +263,7 @@
                     <form id="update_task_personal">
                           <%} %> 
 
-                    <div id="data-taskkey" data-taskkey=""></div>
+                    <div id="data-taskkey" data-taskkey="" data-created_at=""> </div>
                     <div>
                     <div class="form-group">
                       <label for="title_edit" class="small text-muted font-weight-bold">Task Title</label>
