@@ -119,6 +119,9 @@
 
                 <div class="card">
                   <div class="card-header" id="headingOne">
+
+                    <!-- CLASS HEADING TOGGLE -->
+
                     <h2 class="clearfix mb-0">
                       <% if (tasks === 'Pvt') { %>
                       <a
@@ -143,6 +146,7 @@
                       <% } %>
                     </h2>
                   </div>
+                  
                   <div
                     id="<%= tasks %>"
                     class="collapse show"
@@ -150,6 +154,7 @@
                     data-parent="#accordionExample"
                   >
                     <div class="card-body">
+                      <!-- LIST VIEW -->
                       <% Object.values(group[tasks]).forEach((task) => {%>
                         <% if(task.today){%>
                           <div class="task-details task-2" data-toggle="modal" data-target="#modal_aside_right">
