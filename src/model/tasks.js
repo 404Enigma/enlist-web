@@ -94,22 +94,58 @@ const mark_as_completed = async (user, task, group) => {
 const get_all_imp_tasks = async (uid) => {
   let group_task = [];
 
-  await db.ref("To-Do-List/" + uid + "/" + "IMP").once("value", function (snapshot) {
-    console.log("Snapshot: ", snapshot);
+  await db
+    .ref("To-Do-List/" + uid + "/" + "IMP")
 
-    snapshot.forEach(function (childSnapshot) {
-      let obj = {};
-      var childKey = childSnapshot.key;
-      var childData = childSnapshot.val();
-      //console.log(childData);
-      obj[childKey] = childData;
-      group_task.push(obj);
-      // console.log("Key: ", childKey);
-      // console.log("Data: ", childData);
+    .once("value", function (snapshot) {
+      snapshot.forEach(function (childSnapshot) {
+        let obj = {};
+        var childKey = childSnapshot.key;
+        var childData = childSnapshot.val();
+        //console.log(childData);
+        // obj[childKey] = childData;
+        for (const key of Object.keys(childData)) {
+          childData[key].group = childKey;
+        }
+
+        group_task.push(childData);
+
+        // console.log("Key: ", childKey);
+        // console.log("Data: ", childData);
+      });
     });
+
+  console.log("Group_task = ", group_task);
+
+  let obj = {};
+
+  group_task.map((group) => {
+    //console.log(typeof group);
+    for (const task in group) {
+      //console.log(task);
+      let task_obj = group[task];
+      group_val = task_obj["group"];
+
+      if (group_val in obj) {
+        obj[group_val].push(task_obj);
+      } else {
+        obj[group_val] = [task_obj];
+      }
+    }
   });
 
-  return group_task;
+  for (const group in obj) {
+    console.log(group);
+    console.log(obj[group]);
+
+    obj[group].sort((a, b) => {
+      return a.date - b.date;
+    });
+  }
+
+  console.log(obj);
+
+  return obj;
 };
 
 const get_all_completed_tasks = async (uid) => {
@@ -168,6 +204,7 @@ const get_all_tasks = async (uid, group) => {
     });
   });
 
+  console.log(tasks);
   tasks.sort(function (x, y) {
     return x.date - y.date;
   });

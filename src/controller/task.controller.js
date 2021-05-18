@@ -13,8 +13,10 @@ const {
 } = require("../model/tasks");
 var moment = require("moment");
 
+let last_15_days = moment().subtract(15, "days").format("DD MMMM YYYY");
 let today = moment().format("DD MMMM YYYY");
 let tomorrow = moment().add(1, "days").format("DD MMMM YYYY");
+let day_after_tomorrow = moment().add(2, "days").format("DD MMMM YYYY");
 
 const get_tasks = async (req, res) => {
   if (!req.decodedClaims) {
@@ -215,24 +217,49 @@ const get_important_Tasks = async (req, res) => {
     //   task.date = moment.unix(task.date).format("DD MMMM YYYY");
     // });
 
-    //console.log(impTasks);
+    // console.log("impTasks: ", impTasks);
 
-    impTasks.map((group) => {
-      console.log(group);
-      for (const tasks in group) {
-        Object.values(group[tasks]).forEach((task) => {
-          task.date = task.date = moment.unix(task.date).format("DD MMMM YYYY");
+    for (section in impTasks) {
+      //console.log("impTasks: ", impTasks[section]);
+      console.log("section: ", section);
+      impTasks[section].map((task) => {
+        task.date = task.date = moment.unix(task.date).format("DD MMMM YYYY");
+        if (moment(today).isSame(task.date)) {
+          task.today = true;
+        }
 
-          if (moment(today).isSame(task.date)) {
-            task.today = true;
-          }
+        if (moment(tomorrow).isSame(task.date)) {
+          task.tomorrow = true;
+        }
 
-          if (moment(tomorrow).isSame(task.date)) {
-            task.tomorrow = true;
-          }
-        });
-      }
-    });
+        if (moment(day_after_tomorrow).isSame(task.date)) {
+          task.day_after_tomorrow = true;
+        }
+
+        if (moment(task.date).isBefore(day_after_tomorrow)) {
+          task.day_after_tomorrow = true;
+        }
+      });
+    }
+
+    console.log(impTasks);
+
+    // impTasks.map((group) => {
+    //   // console.log(group);
+    //   for (const tasks in group) {
+    //     Object.values(group[tasks]).forEach((task) => {
+    //       task.date = task.date = moment.unix(task.date).format("DD MMMM YYYY");
+
+    //       if (moment(today).isSame(task.date)) {
+    //         task.today = true;
+    //       }
+
+    //       if (moment(tomorrow).isSame(task.date)) {
+    //         task.tomorrow = true;
+    //       }
+    //     });
+    //   }
+    // });
 
     res.render("pages/services/important", { user, impTasks, metadata });
   }

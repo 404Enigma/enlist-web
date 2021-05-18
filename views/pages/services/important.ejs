@@ -108,96 +108,103 @@
             <div class="col-lg-12">
               <div class="accordion" id="accordionExample">
                 <!-- Condition for EJS -->
-                <% if(impTasks.length === 0){%>
+                <% if(Object.keys(impTasks).length === 0 && impTasks.constructor === Object){%>
                 <div class="d-block justify-content-center">
                   <p class="text-center">Horray! Your list is empty!</p>
                   <div align="center"><img src="/images/important.gif" alt="" width="65%" /></div>
                 </div>
                 <% } else{%>
-                <h2 class="page-title mb-3">Tasks List</h2>
-                <% impTasks.map((group) => {%> <% for (const tasks in group) {%>
+                  <h2 class="page-title mb-3">Tasks List</h2>
+                <% for (group in impTasks) {%>
 
-                <div class="card">
-                  <div class="card-header" id="headingOne">
-
-                    <!-- CLASS HEADING TOGGLE -->
-
-                    <h2 class="clearfix mb-0">
-                      <% if (tasks === 'Pvt') { %>
-                      <a
-                        class="btn"
-                        data-toggle="collapse"
-                        data-target="#<%= tasks %>"
-                        aria-expanded="true"
-                        aria-controls="collapseOne"
-                        ><i class="fa fa-chevron-circle-down"></i> Personal</a
-                      >
-
-                      <% }else{%>
-                      <a
-                        class="btn"
-                        data-toggle="collapse"
-                        data-target="#<%= tasks %>"
-                        aria-expanded="true"
-                        aria-controls="collapseOne"
-                        ><i class="fa fa-chevron-circle-down"></i> CS-<%= tasks %></a
-                      >
-
-                      <% } %>
-                    </h2>
-                  </div>
-                  
-                  <div
-                    id="<%= tasks %>"
-                    class="collapse show"
-                    aria-labelledby="headingOne"
-                    data-parent="#accordionExample"
-                  >
-                    <div class="card-body">
-                      <!-- LIST VIEW -->
-                      <% Object.values(group[tasks]).forEach((task) => {%>
-                        <% if(task.today){%>
-                          <div class="task-details task-2" data-toggle="modal" data-target="#modal_aside_right">
-
-                          <%}else if(task.tomorrow){%> 
-                            <div class="task-details task-3" data-toggle="modal" data-target="#modal_aside_right">
-
-                            <% } else{%>
-                              <div class="task-details task-1" data-toggle="modal" data-target="#modal_aside_right">
-
-                              <%  }%> 
-                        <div class="col-1">
-                          <div id="data-taskkey" data-taskkey="<%= task.key%>"></div>
-                          <% if(tasks ==='B') {%>
-                          <a id="unimportant_class">
-                            <i class="fas fa-star fa-hover-hidden"></i>
-                            <i class="far fa-star fa-hover-show"> </i>
-                          </a>
-                          <%}%> <% if(tasks ==='B3') {%>
-                          <a id="unimportant_division">
-                            <i class="fas fa-star fa-hover-hidden"></i>
-                            <i class="far fa-star fa-hover-show"> </i>
-                          </a>
-                          <%}%> <% if(tasks ==='Pvt') {%>
-                          <a id="unimportant_personal">
-                            <i class="fas fa-star fa-hover-hidden"></i>
-                            <i class="far fa-star fa-hover-show"> </i>
-                          </a>
-                          <%}%>
-                        </div>
-                        <div class="col-10 task-content">
-                          <div class="col-md-9 col-sm-12 task-title"><%= task.title %> </div>
-                          <div class="col-md-3 col-sm-12 task-date text-end"><%= task.date %></div>
-                        </div>
-                      </div>
-                      <%});%>
+                  <div class="card">
+                    <div class="card-header" id="headingOne">
+                      <h2 class="clearfix mb-0">
+                        <% if (group === 'Pvt') { %>
+                        <a
+                          class="btn"
+                          data-toggle="collapse"
+                          data-target="#<%= group %>"
+                          aria-expanded="true"
+                          aria-controls="collapseOne"
+                          ><i class="fa fa-chevron-circle-down"></i> Personal</a
+                        >
+  
+                        <% }else{%>
+                        <a
+                          class="btn"
+                          data-toggle="collapse"
+                          data-target="#<%= group %>"
+                          aria-expanded="true"
+                          aria-controls="collapseOne"
+                          ><i class="fa fa-chevron-circle-down"></i> CS-<%= group %></a
+                        >
+  
+                        <% } %>
+                      </h2>
                     </div>
-                  </div>
-                </div>
+                    <div
+                      id="<%= group %>"
+                      class="collapse show"
+                      aria-labelledby="headingOne"
+                      data-parent="#accordionExample"
+                    >
+                      <div class="card-body">
+                        <% impTasks[group].map((task) => {%>
+                          <% if(task.today){%>
+                            <div class="task-details task-2" data-toggle="modal" data-target="#modal_aside_right">
+  
+                            <%}else if(task.tomorrow){%> 
+                              <div class="task-details task-3" data-toggle="modal" data-target="#modal_aside_right">
+  
+                              <% } else if(task.day_after_tomorrow){%>
+                                <div class="task-details task-1" data-toggle="modal" data-target="#modal_aside_right">
+  
+                                <%  }else{%>
+                                  <div class="task-details " data-toggle="modal" data-target="#modal_aside_right">
 
-                <% }%> <% }); %> <% }%>
-              </div>
-            </div>
+                                  <% }%> 
+                          <div class="col-1">
+                            <div id="data-taskkey" data-taskkey="<%= task.key%>"></div>
+                            <% if(group ==='B') {%>
+                            <a id="unimportant_class">
+                              <i class="fas fa-star fa-hover-hidden"></i>
+                              <i class="far fa-star fa-hover-show"> </i>
+                            </a>
+                            <%}%> <% if(group ==='B3') {%>
+                            <a id="unimportant_division">
+                              <i class="fas fa-star fa-hover-hidden"></i>
+                              <i class="far fa-star fa-hover-show"> </i>
+                            </a>
+                            <%}%> <% if(group ==='Pvt') {%>
+                            <a id="unimportant_personal">
+                              <i class="fas fa-star fa-hover-hidden"></i>
+                              <i class="far fa-star fa-hover-show"> </i>
+                            </a>
+                            <%}%>
+                          </div>
+                          <div class="col-10 task-content">
+                            <div class="col-md-9 col-sm-12 task-title"><%= task.title %> </div>
+                            <div class="col-md-3 col-sm-12 task-date text-end"><%= task.date %></div>
+                          </div>
+                        </div>
+                        <%});%>
+                      </div>
+                    </div>
+                         
+                          
+                  </div>
+  
+                  <% }%> <% } %> 
+                </div>
+                </div>
+                  
+                
+                
+                
+               
+                  
+                
           </div>
         </div>
       </div>
