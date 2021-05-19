@@ -5,6 +5,7 @@ const { get_PRN_by_email } = require("../utils/methods");
 const assign = require("../lib/assign");
 const { check_uid, get_PRN } = require("../../src/model/nodes");
 const { cache_middleware } = require("../middleware/routecache");
+const { copyFbRecord } = require("../utils/moveNode");
 
 const nodeCreate_prnsource = async (uid, PRN) => {
   let prn_source = {};
@@ -20,6 +21,14 @@ const nodeCreate_source = async (uid, _class, _division, PRN) => {
   let source_division = {};
   source_division["/Source/" + _division + "/" + uid] = "";
   await db.ref().update(source_division);
+};
+
+const all_tasks_update = async (uid, group) => {
+  console.log("updateeeeeeeeeeeeee: ", group);
+  const all_task_ref = db.ref("All-Tasks/" + group);
+  const task_ref = db.ref("To-Do-List/" + uid + "/" + group);
+
+  await copyFbRecord(all_task_ref, task_ref);
 };
 
 const add_nodes = async (req, res, next) => {
@@ -40,6 +49,8 @@ const add_nodes = async (req, res, next) => {
       await nodeCreate_source(req.decodedClaims.uid, _class, _division, PRN);
 
       //update
+      await all_tasks_update(req.decodedClaims.uid, _class);
+      await all_tasks_update(req.decodedClaims.uid, _division);
     } else {
       const cache_data = await cache_middleware(req.decodedClaims.uid);
 

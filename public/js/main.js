@@ -385,3 +385,29 @@ $(".task-details").click(function () {
   console.log(created);
   console.log(created_at);
 });
+
+$(".completed_task").click(function () {
+  const group = $(this).data("group");
+  const id = $(this).data("id");
+  const status = $(this).data("status");
+
+  let data = {};
+  data.key = id;
+  data.status = status;
+
+  console.log(group);
+  console.log(data);
+  if (confirm("Are you sure?")) {
+    axios
+      .delete("/completed/" + group, data)
+      .then(function (response) {
+        console.log(response);
+        //location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    location.reload();
+  }
+});

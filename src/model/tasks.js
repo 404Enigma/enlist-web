@@ -82,12 +82,11 @@ const mark_as_important = async (user, task, group) => {
       await imp_task_ref.remove();
     } else {
       task_ref.update({ status: true });
+      const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "IMP" + "/" + group + "/Task" + key);
+
+      await copyFbRecord(task_ref, new_task_ref);
     }
   });
-
-  const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "IMP" + "/" + group + "/Task" + key);
-
-  await copyFbRecord(task_ref, new_task_ref);
 };
 
 const mark_as_unimportant = async (user, task, group) => {
