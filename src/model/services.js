@@ -26,20 +26,24 @@ const trash_a_bin_task = async (user, task, group) => {
 
 const delete_a_task = async (user, task, group) => {
   const key = task.key;
-  console.log(user.uid);
-  console.log(key);
-  console.log(group);
+  const status = task.status;
 
   const task_ref = db.ref("To-Do-List/" + user.uid + "/" + group + "/Task" + key);
+  const imp_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "IMP" + "/" + group + "/Task" + key);
 
   task_ref.update({
     deleted: moment().unix(),
   });
 
+  task_ref.once("value", async function (snapshot) {
+    if (snapshot.val().status == true) {
+      await imp_task_ref.remove();
+    }
+  });
+
   const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "Deleted" + "/" + group + "/Task" + key);
-  console.log(moment().unix());
+
   await moveFbRecord(task_ref, new_task_ref);
-  console.log("22222");
 };
 
 const get_all_deleted_tasks = async (uid) => {

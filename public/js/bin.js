@@ -31,11 +31,13 @@ $(".delete-task").click(function () {
 });
 
 $(".restore-task").click(function () {
-  var group = $(this).data("group");
-  var id = $(this).data("id");
+  const group = $(this).data("group");
+  const id = $(this).data("id");
+  const status = $(this).data("status");
 
   let data = {};
   data.key = id;
+  data.status = status;
 
   console.log(group);
   console.log(data);

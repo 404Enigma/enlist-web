@@ -280,11 +280,12 @@ if (typeof done_personal != "undefined" && done_personal != null) {
 if (typeof trash_class != "undefined" && trash_class != null) {
   trash_class.addEventListener("click", () => {
     console.log("done clicked");
-    var keyID = document.getElementById("data-taskkey");
-    var key = keyID.getAttribute("data-taskkey");
+    const keyID = document.getElementById("data-taskkey");
+    const key = keyID.getAttribute("data-taskkey");
+    const status = keyID.getAttribute("data-status");
 
     console.log(key);
-    let data = { key };
+    let data = { key, status };
 
     axios({
       method: "post",
@@ -364,6 +365,8 @@ $(".task-details").click(function () {
 
   $("#data-taskkey").attr("data-taskkey", id);
   $("#data-taskkey").attr("data-created_at", created);
+  $("#data-taskkey").attr("data-status", status);
+
   console.log(title);
   console.log(id);
   console.log(description);

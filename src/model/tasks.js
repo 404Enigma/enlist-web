@@ -190,10 +190,17 @@ const restore_a_Task = async (user, task, group) => {
 
 const restore_a_bin_Task = async (user, task, group) => {
   const key = task.data.key;
-  console.log(task.data.key);
+  const status = task.data.status;
+
   const task_ref = db.ref("To-Do-List/" + user.uid + "/" + "Deleted" + "/" + group + "/Task" + key);
   const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + group + "/Task" + key);
+  const imp_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "IMP" + "/" + group + "/Task" + key);
 
+  task_ref.once("value", async function (snapshot) {
+    if (snapshot.val().status == true) {
+      await moveFbRecord(task_ref, imp_task_ref);
+    }
+  });
   await moveFbRecord(task_ref, new_task_ref);
 };
 
