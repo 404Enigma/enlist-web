@@ -200,6 +200,7 @@
                 data-description="<%= task.description%>"
                 data-deadline="<%= task.deadline%>"
                 data-created="<%= task.created%>"
+                data-status="<%= task.status%>"
               >
 
                     <%}else if(task.tomorrow){%> 
@@ -210,6 +211,7 @@
                         data-description="<%= task.description%>"
                         data-deadline="<%= task.deadline%>"
                         data-created="<%= task.created%>"
+                        data-status="<%= task.status%>"
                       >
                       <% } else{%>
                           <div
@@ -219,6 +221,7 @@
                           data-description="<%= task.description%>"
                           data-deadline="<%= task.deadline%>"
                           data-created="<%= task.created%>"
+                          data-status="<%= task.status%>"
                         >
                         <%  }%> 
                         
@@ -285,7 +288,13 @@
                   <% if ((metadata.standard) === 'class'){%>
                     <a  type="button" id="trash_class"><i class="far fa-trash-alt fa-lg"></i></a>
                     <a  type="button" id="done_class"><i class="far fa-check-square fa-lg"></i></a>
-                    <a  type="button" id="IMP_class"><i class="far fa-star fa-lg"></i></a>
+                    <% if(tasks.status === 'true'){  %>
+                      <a  type="button" id="IMP_class" data-impstatus=""><i class="fas fa-star fa-lg"></i></a>
+<h1>true</h1>
+                      <% }else{%>
+                        <a  type="button" id="IMP_class"><i class="far fa-star fa-lg"></i></a>
+                        <h1>false</h1>
+                        <% } %> 
                       <%} %>
                     <% if ((metadata.standard) === 'division'){%>
                       <a  type="button" id="trash_division"><i class="far fa-trash-alt fa-lg"></i></a>

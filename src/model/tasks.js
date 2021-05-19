@@ -17,6 +17,7 @@ const add_a_task = (user, task, group, categorie) => {
     description: task.description,
     key: uniqkey,
     created: moment().unix(),
+    status: false,
   };
 
   if (categorie === "private") {
@@ -70,21 +71,22 @@ const update_a_task = (user, task, group) => {
 };
 
 const mark_as_important = async (user, task, group) => {
-  const uniquekey = task.key;
+  const key = task.key;
 
-  console.log(uniquekey);
-  const task_ref = db.ref("To-Do-List/" + user.uid + "/" + group + "/Task" + uniquekey);
-  const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "IMP" + "/" + group + "/Task" + uniquekey);
+  const task_ref = db.ref("To-Do-List/" + user.uid + "/" + group + "/Task" + key);
+
+  task_ref.update({ status: true });
+  const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "IMP" + "/" + group + "/Task" + key);
 
   await copyFbRecord(task_ref, new_task_ref);
 };
 
 const mark_as_unimportant = async (user, task, group) => {
-  const uniquekey = task.key;
+  const key = task.key;
 
-  console.log(uniquekey);
-  const task_ref = db.ref("To-Do-List/" + user.uid + "/" + "IMP" + "/" + group + "/Task" + uniquekey);
-  const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + group + "/Task" + uniquekey);
+  const task_ref = db.ref("To-Do-List/" + user.uid + "/" + "IMP" + "/" + group + "/Task" + key);
+  task_ref.update({ status: false });
+  const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + group + "/Task" + key);
 
   await moveFbRecord(task_ref, new_task_ref);
 };

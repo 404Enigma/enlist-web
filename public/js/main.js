@@ -349,11 +349,13 @@ $(".task-details").click(function () {
   var description = $(this).data("description");
   var deadline = $(this).data("deadline");
   var created = $(this).data("created");
+  var status = $(this).data("status");
 
   const date = moment(deadline, "DD MMMM YYYY").format("YYYY-MM-DD");
 
   var created_at = moment.unix(created).format("DD MMMM YYYY");
   console.log(created_at);
+  console.log(status);
 
   $("#title_edit").val(title);
   $("#description_edit").val(description);
