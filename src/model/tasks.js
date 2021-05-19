@@ -75,7 +75,16 @@ const mark_as_important = async (user, task, group) => {
 
   const task_ref = db.ref("To-Do-List/" + user.uid + "/" + group + "/Task" + key);
 
-  task_ref.update({ status: true });
+  task_ref.once("value", async function (snapshot) {
+    if (snapshot.val().status == true) {
+      task_ref.update({ status: false });
+      const imp_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "IMP" + "/" + group + "/Task" + key);
+      await imp_task_ref.remove();
+    } else {
+      task_ref.update({ status: true });
+    }
+  });
+
   const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "IMP" + "/" + group + "/Task" + key);
 
   await copyFbRecord(task_ref, new_task_ref);
@@ -169,12 +178,18 @@ const mark_as_completed = (user, task, group) => {
   const key = task.key;
 
   const task_ref = db.ref("To-Do-List/" + user.uid + "/" + group + "/Task" + key);
+  const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "Completed" + "/" + group + "/Task" + key);
+  const imp_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "IMP" + "/" + group + "/Task" + key);
 
   task_ref.update({
     completed: moment().unix(),
   });
 
-  const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "Completed" + "/" + group + "/Task" + key);
+  task_ref.once("value", async function (snapshot) {
+    if (snapshot.val().status == true) {
+      await imp_task_ref.remove();
+    }
+  });
 
   moveFbRecord(task_ref, new_task_ref);
 };
@@ -184,6 +199,13 @@ const restore_a_Task = async (user, task, group) => {
   console.log(task.data.key);
   const task_ref = db.ref("To-Do-List/" + user.uid + "/" + "Completed" + "/" + group + "/Task" + key);
   const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + group + "/Task" + key);
+  const imp_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "IMP" + "/" + group + "/Task" + key);
+
+  task_ref.once("value", async function (snapshot) {
+    if (snapshot.val().status == true) {
+      await moveFbRecord(task_ref, imp_task_ref);
+    }
+  });
 
   await moveFbRecord(task_ref, new_task_ref);
 };

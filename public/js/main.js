@@ -226,8 +226,10 @@ if (typeof done_class != "undefined" && done_class != null) {
     var keyID = document.getElementById("data-taskkey");
     var key = keyID.getAttribute("data-taskkey");
 
+    const status = keyID.getAttribute("data-status");
+
     console.log(key);
-    let data = { key };
+    let data = { key, status };
 
     axios({
       method: "post",
@@ -245,8 +247,10 @@ if (typeof done_division != "undefined" && done_division != null) {
     var keyID = document.getElementById("data-taskkey");
     var key = keyID.getAttribute("data-taskkey");
 
+    const status = keyID.getAttribute("data-status");
+
     console.log(key);
-    let data = { key };
+    let data = { key, status };
 
     axios({
       method: "post",
@@ -264,8 +268,10 @@ if (typeof done_personal != "undefined" && done_personal != null) {
     var keyID = document.getElementById("data-taskkey");
     var key = keyID.getAttribute("data-taskkey");
 
+    const status = keyID.getAttribute("data-status");
+
     console.log(key);
-    let data = { key };
+    let data = { key, status };
 
     axios({
       method: "post",
@@ -303,8 +309,10 @@ if (typeof trash_division != "undefined" && trash_division != null) {
     var keyID = document.getElementById("data-taskkey");
     var key = keyID.getAttribute("data-taskkey");
 
+    const status = keyID.getAttribute("data-status");
+
     console.log(key);
-    let data = { key };
+    let data = { key, status };
 
     axios({
       method: "post",
@@ -322,8 +330,10 @@ if (typeof trash_personal != "undefined" && trash_personal != null) {
     var keyID = document.getElementById("data-taskkey");
     var key = keyID.getAttribute("data-taskkey");
 
+    const status = keyID.getAttribute("data-status");
+
     console.log(key);
-    let data = { key };
+    let data = { key, status };
 
     axios({
       method: "post",
