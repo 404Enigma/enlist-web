@@ -20,7 +20,7 @@ const trash_Task = async (req, res) => {
       picture: req.decodedClaims.picture,
     };
 
-    console.log("Group :", req.params.group);
+    console.log("Trash Group :", req.params.group);
 
     try {
       await trash_a_task(user, req.body, req.params.group);
@@ -37,7 +37,6 @@ const deleteTask = async (req, res) => {
     res.redirect("/login");
   } else {
     let group;
-    console.log(req._payload);
 
     if (req.params.group == "class") group = req._payload._class;
     if (req.params.group == "division") group = req._payload._division;
@@ -51,7 +50,7 @@ const deleteTask = async (req, res) => {
     };
 
     console.log(req.body);
-    console.log("Group :", group);
+    console.log("Trash sss Group :", group);
     //res.json("success");
 
     try {

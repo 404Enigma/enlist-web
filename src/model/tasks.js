@@ -56,9 +56,17 @@ const update_a_task = (user, task, group) => {
     created: task.created,
   };
 
-  var update_a_task = {};
-  update_a_task["/To-Do-List/" + user.uid + "/" + group + "/" + "Task" + task.key] = task_Data;
-  db.ref().update(update_a_task);
+  ref = db.ref("/To-Do-List/" + user.uid + "/" + group + "/" + "Task" + task.key);
+
+  ref.update({
+    title: task.title,
+    deadline: updated_date,
+    description: task.description,
+  });
+
+  // var update_a_task = {};
+  // update_a_task["/To-Do-List/" + user.uid + "/" + group + "/" + "Task" + task.key] = task_Data;
+  // db.ref().update(update_a_task);
 };
 
 const mark_as_important = async (user, task, group) => {
@@ -77,16 +85,6 @@ const mark_as_unimportant = async (user, task, group) => {
   console.log(uniquekey);
   const task_ref = db.ref("To-Do-List/" + user.uid + "/" + "IMP" + "/" + group + "/Task" + uniquekey);
   const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + group + "/Task" + uniquekey);
-
-  await moveFbRecord(task_ref, new_task_ref);
-};
-
-const mark_as_completed = async (user, task, group) => {
-  const uniquekey = task.key;
-
-  console.log(uniquekey);
-  const task_ref = db.ref("To-Do-List/" + user.uid + "/" + group + "/Task" + uniquekey);
-  const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "Completed" + "/" + group + "/Task" + uniquekey);
 
   await moveFbRecord(task_ref, new_task_ref);
 };
@@ -165,10 +163,16 @@ const get_all_completed_tasks = async (uid) => {
   return group_task;
 };
 
-const complete_a_task = (user, task, group) => {
+const mark_as_completed = (user, task, group) => {
   const key = task.key;
+
   const task_ref = db.ref("To-Do-List/" + user.uid + "/" + group + "/Task" + key);
-  const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "IMP" + "/Task" + key);
+
+  task_ref.update({
+    completed: moment().unix(),
+  });
+
+  const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "Completed" + "/" + group + "/Task" + key);
 
   moveFbRecord(task_ref, new_task_ref);
 };
@@ -217,7 +221,7 @@ module.exports = {
   add_a_task,
   get_all_tasks,
   update_a_task,
-  complete_a_task,
+
   mark_as_important,
   mark_as_unimportant,
   mark_as_completed,
