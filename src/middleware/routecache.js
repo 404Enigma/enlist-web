@@ -3,8 +3,9 @@ const myCache = new NodeCache({ stdTTL: 100 });
 
 const assign = require("../lib/assign");
 const { get_PRN } = require("../model/nodes");
+const { get_metadata } = require("../utils/methods");
 
-const cache_middleware = async (uid) => {
+const cache_middleware = async (uid, email) => {
   try {
     if (myCache.has(uid)) {
       console.log("using cached data");
@@ -13,9 +14,10 @@ const cache_middleware = async (uid) => {
       return reply;
     }
 
-    PRN = await get_PRN(uid);
-    _class = assign.check_class(PRN);
-    _division = assign.check_division(PRN);
+    const { PRN, _class, _division } = await get_metadata(email);
+    // PRN = await get_PRN(uid);
+    // _class = assign.check_class(PRN);
+    // _division = assign.check_division(PRN);
 
     const respone = { PRN, _class, _division };
 
@@ -24,7 +26,7 @@ const cache_middleware = async (uid) => {
 
     return respone;
   } catch (error) {
-    res.send(error.message);
+    return error;
   }
 };
 

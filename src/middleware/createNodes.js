@@ -1,7 +1,7 @@
 const admin = require("../db/db");
 const db = admin.database();
 
-const { get_PRN_by_email } = require("../utils/methods");
+const { get_metadata } = require("../utils/methods");
 const assign = require("../lib/assign");
 const { check_uid, get_PRN } = require("../../src/model/nodes");
 const { cache_middleware } = require("../middleware/routecache");
@@ -37,22 +37,27 @@ const add_nodes = async (req, res, next) => {
   if (!req.decodedClaims) {
     res.redirect("/login");
   } else {
-    const status = await check_uid(req.decodedClaims.uid);
+    const status = await check_uid(req.decodedClaims.uid); //check if To-do-list node exists
 
     console.log("Status: " + status);
 
     if (status == false) {
-      PRN = await get_PRN_by_email(req.decodedClaims.email);
-      _class = assign.check_class(PRN);
-      _division = assign.check_division(PRN);
-      await nodeCreate_prnsource(req.decodedClaims.uid, PRN);
+      //fetch PRN,class,division from database
+      const metadata = await get_metadata(req.decodedClaims.email);
+      PRN = metadata.PRN;
+      _class = metadata._class;
+      _division = metadata._division;
+      // _class = assign.check_class(PRN);
+      // _division = assign.check_division(PRN);
+
+      //await nodeCreate_prnsource(req.decodedClaims.uid, PRN);
       await nodeCreate_source(req.decodedClaims.uid, _class, _division, PRN);
 
       //update
       await all_tasks_update(req.decodedClaims.uid, _class);
       await all_tasks_update(req.decodedClaims.uid, _division);
     } else {
-      const cache_data = await cache_middleware(req.decodedClaims.uid);
+      const cache_data = await cache_middleware(req.decodedClaims.uid, req.decodedClaims.email);
 
       console.log("conffff: ", cache_data);
 

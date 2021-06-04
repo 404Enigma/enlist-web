@@ -14,7 +14,7 @@ const get_PRN = async (uid) => {
 
 const check_uid = async (uid) => {
   let status;
-  const ref = db.ref(`/PRN-Source`);
+  const ref = db.ref(`To-Do-List`);
   await ref.once("value", (snapshot) => {
     if (snapshot.exists()) {
       if (snapshot.child(uid).exists()) {
