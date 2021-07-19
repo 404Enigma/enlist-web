@@ -26,10 +26,6 @@ router.get("/settings", (req, res) => {
   res.render("/templates/settings.html");
 });
 
-router.get("/reviews", (req, res) => {
-  res.render("pages/review");
-});
-
 router.use(require("./tasks/services"));
 
 module.exports = router;

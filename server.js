@@ -23,6 +23,7 @@ app.use(cookieParser());
 // });
 
 app.use(require("./routes/index"));
+app.use(require("./routes/reviews"));
 app.use(require("./routes/login/login"));
 app.use("/tasks", require("./routes/tasks/tasks"));
 

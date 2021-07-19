@@ -6,6 +6,13 @@
     <title>ENLIST | Reviews 🚀</title>
     <link rel="icon" href="/images/logo.png" type="image/gif" sizes="270×270" />
     <link rel="stylesheet" href="/css/review.css" />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
   <body>
     <!-- NAVBAR -->
@@ -14,15 +21,7 @@
         <img src="/images/logo.png" width="50" height="50" alt="Logo`" />
         ENLIST | Reviews 🚀
       </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
@@ -38,16 +37,20 @@
     </nav>
 
     <div class="d-flex justify-content-center">
-      <form class="px-4">
+      <form class="px-4" id="review_form">
         <input name="name" type="text" class="feedback-input" placeholder="Name *" required />
         <input name="email" type="text" class="feedback-input" placeholder="Email *" required />
         <textarea name="text" class="feedback-input" placeholder="Comments *" required></textarea>
         <div class="star-rating">
           <fieldset>
-            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Outstanding"></label>
-            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Very Good"></label>
-            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Good"></label>
-            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Poor"></label>
+            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Outstanding"></label> <input type="radio" id="star4" name="rating" value="4" /><label
+              for="star4"
+              title="Very Good"
+            ></label>
+            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Good"></label> <input type="radio" id="star2" name="rating" value="2" /><label
+              for="star2"
+              title="Poor"
+            ></label>
             <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Very Poor"></label>
           </fieldset>
         </div>
@@ -73,9 +76,8 @@
           <div class="card-body">
             <h4 class="card-title">Pratyush Jain</h4>
             <p class="card-text">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis aspernatur repudiandae aperiam animi
-              enim quibusdam adipisci eligendi dolor neque. Quos culpa sequi temporibus ducimus fuga nisi atque mollitia
-              vel consequuntur?
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis aspernatur repudiandae aperiam animi enim quibusdam adipisci eligendi dolor neque. Quos culpa sequi temporibus ducimus
+              fuga nisi atque mollitia vel consequuntur?
             </p>
           </div>
           <div class="card-footer">15 days ago</div>
@@ -85,5 +87,6 @@
     <!-- SCRIPTS -->
     <script src="/plugins/js/jquery.slim.min.js"></script>
     <script src="/plugins/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/reviews.js"></script>
   </body>
 </html>
