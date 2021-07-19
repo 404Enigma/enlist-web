@@ -17,6 +17,7 @@ if (typeof review_form != "undefined" && review_form != null) {
       .then(function (response) {
         //handle success
         console.log(response);
+        location.reload();
       })
       .catch(function (response) {
         //handle error
