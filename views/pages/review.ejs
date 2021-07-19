@@ -63,25 +63,21 @@
       <div class="container">
         <h2 class="my-5 ml-sm-5">Feedbacks</h2>
         <!-- FEEDBACK -->
+        <% reviews_data.map(review => {%>
         <div class="card mb-5 mx-auto shadow-sm" style="max-width: 48rem">
           <div class="card-header">
-            <div class="star-rating">
-              <i class="fas fa-star fa-lg"></i>
-              <i class="fas fa-star fa-lg"></i>
-              <i class="fas fa-star fa-lg"></i>
-              <i class="far fa-star fa-lg"></i>
-              <i class="far fa-star fa-lg"></i>
+            <div class="star-rating" data-rating="<%= review.rating%>">
+              Rating: <%= review.rating%>
+              <!-- <i class="fas fa-star fa-lg"></i> -->
             </div>
           </div>
           <div class="card-body">
-            <h4 class="card-title">Pratyush Jain</h4>
-            <p class="card-text">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis aspernatur repudiandae aperiam animi enim quibusdam adipisci eligendi dolor neque. Quos culpa sequi temporibus ducimus
-              fuga nisi atque mollitia vel consequuntur?
-            </p>
+            <h4 class="card-title"><%= review.name %> </h4>
+            <p class="card-text"> <%= review.description %> </p>
           </div>
-          <div class="card-footer">15 days ago</div>
+          <div class="card-footer"><%= review.created_at %></div>
         </div>
+        <% }) %>
       </div>
     </section>
     <!-- SCRIPTS -->
