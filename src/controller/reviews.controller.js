@@ -28,7 +28,7 @@ const get_reviews = async (req, res) => {
     reviews_data.push(review_obj);
   });
 
-  console.log(reviews_data);
+  //   console.log(reviews_data);
 
   res.render("pages/review", { reviews_data });
 };
