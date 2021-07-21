@@ -9,7 +9,7 @@ const get_metadata = async (email) => {
     console.log("No such document!");
   } else {
     console.log("Document data:", doc.data());
-    return { PRN: doc.data().PRN, _class: doc.data().Class, _division: doc.data().SubClass };
+    return { PRN: doc.data().PRN, _class: doc.data().Class, _division: doc.data().SubClass, _year: doc.data().Year };
   }
 };
 

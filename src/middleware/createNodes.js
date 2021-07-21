@@ -41,6 +41,7 @@ const add_nodes = async (req, res, next) => {
       PRN = metadata.PRN;
       _class = metadata._class;
       _division = metadata._division;
+      _year = metadata._year;
 
       await nodeCreate_source(req.decodedClaims.uid, _class, _division, PRN);
 
@@ -55,12 +56,14 @@ const add_nodes = async (req, res, next) => {
       PRN = cache_data.PRN;
       _class = cache_data._class;
       _division = cache_data._division;
+      _year = cache_data._year;
     }
 
     const _payload = {
       PRN,
       _class,
       _division,
+      _year,
     };
 
     req._payload = _payload;

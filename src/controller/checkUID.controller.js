@@ -2,10 +2,8 @@ const admin = require("../../src/db/db");
 const db = admin.firestore();
 
 const docRef = db.collection("Member Access");
-const { logout_status } = require("../utils/methods");
 
 const checkUID = (req, res) => {
-  console.log(req.body);
   const { email, PRN } = req.body;
 
   docRef
@@ -13,24 +11,18 @@ const checkUID = (req, res) => {
     .get()
     .then(async (doc) => {
       if (doc.exists) {
-        console.log(doc.data());
-
         if (Number(doc.data().PRN) === Number(PRN)) {
           res.send("matched");
         } else {
           res.send("PRN is wrong");
         }
       } else {
-        res.send("Email Document does not exist");
+        res.send("Enter your SIT mail id");
       }
     });
 };
 
 const logout = async (req, res) => {
-  // if (req.decodedClaims) {
-  //   await logout_status(req.decodedClaims.email);
-  // }
-
   res.clearCookie("__session");
   res.redirect("/");
 };

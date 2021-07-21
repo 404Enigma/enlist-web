@@ -44,7 +44,7 @@ const get_tasks = async (req, res) => {
     const tasks = await get_all_tasks(req.decodedClaims.uid, group);
 
     metadata.group = group;
-    metadata.badge = req.badge;
+    // metadata.badge = req.badge;
 
     tasks.map((task) => {
       task.deadline = moment.unix(task.deadline).format("DD MMMM YYYY");

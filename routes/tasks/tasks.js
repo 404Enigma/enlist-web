@@ -10,7 +10,7 @@ const tasks = require("../../src/controller/task.controller");
 const redirect = require("../../src/controller/route.controller");
 
 router.get("/", redirect.to_class); // GET class page
-router.get("/:group", checkCookie, add_nodes, add_badge, tasks.get_tasks); //GET group page
+router.get("/:group", checkCookie, add_nodes, tasks.get_tasks); //GET group page
 router.post("/addTask/:group", checkCookie, add_nodes, tasks.add_task); //POST add task
 router.post("/updateTask/:group", checkCookie, add_nodes, tasks.update_Task); //POST update task
 router.post("/important/:group", checkCookie, add_nodes, tasks.important_Task); //POST important task
