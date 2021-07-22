@@ -25,6 +25,8 @@ const add_a_task = (user, task, group, categorie) => {
     personal_tasks["/To-Do-List/" + user.uid + "/" + group + "/" + "Task" + uniqkey] = task_Data;
     db.ref().update(personal_tasks);
   } else {
+    task_Data.shared = user.name;
+
     var urlRef = db.ref().child("Source/" + group);
 
     urlRef.once("value", function (snapshot) {
