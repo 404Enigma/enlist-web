@@ -230,6 +230,7 @@ if (typeof done_class != "undefined" && done_class != null) {
 
     console.log(key);
     let data = { key, status };
+    console.log("data: ", data);
 
     axios({
       method: "post",
@@ -386,28 +387,50 @@ $(".task-details").click(function () {
   console.log(created_at);
 });
 
-$(".completed_task").click(function () {
-  const group = $(this).data("group");
-  const id = $(this).data("id");
-  const status = $(this).data("status");
+// $(".completed_task").click(function () {
+//   const group = $(this).data("group");
+//   const id = $(this).data("id");
+//   const status = $(this).data("status");
 
-  let data = {};
-  data.key = id;
-  data.status = status;
+//   let data = {};
+//   data.key = id;
+//   data.status = status;
 
-  console.log(group);
-  console.log(data);
-  if (confirm("Are you sure?")) {
-    axios
-      .delete("/completed/" + group, data)
-      .then(function (response) {
-        console.log(response);
-        //location.reload();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+//   console.log(group);
+//   console.log(data);
+//   if (confirm("Are you sure?")) {
+//     axios
+//       .delete("/completed/" + group, data)
+//       .then(function (response) {
+//         console.log(response);
+//         //location.reload();
+//       })
+//       .catch(function (error) {
+//         console.log(error);
+//       });
+
+//     location.reload();
+//   }
+// });
+
+const complete_task = document.getElementById("complete_task");
+
+if (typeof complete_task != "undefined" && complete_task != null) {
+  complete_task.addEventListener("click", () => {
+    var keyID = document.getElementById("complete_task_data");
+    var key = keyID.getAttribute("data-id");
+    const status = keyID.getAttribute("data-status");
+
+    console.log(key);
+    let data = { key, status };
+    console.log("data: ", data);
+
+    axios({
+      method: "post",
+      url: "/tasks/completed/class",
+      data,
+    });
 
     location.reload();
-  }
-});
+  });
+}

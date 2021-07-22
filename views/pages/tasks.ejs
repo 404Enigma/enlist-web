@@ -227,9 +227,9 @@
                         <%  }%> 
                         
                 <div class="col-1">
-                  <a class="completed_task" data-id="<%=task.key%>" data-status="<%= task.status%>" data-group="<%=metadata.group%>">
+                  <a class="completed_task" id="complete_task_data" data-id="<%=task.key%>" data-status="<%= task.status%>" data-group="<%=metadata.group%>">
                     <i class="far fa-check-circle fa-hover-hidden"></i>
-                    <i class="fas fa-check-circle fa-hover-show"> </i>
+                    <i type="button" id="complete_task" class="fas fa-check-circle fa-hover-show"> </i>
                   </a>
                 </div>
                 <div class="col-11 task-content" data-toggle="modal" data-target="#modal_aside_right">
