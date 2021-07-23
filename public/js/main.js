@@ -429,8 +429,13 @@ if (typeof complete_task != "undefined" && complete_task != null) {
       method: "post",
       url: "/tasks/completed/class",
       data,
-    });
-
-    location.reload();
+    })
+      .then(function (response) {
+        console.log("response: " + response);
+        location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 }

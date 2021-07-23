@@ -8,12 +8,11 @@ const db = admin.database();
 const taskRef = db.ref("To-Do-List");
 
 const add_a_task = (user, task, group, categorie) => {
-  task["date"] = moment(task.date).format("X");
   const uniqkey = "-" + Math.floor(1000000000 + Math.random() * 9000000000);
 
   const task_Data = {
     title: task.title,
-    deadline: task.date,
+    deadline: Number(moment(task.date).format("X")),
     description: task.description,
     key: uniqkey,
     created: moment().unix(),
@@ -25,7 +24,14 @@ const add_a_task = (user, task, group, categorie) => {
     personal_tasks["/To-Do-List/" + user.uid + "/" + group + "/" + "Task" + uniqkey] = task_Data;
     db.ref().update(personal_tasks);
   } else {
-    task_Data.shared = user.name;
+    //Beautify the name for btech students
+    console.log(user.email);
+
+    if (user.email.includes(".btech")) {
+      const sharedby = user.name.split(".");
+      task_Data.shared = sharedby[0] + " " + sharedby[1].split(" ")[0];
+      console.log("shared by: ", task_Data.shared);
+    }
 
     var urlRef = db.ref().child("Source/" + group);
 
