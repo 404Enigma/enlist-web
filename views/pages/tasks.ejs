@@ -276,7 +276,7 @@
                     <form id="update_task_personal">
                           <%} %> 
 
-                    <div id="data-taskkey" data-taskkey="" data-status="" data-created_at=""> </div>
+                    <div id="data-taskkey" data-taskkey="" data-status="" data-created_at="" > </div>
                     <div class="difference">
                       <div>
                         <div class="form-group">
@@ -297,10 +297,8 @@
                       <div class="created__at">Created at :
                         <p id="created-at"></p>
                       </div >
-                      
-                      <div class="shared__by">Shared by :
-                        <p id="shared_by"></p>
-                      </div>
+                      <div class="shared__by" id="shared__by"></div>
+                  
                     <div class="modal-footer align-middle justify-content-between">
                       <% if ((metadata.standard) === 'class'){%>
                         <a  type="button" id="trash_class"><i class="far fa-trash-alt fa-lg"></i></a>

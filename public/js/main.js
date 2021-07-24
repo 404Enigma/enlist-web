@@ -377,6 +377,13 @@ $(".task-details").click(function () {
   $("#created-at").text(created_at);
   $("#shared_by").text(sharedby);
 
+  document.getElementById("shared__by").innerHTML = "";
+  for (var x = 0; x < list_url.length; x++) {
+    var html_insert = 'Shared by :<p id="shared_by"></p>';
+    //console.log(html_insert);
+    document.getElementById("shared__by").innerHTML += html_insert;
+  }
+
   $("#data-taskkey").attr("data-taskkey", id);
   $("#data-taskkey").attr("data-created_at", created);
   $("#data-taskkey").attr("data-status", status);

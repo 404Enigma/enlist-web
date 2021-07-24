@@ -46,18 +46,15 @@ html {
   height: 100px;
 }
 #navbar-text {
-  background-color: coral;
+  /* background-color: coral; */
   color: #fff;
   padding: 10px;
   border-radius: 2px;
   cursor: pointer;
   transition: ease 0.2s;
 }
-#navbar-text:hover {
-  background-color: #fff;
-  border: 2px solid coral;
-  color: #202020;
-  box-shadow: 2px 2px 2px 1px coral;
+.navbar-text img {
+  width: 200px;
 }
 nav .nav-link {
   font-size: larger;
@@ -184,6 +181,10 @@ header .width-container #banner ul li a {
 header .width-container #banner ul li img {
   width: 35px;
   margin-left: -10px;
+}
+
+#images-desktop {
+  border-radius: 9px;
 }
 
 main {
