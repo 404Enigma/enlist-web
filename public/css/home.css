@@ -353,6 +353,7 @@ ul.CTAs a {
 .task-3:hover {
   box-shadow: 2px 2px 2px 1px #fe6019;
 }
+
 .task-title {
   color: rgba(36, 33, 33, 0.808);
   font-weight: 600;
@@ -399,6 +400,8 @@ ul.CTAs a {
 .modal-title {
   text-decoration: underline double coral;
   color: #ff5100;
+  width: 100%;
+  text-align: center;
 }
 
 .modal-title button i {
@@ -409,6 +412,16 @@ ul.CTAs a {
   width: 65%;
 }
 
+.description__footer{
+  bottom: 0;
+  position: absolute;
+}
+
+.created__at, .shared__by{
+  margin: auto 20px;
+  font-size: small;
+}
+
 .modal-footer .fa-trash-alt {
   color: red;
 }
@@ -417,6 +430,13 @@ ul.CTAs a {
 }
 .modal-footer .fa-star {
   color: #fec107;
+}
+
+.difference{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
 }
 
 /* ---------------------------------------------------
