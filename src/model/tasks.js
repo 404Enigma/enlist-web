@@ -34,8 +34,10 @@ const add_a_task = (user, task, group, categorie) => {
       console.log("shared by: ", task_Data.shared);
 
       urlRef = db.ref().child("Source/" + group);
+    } else {
+      task_Data.shared = user.name;
+      urlRef = db.ref().child("Visitor/" + group);
     }
-    urlRef = db.ref().child("Visitor/" + group);
 
     urlRef.once("value", function (snapshot) {
       snapshot.forEach(function (child) {

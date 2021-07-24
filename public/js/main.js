@@ -362,17 +362,20 @@ $(".task-details").click(function () {
   var deadline = $(this).data("deadline");
   var created = $(this).data("created");
   var status = $(this).data("status");
+  var sharedby = $(this).data("sharedby");
 
   const date = moment(deadline, "DD MMMM YYYY").format("YYYY-MM-DD");
 
   var created_at = moment.unix(created).format("DD MMMM YYYY");
   console.log(created_at);
   console.log(status);
+  console.log("sharedby:", sharedby);
 
   $("#title_edit").val(title);
   $("#description_edit").val(description);
   $("#deadline_edit11").val(date);
   $("#created-at").text(created_at);
+  $("#shared_by").text(sharedby);
 
   $("#data-taskkey").attr("data-taskkey", id);
   $("#data-taskkey").attr("data-created_at", created);

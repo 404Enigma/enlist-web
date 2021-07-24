@@ -202,6 +202,9 @@
                 data-deadline="<%= task.deadline%>"
                 data-created="<%= task.created%>"
                 data-status="<%= task.status%>"
+                <% if(task.shared){%>
+                  data-sharedby="<%= task.shared%>"
+                  <% } %> 
               >
 
                     <%}else if(task.tomorrow){%> 
@@ -213,6 +216,9 @@
                         data-deadline="<%= task.deadline%>"
                         data-created="<%= task.created%>"
                         data-status="<%= task.status%>"
+                        <% if(task.shared){%>
+                          data-sharedby="<%= task.shared%>"
+                          <% } %> 
                       >
                       <% } else{%>
                           <div
@@ -223,6 +229,9 @@
                           data-deadline="<%= task.deadline%>"
                           data-created="<%= task.created%>"
                           data-status="<%= task.status%>"
+                          <% if(task.shared){%>
+                            data-sharedby="<%= task.shared%>"
+                            <% } %> 
                         >
                         <%  }%> 
                         
@@ -288,8 +297,9 @@
                       <div class="created__at">Created at :
                         <p id="created-at"></p>
                       </div >
+                      
                       <div class="shared__by">Shared by :
-                        <p id="created-at">Pratyush Jain</p>
+                        <p id="shared_by"></p>
                       </div>
                     <div class="modal-footer align-middle justify-content-between">
                       <% if ((metadata.standard) === 'class'){%>
