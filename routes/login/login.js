@@ -6,6 +6,11 @@ const { checkUID } = require("../../src/controller/checkUID.controller");
 const { checkCookie, savecookie } = require("../../src/middleware/auth_middleware");
 
 router.get("/login", (req, res) => {
+  if (req.query.loginas === "guest") {
+    console.log("guest login");
+    return res.render("pages/login", { guest: true });
+  }
+
   res.render("pages/login");
 });
 

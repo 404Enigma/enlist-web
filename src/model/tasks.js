@@ -24,6 +24,7 @@ const add_a_task = (user, task, group, categorie) => {
     personal_tasks["/To-Do-List/" + user.uid + "/" + group + "/" + "Task" + uniqkey] = task_Data;
     db.ref().update(personal_tasks);
   } else {
+    let urlRef;
     //Beautify the name for btech students
     console.log(user.email);
 
@@ -31,9 +32,10 @@ const add_a_task = (user, task, group, categorie) => {
       const sharedby = user.name.split(".");
       task_Data.shared = sharedby[0] + " " + sharedby[1].split(" ")[0];
       console.log("shared by: ", task_Data.shared);
-    }
 
-    var urlRef = db.ref().child("Source/" + group);
+      urlRef = db.ref().child("Source/" + group);
+    }
+    urlRef = db.ref().child("Visitor/" + group);
 
     urlRef.once("value", function (snapshot) {
       snapshot.forEach(function (child) {

@@ -32,31 +32,40 @@
                   <img src="/images/logo.gif" alt="logo" class="logo" />
                 </div>
                 <p class="login-card-description">Sign into your account</p>
+
+                <% if(locals.guest){%>
+                <form id="loginFormasGuest">
+                  <button name="login" id="login" class="btn btn-block login-btn mb-4" type="submit">Login as Guest </button>
+                </form>
+                <% }else{%>
                 <form id="loginForm">
                   <div class="form-group">
                     <label for="PRN" class="sr-only">PRN</label>
                     <input type="text" name="PRN" id="email" class="form-control" placeholder="PRN" maxlength="11" required />
                   </div>
                   <!-- <div class="form-group mb-4">
-                    <label for="password" class="sr-only">Password</label>
-                    <input
-                      type="password"
-                      name="password"
-                      id="password"
-                      class="form-control"
-                      placeholder="***********"
-                    />
-                  </div> -->
+                        <label for="password" class="sr-only">Password</label>
+                        <input
+                          type="password"
+                          name="password"
+                          id="password"
+                          class="form-control"
+                          placeholder="***********"
+                        />
+                      </div> -->
                   <!-- <input
-                    name="login"
-                    id="login"
-                    class="btn btn-block login-btn mb-4"
-                    type="button"
-                    value="Login with B.Tech ID"
-                  /> -->
+                        name="login"
+                        id="login"
+                        class="btn btn-block login-btn mb-4"
+                        type="button"
+                        value="Login with B.Tech ID"
+                      /> -->
                   <!-- <div id="firebaseui-auth-container"> </div> -->
                   <button name="login" id="login btechEmail" class="btn btn-block login-btn mb-4" type="submit">Login with B.Tech ID </button>
+                  <a href="/login?loginas=guest">Login as Guest</a>
                 </form>
+                <%}%>
+
                 <!-- <button type="submit" id="btechEmail">Sign-in with B.Tech ID</button> -->
                 <!-- <div class="g-signin2" data-width="300" data-height="50" data-longtitle="true"></div> -->
                 <!-- </form> -->

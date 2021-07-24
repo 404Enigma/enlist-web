@@ -116,12 +116,58 @@ const signInWithGoogle = (data) => {
 
 const loginForm = document.getElementById("loginForm");
 
-loginForm.onsubmit = async (e) => {
-  e.preventDefault();
+if (typeof loginForm != "undefined" && loginForm != null) {
+  loginForm.onsubmit = async (e) => {
+    e.preventDefault();
 
-  let formData = new FormData(e.target);
-  const data = Object.fromEntries(formData);
-  console.log(data);
+    let formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    console.log(data);
 
-  signInWithGoogle(data);
-};
+    signInWithGoogle(data);
+  };
+}
+
+const loginFormasGuest = document.getElementById("loginFormasGuest");
+
+if (typeof loginFormasGuest != "undefined" && loginFormasGuest != null) {
+  loginFormasGuest.onsubmit = async (e) => {
+    e.preventDefault();
+
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then(async (result) => {
+        // /** @type {firebase.auth.OAuthCredential} */
+        var credential = result.credential;
+
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+
+        user
+          .getIdToken()
+          .then(function (idToken) {
+            window.location.href = "/savecookie?idToken=" + idToken;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+      });
+  };
+}

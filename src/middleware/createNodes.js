@@ -1,19 +1,19 @@
 const admin = require("../db/db");
 const db = admin.database();
 
-const { get_metadata } = require("../utils/methods");
+const { get_metadata, check_member } = require("../utils/methods");
 
 const { check_uid } = require("../../src/model/nodes");
-const { cache_middleware } = require("../middleware/routecache");
+const { cache_middleware, cache_guest } = require("../middleware/routecache");
 const { copyFbRecord } = require("../utils/moveNode");
 
-const nodeCreate_source = async (uid, _class, _division, PRN) => {
+const nodeCreate_source = async (node_name, uid, _class, _division) => {
   let source_class = {};
-  source_class["/Source/" + _class + "/" + uid] = "";
+  source_class[node_name + "/" + _class + "/" + uid] = "";
   await db.ref().update(source_class);
 
   let source_division = {};
-  source_division["/Source/" + _division + "/" + uid] = "";
+  source_division[node_name + "/" + _division + "/" + uid] = "";
   await db.ref().update(source_division);
 };
 
@@ -36,6 +36,28 @@ const add_nodes = async (req, res, next) => {
   console.log("Status: " + status);
 
   if (status == false) {
+    //Check if the user is guest or btech gmail
+    if ((await check_member(req.decodedClaims.email)) == false) {
+      //User is guest user
+      _class = "Class";
+      _division = "Division";
+      PRN = 1234567890;
+
+      await nodeCreate_source("Visitor", req.decodedClaims.uid, _class, _division);
+      const cache_guest_data = await cache_guest(req.decodedClaims.uid, _class, _division, PRN);
+      //Store Guest data to cache
+
+      console.log("cache_guest_data: ", cache_guest_data);
+
+      req._payload = {
+        _class,
+        _division,
+        PRN,
+      };
+
+      return next();
+    }
+
     //fetch PRN,class,division from database
     const metadata = await get_metadata(req.decodedClaims.email);
     PRN = metadata.PRN;
@@ -43,12 +65,32 @@ const add_nodes = async (req, res, next) => {
     _division = metadata._division;
     _year = metadata._year;
 
-    await nodeCreate_source(req.decodedClaims.uid, _class, _division, PRN);
+    await nodeCreate_source("Source", req.decodedClaims.uid, _class, _division);
 
     //update
     await all_tasks_update(req.decodedClaims.uid, _class);
     await all_tasks_update(req.decodedClaims.uid, _division);
   } else {
+    if ((await check_member(req.decodedClaims.email)) == false) {
+      //User is guest user
+      _class = "Class";
+      _division = "Division";
+      PRN = 1234567890;
+
+      const cache_guest_data = await cache_guest(req.decodedClaims.uid, _class, _division, PRN);
+      //Store Guest data to cache
+
+      console.log("cache_guest_data: ", cache_guest_data);
+
+      req._payload = {
+        _class,
+        _division,
+        PRN,
+      };
+
+      return next();
+    }
+
     const cache_data = await cache_middleware(req.decodedClaims.uid, req.decodedClaims.email);
 
     console.log("conffff: ", cache_data);

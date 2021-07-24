@@ -25,4 +25,24 @@ const cache_middleware = async (uid, email) => {
   }
 };
 
-module.exports = { cache_middleware };
+const cache_guest = async (uid, _class, _division, PRN) => {
+  try {
+    if (myCache.has(uid)) {
+      console.log("using cached data");
+      const reply = await myCache.get(uid);
+      console.log(reply);
+      return reply;
+    }
+
+    const respone = { PRN, _class, _division, _year: "Visitor" };
+
+    const saveResult = myCache.set(uid, respone, 100000);
+    console.log("new data cached", saveResult);
+
+    return respone;
+  } catch (error) {
+    return error;
+  }
+};
+
+module.exports = { cache_middleware, cache_guest };

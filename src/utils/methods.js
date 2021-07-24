@@ -13,4 +13,15 @@ const get_metadata = async (email) => {
   }
 };
 
-module.exports = { get_metadata };
+const check_member = async (email) => {
+  const doc = await docRef.doc(email).get();
+  if (!doc.exists) {
+    console.log("No such document!");
+    return false;
+  } else {
+    console.log("Document data:", doc.data());
+    return true;
+  }
+};
+
+module.exports = { get_metadata, check_member };
