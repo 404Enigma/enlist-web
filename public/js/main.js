@@ -24,9 +24,14 @@ if (typeof add_form_class != "undefined" && add_form_class != null) {
       method: "post",
       url: "/tasks/addTask/class",
       data,
-    });
-
-    location.reload();
+    })
+      .then(function (response) {
+        console.log(response);
+        location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 }
 
@@ -43,9 +48,14 @@ if (typeof add_form_division != "undefined" && add_form_division != null) {
       method: "post",
       url: "/tasks/addTask/division",
       data,
-    });
-
-    location.reload();
+    })
+      .then(function (response) {
+        console.log(response);
+        location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 }
 
@@ -63,9 +73,14 @@ if (typeof add_form_personal != "undefined" && add_form_personal != null) {
       method: "post",
       url: "/tasks/addTask/personal",
       data,
-    });
-
-    location.reload();
+    })
+      .then(function (response) {
+        console.log(response);
+        location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 }
 
@@ -377,12 +392,12 @@ $(".task-details").click(function () {
   $("#created-at").text(created_at);
   $("#shared_by").text(sharedby);
 
-  document.getElementById("shared__by").innerHTML = "";
-  for (var x = 0; x < list_url.length; x++) {
-    var html_insert = 'Shared by :<p id="shared_by"></p>';
-    //console.log(html_insert);
-    document.getElementById("shared__by").innerHTML += html_insert;
-  }
+  // document.getElementById("shared__by").innerHTML = "";
+  // for (var x = 0; x < list_url.length; x++) {
+  //   var html_insert = 'Shared by :<p id="shared_by"></p>';
+  //   //console.log(html_insert);
+  //   document.getElementById("shared__by").innerHTML += html_insert;
+  // }
 
   $("#data-taskkey").attr("data-taskkey", id);
   $("#data-taskkey").attr("data-created_at", created);
@@ -423,29 +438,46 @@ $(".task-details").click(function () {
 //   }
 // });
 
-const complete_task = document.getElementById("complete_task");
+$("#complete_task_data").click(function () {
+  var key = $(this).data("id");
+  const status = $(this).data("status");
 
-if (typeof complete_task != "undefined" && complete_task != null) {
-  complete_task.addEventListener("click", () => {
-    var keyID = document.getElementById("complete_task_data");
-    var key = keyID.getAttribute("data-id");
-    const status = keyID.getAttribute("data-status");
+  console.log(key);
+  let data = { key, status };
+  console.log("data: ", data);
 
-    console.log(key);
-    let data = { key, status };
-    console.log("data: ", data);
-
-    axios({
-      method: "post",
-      url: "/tasks/completed/class",
-      data,
-    })
-      .then(function (response) {
-        console.log("response: " + response);
-        location.reload();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  axios({
+    method: "post",
+    url: "/tasks/completed/class",
+    data,
   });
-}
+
+  location.reload();
+});
+
+// const complete_task = document.getElementById("complete_task");
+
+// if (typeof complete_task != "undefined" && complete_task != null) {
+//   complete_task.addEventListener("click", () => {
+//     var keyID = document.getElementById("complete_task_data");
+//     var key = keyID.getAttribute("data-id");
+//     const status = keyID.getAttribute("data-status");
+
+//     console.log(key);
+//     let data = { key, status };
+//     console.log("data: ", data);
+
+//     axios({
+//       method: "post",
+//       url: "/tasks/completed/class",
+//       data,
+//     })
+//       .then(function (response) {
+//         console.log("response: " + response);
+//         location.reload();
+//       })
+//       .catch(function (error) {
+//         console.log(error);
+//       });
+//   });
+// }
