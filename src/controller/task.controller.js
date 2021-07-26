@@ -138,54 +138,56 @@ const completed_Task = (req, res) => {
 
 const important_Task = (req, res) => {
   if (!req.decodedClaims) {
-    res.redirect("/login");
-  } else {
-    let group;
-
-    console.log(req.body);
-    console.log(req._payload);
-    if (req.params.group == "class") group = req._payload._class;
-    if (req.params.group == "division") group = req._payload._division;
-    if (req.params.group == "personal") group = "Pvt";
-
-    const user = {
-      name: req.decodedClaims.name,
-      email: req.decodedClaims.email,
-      uid: req.decodedClaims.uid,
-      picture: req.decodedClaims.picture,
-    };
-
-    console.log(req.body);
-    console.log("Group :", group);
-    //res.json("success");
-    mark_as_important(user, req.body, group);
+    return res.redirect("/login");
   }
+
+  let group;
+
+  // console.log(req.body);
+  // console.log(req._payload);
+  if (req.params.group == "class") group = req._payload._class;
+  if (req.params.group == "division") group = req._payload._division;
+  if (req.params.group == "personal") group = "Pvt";
+
+  const user = {
+    name: req.decodedClaims.name,
+    email: req.decodedClaims.email,
+    uid: req.decodedClaims.uid,
+    picture: req.decodedClaims.picture,
+  };
+
+  // console.log(req.body);
+  // console.log("Group :", group);
+
+  mark_as_important(user, req.body, group);
+  res.json("success");
 };
 
 const unimportant_Task = (req, res) => {
   if (!req.decodedClaims) {
-    res.redirect("/login");
-  } else {
-    let group;
-
-    console.log(req.body);
-    console.log(req._payload);
-    if (req.params.group == "class") group = req._payload._class;
-    if (req.params.group == "division") group = req._payload._division;
-    if (req.params.group == "personal") group = "Pvt";
-
-    const user = {
-      name: req.decodedClaims.name,
-      email: req.decodedClaims.email,
-      uid: req.decodedClaims.uid,
-      picture: req.decodedClaims.picture,
-    };
-
-    console.log(req.body);
-    console.log("Group :", group);
-    //res.json("success");
-    mark_as_unimportant(user, req.body, group);
+    return res.redirect("/login");
   }
+
+  let group;
+
+  // console.log(req.body);
+  // console.log(req._payload);
+  if (req.params.group == "class") group = req._payload._class;
+  if (req.params.group == "division") group = req._payload._division;
+  if (req.params.group == "personal") group = "Pvt";
+
+  const user = {
+    name: req.decodedClaims.name,
+    email: req.decodedClaims.email,
+    uid: req.decodedClaims.uid,
+    picture: req.decodedClaims.picture,
+  };
+
+  // console.log(req.body);
+  // console.log("Group :", group);
+
+  mark_as_unimportant(user, req.body, group);
+  res.json("success");
 };
 
 const get_important_Tasks = async (req, res) => {

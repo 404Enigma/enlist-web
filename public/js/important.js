@@ -23,9 +23,14 @@ if (typeof un_IMP_class != "undefined" && un_IMP_class != null) {
       method: "post",
       url: "/tasks/unimportant/class",
       data,
-    });
-
-    location.reload();
+    })
+      .then(function (response) {
+        console.log(response);
+        location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 }
 
@@ -41,9 +46,14 @@ if (typeof un_IMP_division != "undefined" && un_IMP_division != null) {
       method: "post",
       url: "/tasks/unimportant/division",
       data,
-    });
-
-    location.reload();
+    })
+      .then(function (response) {
+        console.log(response);
+        location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 }
 
@@ -59,8 +69,13 @@ if (typeof un_IMP_personal != "undefined" && un_IMP_personal != null) {
       method: "post",
       url: "/tasks/unimportant/class",
       data,
-    });
-
-    location.reload();
+    })
+      .then(function (response) {
+        console.log(response);
+        location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 }

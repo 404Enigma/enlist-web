@@ -208,9 +208,14 @@ if (typeof IMP_class != "undefined" && IMP_class != null) {
       method: "post",
       url: "/tasks/important/class",
       data,
-    });
-
-    location.reload();
+    })
+      .then(function (response) {
+        console.log(response);
+        location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 }
 
@@ -226,9 +231,14 @@ if (typeof IMP_division != "undefined" && IMP_division != null) {
       method: "post",
       url: "/tasks/important/division",
       data,
-    });
-
-    location.reload();
+    })
+      .then(function (response) {
+        console.log(response);
+        location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 }
 
@@ -244,9 +254,14 @@ if (typeof IMP_personal != "undefined" && IMP_personal != null) {
       method: "post",
       url: "/tasks/important/personal",
       data,
-    });
-
-    location.reload();
+    })
+      .then(function (response) {
+        console.log(response);
+        location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 }
 
