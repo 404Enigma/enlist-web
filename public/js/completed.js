@@ -4,8 +4,6 @@ $(document).ready(function () {
   });
 });
 
-$("#liveToast").toast("show");
-
 $(".delete-task").click(function () {
   var group = $(this).data("group");
   var id = $(this).data("id");
@@ -18,19 +16,17 @@ $(".delete-task").click(function () {
 
   console.log(group);
   console.log(data);
-  if (confirm("Are you sure?")) {
-    axios
-      .delete("/tasks/trash/" + group, { data })
-      .then(function (response) {
-        console.log(response);
-        //location.reload();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
-    location.reload();
-  }
+  document.getElementById("modal__content").innerHTML = "Task has been deleted!";
+  $("#liveToast").toast("show");
+  axios
+    .delete("/tasks/trash/" + group, { data })
+    .then(function (response) {
+      console.log(response);
+      location.reload();
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 });
 
 $(".restore-task").click(function () {
@@ -42,17 +38,15 @@ $(".restore-task").click(function () {
 
   console.log(group);
   console.log(data);
-  if (confirm("Are you sure you want to restore?")) {
-    axios
-      .post("/tasks/restore/" + group, { data })
-      .then(function (response) {
-        console.log(response);
-        //location.reload();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
-    location.reload();
-  }
+  document.getElementById("modal__content").innerHTML = "Task has been restored!";
+  $("#liveToast").toast("show");
+  axios
+    .post("/tasks/restore/" + group, { data })
+    .then(function (response) {
+      console.log(response);
+      location.reload();
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 });
