@@ -12,9 +12,9 @@ const cache_middleware = async (uid, email) => {
       return reply;
     }
 
-    const { PRN, _class, _division, _year } = await get_metadata(email);
+    const { PRN, _class, _division, _branch, _year } = await get_metadata(email);
 
-    const respone = { PRN, _class, _division, _year };
+    const respone = { PRN, _class, _division, _branch, _year };
 
     const saveResult = myCache.set(uid, respone, 100000);
     console.log("new data cached", saveResult);
