@@ -14,10 +14,10 @@ const checkUID = (req, res) => {
         if (Number(doc.data().PRN) === Number(PRN)) {
           res.send("matched");
         } else {
-          res.send("PRN is wrong");
+          res.send("PRN is wrong!");
         }
       } else {
-        res.send("Enter your SIT mail id");
+        res.send("Access using ENLIST's guest portal !");
       }
     });
 };

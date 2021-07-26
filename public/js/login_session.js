@@ -95,8 +95,10 @@ const signInWithGoogle = (data) => {
             console.log(error);
           });
       } else {
-        alert(isReady);
+        // alert(isReady);
 
+        document.getElementById("modal__content").innerHTML = isReady;
+        $("#liveToast").toast("show");
         //window.location.reload();
       }
 

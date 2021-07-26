@@ -1,10 +1,19 @@
 @import url("https://fonts.googleapis.com/css?family=Karla:400,700&display=swap");
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 @import "/plugins/css/bootstrap.min.css";
 
 body {
-  font-family: "Karla", sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #d0d0ce;
   min-height: 100vh;
+}
+
+.error__modal {
+  width: 200px;
+}
+
+.toast-header {
+  background-color: rgb(230, 87, 36);
 }
 
 .brand-wrapper {
