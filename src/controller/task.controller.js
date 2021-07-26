@@ -89,26 +89,27 @@ const add_task = (req, res) => {
 
 const update_Task = (req, res) => {
   if (!req.decodedClaims) {
-    res.redirect("/login");
-  } else {
-    let group;
-    console.log(req._payload);
-    if (req.params.group == "class") group = req._payload._class;
-    if (req.params.group == "division") group = req._payload._division;
-    if (req.params.group == "personal") group = "Pvt";
-
-    const user = {
-      name: req.decodedClaims.name,
-      email: req.decodedClaims.email,
-      uid: req.decodedClaims.uid,
-      picture: req.decodedClaims.picture,
-    };
-
-    console.log(req.body);
-    console.log("Group :", group);
-    //res.json("success");
-    update_a_task(user, req.body, group);
+    return res.redirect("/login");
   }
+
+  let group;
+  console.log(req._payload);
+  if (req.params.group == "class") group = req._payload._class;
+  if (req.params.group == "division") group = req._payload._division;
+  if (req.params.group == "personal") group = "Pvt";
+
+  const user = {
+    name: req.decodedClaims.name,
+    email: req.decodedClaims.email,
+    uid: req.decodedClaims.uid,
+    picture: req.decodedClaims.picture,
+  };
+
+  // console.log(req.body);
+  // console.log("Group :", group);
+
+  update_a_task(user, req.body, group);
+  return res.json("success");
 };
 
 const completed_Task = (req, res) => {

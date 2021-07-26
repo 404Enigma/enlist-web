@@ -107,9 +107,14 @@ if (typeof update_form_class != "undefined" && update_form_class != null) {
       method: "post",
       url: "/tasks/updateTask/class",
       data,
-    });
-
-    location.reload();
+    })
+      .then(function (response) {
+        console.log(response);
+        location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 }
 
@@ -135,9 +140,14 @@ if (typeof update_form_division != "undefined" && update_form_division != null) 
       method: "post",
       url: "/tasks/updateTask/division",
       data,
-    });
-
-    location.reload();
+    })
+      .then(function (response) {
+        console.log(response);
+        location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 }
 
@@ -164,9 +174,14 @@ if (typeof update_form_personal != "undefined" && update_form_personal != null) 
       method: "post",
       url: "/tasks/updateTask/personal",
       data,
-    });
-
-    location.reload();
+    })
+      .then(function (response) {
+        console.log(response);
+        location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 }
 
