@@ -412,13 +412,14 @@ ul.CTAs a {
   width: 65%;
 }
 
-.description__footer{
+/* .description__footer {
   bottom: 0;
   position: absolute;
-}
+} */
 
-.created__at, .shared__by{
-  margin: auto 20px;
+.created__at,
+.shared__by {
+  margin: auto 15px;
   font-size: small;
 }
 
@@ -432,11 +433,17 @@ ul.CTAs a {
   color: #fec107;
 }
 
-.difference{
+/* .difference{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: auto;
+} */
+
+.btn-details {
+  z-index: 10;
+  position: absolute;
+  margin-top: 2px;
 }
 
 /* ---------------------------------------------------
