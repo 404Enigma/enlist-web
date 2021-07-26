@@ -224,6 +224,14 @@ ul.CTAs a {
   transition: all 0.3s;
 }
 
+.error__modal {
+  width: 200px;
+}
+
+.toast-header {
+  background-color: rgb(230, 87, 36);
+}
+
 .jumbotron {
   background: white;
   border: 2px solid #971f2f;

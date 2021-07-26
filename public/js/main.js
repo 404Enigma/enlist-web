@@ -19,7 +19,8 @@ if (typeof add_form_class != "undefined" && add_form_class != null) {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     console.log({ data });
-
+    document.getElementById("modal__content").innerHTML = "Task Added!";
+    $("#liveToast").toast("show");
     axios({
       method: "post",
       url: "/tasks/addTask/class",
@@ -43,7 +44,8 @@ if (typeof add_form_division != "undefined" && add_form_division != null) {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     console.log({ data });
-
+    document.getElementById("modal__content").innerHTML = "Task Added!";
+    $("#liveToast").toast("show");
     axios({
       method: "post",
       url: "/tasks/addTask/division",
@@ -68,7 +70,8 @@ if (typeof add_form_personal != "undefined" && add_form_personal != null) {
     const data = Object.fromEntries(formData.entries());
     data.categorie = "private";
     console.log({ data });
-
+    document.getElementById("modal__content").innerHTML = "Task Added!";
+    $("#liveToast").toast("show");
     axios({
       method: "post",
       url: "/tasks/addTask/personal",
@@ -102,7 +105,8 @@ if (typeof update_form_class != "undefined" && update_form_class != null) {
     data.created = created;
 
     console.log({ data });
-
+    document.getElementById("modal__content").innerHTML = "Task has been updated!";
+    $("#liveToast").toast("show");
     axios({
       method: "post",
       url: "/tasks/updateTask/class",
@@ -135,7 +139,8 @@ if (typeof update_form_division != "undefined" && update_form_division != null) 
     data.created = created;
 
     console.log({ data });
-
+    document.getElementById("modal__content").innerHTML = "Task has been updated!";
+    $("#liveToast").toast("show");
     axios({
       method: "post",
       url: "/tasks/updateTask/division",
@@ -169,7 +174,8 @@ if (typeof update_form_personal != "undefined" && update_form_personal != null) 
     data.created = created;
 
     console.log({ data });
-
+    document.getElementById("modal__content").innerHTML = "Task has been updated!";
+    $("#liveToast").toast("show");
     axios({
       method: "post",
       url: "/tasks/updateTask/personal",
@@ -203,7 +209,8 @@ if (typeof IMP_class != "undefined" && IMP_class != null) {
 
     console.log(key);
     let data = { key };
-
+    document.getElementById("modal__content").innerHTML = "Task has been marked important!";
+    $("#liveToast").toast("show");
     axios({
       method: "post",
       url: "/tasks/important/class",
@@ -227,6 +234,8 @@ if (typeof IMP_division != "undefined" && IMP_division != null) {
 
     console.log(key);
     let data = { key };
+    document.getElementById("modal__content").innerHTML = "Task has been marked important!";
+    $("#liveToast").toast("show");
     axios({
       method: "post",
       url: "/tasks/important/division",
@@ -250,6 +259,8 @@ if (typeof IMP_personal != "undefined" && IMP_personal != null) {
 
     console.log(key);
     let data = { key };
+    document.getElementById("modal__content").innerHTML = "Task has been marked important!";
+    $("#liveToast").toast("show");
     axios({
       method: "post",
       url: "/tasks/important/personal",
@@ -276,7 +287,8 @@ if (typeof done_class != "undefined" && done_class != null) {
     console.log(key);
     let data = { key, status };
     console.log("data: ", data);
-
+    document.getElementById("modal__content").innerHTML = "Task has been marked completed!";
+    $("#liveToast").toast("show");
     axios({
       method: "post",
       url: "/tasks/completed/class",
@@ -302,7 +314,8 @@ if (typeof done_division != "undefined" && done_division != null) {
 
     console.log(key);
     let data = { key, status };
-
+    document.getElementById("modal__content").innerHTML = "Task has been marked completed!";
+    $("#liveToast").toast("show");
     axios({
       method: "post",
       url: "/tasks/completed/division",
@@ -328,7 +341,8 @@ if (typeof done_personal != "undefined" && done_personal != null) {
 
     console.log(key);
     let data = { key, status };
-
+    document.getElementById("modal__content").innerHTML = "Task has been marked completed!";
+    $("#liveToast").toast("show");
     axios({
       method: "post",
       url: "/tasks/completed/personal",
@@ -353,7 +367,8 @@ if (typeof trash_class != "undefined" && trash_class != null) {
 
     console.log(key);
     let data = { key, status };
-
+    document.getElementById("modal__content").innerHTML = "Task has been deleted!";
+    $("#liveToast").toast("show");
     axios({
       method: "post",
       url: "/tasks/delete/class",
@@ -379,7 +394,8 @@ if (typeof trash_division != "undefined" && trash_division != null) {
 
     console.log(key);
     let data = { key, status };
-
+    document.getElementById("modal__content").innerHTML = "Task has been deleted!";
+    $("#liveToast").toast("show");
     axios({
       method: "post",
       url: "/tasks/delete/division",
@@ -405,7 +421,8 @@ if (typeof trash_personal != "undefined" && trash_personal != null) {
 
     console.log(key);
     let data = { key, status };
-
+    document.getElementById("modal__content").innerHTML = "Task has been deleted!";
+    $("#liveToast").toast("show");
     axios({
       method: "post",
       url: "/tasks/delete/personal",
@@ -426,8 +443,6 @@ $(document).ready(function () {
     $("#sidebar").toggleClass("active");
   });
 });
-
-$("#liveToast").toast("show");
 
 $(".task-details").click(function () {
   // var $domElement = $('.task-details');
