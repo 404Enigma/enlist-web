@@ -4,8 +4,6 @@ $(document).ready(function () {
   });
 });
 
-$("#liveToast").toast("show");
-
 const un_IMP_class = document.getElementById("unimportant_class");
 const un_IMP_division = document.getElementById("unimportant_division");
 const un_IMP_personal = document.getElementById("unimportant_personal");
@@ -18,7 +16,8 @@ if (typeof un_IMP_class != "undefined" && un_IMP_class != null) {
 
     console.log(key);
     let data = { key };
-
+    document.getElementById("modal__content").innerHTML = "Task has been marked unimportant!";
+    $("#liveToast").toast("show");
     axios({
       method: "post",
       url: "/tasks/unimportant/class",
@@ -41,7 +40,8 @@ if (typeof un_IMP_division != "undefined" && un_IMP_division != null) {
 
     console.log(key);
     let data = { key };
-
+    document.getElementById("modal__content").innerHTML = "Task has been marked unimportant!";
+    $("#liveToast").toast("show");
     axios({
       method: "post",
       url: "/tasks/unimportant/division",
@@ -64,7 +64,8 @@ if (typeof un_IMP_personal != "undefined" && un_IMP_personal != null) {
 
     console.log(key);
     let data = { key };
-
+    document.getElementById("modal__content").innerHTML = "Task has been marked unimportant!";
+    $("#liveToast").toast("show");
     axios({
       method: "post",
       url: "/tasks/unimportant/class",
