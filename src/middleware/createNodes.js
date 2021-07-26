@@ -26,7 +26,7 @@ const all_tasks_update = async (uid, group) => {
 };
 
 const add_nodes = async (req, res, next) => {
-  let PRN, _class, _division;
+  let PRN, _class, _division, _branch;
 
   if (!req.decodedClaims) {
     return res.redirect("/login");
@@ -41,10 +41,11 @@ const add_nodes = async (req, res, next) => {
       //User is guest user
       _class = "Class";
       _division = "Division";
+      _branch = "Branch";
       PRN = 1234567890;
 
       await nodeCreate_source("Visitor", req.decodedClaims.uid, _class, _division);
-      const cache_guest_data = await cache_guest(req.decodedClaims.uid, _class, _division, PRN);
+      const cache_guest_data = await cache_guest(req.decodedClaims.uid, _class, _division, _branch, PRN);
       //Store Guest data to cache
 
       console.log("cache_guest_data: ", cache_guest_data);
@@ -52,6 +53,7 @@ const add_nodes = async (req, res, next) => {
       req._payload = {
         _class,
         _division,
+        _branch,
         PRN,
       };
 
@@ -64,6 +66,7 @@ const add_nodes = async (req, res, next) => {
     _class = metadata._class;
     _division = metadata._division;
     _year = metadata._year;
+    _branch = metadata._branch;
 
     await nodeCreate_source("Source", req.decodedClaims.uid, _class, _division);
 
@@ -75,9 +78,10 @@ const add_nodes = async (req, res, next) => {
       //User is guest user
       _class = "Class";
       _division = "Division";
+      _branch = "Branch";
       PRN = 1234567890;
 
-      const cache_guest_data = await cache_guest(req.decodedClaims.uid, _class, _division, PRN);
+      const cache_guest_data = await cache_guest(req.decodedClaims.uid, _class, _division, _branch, PRN);
       //Store Guest data to cache
 
       console.log("cache_guest_data: ", cache_guest_data);
@@ -85,6 +89,7 @@ const add_nodes = async (req, res, next) => {
       req._payload = {
         _class,
         _division,
+        _branch,
         PRN,
       };
 
@@ -99,12 +104,14 @@ const add_nodes = async (req, res, next) => {
     _class = cache_data._class;
     _division = cache_data._division;
     _year = cache_data._year;
+    _branch = cache_data._branch;
   }
 
   const _payload = {
     PRN,
     _class,
     _division,
+    _branch,
     _year,
   };
 

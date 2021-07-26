@@ -57,7 +57,7 @@ const get_tasks = async (req, res) => {
       }
     });
 
-    console.log(metadata);
+    console.log("metadata:", metadata);
 
     res.render("pages/tasks", { user, tasks, metadata });
   }

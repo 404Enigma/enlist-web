@@ -25,7 +25,7 @@ const cache_middleware = async (uid, email) => {
   }
 };
 
-const cache_guest = async (uid, _class, _division, PRN) => {
+const cache_guest = async (uid, _class, _division, _branch, PRN) => {
   try {
     if (myCache.has(uid)) {
       console.log("using cached data");
@@ -34,7 +34,7 @@ const cache_guest = async (uid, _class, _division, PRN) => {
       return reply;
     }
 
-    const respone = { PRN, _class, _division, _year: "Visitor" };
+    const respone = { PRN, _class, _division, _branch, _year: "Visitor" };
 
     const saveResult = myCache.set(uid, respone, 100000);
     console.log("new data cached", saveResult);

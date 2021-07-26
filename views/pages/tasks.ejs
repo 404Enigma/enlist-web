@@ -45,12 +45,12 @@
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li>
-                  <a href="/tasks/class"><%= metadata._class %> 
+                  <a href="/tasks/class"><%= metadata._branch %> <%= metadata._class %> 
                     
                   </a>
                 </li>
               <li>
-                <a href="/tasks/division"><%= metadata._division %> 
+                <a href="/tasks/division"><%= metadata._branch %> <%= metadata._division %> 
                   
                 </a>
               </li>
@@ -93,7 +93,7 @@
             <button type="button" id="sidebarCollapse" class="btn btn-toggle">
               <i class="fas fa-align-left"></i>
             </button>
-            <h2 class="justify-content-between"><%= metadata.group %></h2>
+            <h2 class="justify-content-between"><%= metadata._branch %> <%= metadata.group %></h2>
             
             <div class="dropdown d-flex justify-content-end">
               <img
