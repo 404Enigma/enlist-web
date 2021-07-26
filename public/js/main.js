@@ -281,9 +281,14 @@ if (typeof done_class != "undefined" && done_class != null) {
       method: "post",
       url: "/tasks/completed/class",
       data,
-    });
-
-    location.reload();
+    })
+      .then(function (response) {
+        console.log(response);
+        location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 }
 
@@ -302,9 +307,14 @@ if (typeof done_division != "undefined" && done_division != null) {
       method: "post",
       url: "/tasks/completed/division",
       data,
-    });
-
-    location.reload();
+    })
+      .then(function (response) {
+        console.log(response);
+        location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 }
 
@@ -323,9 +333,14 @@ if (typeof done_personal != "undefined" && done_personal != null) {
       method: "post",
       url: "/tasks/completed/personal",
       data,
-    });
-
-    location.reload();
+    })
+      .then(function (response) {
+        console.log(response);
+        location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 }
 
@@ -343,9 +358,14 @@ if (typeof trash_class != "undefined" && trash_class != null) {
       method: "post",
       url: "/tasks/delete/class",
       data,
-    });
-
-    location.reload();
+    })
+      .then(function (response) {
+        console.log(response);
+        location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 }
 
@@ -364,9 +384,14 @@ if (typeof trash_division != "undefined" && trash_division != null) {
       method: "post",
       url: "/tasks/delete/division",
       data,
-    });
-
-    location.reload();
+    })
+      .then(function (response) {
+        console.log(response);
+        location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 }
 
@@ -385,9 +410,14 @@ if (typeof trash_personal != "undefined" && trash_personal != null) {
       method: "post",
       url: "/tasks/delete/personal",
       data,
-    });
-
-    location.reload();
+    })
+      .then(function (response) {
+        console.log(response);
+        location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 }
 
@@ -480,9 +510,14 @@ $("#complete_task_data").click(function () {
     method: "post",
     url: "/tasks/completed/class",
     data,
-  });
-
-  location.reload();
+  })
+    .then(function (response) {
+      console.log(response);
+      location.reload();
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 });
 
 // const complete_task = document.getElementById("complete_task");

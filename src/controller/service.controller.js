@@ -7,88 +7,85 @@ let tomorrow = moment().add(1, "days").format("DD MMMM YYYY");
 
 const trash_Task = async (req, res) => {
   if (!req.decodedClaims) {
-    res.redirect("/login");
-  } else {
-    let group;
+    return res.redirect("/login");
+  }
 
-    if (req.params.group == "personal") group = "Pvt";
+  let group;
+  if (req.params.group == "personal") group = "Pvt";
 
-    const user = {
-      name: req.decodedClaims.name,
-      email: req.decodedClaims.email,
-      uid: req.decodedClaims.uid,
-      picture: req.decodedClaims.picture,
-    };
+  const user = {
+    name: req.decodedClaims.name,
+    email: req.decodedClaims.email,
+    uid: req.decodedClaims.uid,
+    picture: req.decodedClaims.picture,
+  };
 
-    console.log("Trash Group :", req.params.group);
+  // console.log("Trash Group :", req.params.group);
 
-    try {
-      await trash_a_task(user, req.body, req.params.group);
+  try {
+    await trash_a_task(user, req.body, req.params.group);
 
-      res.json("Success");
-    } catch (error) {
-      res.json("Failed to delete");
-    }
+    res.json("success");
+  } catch (error) {
+    res.json("Failed to delete");
   }
 };
 
 const deleteTask = async (req, res) => {
   if (!req.decodedClaims) {
-    res.redirect("/login");
-  } else {
-    let group;
+    return res.redirect("/login");
+  }
 
-    if (req.params.group == "class") group = req._payload._class;
-    if (req.params.group == "division") group = req._payload._division;
-    if (req.params.group == "personal") group = "Pvt";
+  let group;
+  if (req.params.group == "class") group = req._payload._class;
+  if (req.params.group == "division") group = req._payload._division;
+  if (req.params.group == "personal") group = "Pvt";
 
-    const user = {
-      name: req.decodedClaims.name,
-      email: req.decodedClaims.email,
-      uid: req.decodedClaims.uid,
-      picture: req.decodedClaims.picture,
-    };
+  const user = {
+    name: req.decodedClaims.name,
+    email: req.decodedClaims.email,
+    uid: req.decodedClaims.uid,
+    picture: req.decodedClaims.picture,
+  };
 
-    console.log(req.body);
-    console.log("Trash sss Group :", group);
-    //res.json("success");
+  // console.log(req.body);
+  // console.log("Trash sss Group :", group);
 
-    try {
-      await delete_a_task(user, req.body, group);
+  try {
+    await delete_a_task(user, req.body, group);
 
-      res.json("Success");
-    } catch (error) {
-      res.json("Failed to delete");
-    }
+    res.json("success");
+  } catch (error) {
+    res.json("Failed to delete");
   }
 };
 
 const delete_task_bin = async (req, res) => {
   if (!req.decodedClaims) {
-    res.redirect("/login");
-  } else {
-    let group;
-    console.log(req._payload);
+    return res.redirect("/login");
+  }
 
-    if (req.params.group == "personal") group = "Pvt";
+  let group;
+  // console.log(req._payload);
 
-    const user = {
-      name: req.decodedClaims.name,
-      email: req.decodedClaims.email,
-      uid: req.decodedClaims.uid,
-      picture: req.decodedClaims.picture,
-    };
+  if (req.params.group == "personal") group = "Pvt";
 
-    console.log(req.body);
-    console.log("Group :", req.params.group);
+  const user = {
+    name: req.decodedClaims.name,
+    email: req.decodedClaims.email,
+    uid: req.decodedClaims.uid,
+    picture: req.decodedClaims.picture,
+  };
 
-    try {
-      await trash_a_bin_task(user, req.body, req.params.group);
+  // console.log(req.body);
+  // console.log("Group :", req.params.group);
 
-      res.json("Success");
-    } catch (error) {
-      res.json("Failed to delete");
-    }
+  try {
+    await trash_a_bin_task(user, req.body, req.params.group);
+
+    res.json("success");
+  } catch (error) {
+    res.json("Failed to delete");
   }
 };
 

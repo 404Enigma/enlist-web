@@ -20,13 +20,11 @@ $(".delete-task").click(function () {
       .delete("/tasks/trash/bin/" + group, { data })
       .then(function (response) {
         console.log(response);
-        //location.reload();
+        location.reload();
       })
       .catch(function (error) {
         console.log(error);
       });
-
-    location.reload();
   }
 });
 
@@ -46,12 +44,10 @@ $(".restore-task").click(function () {
       .post("/tasks/restore/bin/" + group, { data })
       .then(function (response) {
         console.log(response);
-        //location.reload();
+        location.reload();
       })
       .catch(function (error) {
         console.log(error);
       });
-
-    location.reload();
   }
 });

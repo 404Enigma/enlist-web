@@ -207,7 +207,7 @@ const mark_as_completed = (user, task, group) => {
 
 const restore_a_Task = async (user, task, group) => {
   const key = task.data.key;
-  console.log(task.data.key);
+  // console.log(task.data.key);
   const task_ref = db.ref("To-Do-List/" + user.uid + "/" + "Completed" + "/" + group + "/Task" + key);
   const new_task_ref = db.ref("To-Do-List/" + user.uid + "/" + group + "/Task" + key);
   const imp_task_ref = db.ref("To-Do-List/" + user.uid + "/" + "IMP" + "/" + group + "/Task" + key);

@@ -9,7 +9,7 @@ const taskRef = db.ref("To-Do-List");
 const trash_a_task = async (user, task, group) => {
   const uniquekey = task.key;
 
-  console.log(uniquekey);
+  // console.log(uniquekey);
 
   const completed_to_delete = db.ref("To-Do-List/" + user.uid + "/" + "Completed" + "/" + group + "/Task" + uniquekey);
   await completed_to_delete.remove();
@@ -18,7 +18,7 @@ const trash_a_task = async (user, task, group) => {
 const trash_a_bin_task = async (user, task, group) => {
   const uniquekey = task.key;
 
-  console.log(uniquekey);
+  // console.log(uniquekey);
 
   const completed_to_delete = db.ref("To-Do-List/" + user.uid + "/" + "Deleted" + "/" + group + "/Task" + uniquekey);
   await completed_to_delete.remove();
