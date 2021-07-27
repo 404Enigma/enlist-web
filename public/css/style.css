@@ -52,14 +52,21 @@ html {
   border-radius: 2px;
   cursor: pointer;
   transition: ease 0.2s;
+  display: flex;
+  align-items: center;
 }
+
 @media screen and (max-width: 768px) {
   nav span {
     width: 100%;
     display: flex;
     justify-content: center;
   }
+
   #navbar-text {
+    display: block;
+  }
+  #navbar-text div {
     display: flex;
     justify-content: center;
   }
