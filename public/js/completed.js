@@ -38,8 +38,8 @@ $(".restore-task").click(function () {
 
   console.log(group);
   console.log(data);
-  document.getElementById("modal__content").innerHTML = "Task has been restored!";
-  $("#liveToast").toast("show");
+  // document.getElementById("modal__content").innerHTML = "Task has been restored!";
+  // $("#liveToast").toast("show");
   axios
     .post("/tasks/restore/" + group, { data })
     .then(function (response) {

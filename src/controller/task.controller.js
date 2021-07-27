@@ -172,12 +172,13 @@ const unimportant_Task = (req, res) => {
   }
 
   let group;
-
-  // console.log(req.body);
-  // console.log(req._payload);
-  if (req.params.group == "class") group = req._payload._class;
-  if (req.params.group == "division") group = req._payload._division;
   if (req.params.group == "personal") group = "Pvt";
+
+  // // console.log(req.body);
+  // // console.log(req._payload);
+  // if (req.params.group == "class") group = req._payload._class;
+  // if (req.params.group == "division") group = req._payload._division;
+  // if (req.params.group == "personal") group = "Pvt";
 
   const user = {
     name: req.decodedClaims.name,
@@ -186,10 +187,9 @@ const unimportant_Task = (req, res) => {
     picture: req.decodedClaims.picture,
   };
 
-  // console.log(req.body);
-  // console.log("Group :", group);
+  console.log("Group :", group);
 
-  mark_as_unimportant(user, req.body, group);
+  mark_as_unimportant(user, req.body, req.params.group);
   res.json("success");
 };
 
