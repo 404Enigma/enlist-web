@@ -56,6 +56,10 @@ const add_a_task = (user, task, group, categorie) => {
     let all_shared_tasks = {};
     all_shared_tasks["All-Tasks" + "/" + group + "/" + "Task" + uniqkey] = task_Data;
     db.ref().update(all_shared_tasks);
+
+    //For Analysis purposes
+    //console.log("_payload: ", req._payload);
+    //const analysisRef = db.collection( task.+"Analysis"+ )
   }
 };
 
