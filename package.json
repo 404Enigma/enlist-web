@@ -1,5 +1,5 @@
 {
-  "name": "enlist-ultimate",
+  "name": "enlist",
   "version": "1.0.0",
   "description": "ENLIST lastest update.",
   "main": "server.js",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/404Enigma/ENLIST-WEB.git"
+    "url": "git+https://github.com/404Enigma/enlist-web.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/404Enigma/ENLIST-WEB/issues"
+    "url": "https://github.com/404Enigma/enlist-web/issues"
   },
-  "homepage": "https://github.com/404Enigma/ENLIST-WEB#readme",
+  "homepage": "https://github.com/404Enigma/enlist-web#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "bootstrap": "^4.6.0",

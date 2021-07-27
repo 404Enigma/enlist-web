@@ -12,10 +12,6 @@ router.get("/", checkCookie, (req, res) => {
     options.islogged = false;
     res.render("pages/home", { options });
   } else {
-    // console.log(req.decodedClaims);
-    // options.islogged = true;
-
-    // res.render("pages/home", { options });
     res.redirect("/tasks");
   }
 });
