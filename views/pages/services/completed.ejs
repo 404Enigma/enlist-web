@@ -158,10 +158,13 @@
                           <%}else if(task.tomorrow){%> 
                             <div class="task-details task-3" data-toggle="modal" data-target="#modal_aside_right">
 
-                            <% } else{%>
+                            <% } else if(task.day_after_tomorrow){%>
                               <div class="task-details task-1" data-toggle="modal" data-target="#modal_aside_right">
 
-                              <%  }%> 
+                              <%  }else{%> 
+                                <div class="task-details" data-toggle="modal" data-target="#modal_aside_right">
+
+                                <%}%> 
 
                         <div class="col-2">
                           <a data-id="<%=task.key%>" data-group="<%=tasks%>" class="delete-task">

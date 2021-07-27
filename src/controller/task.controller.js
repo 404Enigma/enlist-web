@@ -20,47 +20,49 @@ let day_after_tomorrow = moment().add(2, "days").format("DD MMMM YYYY");
 
 const get_tasks = async (req, res) => {
   if (!req.decodedClaims) {
-    res.redirect("/login");
-  } else {
-    let group;
-
-    const user = { name: req.decodedClaims.name, email: req.decodedClaims.email, picture: req.decodedClaims.picture };
-
-    const metadata = req._payload;
-    if (req.params.group == "class") {
-      group = req._payload._class;
-      metadata.standard = req.params.group;
-    }
-    if (req.params.group == "division") {
-      group = req._payload._division;
-      metadata.standard = req.params.group;
-    }
-
-    if (req.params.group == "personal") {
-      group = "Pvt";
-      metadata.standard = req.params.group;
-    }
-
-    const tasks = await get_all_tasks(req.decodedClaims.uid, group);
-
-    metadata.group = group;
-    // metadata.badge = req.badge;
-
-    tasks.map((task) => {
-      task.deadline = moment.unix(task.deadline).format("DD MMMM YYYY");
-      if (moment(today).isSame(task.deadline)) {
-        task.today = true;
-      }
-
-      if (moment(tomorrow).isSame(task.date)) {
-        task.tomorrow = true;
-      }
-    });
-
-    console.log("metadata:", metadata);
-
-    res.render("pages/tasks", { user, tasks, metadata });
+    return res.redirect("/login");
   }
+
+  let group;
+
+  const user = { name: req.decodedClaims.name, email: req.decodedClaims.email, picture: req.decodedClaims.picture };
+
+  const metadata = req._payload;
+  if (req.params.group == "class") {
+    group = req._payload._class;
+    metadata.standard = req.params.group;
+  }
+  if (req.params.group == "division") {
+    group = req._payload._division;
+    metadata.standard = req.params.group;
+  }
+
+  if (req.params.group == "personal") {
+    group = "Pvt";
+    metadata.standard = req.params.group;
+  }
+
+  const tasks = await get_all_tasks(req.decodedClaims.uid, group);
+
+  metadata.group = group;
+
+  tasks.map((task) => {
+    task.deadline = moment.unix(task.deadline).format("DD MMMM YYYY");
+    if (moment(task.deadline).isSameOrBefore(today, "day")) {
+      task.today = true;
+    } else if (moment(tomorrow).isSame(task.deadline)) {
+      task.tomorrow = true;
+    } else if (moment(day_after_tomorrow).isSame(task.deadline)) {
+      task.day_after_tomorrow = true;
+    } else {
+      task.beyond = true;
+    }
+  });
+
+  console.log("metadata:", metadata);
+  console.log("tasks: ", tasks);
+
+  res.render("pages/tasks", { user, tasks, metadata });
 };
 
 const add_task = (req, res) => {
@@ -193,136 +195,99 @@ const unimportant_Task = (req, res) => {
 
 const get_important_Tasks = async (req, res) => {
   if (!req.decodedClaims) {
-    res.redirect("/login");
-  } else {
-    let group;
-    console.log(req.decodedClaims);
-    const user = { name: req.decodedClaims.name, email: req.decodedClaims.email, picture: req.decodedClaims.picture };
-
-    const metadata = req._payload;
-    if (req.params.group == "class") {
-      group = req._payload._class;
-      metadata.standard = req.params.group;
-    }
-    if (req.params.group == "division") {
-      group = req._payload._division;
-      metadata.standard = req.params.group;
-    }
-
-    if (req.params.group == "personal") {
-      group = "Pvt";
-      metadata.standard = req.params.group;
-    }
-
-    const impTasks = await get_all_imp_tasks(req.decodedClaims.uid);
-
-    metadata.group = group;
-
-    // tasks.map((task) => {
-    //   task.date = moment.unix(task.date).format("DD MMMM YYYY");
-    // });
-
-    // console.log("impTasks: ", impTasks);
-
-    for (section in impTasks) {
-      //console.log("impTasks: ", impTasks[section]);
-      console.log("section: ", section);
-      impTasks[section].map((task) => {
-        task.deadline = task.deadline = moment.unix(task.deadline).format("DD MMMM YYYY");
-        if (moment(today).isSame(task.deadline)) {
-          task.today = true;
-        }
-
-        if (moment(tomorrow).isSame(task.deadline)) {
-          task.tomorrow = true;
-        }
-
-        if (moment(day_after_tomorrow).isSame(task.deadline)) {
-          task.day_after_tomorrow = true;
-        }
-
-        if (moment(task.date).isBefore(day_after_tomorrow)) {
-          task.day_after_tomorrow = true;
-        }
-      });
-    }
-
-    console.log(impTasks);
-
-    // impTasks.map((group) => {
-    //   // console.log(group);
-    //   for (const tasks in group) {
-    //     Object.values(group[tasks]).forEach((task) => {
-    //       task.date = task.date = moment.unix(task.date).format("DD MMMM YYYY");
-
-    //       if (moment(today).isSame(task.date)) {
-    //         task.today = true;
-    //       }
-
-    //       if (moment(tomorrow).isSame(task.date)) {
-    //         task.tomorrow = true;
-    //       }
-    //     });
-    //   }
-    // });
-
-    res.render("pages/services/important", { user, impTasks, metadata });
+    return res.redirect("/login");
   }
+
+  let group;
+  console.log(req.decodedClaims);
+  const user = { name: req.decodedClaims.name, email: req.decodedClaims.email, picture: req.decodedClaims.picture };
+
+  const metadata = req._payload;
+  if (req.params.group == "class") {
+    group = req._payload._class;
+    metadata.standard = req.params.group;
+  }
+  if (req.params.group == "division") {
+    group = req._payload._division;
+    metadata.standard = req.params.group;
+  }
+
+  if (req.params.group == "personal") {
+    group = "Pvt";
+    metadata.standard = req.params.group;
+  }
+
+  const impTasks = await get_all_imp_tasks(req.decodedClaims.uid);
+
+  metadata.group = group;
+
+  for (section in impTasks) {
+    //console.log("impTasks: ", impTasks[section]);
+    console.log("section: ", section);
+    impTasks[section].map((task) => {
+      task.deadline = moment.unix(task.deadline).format("DD MMMM YYYY");
+      if (moment(task.deadline).isSameOrBefore(today, "day")) {
+        task.today = true;
+      } else if (moment(tomorrow).isSame(task.deadline)) {
+        task.tomorrow = true;
+      } else if (moment(day_after_tomorrow).isSame(task.deadline)) {
+        task.day_after_tomorrow = true;
+      } else {
+        task.beyond = true;
+      }
+    });
+  }
+
+  //console.log(impTasks);
+
+  res.render("pages/services/important", { user, impTasks, metadata });
 };
 
 const get_completed_Tasks = async (req, res) => {
   if (!req.decodedClaims) {
-    res.redirect("/login");
-  } else {
-    let group;
-
-    const user = { name: req.decodedClaims.name, email: req.decodedClaims.email, picture: req.decodedClaims.picture };
-
-    const metadata = req._payload;
-    if (req.params.group == "class") {
-      group = req._payload._class;
-      metadata.standard = req.params.group;
-    }
-    if (req.params.group == "division") {
-      group = req._payload._division;
-      metadata.standard = req.params.group;
-    }
-
-    if (req.params.group == "personal") {
-      group = "Pvt";
-      metadata.standard = req.params.group;
-    }
-
-    const completedTasks = await get_all_completed_tasks(req.decodedClaims.uid);
-
-    metadata.group = group;
-
-    // tasks.map((task) => {
-    //   task.date = moment.unix(task.date).format("DD MMMM YYYY");
-    // });
-
-    //console.log(completedTasks);
-
-    completedTasks.map((group) => {
-      for (const tasks in group) {
-        Object.values(group[tasks]).forEach((task) => {
-          task.deadline = task.deadline = moment.unix(task.deadline).format("DD MMMM YYYY");
-
-          if (moment(today).isSame(task.deadline)) {
-            task.today = true;
-          }
-
-          if (moment(tomorrow).isSame(task.deadline)) {
-            task.tomorrow = true;
-          }
-        });
-      }
-    });
-
-    console.log(completedTasks);
-
-    res.render("pages/services/completed", { user, completedTasks, metadata });
+    return res.redirect("/login");
   }
+
+  let group;
+  const user = { name: req.decodedClaims.name, email: req.decodedClaims.email, picture: req.decodedClaims.picture };
+  const metadata = req._payload;
+
+  if (req.params.group == "class") {
+    group = req._payload._class;
+    metadata.standard = req.params.group;
+  }
+  if (req.params.group == "division") {
+    group = req._payload._division;
+    metadata.standard = req.params.group;
+  }
+
+  if (req.params.group == "personal") {
+    group = "Pvt";
+    metadata.standard = req.params.group;
+  }
+
+  const completedTasks = await get_all_completed_tasks(req.decodedClaims.uid);
+
+  metadata.group = group;
+
+  completedTasks.map((group) => {
+    for (const tasks in group) {
+      Object.values(group[tasks]).forEach((task) => {
+        task.deadline = moment.unix(task.deadline).format("DD MMMM YYYY");
+        if (moment(task.deadline).isSameOrBefore(today, "day")) {
+          task.today = true;
+        } else if (moment(tomorrow).isSame(task.deadline)) {
+          task.tomorrow = true;
+        } else if (moment(day_after_tomorrow).isSame(task.deadline)) {
+          task.day_after_tomorrow = true;
+        } else {
+          task.beyond = true;
+        }
+      });
+    }
+  });
+
+  res.render("pages/services/completed", { user, completedTasks, metadata });
 };
 
 const restore_tasks = async (req, res) => {

@@ -220,7 +220,7 @@
                           data-sharedby="<%= task.shared%>"
                           <% } %> 
                       >
-                      <% } else{%>
+                      <% } else if(task.day_after_tomorrow){%>
                           <div
                           class="task-details task-1"
                           data-id="<%= task.key %>"
@@ -233,7 +233,20 @@
                             data-sharedby="<%= task.shared%>"
                             <% } %> 
                         >
-                        <%  }%> 
+                        <%  }else{%>
+                          <div
+                          class="task-details"
+                          data-id="<%= task.key %>"
+                          data-title="<%= task.title%>"
+                          data-description="<%= task.description%>"
+                          data-deadline="<%= task.deadline%>"
+                          data-created="<%= task.created%>"
+                          data-status="<%= task.status%>"
+                          <% if(task.shared){%>
+                            data-sharedby="<%= task.shared%>"
+                            <% } %> 
+                        >
+                          <% }%> 
                         
                 <div class="col-1">
                   <a class="completed_task" id="complete_task_data" data-id="<%=task.key%>" data-status="<%= task.status%>" data-group="<%=metadata.group%>">
