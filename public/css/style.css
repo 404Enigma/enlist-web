@@ -59,10 +59,15 @@ html {
     display: flex;
     justify-content: center;
   }
+  #navbar-text {
+    display: flex;
+    justify-content: center;
+  }
 }
 .navbar-text img {
   width: 200px;
 }
+
 nav .nav-link {
   font-size: larger;
 }
@@ -474,6 +479,10 @@ main #sub-footer .width-container ul:nth-child(1) {
   padding-left: 0px;
 }
 
+main #sub-footer .width-container ul img {
+  border-radius: 10px;
+}
+
 footer {
   padding: 50px 100px;
 }
@@ -791,6 +800,7 @@ footer .width-container span i {
   #division-hr {
     display: none;
   }
+
   footer {
     padding: 35px;
     text-align: center;
