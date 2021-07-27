@@ -11,7 +11,7 @@
 &nbsp;
 <h3> ➡ If you want to understand the working of the whole system then hop on the 
 main repo.</h3>
-<h2 align="center">👉<a href="https://github.com/prakhar-agarwall/enlist.git">Here</a></h2>
+<h2 align="center">👉<a href="https://github.com/404Enigma/enlist">Here</a></h2>
 
 
 
