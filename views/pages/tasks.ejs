@@ -173,7 +173,6 @@
                       </div>
                     </div>
                       
-                    
                       <%} %>      
                       <div class="form col-md-8 col-sm-12 justify-content-center my-3 px-0">
                         <textarea class="form-control input form__input" aria-label="With textarea" name="description" placeholder="Description" maxlength="35" rows="2"></textarea>
@@ -254,8 +253,8 @@
                         >
                           <% }%> 
                         
-                <div class="col-1">
-                  <a class="completed_task" id="complete_task_data" data-id="<%=task.key%>" data-status="<%= task.status%>" data-group="<%=metadata.group%>">
+                <div class="col-1" data-toggle="modal" data-target="#modal_aside_right">
+                  <a class="completed_task"  data-id="<%=task.key%>" data-status="<%= task.status%>" data-group="<%=metadata.group%>">
                     <i class="far fa-check-circle fa-hover-hidden"></i>
                     <i type="button" id="complete_task" class="fas fa-check-circle fa-hover-show"> </i>
                   </a>
