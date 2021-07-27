@@ -23,7 +23,7 @@ router.get("/", checkCookie, (req, res) => {
 router.get("/logout", checkCookie, logout);
 
 router.get("/settings", (req, res) => {
-  res.render("/templates/settings.html");
+  res.render("pages/settings");
 });
 
 router.use(require("./tasks/services"));
