@@ -1,2 +1,4 @@
 node_modules
-
+public/js/login_session.js
+src/db/serviceAccountKey.json
+.env
