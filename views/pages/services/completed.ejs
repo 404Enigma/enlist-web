@@ -38,10 +38,14 @@
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
               <li>
-                <a href="/tasks/class"><%= metadata._branch %> <%= metadata._class %> </a>
+                <a href="/tasks/class"><% if(metadata._branch !== "Branch"){%>
+                  <%= metadata._branch %>
+                  <%  } %> <%= metadata._class %> </a>
               </li>
               <li>
-                <a href="/tasks/division"><%= metadata._branch %> <%= metadata._division %></a>
+                <a href="/tasks/division"><% if(metadata._branch !== "Branch"){%>
+                  <%= metadata._branch %>
+                  <%  } %> <%= metadata._division %></a>
               </li>
             </ul>
           </li>
