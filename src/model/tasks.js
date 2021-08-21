@@ -65,6 +65,7 @@ const add_a_task = (user, task, group, categorie) => {
 
 const update_a_task = (user, task, group) => {
   const updated_date = moment(task.date).format("X");
+
   const task_Data = {
     title: task.title,
     deadline: updated_date,
@@ -77,7 +78,7 @@ const update_a_task = (user, task, group) => {
 
   ref.update({
     title: task.title,
-    deadline: updated_date,
+    deadline: Number(updated_date),
     description: task.description,
   });
 
