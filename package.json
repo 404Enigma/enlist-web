@@ -30,7 +30,7 @@
     "firebase-admin": "^9.5.0",
     "google-auth-library": "^7.0.2",
     "jquery": "^3.6.0",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "node-cache": "^5.1.2"
   },
   "devDependencies": {
